@@ -9,6 +9,7 @@ $(document).ready( function() {
 
 	buildMatchfield();
 
+	readData();
 	setInterval( readData, 30000 ); // read data every 30 seconds
 
 });
@@ -36,16 +37,18 @@ function buildMatchfield() {
 
 function readData() {
 	var jqxhr = $.get( "ajax/getShipData.php", function( data ) {
-	  alert( data );
+		console.log( "test" );
+	  	console.log( data );
 	})
 	.done(function() {
-	  alert( "second success" );
+	 	console.log( "test2" );
+	  	console.log( data );
 	})
 	.fail(function() {
-	  alert( "error" );
+	 	console.log( "error" );
 	})
 	.always(function() {
-	  alert( "finished" );
+	 	console.log( "finished" );
 	});
 
 	console.log( "retrieveing data from server" );
