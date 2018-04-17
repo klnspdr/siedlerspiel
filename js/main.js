@@ -34,6 +34,7 @@ function buildMatchfield() {
 	$( ".ship" ).on( "click", function() {
 		generateInventory( $( this ).attr('id') );
 		$( "#overlay" ).show();
+		buyItem( "fass" );
 	});
 
 	$( ".close" ).on( "click", function() {
@@ -72,7 +73,36 @@ function buildMenu(){
 	});
 	$( "#buyRepair" ).on( "click", function() {
 	});
+}
 
+function buyItem( item ) {
+	var count = shipInventory[groupId][item];
+
+	if (item == "segel" && count == 6 || item == "ruder" && count == 2)
+		throw "Zuviele Segel oder Ruder!";
+
+	$.post( "ajax/buyItem.php", { shipId: groupId, item: item, count: count})
+ 		.done(function( data ) {
+    		console.log( "Data Loaded: " + data );
+    		// write in log
+    		newLog( item, true, false);
+		});
+}
+
+function newLog( item, buy, win ) {
+	var action = "Shiff " + groupId + " hat ein " + item + " gebaut.";
+	var win = win;
+	if (!buy) {
+		if (win)
+			action = "Shiff " + groupId + " hat einen Kampf gewonnen";
+		else
+			action = "Shiff " + groupId + " hat einen Kampf verloren";
+	}
+	$.post( "ajax/postLog.php", { shipId: groupId, action: action, win: win})
+ 		.done(function( data ) {
+    		console.log( "Data Loaded: " + data );
+    		readData();
+		});
 }
 
 function generateInventory( shipId ) {
@@ -119,4 +149,44 @@ function readData() {
 		console.log( "error");
 	 	console.log( error );
 	})
+}
+
+function confirmDialog( id, action ) {
+
+    var title = action + ' wirklich ausfuehren?';
+    var text = "Willst du die \"" + action + "\" wirklich <b>ausverkauft</b>?";
+
+    if (!$( "#dialog-confirm" ).length) {
+        $('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
+        .html('<div><h6>' + text + '</h6></div>')
+        .dialog({
+            modal: true, title: title, zIndex: 10000, autoOpen: true,
+            width: 'auto', resizable: false,
+            buttons: {
+                Nein: function () {
+                    $(this).dialog("close");
+                },
+                Ja: function () {
+                    $(this).dialog("close");
+                }                
+            },
+            close: function (event, ui) {
+                $(this).remove();
+            }
+        });
+
+        makeButtonsNicer();
+    }
+}
+
+function makeButtonsNicer() {
+    // seperate the two buttons for better usability
+    $(".ui-dialog-buttonset").css('float', 'none');
+    $(".ui-dialog-buttonset button:first").css('float', 'left');
+    $(".ui-dialog-buttonset button:last").css('float', 'right');
+    // set better button design
+    $(".ui-dialog-buttonset button").addClass("ui-button");
+    $(".ui-dialog-buttonset button").css('border-radius', '5px');
+    // remove the x-close button
+    $(".ui-dialog-titlebar-close").remove();
 }
