@@ -11,13 +11,22 @@ html, body {
   position: relative;
 }
 
-#menu {
+#sidebar {
   height: 100%;
   width: 25%;
   float: right;
   background: #4169E1;
   padding: 10px;
   color: white;
+}
+
+#log {
+  height: 30%;
+  border-bottom: 5px solid;
+}
+
+#menu {
+  height: 70%;
 }
 
 .right-to-left {
