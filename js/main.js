@@ -35,6 +35,19 @@ function buildMatchfield() {
 }
 
 function readData() {
+	var jqxhr = $.get( "ajax/getShipData.php", function( data ) {
+	  alert( data );
+	})
+	.done(function() {
+	  alert( "second success" );
+	})
+	.fail(function() {
+	  alert( "error" );
+	})
+	.always(function() {
+	  alert( "finished" );
+	});
+
 	console.log( "retrieveing data from server" );
 	if( $( "#log" ).is( ':empty' ) )
 		$( "#log" ).prepend( "<p>Log entry</p>" );
