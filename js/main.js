@@ -1,7 +1,7 @@
 $(document).ready( function() {
 
 	buildMatchfield();
-	
+
 });
 
 function buildMatchfield() {
@@ -15,4 +15,8 @@ function buildMatchfield() {
 	$( ".deg180" ).css({'transform' : 'translate(-' + radius + 'px'});
 	$( ".deg240" ).css({'transform' : 'rotate(240deg) translate(' + radius + 'px) rotate(-240deg) '});
 	$( ".deg300" ).css({'transform' : 'rotate(300deg) translate(' + radius + 'px) rotate(-300deg) '});
+
+	$( ".ship" ).on( "click", function() {
+		
+	});
 }

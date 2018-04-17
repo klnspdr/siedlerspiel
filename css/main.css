@@ -6,7 +6,8 @@ html, body {
   height: 100%;
   width: 75%;
   float: left;
-  background: darkgray;
+  /*background: darkgray;*/
+  background-image: url("../img/water.JPG");
   position: relative;
 }
 
@@ -14,8 +15,24 @@ html, body {
   height: 100%;
   width: 25%;
   float: right;
-  background: lightgray;
+  background: #4169E1;
   padding: 10px;
+  color: white;
+}
+
+.right-to-left {
+    border-left: 15px;
+    border-style: solid;
+    -webkit-border-image: 
+      -webkit-gradient(linear, 0 0, 100% 0, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: 
+      -webkit-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image:
+      -moz-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%; 
+    -o-border-image:
+      -o-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%;
+    border-image:
+      linear-gradient(to left, #4169E1, rgba(112, 128, 144, 255)) 1 100%;
 }
 
 
@@ -29,8 +46,6 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 24em;
-  height: 24em;
   padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
   border: dashed 1px;
   border-radius: 50%;
