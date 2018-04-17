@@ -1,8 +1,9 @@
 $(document).ready( function() {
+
 	var searchParams = new URLSearchParams(window.location.search)
 	var groupId = 0;
-	if( searchParams.has( 'groupIdg' ) )
-		groupId = searchParams.get( 'groupId' )
+	if( searchParams.has( 'groupId' ) )
+		groupId = searchParams.get( 'groupId' );
 
 	console.log( "this is the UI of group " + groupId );
 

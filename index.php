@@ -1,10 +1,13 @@
+<?php
+include("connect.php"); //establish database connection   
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Siedlerspiel</title>
-
 
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,9 +33,10 @@
 
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
-
   </head>
+
   <body>
+
     <div id="matchfield">
       <div id="overlay">
         <div class="close">
@@ -41,7 +45,7 @@
       </div>
       <div class='circle-container'>
         <a href='#' class='center'><img src='img/steeringWheel.png'></a>
-        <a href='#' class='deg0 ship'><img src='img/pirate.png'></a>
+        <a href='#' class='deg0 ship'>Testblabla<img src='img/pirate.png'></a>
         <a href='#' class='deg60 ship'><img src='img/pirate.png'></a>
         <a href='#' class='deg120 ship'><img src='img/pirate.png'></a>
         <a href='#' class='deg180 ship'><img src='img/pirate.png'></a>
