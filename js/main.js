@@ -37,7 +37,6 @@ function buildMatchfield() {
 
 function readData() {
 	var jqxhr = $.get( "ajax/getShipData.php", function( data ) {
-		console.log( "test" );
 	  	console.log( data );
 	})
 	.done(function() {
