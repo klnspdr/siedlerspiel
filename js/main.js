@@ -1,10 +1,11 @@
 var shipData = [];
 var shipInventory = [];
+var groupId = -1;
 
 $(document).ready( function() {
 
 	var searchParams = new URLSearchParams(window.location.search)
-	var groupId = 0;
+	
 	if( searchParams.has( 'groupId' ) )
 		groupId = searchParams.get( 'groupId' );
 
@@ -30,11 +31,21 @@ function buildMatchfield() {
 	$( ".deg300" ).css({'transform' : 'rotate(300deg) translate(' + radius + 'px) rotate(-300deg) '});
 
 	$( ".ship" ).on( "click", function() {
+		generateInventory( $( this ).attr('id') );
 		$( "#overlay" ).show();
 	});
 
 	$( ".close" ).on( "click", function() {
 		$( "#overlay" ).hide();
+	});
+}
+
+function generateInventory( shipId ) {
+	$( ".inventory" ).empty();
+	$.each( shipInventory[shipId], function(index, element) {
+		if( (index != "id" && index != "shipId" && index != "waffen") || (index == "waffen" && shipId == groupId)) {
+			$( ".inventory" ).append("<div class='inv_row'><div class='inv_item'>" + index + "</div><div class='inv_item'>" + element + "</div></div>");
+		}
 	});
 }
 
@@ -61,6 +72,7 @@ function readData() {
 	})
 
 	var logCall = $.getJSON( "ajax/getLog.php", function( data ) {
+		$( "#log" ).empty();
 		$.each(data, function(index, element) {
 			if (index == 0)
 				$( "#log" ).prepend( "<p>Schiff " + element.shipId + " " + element.action + "</p>" );

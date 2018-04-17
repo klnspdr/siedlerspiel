@@ -42,28 +42,16 @@ include("connect.php"); //establish database connection
         <div class="close">
           <span id="x">X</span>
         </div>
-		<div class="inventory">
-			<div class="inv_row">
-				<div class="inv_item">First item</div>
-				<div class="inv_item">Second item</div>
-				<div class="inv_item">Third item</div>
-				<div class="inv_item">Fourth item</div>
-			</div>
-			<div class="inv_row">
-				<div class="inv_item">First item</div>
-				<div class="inv_item">Second item</div>
-				<div class="inv_item">Third item</div>
-				<div class="inv_item">Fourth item</div>
-			</div>
-		</div>
+    		<div class="inventory">
+    		</div>
       </div>
       <div class='circle-container'>
-        <a href='#' class='deg0 ship'><span class="shipText" id="ship0HP" >X HP</span><img src='img/pirate.png'></a>
-        <a href='#' class='deg60 ship'><span class="shipText" id="ship1HP" >X HP</span><img src='img/pirate.png'></a>
-        <a href='#' class='deg120 ship'><span class="shipText" id="ship2HP" >X HP</span><img src='img/pirate.png'></a>
-        <a href='#' class='deg180 ship'><span class="shipText" id="ship3HP" >X HP</span><img src='img/pirate.png'></a>
-        <a href='#' class='deg240 ship'><span class="shipText" id="ship4HP" >X HP</span><img src='img/pirate.png'></a>
-        <a href='#' class='deg300 ship'><span class="shipText" id="ship5HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg0 ship' id="0"><span class="shipText" id="ship0HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg60 ship' id="1"><span class="shipText" id="ship1HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg120 ship' id="2"><span class="shipText" id="ship2HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg180 ship' id="3"><span class="shipText" id="ship3HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg240 ship' id="4"><span class="shipText" id="ship4HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg300 ship' id="5"><span class="shipText" id="ship5HP" >X HP</span><img src='img/pirate.png'></a>
       </div>
     </div>
 
