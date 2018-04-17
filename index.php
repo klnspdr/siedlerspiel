@@ -59,12 +59,12 @@ include("connect.php"); //establish database connection
       </div>
       <div class='circle-container'>
         <a href='#' class='center'><img src='img/steeringWheel.png'></a>
-        <a href='#' class='deg0 ship'>Testblabla<img src='img/pirate.png'></a>
-        <a href='#' class='deg60 ship'><img src='img/pirate.png'></a>
-        <a href='#' class='deg120 ship'><img src='img/pirate.png'></a>
-        <a href='#' class='deg180 ship'><img src='img/pirate.png'></a>
-        <a href='#' class='deg240 ship'><img src='img/pirate.png'></a>
-        <a href='#' class='deg300 ship'><img src='img/pirate.png'></a>
+        <a href='#' class='deg0 ship'><span id="ship0HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg60 ship'><span id="ship1HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg120 ship'><span id="ship2HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg180 ship'><span id="ship3HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg240 ship'><span id="ship4HP" >X HP</span><img src='img/pirate.png'></a>
+        <a href='#' class='deg300 ship'><span id="ship5HP" >X HP</span><img src='img/pirate.png'></a>
       </div>
     </div>
 

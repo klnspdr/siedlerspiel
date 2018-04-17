@@ -36,8 +36,11 @@ function buildMatchfield() {
 }
 
 function readData() {
-	var jqxhr = $.get( "ajax/getShipData.php", function( data ) {
-	  	console.log( data );
+	var jqxhr = $.getJSON( "ajax/getShipData.php", function( data ) {
+		console.log( data );
+		$.each(data, function(index, element) {
+		    $( "#ship" + index + "HP" ).text(element.hp);
+		});
 	})
 	.done(function() {
 	 	console.log( "success2" );
@@ -49,7 +52,6 @@ function readData() {
 	 	console.log( "finished" );
 	});
 
-	console.log( "retrieveing data from server" );
 	if( $( "#log" ).is( ':empty' ) )
 		$( "#log" ).prepend( "<p>Log entry</p>" );
 	else
