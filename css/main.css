@@ -99,6 +99,21 @@ p {
   overflow: auto;
 }
 
+.buyButton {
+	width: 48%;
+	height: 10%;
+	margin-bottom: 5px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#menu > .kaufenText {
+	text-align: center;
+	font-weight: bold;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
 .right-to-left {
     border-left: 15px;
     border-style: solid;
