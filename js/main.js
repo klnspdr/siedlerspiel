@@ -88,17 +88,19 @@ function buildMenu(){
 		confirmDialog("schatz");
 	});
 	$( "#buyRepair" ).on( "click", function() {
-		repair();
+		confirmDialogRepair();
 	});
 }
 
 function repair() {
+	if (shipData[groupId].max_hp == shipData[groupId].hp)
+		throw "Es gibt nichts zu reparieren!";
 	$.post( "ajax/repair.php", { shipId: groupId, hp: shipData[groupId].hp, maxHP: shipData[groupId].max_hp})
  		.done(function( data ) {
     		console.log( "Data Loaded: " + data );
     		// write in log
     		newLog( "repair", true, false);
-		});
+		})
 }
 
 function buyItem( item ) {
@@ -185,6 +187,40 @@ function readData() {
 		console.log( "error");
 	 	console.log( error );
 	})
+}
+
+function confirmDialogRepair( ) {
+
+    var title = 'Wirklich reparieren?';
+    var text = "Willst du wirklich <b>reparieren</b>?";
+
+    if (!$( "#dialog-confirm" ).length) {
+        $('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
+        .html('<div><h6>' + text + '</h6></div>')
+        .dialog({
+            modal: true, title: title, zIndex: 10000, autoOpen: true,
+            width: 'auto', resizable: false,
+            buttons: {
+                Nein: function () {
+                    $(this).dialog("close");
+                },
+                Ja: function () {
+                	try{
+						repair();
+					}
+					catch(err){
+						alert(err);
+					}
+                    $(this).dialog("close");
+                }                
+            },
+            close: function (event, ui) {
+                $(this).remove();
+            }
+        });
+
+        makeButtonsNicer();
+    }
 }
 
 function confirmDialog( item ) {
