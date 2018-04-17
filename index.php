@@ -42,6 +42,20 @@ include("connect.php"); //establish database connection
         <div class="close">
           <span id="x">X</span>
         </div>
+		<div class="inventory">
+			<div class="inv_row">
+				<div class="inv_item">First item</div>
+				<div class="inv_item">Second item</div>
+				<div class="inv_item">Third item</div>
+				<div class="inv_item">Fourth item</div>
+			</div>
+			<div class="inv_row">
+				<div class="inv_item">First item</div>
+				<div class="inv_item">Second item</div>
+				<div class="inv_item">Third item</div>
+				<div class="inv_item">Fourth item</div>
+			</div>
+		</div>
       </div>
       <div class='circle-container'>
         <a href='#' class='center'><img src='img/steeringWheel.png'></a>

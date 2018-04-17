@@ -47,6 +47,24 @@ p {
   text-align: center;
 }
 
+#overlay > .inventory {
+	display: table;
+	width: calc(100% - 10px);
+	border: 1px solid blue;
+	padding: 5px;
+}
+
+#overlay > .inventory > .inv_row {
+	display: table-row;
+}
+
+#overlay > .inventory > .inv_row > .inv_item {
+	display: table-cell;
+	border: thin solid red;
+	width: 200px;
+	padding: 5px;
+}
+
 #sidebar {
   height: 100%;
   width: 25%;
