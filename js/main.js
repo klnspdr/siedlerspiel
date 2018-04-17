@@ -88,7 +88,17 @@ function buildMenu(){
 		confirmDialog("schatz");
 	});
 	$( "#buyRepair" ).on( "click", function() {
+		repair();
 	});
+}
+
+function repair() {
+	$.post( "ajax/repair.php", { shipId: groupId, hp: shipData[groupId].hp, maxHP: shipData[groupId].max_hp})
+ 		.done(function( data ) {
+    		console.log( "Data Loaded: " + data );
+    		// write in log
+    		newLog( "repair", true, false);
+		});
 }
 
 function buyItem( item ) {
@@ -113,6 +123,8 @@ function buyItem( item ) {
 
 function newLog( item, buy, win ) {
 	var action = "Shiff " + groupId + " hat ein " + item + " gebaut.";
+	if (item == "repair")
+		action = "Shiff " + groupId + " hat sich repariert.";
 	var win = win;
 	if (!buy) {
 		if (win)
