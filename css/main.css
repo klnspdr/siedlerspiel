@@ -1,15 +1,39 @@
+html, body {
+    height: 100%;
+}
+
+#matchfield {
+  height: 100%;
+  width: 75%;
+  float: left;
+  background: darkgray;
+  position: relative;
+}
+
+#menu {
+  height: 100%;
+  width: 25%;
+  float: right;
+  background: lightgray;
+  padding: 10px;
+}
+
+
+
 /**
  * Position icons into circle (SO)
  * http://stackoverflow.com/q/12813573/1397351 
  */
 .circle-container {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 24em;
   height: 24em;
   padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
   border: dashed 1px;
   border-radius: 50%;
-  margin: 1.75em auto 0;
 }
 
 .circle-container a {
@@ -26,18 +50,6 @@
   display: block; 
   width: 100%; 
 }
-
-.deg0 { transform: translate(12em); } /* 12em = half the width of the wrapper */
-
-.deg60 { transform: rotate(60deg) translate(12em) rotate(-60deg); }
-
-.deg120 { transform: rotate(120deg) translate(12em) rotate(-120deg); }
-
-.deg180 { transform: translate(-12em); }
-
-.deg240 { transform: rotate(240deg) translate(12em) rotate(-240deg); }
-
-.deg300 { transform: rotate(300deg) translate(12em) rotate(-300deg); }
 
 /* this is just for showing the angle on hover */
 .circle-container a:not(.center):before {
