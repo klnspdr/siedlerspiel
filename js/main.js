@@ -85,3 +85,43 @@ function readData() {
 	 	console.log( error );
 	})
 }
+
+function confirmDialog( id, action ) {
+
+    var title = action + ' wirklich ausfuehren?';
+    var text = "Willst du die \"" + action + "\" wirklich <b>ausverkauft</b>?";
+
+    if (!$( "#dialog-confirm" ).length) {
+        $('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
+        .html('<div><h6>' + text + '</h6></div>')
+        .dialog({
+            modal: true, title: title, zIndex: 10000, autoOpen: true,
+            width: 'auto', resizable: false,
+            buttons: {
+                Nein: function () {
+                    $(this).dialog("close");
+                },
+                Ja: function () {
+                    $(this).dialog("close");
+                }                
+            },
+            close: function (event, ui) {
+                $(this).remove();
+            }
+        });
+
+        makeButtonsNicer();
+    }
+}
+
+function makeButtonsNicer() {
+    // seperate the two buttons for better usability
+    $(".ui-dialog-buttonset").css('float', 'none');
+    $(".ui-dialog-buttonset button:first").css('float', 'left');
+    $(".ui-dialog-buttonset button:last").css('float', 'right');
+    // set better button design
+    $(".ui-dialog-buttonset button").addClass("ui-button");
+    $(".ui-dialog-buttonset button").css('border-radius', '5px');
+    // remove the x-close button
+    $(".ui-dialog-titlebar-close").remove();
+}
