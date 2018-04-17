@@ -7,7 +7,10 @@ p {
   display: list-item;
   list-style-type: disc;
   list-style-position: inside;
-  border-top: 1px dotted;
+}
+
+.divider {
+  border-bottom: 1px dotted;
 }
 
 #matchfield {
@@ -16,6 +19,32 @@ p {
   float: left;
   background-image: url("../img/water.JPG");
   position: relative;
+}
+
+#overlay {
+  height: 95%;
+  width: 95%;
+  background: gray;
+  border: 5px solid darkgray;
+  border-radius: 15px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 1;
+}
+
+#overlay > .close {
+  float: right;
+  background: red;
+  width: 25px;
+  height: 25px;
+  color: #fff;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
 
 #sidebar {

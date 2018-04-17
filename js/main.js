@@ -1,4 +1,10 @@
 $(document).ready( function() {
+	var searchParams = new URLSearchParams(window.location.search)
+	var groupId = 0;
+	if( searchParams.has( 'groupIdg' ) )
+		groupId = searchParams.get( 'groupId' )
+
+	console.log( "this is the UI of group " + groupId );
 
 	buildMatchfield();
 
@@ -19,11 +25,18 @@ function buildMatchfield() {
 	$( ".deg300" ).css({'transform' : 'rotate(300deg) translate(' + radius + 'px) rotate(-300deg) '});
 
 	$( ".ship" ).on( "click", function() {
+		$( "#overlay" ).show();
+	});
 
+	$( ".close" ).on( "click", function() {
+		$( "#overlay" ).hide();
 	});
 }
 
 function readData() {
 	console.log( "retrieveing data from server" );
-	$( "#log" ).prepend('<p>Log entry</p>');
+	if( $( "#log" ).is( ':empty' ) )
+		$( "#log" ).prepend( "<p>Log entry</p>" );
+	else
+		$( "#log" ).prepend( "<p class='divider'>Log entry</p>" );
 }
