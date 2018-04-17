@@ -1,8 +1,13 @@
 <?php 
-// establish database connection
-$verbindung = mysql_connect("localhost", "minis" , "minis") 
-or die("Verbindung zur Datenbank konnte nicht hergestellt werden"); 
-mysql_query("SET NAMES 'utf8'", $verbindung);
-mysql_set_charset('utf8', $verbindung);
-mysql_select_db("siedlerspiel") or die ("Datenbank konnte nicht ausgewaehlt werden");
+$servername = "localhost";
+$username = "minis";
+$password = "minis";
+$dbname = "siedlerspiel";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
 ?>
