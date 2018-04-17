@@ -2,6 +2,8 @@ $(document).ready( function() {
 
 	buildMatchfield();
 
+	setInterval( readData, 30000 ); // read data every 30 seconds
+
 });
 
 function buildMatchfield() {
@@ -17,6 +19,11 @@ function buildMatchfield() {
 	$( ".deg300" ).css({'transform' : 'rotate(300deg) translate(' + radius + 'px) rotate(-300deg) '});
 
 	$( ".ship" ).on( "click", function() {
-		
+
 	});
+}
+
+function readData() {
+	console.log( "retrieveing data from server" );
+	$( "#log" ).prepend('<p>Log entry</p>');
 }

@@ -2,11 +2,18 @@ html, body {
     height: 100%;
 }
 
+p {
+  margin: 0px;
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: inside;
+  border-top: 1px dotted;
+}
+
 #matchfield {
   height: 100%;
   width: 75%;
   float: left;
-  /*background: darkgray;*/
   background-image: url("../img/water.JPG");
   position: relative;
 }
@@ -22,11 +29,19 @@ html, body {
 
 #log {
   height: 30%;
-  border-bottom: 5px solid;
+  border: 2px solid darkgray;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+  overflow: auto;
 }
 
 #menu {
   height: 70%;
+  border: 2px solid darkgray;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
 }
 
 .right-to-left {
@@ -56,7 +71,7 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
-  border: dashed 1px;
+  /*border: dashed 1px;*/
   border-radius: 50%;
 }
 
