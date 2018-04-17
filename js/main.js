@@ -1,3 +1,6 @@
+var shipData = [];
+var shipInventory = [];
+
 $(document).ready( function() {
 
 	var searchParams = new URLSearchParams(window.location.search)
@@ -36,24 +39,37 @@ function buildMatchfield() {
 }
 
 function readData() {
-	var jqxhr = $.getJSON( "ajax/getShipData.php", function( data ) {
-		console.log( data );
+	var shipDataCall = $.getJSON( "ajax/getShipData.php", function( data ) {
 		$.each(data, function(index, element) {
-		    $( "#ship" + index + "HP" ).text(element.hp);
+			shipData.push(element);
+		    $( "#ship" + index + "HP" ).text(element.hp + " HP");
 		});
 	})
-	.done(function() {
-	 	console.log( "success2" );
-	})
-	.fail(function() {
+	.fail(function( error ) {
 	 	console.log( "error" );
+	 	console.log( error );
 	})
-	.always(function() {
-	 	console.log( "finished" );
-	});
 
-	if( $( "#log" ).is( ':empty' ) )
-		$( "#log" ).prepend( "<p>Log entry</p>" );
-	else
-		$( "#log" ).prepend( "<p class='divider'>Log entry</p>" );
+	var shipInventoryCall = $.getJSON( "ajax/getShipInventory.php", function( data ) {
+		$.each(data, function(index, element) {
+			shipInventory.push(element);
+		});
+	})
+	.fail(function( error ) {
+		console.log( "error");
+	 	console.log( error );
+	})
+
+	var logCall = $.getJSON( "ajax/getLog.php", function( data ) {
+		$.each(data, function(index, element) {
+			if (index == 0)
+				$( "#log" ).prepend( "<p>Schiff " + element.shipId + " " + element.action + "</p>" );
+			else
+				$( "#log" ).prepend( "<p class='divider'>Schiff " + element.shipId + " " + element.action + "</p>" );
+		});
+	})
+	.fail(function( error ) {
+		console.log( "error");
+	 	console.log( error );
+	})
 }
