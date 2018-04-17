@@ -15,5 +15,5 @@ while ($row = mysql_fetch_object($ergebnis))
     $ships[] = $row;
 }
 
-echo $ships;
+echo json_encode($ships);
 ?>

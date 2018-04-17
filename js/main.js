@@ -41,8 +41,7 @@ function readData() {
 	  	console.log( data );
 	})
 	.done(function() {
-	 	console.log( "test2" );
-	  	console.log( data );
+	 	console.log( "success2" );
 	})
 	.fail(function() {
 	 	console.log( "error" );
