@@ -12,6 +12,7 @@ $(document).ready( function() {
 	console.log( "this is the UI of group " + groupId );
 
 	buildMatchfield();
+	buildMenu();
 
 	readData();
 	setInterval( readData, 30000 ); // read data every 30 seconds
@@ -37,6 +38,39 @@ function buildMatchfield() {
 
 	$( ".close" ).on( "click", function() {
 		$( "#overlay" ).hide();
+	});
+}
+
+function buildMenu(){
+	$( "#buyWasser" ).on( "click", function() {
+	});
+	$( "#buyZwieback" ).on( "click", function() {
+	});
+	$( "#buyMatte" ).on( "click", function() {
+	});
+	$( "#buySegel" ).on( "click", function() {
+	});
+	$( "#buyKanone" ).on( "click", function() {
+	});
+	$( "#buyRuder" ).on( "click", function() {
+	});
+	$( "#buyRUpgrade" ).on( "click", function() {
+	});
+	$( "#buyArmor" ).on( "click", function() {
+	});
+	$( "#buyEnter" ).on( "click", function() {
+	});
+	$( "#buyWaffen" ).on( "click", function() {
+	});
+	$( "#buyLeiter" ).on( "click", function() {
+	});
+	$( "#buyFigur" ).on( "click", function() {
+	});
+	$( "#buyOrgel" ).on( "click", function() {
+	});
+	$( "#buySchatz" ).on( "click", function() {
+	});
+	$( "#buyRepair" ).on( "click", function() {
 	});
 }
 
