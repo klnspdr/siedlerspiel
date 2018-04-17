@@ -77,7 +77,7 @@ function buildMenu(){
 function buyItem( item ) {
 	var count = shipInventory[groupId][item];
 
-	if (item == "segel" && count == 6 || item == "ruder" && count == 2)
+	if (item == "segel" && count == 6 || item == "ruderupgrade" && count == 1)
 		throw "Zuviele Segel oder Ruder!";
 
 	$.post( "ajax/buyItem.php", { shipId: groupId, item: item, count: count})
