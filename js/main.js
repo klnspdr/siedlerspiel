@@ -43,32 +43,64 @@ function buildMatchfield() {
 
 function buildMenu(){
 	$( "#buyWasser" ).on( "click", function() {
+		buyItem("fass");
 	});
 	$( "#buyZwieback" ).on( "click", function() {
+		buyItem("zwieback");
 	});
 	$( "#buyMatte" ).on( "click", function() {
+		buyItem("haengematte");
 	});
 	$( "#buySegel" ).on( "click", function() {
+		try{
+			buyItem("segel");
+		}
+		catch(err){
+			alert(err);
+		}
 	});
 	$( "#buyKanone" ).on( "click", function() {
+		buyItem("kanone");
+	});
+	$( "#buyKugel" ).on( "click", function() {
+		buyItem("kanonenkugel");
 	});
 	$( "#buyRuder" ).on( "click", function() {
+		try{
+		buyItem("ruder");
+		}
+		catch(err){
+			alert(err);
+		}
 	});
 	$( "#buyRUpgrade" ).on( "click", function() {
+		try{
+		buyItem("ruderupgrade");
+		}
+		catch(err){
+			alert(err);
+		}
 	});
 	$( "#buyArmor" ).on( "click", function() {
+		buyItem("schiffswandverstaerkung");
 	});
 	$( "#buyEnter" ).on( "click", function() {
+		buyItem("enterhaken");
 	});
 	$( "#buyWaffen" ).on( "click", function() {
+		buyItem("waffen");
 	});
 	$( "#buyLeiter" ).on( "click", function() {
+		buyItem("strickleiter");
 	});
 	$( "#buyFigur" ).on( "click", function() {
+		buyItem("gallionsfigur");
 	});
 	$( "#buyOrgel" ).on( "click", function() {
+		buyItem("schiffsorgel");
 	});
 	$( "#buySchatz" ).on( "click", function() {
+		buyItem("schatz");
 	});
 	$( "#buyRepair" ).on( "click", function() {
 	});
@@ -77,8 +109,19 @@ function buildMenu(){
 function buyItem( item ) {
 	var count = shipInventory[groupId][item];
 
+<<<<<<< HEAD
 	if (item == "segel" && count == 6 || item == "ruderupgrade" && count == 1)
 		throw "Zuviele Segel oder Ruder!";
+=======
+	if (item == "segel" && count == 6)
+		throw "Dein Schiff hat schon alle Segel!";
+	else if (item == "ruder" && count == 1)
+		throw "Dein Schiff hat schon ein Ruder!";
+	else if (item == "ruderupgrade" && count == 1)
+		throw "Dein Schiff hat schon ein Ruder upgrade!";
+	else if (item == "ruderupgrade" && shipInventory[groupId]["ruder"] == 0)
+		throw "Du musst zuerst ein Ruder kaufen!";
+>>>>>>> 276cd45271c74cd33715d9a44018061a647c98b6
 
 	$.post( "ajax/buyItem.php", { shipId: groupId, item: item, count: count})
  		.done(function( data ) {
