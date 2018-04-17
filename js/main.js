@@ -43,64 +43,49 @@ function buildMatchfield() {
 
 function buildMenu(){
 	$( "#buyWasser" ).on( "click", function() {
-		buyItem("fass");
+		confirmDialog( "fass" )
 	});
 	$( "#buyZwieback" ).on( "click", function() {
-		buyItem("zwieback");
+		confirmDialog("zwieback");
 	});
 	$( "#buyMatte" ).on( "click", function() {
-		buyItem("haengematte");
+		confirmDialog("haengematte");
 	});
 	$( "#buySegel" ).on( "click", function() {
-		try{
-			buyItem("segel");
-		}
-		catch(err){
-			alert(err);
-		}
+		confirmDialog("segel");
 	});
 	$( "#buyKanone" ).on( "click", function() {
-		buyItem("kanone");
+		confirmDialog("kanone");
 	});
 	$( "#buyKugel" ).on( "click", function() {
-		buyItem("kanonenkugel");
+		confirmDialog("kanonenkugel");
 	});
 	$( "#buyRuder" ).on( "click", function() {
-		try{
-		buyItem("ruder");
-		}
-		catch(err){
-			alert(err);
-		}
+		confirmDialog("ruder");
 	});
 	$( "#buyRUpgrade" ).on( "click", function() {
-		try{
-		buyItem("ruderupgrade");
-		}
-		catch(err){
-			alert(err);
-		}
+		confirmDialog("ruderupgrade");
 	});
 	$( "#buyArmor" ).on( "click", function() {
-		buyItem("schiffswandverstaerkung");
+		confirmDialog("schiffswandverstaerkung");
 	});
 	$( "#buyEnter" ).on( "click", function() {
-		buyItem("enterhaken");
+		confirmDialog("enterhaken");
 	});
 	$( "#buyWaffen" ).on( "click", function() {
-		buyItem("waffen");
+		confirmDialog("waffen");
 	});
 	$( "#buyLeiter" ).on( "click", function() {
-		buyItem("strickleiter");
+		confirmDialog("strickleiter");
 	});
 	$( "#buyFigur" ).on( "click", function() {
-		buyItem("gallionsfigur");
+		confirmDialog("gallionsfigur");
 	});
 	$( "#buyOrgel" ).on( "click", function() {
-		buyItem("schiffsorgel");
+		confirmDialog("schiffsorgel");
 	});
 	$( "#buySchatz" ).on( "click", function() {
-		buyItem("schatz");
+		confirmDialog("schatz");
 	});
 	$( "#buyRepair" ).on( "click", function() {
 	});
@@ -190,10 +175,10 @@ function readData() {
 	})
 }
 
-function confirmDialog( id, action ) {
+function confirmDialog( item ) {
 
-    var title = action + ' wirklich ausfuehren?';
-    var text = "Willst du die \"" + action + "\" wirklich <b>ausverkauft</b>?";
+    var title = item + ' wirklich kaufen?';
+    var text = "Willst du \"" + item + "\" wirklich <b>kaufen</b>?";
 
     if (!$( "#dialog-confirm" ).length) {
         $('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
@@ -206,6 +191,12 @@ function confirmDialog( id, action ) {
                     $(this).dialog("close");
                 },
                 Ja: function () {
+                	try{
+						buyItem( item );
+					}
+					catch(err){
+						alert(err);
+					}
                     $(this).dialog("close");
                 }                
             },
