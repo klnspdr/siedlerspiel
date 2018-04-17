@@ -33,7 +33,6 @@ function buildMatchfield() {
 	$( ".ship" ).on( "click", function() {
 		generateInventory( $( this ).attr('id') );
 		$( "#overlay" ).show();
-		buyItem( "fass" );
 	});
 
 	$( ".close" ).on( "click", function() {
@@ -81,6 +80,7 @@ function generateInventory( shipId ) {
 }
 
 function readData() {
+	shipData = [];
 	var shipDataCall = $.getJSON( "ajax/getShipData.php", function( data ) {
 		$.each(data, function(index, element) {
 			shipData.push(element);
@@ -92,6 +92,7 @@ function readData() {
 	 	console.log( error );
 	})
 
+	shipInventory = [];
 	var shipInventoryCall = $.getJSON( "ajax/getShipInventory.php", function( data ) {
 		$.each(data, function(index, element) {
 			shipInventory.push(element);
@@ -106,9 +107,9 @@ function readData() {
 		$( "#log" ).empty();
 		$.each(data, function(index, element) {
 			if (index == 0)
-				$( "#log" ).prepend( "<p>Schiff " + element.shipId + " " + element.action + "</p>" );
+				$( "#log" ).prepend( "<p>" + element.action + "</p>" );
 			else
-				$( "#log" ).prepend( "<p class='divider'>Schiff " + element.shipId + " " + element.action + "</p>" );
+				$( "#log" ).prepend( "<p class='divider'>" + element.action + "</p>" );
 		});
 	})
 	.fail(function( error ) {
