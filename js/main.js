@@ -109,10 +109,6 @@ function buildMenu(){
 function buyItem( item ) {
 	var count = shipInventory[groupId][item];
 
-<<<<<<< HEAD
-	if (item == "segel" && count == 6 || item == "ruderupgrade" && count == 1)
-		throw "Zuviele Segel oder Ruder!";
-=======
 	if (item == "segel" && count == 6)
 		throw "Dein Schiff hat schon alle Segel!";
 	else if (item == "ruder" && count == 1)
@@ -121,7 +117,6 @@ function buyItem( item ) {
 		throw "Dein Schiff hat schon ein Ruder upgrade!";
 	else if (item == "ruderupgrade" && shipInventory[groupId]["ruder"] == 0)
 		throw "Du musst zuerst ein Ruder kaufen!";
->>>>>>> 276cd45271c74cd33715d9a44018061a647c98b6
 
 	$.post( "ajax/buyItem.php", { shipId: groupId, item: item, count: count})
  		.done(function( data ) {
