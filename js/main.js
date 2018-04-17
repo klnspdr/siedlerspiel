@@ -33,11 +33,42 @@ function buildMatchfield() {
 	$( ".ship" ).on( "click", function() {
 		generateInventory( $( this ).attr('id') );
 		$( "#overlay" ).show();
+		buyItem( "fass" );
 	});
 
 	$( ".close" ).on( "click", function() {
 		$( "#overlay" ).hide();
 	});
+}
+
+function buyItem( item ) {
+	var count = shipInventory[groupId][item];
+
+	if (item == "segel" && count == 6 || item == "ruder" && count == 2)
+		throw "Zuviele Segel oder Ruder!";
+
+	$.post( "ajax/buyItem.php", { shipId: groupId, item: item, count: count})
+ 		.done(function( data ) {
+    		console.log( "Data Loaded: " + data );
+    		// write in log
+    		newLog( item, true, false);
+		});
+}
+
+function newLog( item, buy, win ) {
+	var action = "Shiff " + groupId + " hat ein " + item + " gebaut.";
+	var win = win;
+	if (!buy) {
+		if (win)
+			action = "Shiff " + groupId + " hat einen Kampf gewonnen";
+		else
+			action = "Shiff " + groupId + " hat einen Kampf verloren";
+	}
+	$.post( "ajax/postLog.php", { shipId: groupId, action: action, win: win})
+ 		.done(function( data ) {
+    		console.log( "Data Loaded: " + data );
+    		readData();
+		});
 }
 
 function generateInventory( shipId ) {
