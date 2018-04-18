@@ -123,7 +123,7 @@ function buyItem( item ) {
 	else if (item == "ruderupgrade" && shipInventory[groupId]["ruder"] == 0)
 		throw "Du musst zuerst ein Ruder kaufen!";
 
-	$.post( "ajax/buyItem.php", { shipId: groupId, item: item, count: count})
+	$.post( "ajax/buyItem.php", { shipId: groupId, item: item})
  		.done(function( data ) {
     		console.log( "Data Loaded: " + data );
     		// write in log
@@ -144,21 +144,39 @@ function runAction( action, target ) {
 		if(shipInventory[groupId].enterhaken == 0){
 			throw "Du brauchst mindestens einen Enterhaken zum entern!";
 		}
+		$.post( "ajax/useItem.php", { shipId: groupId, item: "enterhaken"})
+			.done(function( data ) {
+				console.log( "Data Loaded: " + data );
+			});
+		target = Math.floor((Math.random() * 6));
+		var eigen = inventory[groupId].waffen;
+		var gegner = inventory[target].waffen;
+		if(target == groupId){
+			newLog(null, false, false, target);
+		}
+		else if(eigen >= gegner){
+			newLog(null, false, true, target);
+		}
+		else{
+			newLog(null, false, false, target);
+		}
 	}
 }
 
-function newLog( item, buy, win ) {
-	var action = "Shiff " + shipData[groupId].name + " hat ein " + item + " gebaut.";
+function newLog( item, buy, win, target=null ) {
+	var action = "Schiff " + shipData[groupId].name + " hat ein " + item + " gebaut.";
 	if (item == "repair")
-		action = "Shiff " + shipData[groupId].name + " hat sich repariert.";
+		action = "Schiff " + shipData[groupId].name + " hat sich repariert.";
 	var win = win;
 	if (!buy) {
 		if (win)
-			action = "Shiff " + shipData[groupId].name + " hat einen Kampf gewonnen";
+			action = "Schiff " + shipData[groupId].name + " hat " + shipData[target].name + " geentert";
+		else if(groupId != target)
+			action = "Schiff " + shipData[groupId].name + " wurde von " + shipData[target].name + " geentert";
 		else
-			action = "Shiff " + shipData[groupId].name + " hat einen Kampf verloren";
+			action = "Schiff " + shipData[groupId].name + " versuchte zu entern und scheiterte";
 	}
-	$.post( "ajax/postLog.php", { shipId: groupId, action: action, win: win})
+	$.post( "ajax/postLog.php", { shipId: buy?groupId:win?groupId:target, action: action, win: win})
  		.done(function( data ) {
     		console.log( "Data Loaded: " + data );
     		readData();
@@ -313,9 +331,9 @@ function confirmActionDialog( action ) {
             },
 			create: function(event, ui) {
 				var $dropdown = $("#target");
-				for(var i = 1; i < 7; i++){
+				for(var i = 0; i < 6; i++){
 					if(groupId != i){
-						$dropdown.append($("<option />").text("Group " + i));
+						$dropdown.append($("<option />").text(shipData[i].name));
 					}
 				}
 				if(action != "schießen"){
