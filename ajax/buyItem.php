@@ -4,7 +4,7 @@ $item = $_POST["item"];
 include("../connect.php"); //establish database connection   
 
 if ($item == "schiffswandverstaerkung") {
-	$sql = "UPDATE ship SET max_hp = max_hp + 100 WHERE id=$shipId";
+	$sql = "UPDATE ship SET max_hp = max_hp + 100, hp=hp+100 WHERE id=$shipId";
 
 	if ($conn->query($sql) === TRUE) {
 
