@@ -126,15 +126,15 @@ function buyItem( item ) {
 }
 
 function newLog( item, buy, win ) {
-	var action = "Shiff " + groupId + " hat ein " + item + " gebaut.";
+	var action = "Shiff " + shipData[groupId].name + " hat ein " + item + " gebaut.";
 	if (item == "repair")
-		action = "Shiff " + groupId + " hat sich repariert.";
+		action = "Shiff " + shipData[groupId].name + " hat sich repariert.";
 	var win = win;
 	if (!buy) {
 		if (win)
-			action = "Shiff " + groupId + " hat einen Kampf gewonnen";
+			action = "Shiff " + shipData[groupId].name + " hat einen Kampf gewonnen";
 		else
-			action = "Shiff " + groupId + " hat einen Kampf verloren";
+			action = "Shiff " + shipData[groupId].name + " hat einen Kampf verloren";
 	}
 	$.post( "ajax/postLog.php", { shipId: groupId, action: action, win: win})
  		.done(function( data ) {
