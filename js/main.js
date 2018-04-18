@@ -20,8 +20,10 @@ $(document).ready( function() {
 });
 
 function buildMatchfield() {
-	$( ".circle-container" ).height( $( "#matchfield" ).height() * 0.75);
-	$( ".circle-container" ).width( $( "#matchfield" ).height() * 0.75 );
+	$( ".circle-container" ).css('max-height', $( "#matchfield" ).height() * 0.75 + 'px');
+	$( ".circle-container" ).css('max-width', $( "#matchfield" ).height() * 0.75 + 'px');
+	$( ".circle-container" ).height( $( "#matchfield" ).height() );
+	$( ".circle-container" ).width( $( "#matchfield" ).height() );
 
 	var radius = $( "#matchfield" ).height() * 0.75/2;
 	$( ".deg0" ).css({'transform' : 'translate(' + radius + 'px'});
@@ -88,6 +90,7 @@ function buildMenu(){
 		confirmDialog("schatz");
 	});
 	$( "#buyRepair" ).on( "click", function() {
+		confirmDialogRepair();
 	});
 	$( "#actEnter" ).on( "click", function() {
 		confirmActionDialog("entern");
@@ -95,6 +98,17 @@ function buildMenu(){
 	$( "#actSchiessen" ).on( "click", function() {
 		confirmActionDialog("schießen");
 	});
+}
+
+function repair() {
+	if (shipData[groupId].max_hp == shipData[groupId].hp)
+		throw "Es gibt nichts zu reparieren!";
+	$.post( "ajax/repair.php", { shipId: groupId, hp: shipData[groupId].hp, maxHP: shipData[groupId].max_hp})
+ 		.done(function( data ) {
+    		console.log( "Data Loaded: " + data );
+    		// write in log
+    		newLog( "repair", true, false);
+		})
 }
 
 function buyItem( item ) {
@@ -134,13 +148,15 @@ function runAction( action, target ) {
 }
 
 function newLog( item, buy, win ) {
-	var action = "Shiff " + groupId + " hat ein " + item + " gebaut.";
+	var action = "Shiff " + shipData[groupId].name + " hat ein " + item + " gebaut.";
+	if (item == "repair")
+		action = "Shiff " + shipData[groupId].name + " hat sich repariert.";
 	var win = win;
 	if (!buy) {
 		if (win)
-			action = "Shiff " + groupId + " hat einen Kampf gewonnen";
+			action = "Shiff " + shipData[groupId].name + " hat einen Kampf gewonnen";
 		else
-			action = "Shiff " + groupId + " hat einen Kampf verloren";
+			action = "Shiff " + shipData[groupId].name + " hat einen Kampf verloren";
 	}
 	$.post( "ajax/postLog.php", { shipId: groupId, action: action, win: win})
  		.done(function( data ) {
@@ -163,7 +179,7 @@ function readData() {
 	var shipDataCall = $.getJSON( "ajax/getShipData.php", function( data ) {
 		$.each(data, function(index, element) {
 			shipData.push(element);
-		    $( "#ship" + index + "HP" ).text(element.hp + " HP");
+		    $( "#ship" + index + "HP" ).text(element.name + " (" + element.hp + " HP)");
 		});
 	})
 	.fail(function( error ) {
@@ -195,6 +211,40 @@ function readData() {
 		console.log( "error");
 	 	console.log( error );
 	})
+}
+
+function confirmDialogRepair( ) {
+
+    var title = 'Wirklich reparieren?';
+    var text = "Willst du wirklich <b>reparieren</b>?";
+
+    if (!$( "#dialog-confirm" ).length) {
+        $('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
+        .html('<div><h6>' + text + '</h6></div>')
+        .dialog({
+            modal: true, title: title, zIndex: 10000, autoOpen: true,
+            width: 'auto', resizable: false,
+            buttons: {
+                Nein: function () {
+                    $(this).dialog("close");
+                },
+                Ja: function () {
+                	try{
+						repair();
+					}
+					catch(err){
+						alert(err);
+					}
+                    $(this).dialog("close");
+                }                
+            },
+            close: function (event, ui) {
+                $(this).remove();
+            }
+        });
+
+        makeButtonsNicer();
+    }
 }
 
 function confirmDialog( item ) {
