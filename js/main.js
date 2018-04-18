@@ -139,6 +139,27 @@ function runAction( action, target ) {
 		else if(shipInventory[groupId].kanonenkugel == 0){
 			throw "Du brauchst eine Kanonenkugel zum schießen!";
 		}
+		var segel = shipInventory[target].segel;
+		var ruder = shipInventory[target].ruder;
+		var ruderUpgrade = shipInventory[target].ruderupgrade;
+		var ausweichen = (segel+ruder+ruderUpgrade)*10;
+		var kanonen = shipInventory[groupId].kanone;
+		var hit = Math.floor((Math.random() * 100)) >= ausweichen;
+		$.post( "ajax/useItem.php", { shipId: groupId, item: "kanonenkugel"})
+			.done(function( data ) {
+				console.log( "Data Loaded: " + data );
+			});
+		if(hit){
+			var dmg = Math.min(kanonen*50, shipData[target].hp);
+			$.post( "ajax/damage.php", { shipId: target, damage: dmg})
+				.done(function( data ) {
+					console.log( "Data Loaded: " + data );
+				});
+			newLog("schießen", false, false, target, dmg);
+		}
+		else{
+			newLog("schießen", false, false, target, 0);
+		}
 	}
 	else if(action == "entern"){
 		if(shipInventory[groupId].enterhaken == 0){
@@ -149,8 +170,8 @@ function runAction( action, target ) {
 				console.log( "Data Loaded: " + data );
 			});
 		target = Math.floor((Math.random() * 6));
-		var eigen = inventory[groupId].waffen;
-		var gegner = inventory[target].waffen;
+		var eigen = shipInventory[groupId].waffen;
+		var gegner = shipInventory[target].waffen;
 		if(target == groupId){
 			newLog(null, false, false, target);
 		}
@@ -163,13 +184,23 @@ function runAction( action, target ) {
 	}
 }
 
-function newLog( item, buy, win, target=null ) {
+function newLog( item, buy, win, target=null, damage=0 ) {
 	var action = "Schiff " + shipData[groupId].name + " hat ein " + item + " gebaut.";
 	if (item == "repair")
 		action = "Schiff " + shipData[groupId].name + " hat sich repariert.";
 	var win = win;
 	if (!buy) {
-		if (win)
+		if(item == "schießen"){
+			//hat getroffen
+			if(damage > 0){
+				action = "Schiff " + shipData[groupId].name + " hat " shipData[target].name + " " + damage + " Schaden zugefügt";
+			}
+			//daneben geschossen
+			else{
+				action = "Schiff " + shipData[groupId].name + " hat " shipData[target].name + " knapp verfehlt";
+			}
+		}
+		else if (win)
 			action = "Schiff " + shipData[groupId].name + " hat " + shipData[target].name + " geentert";
 		else if(groupId != target)
 			action = "Schiff " + shipData[groupId].name + " wurde von " + shipData[target].name + " geentert";
