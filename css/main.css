@@ -18,6 +18,7 @@ p {
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-weight: bold;
   color: darkgreen;
+  padding:2px;
 }
 
 #matchfield {
