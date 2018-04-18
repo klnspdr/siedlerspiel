@@ -75,6 +75,9 @@ include("connect.php"); //establish database connection
 		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyOrgel" href="#">Schiffsorgel</a>
 		<a class="ui-button ui-widget ui-corner-all buyButton" id="buySchatz" href="#">Schatz</a>
 		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyRepair" href="#">Reparaturkit</a>
+		<div class="kaufenText">Aktionen</div>
+		<a class="ui-button ui-widget ui-corner-all buyButton" id="actEnter" href="#">Entern</a>
+		<a class="ui-button ui-widget ui-corner-all buyButton" id="actSchiessen" href="#">Schießen</a>
       </div>
     </div>
 

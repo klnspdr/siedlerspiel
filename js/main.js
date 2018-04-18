@@ -89,6 +89,12 @@ function buildMenu(){
 	});
 	$( "#buyRepair" ).on( "click", function() {
 	});
+	$( "#actEnter" ).on( "click", function() {
+		confirmActionDialog("entern");
+	});
+	$( "#actSchiessen" ).on( "click", function() {
+		confirmActionDialog("schießen");
+	});
 }
 
 function buyItem( item ) {
@@ -109,6 +115,22 @@ function buyItem( item ) {
     		// write in log
     		newLog( item, true, false);
 		});
+}
+
+function runAction( action, target ) {
+	if(action == "schießen"){
+		if(shipInventory[groupId].kanone == 0){
+			throw "Du brauchst mindestens eine Kanone zum schießen!";
+		}
+		else if(shipInventory[groupId].kanonenkugel == 0){
+			throw "Du brauchst eine Kanonenkugel zum schießen!";
+		}
+	}
+	else if(action == "entern"){
+		if(shipInventory[groupId].enterhaken == 0){
+			throw "Du brauchst mindestens einen Enterhaken zum entern!";
+		}
+	}
 }
 
 function newLog( item, buy, win ) {
@@ -200,6 +222,56 @@ function confirmDialog( item ) {
                     $(this).dialog("close");
                 }                
             },
+            close: function (event, ui) {
+                $(this).remove();
+            }
+        });
+
+        makeButtonsNicer();
+    }
+}
+
+function confirmActionDialog( action ) {
+
+    var title = 'Wirklich ' + action + ' ?';
+    var text = "Willst du wirklich <b>" + action + "</b>?";
+
+    if (!$( "#dialog-confirm" ).length) {
+        $('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
+        .html('<div><h6>' + text + '</h6></div>'
+			+ '<select id=\"target\"></select>')
+        .dialog({
+            modal: true, title: title, zIndex: 10000, autoOpen: true,
+            width: 'auto', resizable: false,
+            buttons: {
+                Nein: function () {
+                    $(this).dialog("close");
+                },
+                Ja: function () {
+                	try{
+						var tgroup = $("#target option:selected").index();
+						if(tgroup >= groupId){
+							tgroup++;
+						}
+						runAction( action, tgroup );
+					}
+					catch(err){
+						alert(err);
+					}
+                    $(this).dialog("close");
+                }                
+            },
+			create: function(event, ui) {
+				var $dropdown = $("#target");
+				for(var i = 1; i < 7; i++){
+					if(groupId != i){
+						$dropdown.append($("<option />").text("Group " + i));
+					}
+				}
+				if(action != "schießen"){
+					$("#target").hide();
+				}
+			},
             close: function (event, ui) {
                 $(this).remove();
             }

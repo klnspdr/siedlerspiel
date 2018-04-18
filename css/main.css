@@ -82,7 +82,7 @@ p {
 }
 
 #log {
-  height: 30%;
+  height: 25%;
   border: 2px solid darkgray;
   border-radius: 5px;
   padding: 10px;
@@ -91,7 +91,7 @@ p {
 }
 
 #menu {
-  height: 70%;
+  height: 75%;
   border: 2px solid darkgray;
   border-radius: 5px;
   padding: 10px;
@@ -101,7 +101,7 @@ p {
 
 .buyButton {
 	width: 48%;
-	height: 10%;
+	height: 8.5%;
 	margin-bottom: 5px;
 	vertical-align: middle;
 	text-align: center;
@@ -111,7 +111,7 @@ p {
 	text-align: center;
 	font-weight: bold;
 	width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 .right-to-left {
