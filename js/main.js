@@ -15,7 +15,7 @@ $(document).ready( function() {
 	buildMenu();
 
 	readData();
-	setInterval( readData, 30000 ); // read data every 30 seconds
+	setInterval( readData, 5000 ); // read data every 30 seconds
 
 });
 
@@ -143,11 +143,9 @@ function runAction( action, target ) {
 		var ruder = parseInt(shipInventory[target].ruder);
 		var ruderUpgrade = parseInt(shipInventory[target].ruderupgrade);
 		var ausweichen = (segel+ruder+ruderUpgrade)*10;
-		console.log("segel: " + segel + "; ruder: " + ruder + "; upgrade: " + ruderUpgrade);
 		var kanonen = shipInventory[groupId].kanone;
 		var r = Math.floor((Math.random() * 100));
 		var hit = r >= ausweichen;
-		console.log("hit: " + hit + "; ausweichen: " + ausweichen + "rand: " + r);
 		$.post( "ajax/useItem.php", { shipId: groupId, item: "kanonenkugel"})
 			.done(function( data ) {
 				console.log( "Data Loaded: " + data );
