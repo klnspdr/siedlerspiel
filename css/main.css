@@ -161,21 +161,3 @@ p {
   display: block; 
   width: 100%; 
 }
-
-/* this is just for showing the angle on hover */
-.circle-container a:not(.center):before {
-  position: absolute;
-  width: 12em;
-  color: white;
-  opacity: 0;
-  background: rgba(0,0,0,.5);
-  font: 1.25em/3.45 Courier, monospace;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-indent: -2em;
-  text-shadow: 0 0 .1em deeppink;
-  transition: .7s; /* only works in Firefox */
-  content: attr(class)'°';
-}
-
-.circle-container a:hover:before { opacity: 1; }
