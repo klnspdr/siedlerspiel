@@ -58,26 +58,26 @@ include("connect.php"); //establish database connection
     <div id="sidebar" class="right-to-left">
       <div id="log"></div>
       <div id="menu">
-		<div class="kaufenText">Kaufen</div>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyWasser" href="#">Fass Wasser</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyZwieback" href="#">Schiffs- zwieback</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyMatte" href="#">Hängematte</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buySegel" href="#">Segel</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyKanone" href="#">Kanone</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyKugel" href="#">Kanonenkugel</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyRuder" href="#">Ruder</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyRUpgrade" href="#">Ruder Upgrade</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyArmor" href="#">Schiffswand- verstärkung</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyEnter" href="#">Enterhaken</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyWaffen" href="#">Waffen</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyLeiter" href="#">Strickleiter</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyFigur" href="#">Gallionsfigur</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyOrgel" href="#">Schiffsorgel</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buySchatz" href="#">Schatz</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyRepair" href="#">Reparaturkit</a>
-		<div class="kaufenText">Aktionen</div>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="actEnter" href="#">Entern</a>
-		<a class="ui-button ui-widget ui-corner-all buyButton" id="actSchiessen" href="#">Schießen</a>
+    		<div class="kaufenText">Kaufen</div>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyWasser" href="#">Fass Wasser</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyZwieback" href="#">Schiffs- zwieback</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyMatte" href="#">Hängematte</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buySegel" href="#">Segel</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyKanone" href="#">Kanone</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyKugel" href="#">Kanonenkugel</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyRuder" href="#">Ruder</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyRUpgrade" href="#">Ruder Upgrade</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyArmor" href="#">Schiffswand- verstärkung</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyEnter" href="#">Enterhaken</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyWaffen" href="#">Waffen</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyLeiter" href="#">Strickleiter</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyFigur" href="#">Gallionsfigur</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyOrgel" href="#">Schiffsorgel</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buySchatz" href="#">Schatz</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="buyRepair" href="#">Reparaturkit</a>
+    		<div class="kaufenText">Aktionen</div>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="actEnter" href="#">Entern</a>
+    		<a class="ui-button ui-widget ui-corner-all buyButton" id="actSchiessen" href="#">Schießen</a>
       </div>
     </div>
 

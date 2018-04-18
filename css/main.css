@@ -17,6 +17,7 @@ p {
   background: darkgray;
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-weight: bold;
+  color: darkgreen;
 }
 
 #matchfield {
@@ -30,10 +31,10 @@ p {
 #overlay {
   height: 95%;
   width: 95%;
-  background: gray;
-  border: 5px solid darkgray;
+  background: #0B173B;
+  border: 5px solid white;
   border-radius: 15px;
-  padding: 10px;
+  padding: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -41,6 +42,7 @@ p {
   display: none;
   z-index: 1;
   overflow: auto;
+  color: white;
 }
 
 #overlay > .close {
@@ -52,6 +54,7 @@ p {
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 15px;
 }
 
 #overlay > .inventory {
@@ -68,15 +71,22 @@ p {
 #overlay > .inventory > .inv_row > .inv_item {
 	display: table-cell;
 	border: thin solid darkgray;
-	width: 200px;
+	width: 50%;
 	padding: 5px;
+}
+
+.inventoryTitle {
+  color: #fff;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  padding: 10px;
 }
 
 #sidebar {
   height: 100%;
   width: 25%;
   float: right;
-  background: #4169E1;
+  background: #0B173B;
   padding: 10px;
   color: white;
 }
@@ -115,18 +125,19 @@ p {
 }
 
 .right-to-left {
+    /*border-left: 15px darkgray solid;*/
     border-left: 15px;
     border-style: solid;
     -webkit-border-image: 
-      -webkit-gradient(linear, 0 0, 100% 0, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+      -webkit-gradient(linear, 0 0, 100% 0, from(#0B173B), to(rgba(112, 128, 144, 255))) 1 100%;
     -webkit-border-image: 
-      -webkit-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%;
+      -webkit-linear-gradient(left, #0B173B, rgba(112, 128, 144, 255)) 1 100%;
     -moz-border-image:
-      -moz-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%; 
+      -moz-linear-gradient(left, #0B173B, rgba(112, 128, 144, 255)) 1 100%; 
     -o-border-image:
-      -o-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%;
+      -o-linear-gradient(left, #0B173B, rgba(112, 128, 144, 255)) 1 100%;
     border-image:
-      linear-gradient(to left, #4169E1, rgba(112, 128, 144, 255)) 1 100%;
+      linear-gradient(to left, #0B173B, rgba(112, 128, 144, 255)) 1 100%;
 }
 
 
@@ -148,7 +159,7 @@ p {
 }
 
 .circle-container a {
-  color: darkgreen;
+  color: gnod;
   display: block;
   overflow: hidden;
   position: absolute;

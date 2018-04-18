@@ -188,7 +188,7 @@ function runAction( action, target ) {
 }
 
 function newLog( item, buy, win, target=null, damage=0 ) {
-	var action = "Schiff " + shipData[groupId].name + " hat ein " + item + " gebaut.";
+	var action = "Schiff " + shipData[groupId].name + " hat ein(e) " + item + " gekauft.";
 	if (item == "repair")
 		action = "Schiff " + shipData[groupId].name + " hat sich repariert.";
 	var win = win;
@@ -219,6 +219,7 @@ function newLog( item, buy, win, target=null, damage=0 ) {
 
 function generateInventory( shipId ) {
 	$( ".inventory" ).empty();
+	$( ".inventory" ).append("<div class='inventoryTitle'>" + shipData[shipId].name + "</div>");
 	$.each( shipInventory[shipId], function(index, element) {
 		if( (index != "id" && index != "shipId" && index != "waffen") || (index == "waffen" && shipId == groupId)) {
 			$( ".inventory" ).append("<div class='inv_row'><div class='inv_item'>" + index + "</div><div class='inv_item'>" + element + "</div></div>");
