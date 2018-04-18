@@ -232,6 +232,12 @@ function readData() {
 		$.each(data, function(index, element) {
 			shipData.push(element);
 		    $( "#ship" + index + "HP" ).text(element.name + " (" + element.hp + " HP)");
+		    if(shipData.hp == 0) {
+		    	$( "#shipIMG_" + index).attr("src","img/dead.png");
+		    }
+		    else {
+		    	$( "#shipIMG_" + index).attr("src","img/ship.png");
+		    }
 		});
 	})
 	.fail(function( error ) {
