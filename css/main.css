@@ -148,7 +148,7 @@ p {
 }
 
 .circle-container a {
-  color: red;
+  color: darkred;
   display: block;
   overflow: hidden;
   position: absolute;
