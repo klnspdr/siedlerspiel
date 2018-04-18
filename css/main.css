@@ -57,7 +57,7 @@ p {
 #overlay > .inventory {
 	display: table;
 	width: calc(100% - 10px);
-	border: 1px solid blue;
+	border: 1px solid lightgray;
 	padding: 5px;
 }
 
@@ -67,7 +67,7 @@ p {
 
 #overlay > .inventory > .inv_row > .inv_item {
 	display: table-cell;
-	border: thin solid red;
+	border: thin solid darkgray;
 	width: 200px;
 	padding: 5px;
 }
