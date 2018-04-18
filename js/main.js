@@ -157,7 +157,7 @@ function readData() {
 	var shipDataCall = $.getJSON( "ajax/getShipData.php", function( data ) {
 		$.each(data, function(index, element) {
 			shipData.push(element);
-		    $( "#ship" + index + "HP" ).text(element.hp + " HP");
+		    $( "#ship" + index + "HP" ).text(element.name + " (" + element.hp + " HP)");
 		});
 	})
 	.fail(function( error ) {
