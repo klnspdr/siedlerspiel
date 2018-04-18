@@ -232,7 +232,7 @@ function readData() {
 	var shipDataCall = $.getJSON( "ajax/getShipData.php", function( data ) {
 		$.each(data, function(index, element) {
 			shipData.push(element);
-		    $( "#ship" + index + "HP" ).text(element.name + " (" + element.hp + " HP)");
+		    $( "#ship" + index + "HP" ).text(element.name + " (" + element.hp + "/" + element.max_hp + " HP)");
 		    if(element.hp == 0) {
 		    	$( "#shipIMG_" + index).attr("src","img/dead.png");
 		    }
