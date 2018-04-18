@@ -371,6 +371,7 @@ function confirmActionDialog( action ) {
                 }                
             },
 			create: function(event, ui) {
+				$( "#target" ).selectmenu();
 				var $dropdown = $("#target");
 				for(var i = 0; i < 6; i++){
 					if(groupId != i){
