@@ -379,7 +379,7 @@ function confirmActionDialog( action ) {
 					}
 				}
 				if(action != "schießen"){
-					$("#target").hide();
+					$("#target-button").hide();
 				}
 			},
             close: function (event, ui) {
