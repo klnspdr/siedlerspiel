@@ -139,12 +139,15 @@ function runAction( action, target ) {
 		else if(shipInventory[groupId].kanonenkugel == 0){
 			throw "Du brauchst eine Kanonenkugel zum schießen!";
 		}
-		var segel = shipInventory[target].segel;
-		var ruder = shipInventory[target].ruder;
-		var ruderUpgrade = shipInventory[target].ruderupgrade;
+		var segel = parseInt(shipInventory[target].segel);
+		var ruder = parseInt(shipInventory[target].ruder);
+		var ruderUpgrade = parseInt(shipInventory[target].ruderupgrade);
 		var ausweichen = (segel+ruder+ruderUpgrade)*10;
+		console.log("segel: " + segel + "; ruder: " + ruder + "; upgrade: " + ruderUpgrade);
 		var kanonen = shipInventory[groupId].kanone;
-		var hit = Math.floor((Math.random() * 100)) >= ausweichen;
+		var r = Math.floor((Math.random() * 100));
+		var hit = r >= ausweichen;
+		console.log("hit: " + hit + "; ausweichen: " + ausweichen + "rand: " + r);
 		$.post( "ajax/useItem.php", { shipId: groupId, item: "kanonenkugel"})
 			.done(function( data ) {
 				console.log( "Data Loaded: " + data );
@@ -193,11 +196,11 @@ function newLog( item, buy, win, target=null, damage=0 ) {
 		if(item == "schießen"){
 			//hat getroffen
 			if(damage > 0){
-				action = "Schiff " + shipData[groupId].name + " hat " shipData[target].name + " " + damage + " Schaden zugefügt";
+				action = "Schiff " + shipData[groupId].name + " hat " + shipData[target].name + " " + damage + " Schaden zugefügt";
 			}
 			//daneben geschossen
 			else{
-				action = "Schiff " + shipData[groupId].name + " hat " shipData[target].name + " knapp verfehlt";
+				action = "Schiff " + shipData[groupId].name + " hat " + shipData[target].name + " knapp verfehlt";
 			}
 		}
 		else if (win)
