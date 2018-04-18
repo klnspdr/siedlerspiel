@@ -8,6 +8,8 @@ $(document).ready( function() {
 	
 	if( searchParams.has( 'groupId' ) )
 		groupId = searchParams.get( 'groupId' );
+	else
+		document.body.innerHTML = '';
 
 	console.log( "this is the UI of group " + groupId );
 
