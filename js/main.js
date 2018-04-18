@@ -20,8 +20,10 @@ $(document).ready( function() {
 });
 
 function buildMatchfield() {
-	$( ".circle-container" ).height( $( "#matchfield" ).height() * 0.75);
-	$( ".circle-container" ).width( $( "#matchfield" ).height() * 0.75 );
+	$( ".circle-container" ).css('max-height', $( "#matchfield" ).height() * 0.75 + 'px');
+	$( ".circle-container" ).css('max-width', $( "#matchfield" ).height() * 0.75 + 'px');
+	$( ".circle-container" ).height( $( "#matchfield" ).height() );
+	$( ".circle-container" ).width( $( "#matchfield" ).height() );
 
 	var radius = $( "#matchfield" ).height() * 0.75/2;
 	$( ".deg0" ).css({'transform' : 'translate(' + radius + 'px'});
