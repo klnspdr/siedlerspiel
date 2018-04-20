@@ -1,11 +1,12 @@
 <?php
+header("Content-Type: text/html; charset=utf-8");
 include("connect.php"); //establish database connection   
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Siedlerspiel</title>
 
