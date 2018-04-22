@@ -47,12 +47,54 @@ include("connect.php"); //establish database connection
     		</div>
       </div>
       <div class='circle-container'>
-        <a href='#' class='deg0 ship' id="0"><span class="shipText" id="ship0HP" >X HP</span><img src='img/ship.png' id="shipIMG_0"></a>
-        <a href='#' class='deg60 ship' id="1"><span class="shipText" id="ship1HP" >X HP</span><img src='img/ship.png' id="shipIMG_1"></a>
-        <a href='#' class='deg120 ship' id="2"><span class="shipText" id="ship2HP" >X HP</span><img src='img/ship.png' id="shipIMG_2"></a>
-        <a href='#' class='deg180 ship' id="3"><span class="shipText" id="ship3HP" >X HP</span><img src='img/ship.png' id="shipIMG_3"></a>
-        <a href='#' class='deg240 ship' id="4"><span class="shipText" id="ship4HP" >X HP</span><img src='img/ship.png' id="shipIMG_4"></a>
-        <a href='#' class='deg300 ship' id="5"><span class="shipText" id="ship5HP" >X HP</span><img src='img/ship.png' id="shipIMG_5"></a>
+        <a href='#' class='deg0 ship' id="0"><span class="shipText" id="ship0HP" >X HP</span><img src='img/ship.png' id="shipIMG_0">
+            <div id="countIcons">
+                <div class="icon"><img src='img/cannon.png' class="countIcon"><span id="0-0">1</span></div>
+                <div class="icon"><img src='img/rudder.png' class="countIcon"><span id="0-1">1</span></div>
+                <div class="icon"><img src='img/sail.png' class="countIcon"><span id="0-2">1</span></div>
+                <span class="stretch"></span>
+            </div>
+            </a>
+        <a href='#' class='deg60 ship' id="1"><span class="shipText" id="ship1HP" >X HP</span><img src='img/ship.png' id="shipIMG_1">
+            <div id="countIcons">
+                <div class="icon"><img src='img/cannon.png' class="countIcon"><span id="1-0">1</span></div>
+                <div class="icon"><img src='img/rudder.png' class="countIcon"><span id="1-1">1</span></div>
+                <div class="icon"><img src='img/sail.png' class="countIcon"><span id="1-2">1</span></div>
+                <span class="stretch"></span>
+            </div>
+            </a>
+        <a href='#' class='deg120 ship' id="2"><span class="shipText" id="ship2HP" >X HP</span><img src='img/ship.png' id="shipIMG_2">
+            <div id="countIcons">
+                <div class="icon"><img src='img/cannon.png' class="countIcon"><span id="2-0">1</span></div>
+                <div class="icon"><img src='img/rudder.png' class="countIcon"><span id="2-1">1</span></div>
+                <div class="icon"><img src='img/sail.png' class="countIcon"><span id="2-2">1</span></div>
+                <span class="stretch"></span>
+            </div>
+            </a>
+        <a href='#' class='deg180 ship' id="3"><span class="shipText" id="ship3HP" >X HP</span><img src='img/ship.png' id="shipIMG_3">
+            <div id="countIcons">
+                <div class="icon"><img src='img/cannon.png' class="countIcon"><span id="3-0">1</span></div>
+                <div class="icon"><img src='img/rudder.png' class="countIcon"><span id="3-1">1</span></div>
+                <div class="icon"><img src='img/sail.png' class="countIcon"><span id="3-2">1</span></div>
+                <span class="stretch"></span>
+            </div>
+            </a>
+        <a href='#' class='deg240 ship' id="4"><span class="shipText" id="ship4HP" >X HP</span><img src='img/ship.png' id="shipIMG_4">
+            <div id="countIcons">
+                <div class="icon"><img src='img/cannon.png' class="countIcon"><span id="4-0">1</span></div>
+                <div class="icon"><img src='img/rudder.png' class="countIcon"><span id="4-1">1</span></div>
+                <div class="icon"><img src='img/sail.png' class="countIcon"><span id="4-2">1</span></div>
+                <span class="stretch"></span>
+            </div>
+            </a>
+        <a href='#' class='deg300 ship' id="5"><span class="shipText" id="ship5HP" >X HP</span><img src='img/ship.png' id="shipIMG_5">
+            <div id="countIcons">
+                <div class="icon"><img src='img/cannon.png' class="countIcon"><span id="5-0">1</span></div>
+                <div class="icon"><img src='img/rudder.png' class="countIcon"><span id="5-1">1</span></div>
+                <div class="icon"><img src='img/sail.png' class="countIcon"><span id="5-2">1</span></div>
+                <span class="stretch"></span>
+            </div>
+            </a>
       </div>
     </div>
 

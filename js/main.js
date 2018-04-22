@@ -135,17 +135,17 @@ function buyItem( item ) {
 
 function runAction( action, target ) {
 	if(action == "schießen"){
-		if(shipInventory[groupId].kanone == 0){
+		if(shipInventory[groupId].Kanonen <= 0){
 			throw "Du brauchst mindestens eine Kanone zum schießen!";
 		}
-		else if(shipInventory[groupId].kanonenkugel == 0){
+		else if(shipInventory[groupId].Kanonenkugeln <= 0){
 			throw "Du brauchst eine Kanonenkugel zum schießen!";
 		}
-		var segel = parseInt(shipInventory[target].segel);
-		var ruder = parseInt(shipInventory[target].ruder);
-		var ruderUpgrade = parseInt(shipInventory[target].ruderupgrade);
+		var segel = parseInt(shipInventory[target].Segel);
+		var ruder = parseInt(shipInventory[target].Ruder);
+		var ruderUpgrade = parseInt(shipInventory[target].Ruderupgrade);
 		var ausweichen = (segel+ruder+ruderUpgrade)*10;
-		var kanonen = shipInventory[groupId].kanone;
+		var kanonen = shipInventory[groupId].Kanonen;
 		var r = Math.floor((Math.random() * 100));
 		var hit = r >= ausweichen;
 		$.post( "ajax/useItem.php", { shipId: groupId, item: "kanonenkugel"})
@@ -165,7 +165,7 @@ function runAction( action, target ) {
 		}
 	}
 	else if(action == "entern"){
-		if(shipInventory[groupId].enterhaken == 0){
+		if(shipInventory[groupId].Enterhaken <= 0){
 			throw "Du brauchst mindestens einen Enterhaken zum entern!";
 		}
 		$.post( "ajax/useItem.php", { shipId: groupId, item: "enterhaken"})
@@ -251,6 +251,26 @@ function readData() {
 		$.each(data, function(index, element) {
 			shipInventory.push(element);
 		});
+
+		// set ship icons
+		for( var i = 0; i < 6; i++) {
+			$.each( shipInventory[i], function(index, element) {
+				if (index == "Kanonen") {
+					console.log("test");
+					$( "#" + i + "-0").text(element);
+				}
+				else if (index == "Ruder") {
+					$( "#" + i + "-1").text(element);
+				}
+				else if (index == "Ruderupgrade") {
+					if (element == '1')
+						$( "#" + i + "-1").text('2');
+				}
+				else if (index == "Segel") {
+					$( "#" + i + "-2").text(element);				
+				}
+			});
+		}
 	})
 	.fail(function( error ) {
 		console.log( "error");

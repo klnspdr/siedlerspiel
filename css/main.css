@@ -9,6 +9,38 @@ p {
   list-style-position: inside;
 }
 
+#countIcons {
+  text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+}
+
+#countIcons >.icon > img {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+
+.icon > span {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-weight: bold;
+  color: darkred;
+  padding:2px;
+}
+
+#countIcons > .icon {
+  vertical-align: top;
+  display: inline-block;
+  zoom: 1;
+}
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
 .divider {
   border-bottom: 1px dotted;
 }
