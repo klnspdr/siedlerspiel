@@ -11,7 +11,14 @@ if ($item == "schiffswandverstaerkung") {
 	    $sql = "UPDATE inventory SET $item='$count' WHERE shipId=$shipId";
 
 		if ($conn->query($sql) === TRUE) {
-		    echo true;
+			
+			$sql = "UPDATE inventory SET $item=$item+1 WHERE shipId=$shipId";
+
+			if ($conn->query($sql) === TRUE) {
+			    echo true;
+			} else {
+			    echo $conn->error;
+			}
 		} else {
 		    echo $conn->error;
 		}
