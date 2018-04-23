@@ -3,7 +3,6 @@ var shipInventory = [];
 var groupId = -1;
 
 $(document).ready( function() {
-
 	var searchParams = new URLSearchParams(window.location.search)
 	
 	if( searchParams.has( 'groupId' ) )
@@ -188,27 +187,27 @@ function runAction( action, target ) {
 }
 
 function newLog( item, buy, win, target=null, damage=0 ) {
-	var action = "Schiff " + shipData[groupId].name + " hat ein(e) " + item + " gekauft.";
+	var action = shipData[groupId].name + " hat ein(e) " + item + " gekauft.";
 	if (item == "repair")
-		action = "Schiff " + shipData[groupId].name + " hat sich repariert.";
+		action = shipData[groupId].name + " hat sich repariert.";
 	var win = win;
 	if (!buy) {
 		if(item == "schießen"){
 			//hat getroffen
 			if(damage > 0){
-				action = "Schiff " + shipData[groupId].name + " hat " + shipData[target].name + " " + damage + " Schaden zugefügt";
+				action = shipData[groupId].name + " hat " + shipData[target].name + " " + damage + " Schaden zugefügt";
 			}
 			//daneben geschossen
 			else{
-				action = "Schiff " + shipData[groupId].name + " hat " + shipData[target].name + " knapp verfehlt";
+				action = shipData[groupId].name + " hat " + shipData[target].name + " knapp verfehlt";
 			}
 		}
 		else if (win)
-			action = "Schiff " + shipData[groupId].name + " hat " + shipData[target].name + " geentert";
+			action = shipData[groupId].name + " hat " + shipData[target].name + " geentert";
 		else if(groupId != target)
-			action = "Schiff " + shipData[groupId].name + " wurde von " + shipData[target].name + " geentert";
+			action = shipData[groupId].name + " wurde von " + shipData[target].name + " geentert";
 		else
-			action = "Schiff " + shipData[groupId].name + " versuchte zu entern und scheiterte";
+			action = shipData[groupId].name + " versuchte zu entern und scheiterte";
 	}
 	$.post( "ajax/postLog.php", { shipId: buy?groupId:win?groupId:target, action: action, win: win})
  		.done(function( data ) {

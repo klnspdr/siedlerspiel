@@ -16,8 +16,8 @@ p {
 }
 
 #countIcons >.icon > img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   float: left;
 }
 
@@ -51,6 +51,8 @@ p {
   font-weight: bold;
   color: darkgreen;
   padding:2px;
+  white-space: nowrap;
+  z-index: 1;
 }
 
 #matchfield {
@@ -144,7 +146,8 @@ p {
 
 .buyButton {
 	width: 48%;
-	height: 8.5%;
+  min-height: 50px;
+	/*height: 8.5%;*/
 	margin-bottom: 5px;
 	vertical-align: middle;
 	text-align: center;
@@ -181,10 +184,10 @@ p {
  */
 .circle-container {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 8.4em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
+  padding: 7em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
   /*border: dashed 5px;*/
   border-radius: 50%;
   width: 10em;
@@ -194,11 +197,11 @@ p {
 .circle-container a {
   color: gnod;
   display: block;
-  overflow: hidden;
+  overflow: visible;
   position: absolute;
   top: 50%; left: 50%;
-  width: 12em;
-  margin: -6em; /* 2em = 4em/2 */ /* half the width */
+  width: 10em;
+  margin: -5em; /* 2em = 4em/2 */ /* half the width */
 }
 
 .circle-container img { 
