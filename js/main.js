@@ -55,7 +55,7 @@ function buildMenu(){
 		confirmDialog("haengematte");
 	});
 	$( "#buySegel" ).on( "click", function() {
-		confirmDialog("segel");
+		confirmDialog("Segel");
 	});
 	$( "#buyKanone" ).on( "click", function() {
 		confirmDialog("kanone");
@@ -64,10 +64,10 @@ function buildMenu(){
 		confirmDialog("kanonenkugel");
 	});
 	$( "#buyRuder" ).on( "click", function() {
-		confirmDialog("ruder");
+		confirmDialog("Ruder");
 	});
 	$( "#buyRUpgrade" ).on( "click", function() {
-		confirmDialog("ruderupgrade");
+		confirmDialog("Ruderupgrade");
 	});
 	$( "#buyArmor" ).on( "click", function() {
 		confirmDialog("schiffswandverstaerkung");
@@ -114,14 +114,15 @@ function repair() {
 
 function buyItem( item ) {
 	var count = shipInventory[groupId][item];
-
-	if (item == "segel" && count == 6)
+	console.log(item);
+	console.log(count);
+	if (item == "Segel" && count >= 6)
 		throw "Dein Schiff hat schon alle Segel!";
-	else if (item == "ruder" && count == 1)
+	else if (item == "Ruder" && count == 1)
 		throw "Dein Schiff hat schon ein Ruder!";
-	else if (item == "ruderupgrade" && count == 1)
+	else if (item == "Ruderupgrade" && count == 1)
 		throw "Dein Schiff hat schon ein Ruder upgrade!";
-	else if (item == "ruderupgrade" && shipInventory[groupId]["ruder"] == 0)
+	else if (item == "Ruderupgrade" && shipInventory[groupId]["Ruder"] == 0)
 		throw "Du musst zuerst ein Ruder kaufen!";
 
 	$.post( "ajax/buyItem.php", { shipId: groupId, item: item})
@@ -255,7 +256,6 @@ function readData() {
 		for( var i = 0; i < 6; i++) {
 			$.each( shipInventory[i], function(index, element) {
 				if (index == "Kanonen") {
-					console.log("test");
 					$( "#" + i + "-0").text(element);
 				}
 				else if (index == "Ruder") {
