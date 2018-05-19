@@ -11,9 +11,9 @@ include("connect.php"); //establish database connection
     <title>Siedlerspiel</title>
 
     <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery/jquery.min.js"></script>
 
-    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="jquery/hammer.js"></script>
     
     <link rel="stylesheet" href="jqueryUI/jquery-ui.min.css">
     <script src="jqueryUI/jquery-ui.min.js"></script>

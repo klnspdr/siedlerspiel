@@ -114,8 +114,6 @@ function repair() {
 
 function buyItem( item ) {
 	var count = shipInventory[groupId][item];
-	console.log(item);
-	console.log(count);
 	if (item == "Segel" && count >= 6)
 		throw "Dein Schiff hat schon alle Segel!";
 	else if (item == "Ruder" && count == 1)
@@ -127,7 +125,6 @@ function buyItem( item ) {
 
 	$.post( "ajax/buyItem.php", { shipId: groupId, item: item})
  		.done(function( data ) {
-    		console.log( "Data Loaded: " + data );
     		// write in log
     		newLog( item, true, false);
 		});
@@ -141,6 +138,9 @@ function runAction( action, target ) {
 		else if(shipInventory[groupId].Kanonenkugeln <= 0){
 			throw "Du brauchst eine Kanonenkugel zum schießen!";
 		}
+		else if(shipData[groupId].hp == 0){
+			throw "Dein Schiff ist zu kaputt zum Schießen!";
+		}
 		var segel = parseInt(shipInventory[target].Segel);
 		var ruder = parseInt(shipInventory[target].Ruder);
 		var ruderUpgrade = parseInt(shipInventory[target].Ruderupgrade);
@@ -150,13 +150,13 @@ function runAction( action, target ) {
 		var hit = r >= ausweichen;
 		$.post( "ajax/useItem.php", { shipId: groupId, item: "kanonenkugel"})
 			.done(function( data ) {
-				console.log( "Data Loaded: " + data );
+				//console.log( "Data Loaded: " + data );
 			});
 		if(hit){
 			var dmg = Math.min(kanonen*50, shipData[target].hp);
 			$.post( "ajax/damage.php", { shipId: target, damage: dmg})
 				.done(function( data ) {
-					console.log( "Data Loaded: " + data );
+					//console.log( "Data Loaded: " + data );
 				});
 			newLog("schießen", false, false, target, dmg);
 		}
@@ -170,11 +170,12 @@ function runAction( action, target ) {
 		}
 		$.post( "ajax/useItem.php", { shipId: groupId, item: "enterhaken"})
 			.done(function( data ) {
-				console.log( "Data Loaded: " + data );
+				//console.log( "Data Loaded: " + data );
 			});
 		target = Math.floor((Math.random() * 6));
-		var eigen = shipInventory[groupId].waffen;
-		var gegner = shipInventory[target].waffen;
+		var eigen = shipInventory[groupId].Waffen;
+		var gegner = shipInventory[target].Waffen;
+		//console.log("Waffen: " + eigen + ", " + gegner);
 		if(target == groupId){
 			newLog(null, false, false, target);
 		}
@@ -187,8 +188,47 @@ function runAction( action, target ) {
 	}
 }
 
+function createBuyMessage(item){
+	var action = shipData[groupId].name + " hat ";
+	if(item == null)
+		action = "Yo bitch ya gotta give me some data!"
+	else if(item.toLowerCase() == "segel")
+		action += "ein Segel";
+	else if(item.toLowerCase() == "fass")
+		action += "ein Fass Wasser";
+	else if(item.toLowerCase() == "zwieback")
+		action += "eine Kiste Schiffszwieback";
+	else if(item.toLowerCase() == "haengematte")
+		action += "eine Hängematte";
+	else if(item.toLowerCase() == "kanone")
+		action += "eine Kanone";
+	else if(item.toLowerCase() == "kanonenkugel")
+		action += "eine Kanonenkugel";
+	else if(item.toLowerCase() == "ruder")
+		action += "ein Ruder";
+	else if(item.toLowerCase() == "ruderupgrade")
+		action += "ein Ruderupgrade";
+	else if(item.toLowerCase() == "enterhaken")
+		action += "einen Enterhaken";
+	else if(item.toLowerCase() == "waffen")
+		action += "Waffen";
+	else if(item.toLowerCase() == "strickleiter")
+		action += "eine Strickleiter";
+	else if(item.toLowerCase() == "gallionsfigur")
+		action += "eine Gallionsfigur";
+	else if(item.toLowerCase() == "schiffsorgel")
+		action += "eine Schiffsorgel";
+	else if(item.toLowerCase() == "schatz")
+		action += "einen Schatz";
+	else if(item.toLowerCase() == "schiffswandverstaerkung")
+		action += "eine Schiffswandverstärkung";
+	action += " gekauft"
+	return action;
+}
+
 function newLog( item, buy, win, target=null, damage=0 ) {
-	var action = shipData[groupId].name + " hat ein(e) " + item + " gekauft.";
+	//var action = shipData[groupId].name + " hat ein(e) " + item + " gekauft.";
+	var action = createBuyMessage(item);
 	if (item == "repair")
 		action = shipData[groupId].name + " hat sich repariert.";
 	var win = win;
@@ -206,13 +246,13 @@ function newLog( item, buy, win, target=null, damage=0 ) {
 		else if (win)
 			action = shipData[groupId].name + " hat " + shipData[target].name + " geentert";
 		else if(groupId != target)
-			action = shipData[groupId].name + " wurde von " + shipData[target].name + " geentert";
+			action = shipData[target].name + " hat den Enterangriff von " + shipData[groupId].name + " erfolgreich abgewehrt";
 		else
 			action = shipData[groupId].name + " versuchte zu entern und scheiterte";
 	}
 	$.post( "ajax/postLog.php", { shipId: buy?groupId:win?groupId:target, action: action, win: win})
  		.done(function( data ) {
-    		console.log( "Data Loaded: " + data );
+    		//console.log( "Data Loaded: " + data );
     		readData();
 		});
 }
@@ -221,7 +261,7 @@ function generateInventory( shipId ) {
 	$( ".inventory" ).empty();
 	$( ".inventory" ).append("<div class='inventoryTitle'>" + shipData[shipId].name + "</div>");
 	$.each( shipInventory[shipId], function(index, element) {
-		if( (index != "id" && index != "shipId" && index != "waffen") || (index == "waffen" && shipId == groupId)) {
+		if( (index != "id" && index != "shipId" && index != "Waffen") || (index == "Waffen" && shipId == groupId)) {
 			$( ".inventory" ).append("<div class='inv_row'><div class='inv_item'>" + index + "</div><div class='inv_item'>" + element + "</div></div>");
 		}
 	});
