@@ -61,6 +61,7 @@ p {
   float: left;
   background-image: url("../img/water.JPG");
   position: relative;
+  overflow: hidden;
 }
 
 #overlay {
