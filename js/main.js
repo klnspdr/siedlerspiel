@@ -272,7 +272,7 @@ function readData() {
 	var shipDataCall = $.getJSON( "ajax/getShipData.php", function( data ) {
 		$.each(data, function(index, element) {
 			shipData.push(element);
-			$( "#ship" + index + "HP" ).text(element.name.replace("&pi;", "π") + " (" + element.hp + "/" + element.max_hp + " HP)");
+			$( "#ship" + index + "HP" ).text(unescape(element.name.replace("&pi;", "π")) + " (" + element.hp + "/" + element.max_hp + " HP)");
 		    if(element.hp == 0) {
 		    	$( "#shipIMG_" + index).attr("src","img/dead.png");
 		    }
@@ -434,7 +434,7 @@ function confirmActionDialog( action ) {
 				var $dropdown = $("#target");
 				for(var i = 0; i < 6; i++){
 					if(groupId != i){
-						$dropdown.append($("<option />").text(shipData[i].name));
+						$dropdown.append($("<option />").text(unescape(shipData[i].name.replace("&pi;", "π"))));
 					}
 				}
 				if(action != "schießen"){
