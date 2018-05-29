@@ -259,7 +259,7 @@ function newLog( item, buy, win, target=null, damage=0 ) {
 
 function generateInventory( shipId ) {
 	$( ".inventory" ).empty();
-	$( ".inventory" ).append("<div class='inventoryTitle'>" + shipData[shipId].name + "</div>");
+	$( ".inventory" ).append("<div class='inventoryTitle'>" + unescape(shipData[shipId].name) + "</div>");
 	$.each( shipInventory[shipId], function(index, element) {
 		if( (index != "id" && index != "shipId" && index != "Waffen") || (index == "Waffen" && shipId == groupId)) {
 			$( ".inventory" ).append("<div class='inv_row'><div class='inv_item'>" + index + "</div><div class='inv_item'>" + element + "</div></div>");
@@ -320,9 +320,9 @@ function readData() {
 		$( "#log" ).empty();
 		$.each(data, function(index, element) {
 			if (index == 0)
-				$( "#log" ).prepend( "<p>" + element.action + "</p>" );
+				$( "#log" ).prepend( "<p>" + unescape(element.action) + "</p>" );
 			else
-				$( "#log" ).prepend( "<p class='divider'>" + element.action + "</p>" );
+				$( "#log" ).prepend( "<p class='divider'>" + unescape(element.action) + "</p>" );
 		});
 	})
 	.fail(function( error ) {
