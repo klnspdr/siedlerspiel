@@ -365,10 +365,53 @@ function confirmDialogRepair( ) {
     }
 }
 
-function confirmDialog( item ) {
+function createConfirmMessage(item){
+	var action = "Willst du wirklich \"";
+	if(item == null)
+		action = "Yo bitch ya gotta give me some data!"
+	else if(item.toLowerCase() == "segel")
+		action += "ein Segel";
+	else if(item.toLowerCase() == "fass")
+		action += "ein Fass Wasser";
+	else if(item.toLowerCase() == "zwieback")
+		action += "eine Kiste Schiffszwieback";
+	else if(item.toLowerCase() == "haengematte")
+		action += "eine Hängematte";
+	else if(item.toLowerCase() == "kanone")
+		action += "eine Kanone";
+	else if(item.toLowerCase() == "kanonenkugel")
+		action += "eine Kanonenkugel";
+	else if(item.toLowerCase() == "ruder")
+		action += "ein Ruder";
+	else if(item.toLowerCase() == "ruderupgrade")
+		action += "ein Ruderupgrade";
+	else if(item.toLowerCase() == "enterhaken")
+		action += "einen Enterhaken";
+	else if(item.toLowerCase() == "waffen")
+		action += "Waffen";
+	else if(item.toLowerCase() == "strickleiter")
+		action += "eine Strickleiter";
+	else if(item.toLowerCase() == "gallionsfigur")
+		action += "eine Gallionsfigur";
+	else if(item.toLowerCase() == "schiffsorgel")
+		action += "eine Schiffsorgel";
+	else if(item.toLowerCase() == "schatz")
+		action += "einen Schatz";
+	else if(item.toLowerCase() == "schiffswandverstaerkung")
+		action += "eine Schiffswandverstärkung";
+	action += "\" <b>kaufen</b>";
+	return action;
+}
 
-    var title = item + ' wirklich kaufen?';
+function confirmDialog( item ) {
+	if(shipData[groupId].hp == 0 && item != "schiffswandverstaerkung"){
+		alert("Repariere zuerst dein Schiff");
+		return;
+	}
+
+    var title = 'Kaufen bestätigen?';
     var text = "Willst du \"" + item + "\" wirklich <b>kaufen</b>?";
+	text = createConfirmMessage(item);
 
     if (!$( "#dialog-confirm" ).length) {
         $('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
