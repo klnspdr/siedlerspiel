@@ -1,5 +1,26 @@
 {
 	"_comment": "score, bonus and punishment are applied to the score, damage to the hp and thereby only indirectly to the score",
+	"_syntax:":{
+		"items":{
+			"name":"the name displayed on the inventory list, buttons, log and error messages",
+			"score":"points added to the score of the group for buying this item",
+			"plusHP":"amount of HP the group recieves for buying this item. the maximum HP defined for this group will be respected.",
+			"plusMaxHP":"adds the specified amount to the maximum HP reachable by this group. Does not add the amount to the actual HP.",
+			"max":"Specifies the maximum number a group can possess of this item",
+			"requirement":"The parameter has to be of the form itemn where n is a number between 1 and number_items. It specifies an other item of which the group has to possess at least one before they can buy the item."
+		},
+		"error_messages":
+		{
+			"requirement":"<item> will be replaced by the item that should be bought. <requirement> will be replaced by the required item.",
+			"max":"<item> will be replaced by the item that should be bought. <max> will be replaced by the maximum number allowed.",
+			"usage":"It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
+		},
+		"log_messages":
+		{
+			"buy":"<item> will be replaced by the item bought. <group> will be replaced by the group name.",
+			"usage":"It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
+		}
+	},
 	"number_groups": 6,
 	"group_names":
 	{
@@ -201,6 +222,64 @@
 		{
 			"max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
 			"requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
+		}
+	},
+	"log_messages":
+	{
+		"buy": "Gruppe <group> hat <item> gekauft.",
+		"item1":{
+			"buy":"Gruppe <group> hat ein neues Wohnhaus gebaut"
+		},
+		"item2":{
+			"buy":"Gruppe <group> hat eine Pallisade gebaut"
+		},
+		"item3":{
+			"buy":"Für Gruppe <group> arbeitet jetzt ein Sheriff"
+		},
+		"item4":{
+			"buy":"Gruppe <group> hat einen Hilfssheriff eingestellt"
+		},
+		"item5":{
+			"buy":"Gruppe <group> hat einen Cowboy angeheuert"
+		},
+		"item6":{
+			"buy":"Gruppe <group> hat eine Kiste Munition gekauft"
+		},
+		"item7":{
+			"buy":"Gruppe <group> hat einen Planwagen gekauft"
+		},
+		"item8":{
+			"buy":"Gruppe <group> hat einen Brunnen gebaut"
+		},
+		"item9":{
+			"buy":"Gruppe <group> hat eine Farm gebaut"
+		},
+		"item10":{
+			"buy":"Gruppe <group> hat einen einen Saboteur ausgebildet"
+		},
+		"item11":{
+			"buy":"Gruppe <group> hat Dynamit gekauft"
+		},
+		"item12":{
+			"buy":"Gruppe <group> hat einen Saloon gebaut"
+		},
+		"item13":{
+			"buy":"Gruppe <group> hat ein Bordell gebaut"
+		},
+		"item14":{
+			"buy":"Gruppe <group> ist religiös geworden"
+		},
+		"item15":{
+			"buy":"Gruppe <group> hat jetzt einen Ort um die Toten zu verscharren"
+		},
+		"item16":{
+			"buy":"Gruppe <group> hat anscheinen zu viel Geld und eine Bank gebaut"
+		},
+		"item17":{
+			"buy":"Gruppe <group> hat jetzt Anschluss an die restliche Welt"
+		},
+		"item18":{
+			"buy":"Gruppe <group> hat gute Einwanderungspolitik betrieben"
 		}
 	},
 	"dbName": "minis_DB",
