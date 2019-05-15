@@ -1,4 +1,6 @@
 <?php
+// This function returns true if the item passed could be bought and a log message could be created successfully and an error message ready to be displayed to the user otherwise.
+// It takes the item (such as item1) as parameter item and the group (such as 1) as parameter groupId. Note that the first group is 1.
 $groupId = $_GET["groupId"];
 $item = $_GET["item"];
 include("connect.php"); //establish database connection   
@@ -46,7 +48,7 @@ if($plusHP!=null)
 $sql.=" WHERE inventory.groupId=$groupId AND groups.groupId=$groupId;";
 
 if ($conn->query($sql) === TRUE) {
-	echo true;
+	echo createLog($groupId, $item, $config, $conn);
 } else {
 	echo $conn->error;
 }
@@ -85,6 +87,8 @@ function checkRequirement($fgroupId, $frequirement, $number_items, $conn){
 
 //returns true if max not reached yet, meaning that it is possible to buy the item
 function checkMax($groupId, $item, $max, $conn){
+	if($max === null)
+		return true;
 	if($max <= 0)
 		return false;
 	$sql="SELECT ".$item." FROM inventory WHERE groupId=".$groupId.";";
@@ -129,5 +133,27 @@ function getMaxErrorMessage($item, $max, $config){
 
 	$errormsg=str_replace("<item>", $itemName, $errormsg);
 	return str_replace("<max>", $max, $errormsg);
+}
+
+function createLog($groupId, $item, $config, $conn){
+	$logmsg=$config["log_messages"][$item]["buy"];
+	if($logmsg==null)
+		$logmsg=$config["log_messages"]["buy"];
+	if($logmsg==null)
+		$logmsg="Group <group> has bought <item>.";
+	$itemName=$config[$item]["name"];
+	if($itemName==null)
+		$itemName=$item;
+	$groupName=$config["group_names"]["gr$groupId"];
+	if($groupName==null)
+		$groupName="group $groupId";
+	$logmsg=str_replace("<item>", $itemName, $logmsg);
+	$logmsg = str_replace("<group>", $groupName, $logmsg);
+	$sql="INSERT INTO log (groupId, message) VALUES ($groupId, '$logmsg');";
+
+	$result = $conn->query($sql);
+	if($result === true)
+		return true;
+	return $conn->error;
 }
 ?>
