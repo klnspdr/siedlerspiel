@@ -1,8 +1,5 @@
 <?php 
-$servername = "localhost";
-$username = "minis";
-$password = "minis";
-$dbname = "siedlerspiel";
+include("../config/DBConfig.php");
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
