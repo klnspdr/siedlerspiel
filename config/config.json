@@ -1,0 +1,193 @@
+{
+	"_comment": "score, bonus and punishment are applied to the score, damage to the hp and thereby only indirectly to the score",
+	"number_groups": 6,
+	"group_names":
+	{
+		"gr1": "Gruppe 1",
+		"gr2": "Gruppe 2",
+		"gr3": "Gruppe 3",
+		"gr4": "Gruppe 4",
+		"gr5": "Gruppe 5",
+		"gr6": "Gruppe 6"
+	},
+	"init_values":
+	{
+		"hp":100,
+		"max_hp":100,
+		"item1":0,
+		"item2":0,
+		"item3":0,
+		"item4":0,
+		"item5":0,
+		"item6":0,
+		"item7":0,
+		"item8":0,
+		"item9":0,
+		"item10":0,
+		"item11":0,
+		"item12":0,
+		"item13":0,
+		"item14":0,
+		"item15":0,
+		"item16":0,
+		"item17":0,
+		"item18":0,
+		"item19":0,
+		"item20":0
+	},
+	"hpName": "Einwohner",
+	"finalScores":
+		{
+			"hp": 1,
+			"deathPunishment": 40
+		},
+	"defenseProbability":
+	{
+		"factor": 0.1,
+		"numberAccountableItems": 3,
+		"accountableItem1": "item2",
+		"accountableItem2": "item3",
+		"accountableItem3": "item4"
+	},
+	"numberItems": 18,
+	"item1":
+	{
+		"name": "Wohnhaus",
+		"score": 2,
+		"plusmaxHP": 10,
+		"plusHP": 10
+	},
+	"item2":
+	{
+		"name": "Palisade",
+		"score": 10,
+		"max": 6,
+		"_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
+	},
+	"item3":
+	{
+		"name": "Sheriff",
+		"max": 1,
+		"score": 13
+	},
+	"item4":
+	{
+		"name": "Hilfssheriff",
+		"max": 1,
+		"score": 6.5,
+		"requirement": "item3",
+		"_comment": "Can only be purchased after item3 has been bought, too"
+	},
+	"item5":
+	{
+		"name": "Cowboy",
+		"score": 0
+	},
+	"item6":
+	{
+		"name": "Munitionskiste",
+		"score": 0
+	},
+	"item7":
+	{
+		"name": "Planwagen",
+		"score": 13.5
+	},
+	"item8":
+	{
+		"name": "Brunnen",
+		"score": 6.5,
+		"_comment": "One per item7 and per five item1 necessary. Each missing = -15 cerdits"
+	},
+	"item9":
+	{
+		"name": "Farm",
+		"score": 7
+	},
+	"item10":
+	{
+		"name": "Saboteur",
+		"score": 0,
+		"_comment": "The one with more item10 wins action1"
+	},
+	"item11":
+	{
+		"name": "Dynamit",
+		"score": 0,
+		"_comment": "Necessary for action1"
+	},
+	"item12":
+	{
+		"name": "Saloon",
+		"score": 22
+	},
+	"item13":
+	{
+		"name": "Bordell",
+		"score": 15
+	},
+	"item14":
+	{
+		"name": "Kirche",
+		"score": 19.5
+	},
+	"item15":
+	{
+		"name": "Friedhof",
+		"score": 12
+	},
+	"item16":
+	{
+		"name": "Bank",
+		"score": 32
+	},
+	"item17":
+	{
+		"name": "Bahnhof",
+		"score": 34
+	},
+	"item18":
+	{
+		"name": "Europ. Einwanderer",
+		"score": 0,
+		"plusHP": 25,
+		"_comment": "repairKit, adds plusHP to hp"
+	},
+	"item19":
+	{
+		"name": "unused",
+		"score": 0
+	},
+	"item20":
+	{
+		"name": "unused",
+		"score": 0
+	},
+	"numberActions": 2,
+	"action1":
+	{
+		"name": "Sabotage",
+		"damage": 10,
+		"score": 5,
+		"defendScore": 2.5,
+		"uses": "item11",
+		"_comment": "damage is applied to the probability of defending oneself against action2, score only if successful, defendscore for opponent if defended successfully, winner is the one with more item10"
+	},
+	"action2":
+	{
+		"name": "Angriff",
+		"damage": 5,
+		"score": 5,
+		"multiplicator": "item5",
+		"killBonus": 10,
+		"killPunishment": 5,
+		"requirement": "item5",
+		"uses": "item6",
+		"_comment": "damage is substracted from hp; damage and score will be multiplied by number of multiplicator; killBonus if oppponent reaches 0HP with this attack, killPunishment is substracted from opponents score"
+	},
+	"dbName": "minis_DB",
+	"dbUser": "minis",
+	"dbPassword": "minisRule",
+	"dbIP": "192.168.0.1",
+	"dbPort": "3306"
+}
