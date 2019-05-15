@@ -54,7 +54,7 @@
 	{
 		"name": "Wohnhaus",
 		"score": 2,
-		"plusmaxHP": 10,
+		"plusMaxHP": 10,
 		"plusHP": 10
 	},
 	"item2":
@@ -184,6 +184,24 @@
 		"requirement": "item5",
 		"uses": "item6",
 		"_comment": "damage is substracted from hp; damage and score will be multiplied by number of multiplicator; killBonus if oppponent reaches 0HP with this attack, killPunishment is substracted from opponents score"
+	},
+	"error_messages":
+	{
+		"requirement": "Ihr müsst erst <requirement> kaufen bevor ihr <item> kaufen könnt.",
+		"max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
+		"item2":
+		{
+			"max": "<max> Pallisaden sind doch schon genug."
+		},
+		"item3":
+		{
+			"max": "In einer Stadt ist nur Platz für einen Sheriff!"
+		},
+		"item4":
+		{
+			"max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
+			"requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
+		}
 	},
 	"dbName": "minis_DB",
 	"dbUser": "minis",
