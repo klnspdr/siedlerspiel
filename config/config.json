@@ -307,9 +307,9 @@
 			"failure":"Gruppe <group> wurde beim Angriff auf Gruppe <target> erfolgreich abgewehrt"
 		}
 	},
-	"dbName": "minis_DB",
+	"dbName": "siedlerspiel_2019",
 	"dbUser": "minis",
-	"dbPassword": "minisRule",
-	"dbIP": "192.168.0.1",
+	"dbPassword": "minis",
+	"dbIP": "localhost",
 	"dbPort": "3306"
 }
