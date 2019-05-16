@@ -22,6 +22,7 @@ $sql="CREATE TABLE IF NOT EXISTS groups(
 	hp INT,
 	max_hp INT,
 	name VARCHAR(255) CHARACTER SET utf8,
+	score INT DEFAULT 0,
 	PRIMARY KEY (groupId)
 	);";
 

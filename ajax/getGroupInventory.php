@@ -1,13 +1,13 @@
 <?php
 include("connect.php"); //establish database connection   
 
-$logs = array();
-$sql = "SELECT * FROM log ORDER BY logId";
+$groups = array();
+$sql = "SELECT * FROM inventory ORDER BY groupId";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $logs[] = $row;
+        $groups[] = $row;
     }
 }
 else {
@@ -15,5 +15,5 @@ else {
 }
 $conn->close();
 
-echo json_encode($logs);
+echo json_encode($groups);
 ?>
