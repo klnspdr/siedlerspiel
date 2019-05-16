@@ -27,7 +27,9 @@ $plusMaxHP=$config[$item]["plusMaxHP"];
 $plusHP=$config[$item]["plusHP"];
 $max=$config[$item]["max"];
 $requirement=$config[$item]["requirement"];
+$score=$config[$item]["score"];
 
+//check if the maximum amount of items allowed is reached already
 if(!checkMax($groupId, $item, $max, $conn)){
 	$conn->close();
 	$errormsg=getMaxErrorMessage($item, $max, $config);
@@ -45,6 +47,8 @@ if($plusMaxHP != null)
 	$sql.=", groups.max_hp=groups.max_hp+$plusMaxHP";
 if($plusHP!=null)
 	$sql.=", groups.hp=LEAST(groups.hp+$plusHP, groups.max_hp)";
+if($score != null)
+	$sql.=", groups.score=groups.score+$score";
 $sql.=" WHERE inventory.groupId=$groupId AND groups.groupId=$groupId;";
 
 if ($conn->query($sql) === TRUE) {
@@ -135,6 +139,7 @@ function getMaxErrorMessage($item, $max, $config){
 	return str_replace("<max>", $max, $errormsg);
 }
 
+//This function appends a message to the log in the DB. It returns true on success and false otherwise
 function createLog($groupId, $item, $config, $conn){
 	$logmsg=$config["log_messages"][$item]["buy"];
 	if($logmsg==null)
@@ -149,6 +154,7 @@ function createLog($groupId, $item, $config, $conn){
 		$groupName="group $groupId";
 	$logmsg=str_replace("<item>", $itemName, $logmsg);
 	$logmsg = str_replace("<group>", $groupName, $logmsg);
+	$logmsg = $conn->real_escape_string($logmsg);
 	$sql="INSERT INTO log (groupId, message) VALUES ($groupId, '$logmsg');";
 
 	$result = $conn->query($sql);

@@ -9,6 +9,20 @@
 			"max":"Specifies the maximum number a group can possess of this item",
 			"requirement":"The parameter has to be of the form itemn where n is a number between 1 and number_items. It specifies an other item of which the group has to possess at least one before they can buy the item."
 		},
+		"actions":{
+			"destroyItem": "if the action is successfull one destroyItem (write item1 e.g.) will be substracted from the target group",
+			"compareItem": "the group with more compareItem is the winner",
+			"score":"added to the attacking group's score on success",
+			"defendScore": "added to the target group's score if the attack fails due to compareItem or defense",
+			"scorePunishment": "substracted from the target group's score if the attack succeeds",
+			"uses": "one of this item (e.g. item1) will be substracted from the attacking group's inventory. If none of this item is available, the attack isn't possible and an error message is returned",
+			"requirement": "the attacking group has to have at least one of this item. Otherwise the attack isn't possible and an error message returned",
+			"multiplicator": "This has to be an item (e.g. item1). score and damage will be multiplied with the amount of this item the attacking group has",
+			"killBonus": "will be added to the attacking group's score if they kill the target meaning it's hp is decreased to 0",
+			"killPunishment": "will be substracted from the target group's score if they get killed",
+			"damage":"will be substracted from the target group's hp if the attack is successfull",
+			"defense":"this is a sub group containing items (e.g. item1) as key and numbers as values. With those numbers and items the target's probability to defend itself is calculated. This probability exists even after the comparison of compareItem was successfull for the attacking group. The number specifies a percentage for the defense probability. Each number will be multiplied with the number of the corresponding item the target group has and then the sum will be calculated for the total defense probability"
+		},
 		"error_messages":
 		{
 			"requirement":"<item> will be replaced by the item that should be bought. <requirement> will be replaced by the required item.",
@@ -18,6 +32,12 @@
 		"log_messages":
 		{
 			"buy":"<item> will be replaced by the item bought. <group> will be replaced by the group name.",
+			"actions":"in all action related messages <group> will be replaced by the attacking group's name, <target> by the targeted group and <action> but the name of the action performed",
+			"success":"message issued if the action was successfull and no kill occured",
+			"kill":"message issued when the target group's hp has been decreased to 0, meaning it has been killed",
+			"hitSelf":"message issued when the group performing the action is the same as the target. In this case the action is never successfull",
+			"nothingToDestroy":"message issued if destroyItem is not null and the target group doesn't have any of destroyItem. This case is treated as if the action was not successfull",
+			"failure":"message issued if the action was not successfull eg. if the target could defend themselves due to comparison of compareItem or due to defense",
 			"usage":"It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
 		}
 	},
@@ -231,6 +251,18 @@
 		{
 			"max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
 			"requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
+		},
+		"action_requirement":"Aktion <action> benötigt <requirement>",
+		"action_uses":"Aktion <action> benötigt <uses>",
+		"action1":
+		{
+			"action_requirement":"Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
+			"action_uses":"Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?"
+		},
+		"action2":
+		{
+			"action_requirement":"Ihr braucht erst einen Cowboy, der für euch kämpfen kann",
+			"action_uses":"Ohne Munition sind eure Cowboys nutzlos"
 		}
 	},
 	"log_messages":

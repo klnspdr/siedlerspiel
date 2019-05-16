@@ -1,6 +1,6 @@
 <?php
-// This function returns true if the item passed could be bought and a log message could be created successfully and an error message ready to be displayed to the user otherwise.
-// It takes the item (such as item1) as parameter item and the group (such as 1) as parameter groupId. Note that the first group is 1.
+// This function returns true if the action passed could be performed and a log message could be created successfully and an error message ready to be displayed to the user otherwise.
+// It takes the action (such as action1) as parameter action, the group (such as 1) as parameter groupId and the target (such as 2) as parameter targetId. Note that the first group is 1.
 $groupId = $_GET["groupId"];
 $action = $_GET["action"];
 $targetId = $_GET["targetId"];
@@ -63,18 +63,19 @@ $attackSuccess=evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense
 if($attackSuccess){
 	$itemDestroyed = destroyItem($targetId, $destroyItem, $number_items, $conn);
 	$kill=false;
-	//it is necessary to destroy the item in order to the score bonus. If there is no item to destroy specified, $itemDestroyed will always be true
+	//it is necessary to destroy the item in order to get the score bonus. If there is no item to destroy specified, $itemDestroyed will always be true
 	if($itemDestroyed){
 		$mult = getMultiplicator($groupId, $multiplicator, $number_items, $conn);
-		if($damage===null)
+		//set some default values that won't cause a change in the database if nothing has been specified in the config file
+		if($damage==null)
 			$damage=0;
-		if($killBonus===null)
+		if($killBonus==null)
 			$killBonus=0;
-		if($killPunishment===null)
+		if($killPunishment==null)
 			$killPunishment=0;
-		if($scorePunishment===null)
+		if($scorePunishment==null)
 			$scorePunishment=0;
-		if($score===null)
+		if($score==null)
 			$score=0;
 		$sql="BEGIN;
 		UPDATE groups SET hp=GREATEST((@old_hp:=hp)-$damage*$mult, 0) WHERE groupId=$targetId;
@@ -83,6 +84,7 @@ if($attackSuccess){
 		UPDATE groups SET score=score+@killing*$killBonus+IF(@killing, @old_hp, $score*$mult*(@old_hp>0)) WHERE groupId=$groupId;
 		COMMIT;";
 		$query_success = $conn->multi_query($sql);
+		//get results for all query parts and display possible error messages. Also get if the target has been killed
 		do{
 			if($query_success){
 				if($result=$conn->store_result()){
@@ -122,6 +124,7 @@ $conn->close();
 //																		//
 //////////////////////////////////////////////////////////////////////////
 
+//Checks if $item is a valid item
 function checkIsItem($item, $number_items){
 	if($item == null)
 		return false;
@@ -170,11 +173,13 @@ function useItem($groupId, $uses, $number_items, $conn){
 	} 
 }
 
+//returns true if the attack was successfull. Therefore compareItem and defense are evaluated. If attacker and target are the same group, the attack is always unsuccessfull
 function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $number_items, $conn){
 	$success = false;
 	if($groupId==$targetId)
 		return false;
 
+	//no need to compare in this case. Only evaluate defense if specified
 	if($compareItem == null){
 		$success = true;
 	}
@@ -194,6 +199,7 @@ function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $num
 			}
 		} 
 	}
+	//if the attack was already unsuccessfull it's not necessary to evaluate defense any more
 	if(!$success)
 		return false;
 	//take defense probability into account
@@ -206,6 +212,7 @@ function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $num
 				continue;
 			}
 			$factor = $defense[$key];
+			//get the number of the specified defense item the target group has
 			$sql="SELECT $key FROM inventory WHERE groupId=$targetId;";
 			$result=$conn->query($sql);
 			if ($result == true) {
@@ -218,15 +225,19 @@ function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $num
 		}
 		if($defenseProbability == 0)
 			return $success;
+		//use random number to determine if attack was successfull
 		if(rand(1, 100) > $defenseProbability)
 			return true;
 		else
 			return false;
 	}
+	//if defense is not specified, just return the result from before
 	else{
 		return $success;
 	}
 }
+
+//Destroys one destroyItem of the target group. If this isn't possible because the target doesn't have any of this item any more, it returns false and true if destroying it was successfull
 function destroyItem($targetId, $destroyItem, $number_items, $conn){
 	if($destroyItem == null)
 		return true;
@@ -242,6 +253,7 @@ function destroyItem($targetId, $destroyItem, $number_items, $conn){
 	} 
 }
 
+//This function gets the amount of the item specified as $multiplicator that the group with $groupId has
 function getMultiplicator($groupId, $multiplicator, $number_items, $conn){
 	if($multiplicator === null)
 		return 1;
@@ -260,6 +272,7 @@ function getMultiplicator($groupId, $multiplicator, $number_items, $conn){
 	} 
 }
 
+//This function appends a log message to the log table and returns true on success and false otherwise
 function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed, $kill, $config, $conn){
 	$msg="";
 	if($attackSuccess){
@@ -313,6 +326,7 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 	$msg=str_replace("<group>", $groupName, $msg);
 	$msg = str_replace("<target>", $targetName, $msg);
 	$msg = str_replace("<action>", $actionName, $msg);
+	$msg = $conn->real_escape_string($msg);
 	$sql="INSERT INTO log (groupId, message) VALUES ($groupId, '$msg');";
 
 	$result = $conn->query($sql);
@@ -323,9 +337,35 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 }
 
 function getRequirementErrorMessage($action, $requirement, $config){
-	return "Action $action requires $requirement";
+	$msg = $config['error_messages'][$action]['action_requirement'];
+	if($msg === null)
+		$msg = $config['error_messages']['action_requirement'];
+	if($msg === null)
+		$msg = "Action <action> requires <requirement>";
+	$actionName=$config[$action]["name"];
+	if($actionName==null)
+		$actionName=$action;
+	$requirementName=$config[$requirement]['name'];
+	if($requirementName === null)
+		$requirementName = "item$requirement";
+	$msg = str_replace("<action>", $actionName, $msg);
+	$msg = str_replace("<requirement>", $requirementName, $msg);
+	return $msg;
 }
 function getUsesErrorMessage($action, $uses, $config){
-	return "Action $action requires at least one $uses";
+	$msg = $config['error_messages'][$action]['action_uses'];
+	if($msg === null)
+		$msg = $config['error_messages']['action_uses'];
+	if($msg === null)
+		$msg = "Action <action> requires <uses>";
+	$actionName=$config[$action]["name"];
+	if($actionName==null)
+		$actionName=$action;
+	$usesName=$config[$uses]['name'];
+	if($usesName === null)
+		$usesName = "item$uses";
+	$msg = str_replace("<action>", $actionName, $msg);
+	$msg = str_replace("<uses>", $usesName, $msg);
+	return $msg;
 }
 ?>
