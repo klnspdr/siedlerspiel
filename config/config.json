@@ -184,15 +184,18 @@
 		"name": "unused",
 		"score": 0
 	},
-	"numberActions": 2,
+	"number_actions": 2,
 	"action1":
 	{
 		"name": "Sabotage",
-		"damage": 10,
+		"destroyItem": "item2",
+		"compareItem": "item10",
 		"score": 5,
 		"defendScore": 2.5,
+		"scorePunishment": 10,
 		"uses": "item11",
-		"_comment": "damage is applied to the probability of defending oneself against action2, score only if successful, defendscore for opponent if defended successfully, winner is the one with more item10"
+		"requirement": "item11",
+		"_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem"
 	},
 	"action2":
 	{
@@ -204,6 +207,12 @@
 		"killPunishment": 5,
 		"requirement": "item5",
 		"uses": "item6",
+		"defense":
+		{
+			"item2":10,
+			"item3":10,
+			"item4":10
+		},
 		"_comment": "damage is substracted from hp; damage and score will be multiplied by number of multiplicator; killBonus if oppponent reaches 0HP with this attack, killPunishment is substracted from opponents score"
 	},
 	"error_messages":
@@ -280,6 +289,22 @@
 		},
 		"item18":{
 			"buy":"Gruppe <group> hat gute Einwanderungspolitik betrieben"
+		},
+		"success":"Gruppe <group> hat Aktion <action> erfolgreich auf Gruppe <target> durchgeführt",
+		"kill":"Gruppe <group> hat Gruppe <target> getötet",
+		"hitSelf":"Gruppe <group> hat versucht Aktion <action> auf sich selbst durchzuführen",
+		"nothingToDestroy":"Gruppe <group> wollte auf Gruppe <target> <action> durchführen, hat aber nichts zu zerstören gefunden",
+		"failure":"Gruppe <group> ist daran gescheitert Aktion <action> auf Gruppe <target> durchzuführen",
+		"action1":{
+			"success":"Gruppe <group> hat eine Pallisade der Gruppe <target> zerstört",
+			"hitSelf":"Gruppe <group> hat versucht sich selbst zu sabotieren",
+			"nothingToDestroy":"Gruppe <group> wollte Gruppe <target> sabotieren, die hatten aber gar keine Pallisaden",
+			"failure":"Gruppe <group> wollte Gruppe <target> sabotieren, ist aber gnadenlos unterlegen"
+		},
+		"action2":{
+			"success":"Gruppe <group> hat Gruppe <target> angegriffen",
+			"kill":"Gruppe <group> hat Gruppe <target> vom Erdboden getilgt",
+			"failure":"Gruppe <group> wurde beim Angriff auf Gruppe <target> erfolgreich abgewehrt"
 		}
 	},
 	"dbName": "minis_DB",
