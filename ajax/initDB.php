@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 include("../config/DBConfig.php");
 
 $conn = new mysqli($servername, $username, $password);
@@ -21,7 +22,7 @@ $sql="CREATE TABLE IF NOT EXISTS groups(
 	groupId INT AUTO_INCREMENT,
 	hp INT,
 	max_hp INT,
-	name VARCHAR(255) CHARACTER SET utf8,
+	name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
 	score INT DEFAULT 0,
 	PRIMARY KEY (groupId)
 	);";
@@ -64,7 +65,7 @@ if ($result === FALSE) {
 $sql="CREATE TABLE IF NOT EXISTS log(
 	logId INT AUTO_INCREMENT,
 	groupId INT,
-	message TEXT CHARACTER SET utf8,
+	message TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
 	PRIMARY KEY (logId),
 	CONSTRAINT FK_log_groupId FOREIGN KEY (groupId) references groups(groupId)
 	)";

@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 // This function returns true if the action passed could be performed and a log message could be created successfully and an error message ready to be displayed to the user otherwise.
 // It takes the action (such as action1) as parameter action, the group (such as 1) as parameter groupId and the target (such as 2) as parameter targetId. Note that the first group is 1.
 $groupId = $_GET["groupId"];

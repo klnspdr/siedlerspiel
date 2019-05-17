@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 // This function returns true if the item passed could be bought and a log message could be created successfully and an error message ready to be displayed to the user otherwise.
 // It takes the item (such as item1) as parameter item and the group (such as 1) as parameter groupId. Note that the first group is 1.
 $groupId = $_GET["groupId"];
