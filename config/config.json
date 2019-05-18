@@ -7,7 +7,8 @@
 			"plusHP":"amount of HP the group recieves for buying this item. the maximum HP defined for this group will be respected.",
 			"plusMaxHP":"adds the specified amount to the maximum HP reachable by this group. Does not add the amount to the actual HP.",
 			"max":"Specifies the maximum number a group can possess of this item",
-			"requirement":"The parameter has to be of the form itemn where n is a number between 1 and number_items. It specifies an other item of which the group has to possess at least one before they can buy the item."
+			"requirement":"The parameter has to be of the form itemn where n is a number between 1 and number_items. It specifies an other item of which the group has to possess at least one before they can buy the item.",
+			"deadAllowed":"Set to true if the item can be bought even if the group is dead (e.g. repair kit), set to false or leave empty/out otherwise"
 		},
 		"actions":{
 			"destroyItem": "if the action is successfull one destroyItem (write item1 e.g.) will be substracted from the target group",
@@ -21,12 +22,17 @@
 			"killBonus": "will be added to the attacking group's score if they kill the target meaning it's hp is decreased to 0",
 			"killPunishment": "will be substracted from the target group's score if they get killed",
 			"damage":"will be substracted from the target group's hp if the attack is successfull",
-			"defense":"this is a sub group containing items (e.g. item1) as key and numbers as values. With those numbers and items the target's probability to defend itself is calculated. This probability exists even after the comparison of compareItem was successfull for the attacking group. The number specifies a percentage for the defense probability. Each number will be multiplied with the number of the corresponding item the target group has and then the sum will be calculated for the total defense probability"
+			"defense":"this is a sub group containing items (e.g. item1) as key and numbers as values. With those numbers and items the target's probability to defend itself is calculated. This probability exists even after the comparison of compareItem was successfull for the attacking group. The number specifies a percentage for the defense probability. Each number will be multiplied with the number of the corresponding item the target group has and then the sum will be calculated for the total defense probability",
+			"deadAllowed":"Set to true if the action can be performed even if the group is dead, set to false or leave empty/out otherwise"
 		},
 		"error_messages":
 		{
 			"requirement":"<item> will be replaced by the item that should be bought. <requirement> will be replaced by the required item.",
 			"max":"<item> will be replaced by the item that should be bought. <max> will be replaced by the maximum number allowed.",
+			"death":"Used for items when the group cannot buy it because they are dead. <item> will be replaced by the item",
+			"action_death":"Used for actions when the group cannot perform it because they are dead. <action> will be replaced by the action",
+			"action_requirement":"Used for actions, same behavior as requirement for items",
+			"action_uses":"Used for actions. Used to inform the group that they  miss an item that will be used up for the action (e.g. cannon balls). <uses> will be replaced by the item, <action> will be replaced by the action.",
 			"usage":"It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
 		},
 		"log_messages":
@@ -192,6 +198,7 @@
 		"name": "Europ. Einwanderer",
 		"score": 0,
 		"plusHP": 25,
+		"deadAllowed": true,
 		"_comment": "repairKit, adds plusHP to hp"
 	},
 	"item19":
@@ -239,9 +246,10 @@
 	{
 		"requirement": "Ihr müsst erst <requirement> kaufen bevor ihr <item> kaufen könnt.",
 		"max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
+		"death": "Tote kaufen keine <item>",
 		"item2":
 		{
-			"max": "<max> Pallisaden sind doch schon genug."
+			"max": "<max> Palisaden sind doch schon genug."
 		},
 		"item3":
 		{
@@ -254,15 +262,18 @@
 		},
 		"action_requirement":"Aktion <action> benötigt <requirement>",
 		"action_uses":"Aktion <action> benötigt <uses>",
+		"action_death":"Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
 		"action1":
 		{
 			"action_requirement":"Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
-			"action_uses":"Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?"
+			"action_uses":"Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
+			"action_death":"Ihr seid tot. Wie wollt ihr da etwas sprengen?"
 		},
 		"action2":
 		{
 			"action_requirement":"Ihr braucht erst einen Cowboy, der für euch kämpfen kann",
-			"action_uses":"Ohne Munition sind eure Cowboys nutzlos"
+			"action_uses":"Ohne Munition sind eure Cowboys nutzlos",
+			"action_death":"Weder Tote noch Untote schießen. Belebt euch erst wieder"
 		}
 	},
 	"log_messages":
@@ -272,7 +283,7 @@
 			"buy":"Gruppe <group> hat ein neues Wohnhaus gebaut"
 		},
 		"item2":{
-			"buy":"Gruppe <group> hat eine Pallisade gebaut"
+			"buy":"Gruppe <group> hat eine Palisade gebaut"
 		},
 		"item3":{
 			"buy":"Für Gruppe <group> arbeitet jetzt ein Sheriff"
@@ -328,9 +339,9 @@
 		"nothingToDestroy":"Gruppe <group> wollte auf Gruppe <target> <action> durchführen, hat aber nichts zu zerstören gefunden",
 		"failure":"Gruppe <group> ist daran gescheitert Aktion <action> auf Gruppe <target> durchzuführen",
 		"action1":{
-			"success":"Gruppe <group> hat eine Pallisade der Gruppe <target> zerstört",
+			"success":"Gruppe <group> hat eine Palisade der Gruppe <target> zerstört",
 			"hitSelf":"Gruppe <group> hat versucht sich selbst zu sabotieren",
-			"nothingToDestroy":"Gruppe <group> wollte Gruppe <target> sabotieren, die hatten aber gar keine Pallisaden",
+			"nothingToDestroy":"Gruppe <group> wollte Gruppe <target> sabotieren, die hatten aber gar keine Palisaden",
 			"failure":"Gruppe <group> wollte Gruppe <target> sabotieren, ist aber gnadenlos unterlegen"
 		},
 		"action2":{

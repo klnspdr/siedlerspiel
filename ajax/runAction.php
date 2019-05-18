@@ -48,6 +48,13 @@ $compareItem=$config[$action]["compareItem"];
 $defense=$config[$action]["defense"];
 
 
+//check if group is dead and if they are allowed to buy the item being dead
+if($config[$action]['deadAllowed']==false && !getIsAlive($groupId, $conn)){
+	$conn->close();
+	$errormsg=getDeathErrorMessage($action, $config);
+	die($errormsg);
+}
+
 if(!checkRequirement($groupId, $requirement, $number_items, $conn)){
 	$conn->close();
 	$errormsg=getRequirementErrorMessage($action, $requirement, $config);
@@ -273,6 +280,21 @@ function getMultiplicator($groupId, $multiplicator, $number_items, $conn){
 	} 
 }
 
+function getIsAlive($groupId, $conn){
+	$sql="SELECT hp FROM groups WHERE groupId=".$groupId.";";
+	$result=$conn->query($sql);
+	if ($result == false) {
+		return false;
+	} else {
+		if ($result->num_rows === 1) {
+			$resArray=$result->fetch_assoc();
+			return $resArray['hp'] > 0;
+		}
+		return false;
+	} 
+
+}
+
 //This function appends a log message to the log table and returns true on success and false otherwise
 function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed, $kill, $config, $conn){
 	$msg="";
@@ -368,5 +390,19 @@ function getUsesErrorMessage($action, $uses, $config){
 	$msg = str_replace("<action>", $actionName, $msg);
 	$msg = str_replace("<uses>", $usesName, $msg);
 	return $msg;
+}
+
+function getDeathErrorMessage($action, $config){
+	$errormsg=$config["error_messages"][$action]["action_death"];
+	if($errormsg == null)
+		$errormsg=$config["error_messages"]["action_death"];
+	if($errormsg == null)
+		$errormsg = "You have to be alive to perform action <action>";
+	$itemName=$config[$action]["name"];
+	if($actionName==null)
+		$actionName=$action;
+
+	$errormsg=str_replace("<action>", $actionName, $errormsg);
+	return $errormsg;
 }
 ?>

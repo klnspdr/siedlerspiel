@@ -30,6 +30,13 @@ $max=$config[$item]["max"];
 $requirement=$config[$item]["requirement"];
 $score=$config[$item]["score"];
 
+//check if group is dead and if they are allowed to buy the item being dead
+if($config[$item]['deadAllowed']==false && !getIsAlive($groupId, $conn)){
+	$conn->close();
+	$errormsg=getDeathErrorMessage($item, $config);
+	die($errormsg);
+}
+
 //check if the maximum amount of items allowed is reached already
 if(!checkMax($groupId, $item, $max, $conn)){
 	$conn->close();
@@ -110,6 +117,21 @@ function checkMax($groupId, $item, $max, $conn){
 
 }
 
+function getIsAlive($groupId, $conn){
+	$sql="SELECT hp FROM groups WHERE groupId=".$groupId.";";
+	$result=$conn->query($sql);
+	if ($result == false) {
+		return false;
+	} else {
+		if ($result->num_rows === 1) {
+			$resArray=$result->fetch_assoc();
+			return $resArray['hp'] > 0;
+		}
+		return false;
+	} 
+
+}
+
 function getRequirementErrorMessage($item, $requirement, $config){
 	$errormsg=$config["error_messages"][$item]["requirement"];
 	if($errormsg == null)
@@ -131,13 +153,27 @@ function getMaxErrorMessage($item, $max, $config){
 	if($errormsg == null)
 		$errormsg=$config["error_messages"]["max"];
 	if($errormsg == null)
-		$errormsg = "You can buy at most <max> <item>.";
+		$errormsg = "You can buy at most <max> <item>";
 	$itemName=$config[$item]["name"];
 	if($itemName==null)
 		$itemName=$item;
 
 	$errormsg=str_replace("<item>", $itemName, $errormsg);
 	return str_replace("<max>", $max, $errormsg);
+}
+
+function getDeathErrorMessage($item, $config){
+	$errormsg=$config["error_messages"][$item]["death"];
+	if($errormsg == null)
+		$errormsg=$config["error_messages"]["death"];
+	if($errormsg == null)
+		$errormsg = "You have to be alive to buy <item>";
+	$itemName=$config[$item]["name"];
+	if($itemName==null)
+		$itemName=$item;
+
+	$errormsg=str_replace("<item>", $itemName, $errormsg);
+	return $errormsg;
 }
 
 //This function appends a message to the log in the DB. It returns true on success and false otherwise
