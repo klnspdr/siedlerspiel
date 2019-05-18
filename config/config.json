@@ -86,7 +86,8 @@
 	"finalScores":
 		{
 			"hp": 1,
-			"deathPunishment": 40
+			"deathPunishment": 40,
+			"_comment":"for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score"
 		},
 	"defenseProbability":
 	{
