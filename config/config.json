@@ -219,7 +219,7 @@
 		"destroyItem": "item2",
 		"compareItem": "item10",
 		"score": 5,
-		"defendScore": 2.5,
+		"defendScore": 3,
 		"scorePunishment": 10,
 		"uses": "item11",
 		"requirement": "item11",

@@ -2,20 +2,23 @@
 header('Content-Type: text/html; charset=UTF-8');
 include("../config/DBConfig.php");
 
-$conn = new mysqli($servername, $username, $password);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql="CREATE DATABASE IF NOT EXISTS ".$dbname . ";";
-$result = $conn->query($sql);
-if ($result === FALSE) {
-	die("Database creation failed: " . $conn->error);
+try{
+	$pdo = new PDO("mysql:host=$servername;charset=utf8", $username, $password);
+}
+catch (PDOException $e){
+	die("Connection failed: " . $e->getMessage());
 }
 
-if (! $conn->select_db($dbname)){
-	die("Could not connect to database: " . $conn->error);
+
+$dbname=str_replace("'","''",$dbname);
+$sql="CREATE DATABASE IF NOT EXISTS $dbname;";
+if (!$pdo->query($sql)) {
+	echo($sql);
+	die("Database creation failed: " . $pdo->errorInfo()[2]);
+}
+
+if ($pdo->query("USE $dbname") === false){
+	die("Could not connect to database: " . $pdo->errorInfo()[2]);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS groups(
@@ -27,9 +30,9 @@ $sql="CREATE TABLE IF NOT EXISTS groups(
 	PRIMARY KEY (groupId)
 	);";
 
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 if ($result === FALSE) {
-	die("Table creation failed: " . $conn->error);
+	die("Table creation failed: " . $pdo->errorInfo()[2]);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS inventory(
@@ -57,9 +60,9 @@ $sql="CREATE TABLE IF NOT EXISTS inventory(
 	PRIMARY KEY (groupId),
 	CONSTRAINT FK_inventory_groupId FOREIGN KEY (groupId) references groups(groupId)
 	)";
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 if ($result === FALSE) {
-	die("Table creation failed: " . $conn->error);
+	die("Table creation failed: " . $pdo->errorInfo()[2]);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS log(
@@ -69,9 +72,9 @@ $sql="CREATE TABLE IF NOT EXISTS log(
 	PRIMARY KEY (logId),
 	CONSTRAINT FK_log_groupId FOREIGN KEY (groupId) references groups(groupId)
 	)";
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 if ($result === FALSE) {
-	die("Table creation failed: " . $conn->error);
+	die("Table creation failed: " . $pdo->errorInfo()[2]);
 }
 
 //Create entries in tables from config file
@@ -81,35 +84,39 @@ $number_groups=$config['number_groups'];
 $init_hp=$config['init_values']['hp'];
 $init_max_hp=$config['init_values']['max_hp'];
 $groups = $config['group_names'];
-foreach($groups as $init_group){
-	$sql="INSERT INTO groups (hp, max_hp, name) VALUES (".
-		$init_hp . ", " .
-		$init_max_hp . ", " . 
-		"'".$init_group."'" .
-		");";
-		$result = $conn->query($sql);
-		if ($result === FALSE) {
-			die("Creating group entry failed: " . $conn->error);
+
+$result = $pdo->query("SELECT * FROM groups");
+if($result && $result->rowCount()<$number_groups){
+	foreach($groups as $init_group){
+		$sql="INSERT INTO groups (hp, max_hp, name) VALUES (?, ?, ?);";
+		$statement = $pdo->prepare($sql);
+		if(!$statement->execute(array($init_hp, $init_max_hp, $init_group))){
+			die("Creating group entry failed: " . $statement->errorInfo()[2]);
 		}
+	}
 }
 
-$number_items=$config['numberItems'];
-for($i=1; $i<=$number_groups; $i++){
+$result = $pdo->query("SELECT * FROM inventory");
+if($result && $result->rowCount()<$number_groups){
+	$number_items=$config['numberItems'];
 	$sql="INSERT INTO inventory (groupId";
+	$sql2=") VALUES (?,";
 	for($j=1;$j<=$number_items;$j++){
 		$sql .= ", item".$j;
+		$sql2 .= "?,";
 	}
-	$sql .= ") VALUES (".$i;
-	for($j=1;$j<=$number_items;$j++){
-		$sql .= ", ".$config['init_values']['item'.$j];
-	}
-	$sql .= ");";
-
-	$result = $conn->query($sql);
-	if ($result === FALSE) {
-		die("Creating inventory entry failed: " . $conn->error)."\n";
+	$sql.=substr($sql2, 0, strlen($sql2)-1).");";
+	$statement = $pdo->prepare($sql);
+	for($i=1; $i<=$number_groups; $i++){
+		$values = array($i);
+		for($j=1;$j<=$number_items;$j++){
+			//$values.append($config['init_values']['item'.$j]);
+			array_push($values, $config['init_values']['item'.$j]);
+		}
+		if(!$statement->execute($values)){
+			die("Creating inventory entry failed: " . $statement->errorInfo()[2]);
+		}
 	}
 }
 
-$conn->close();
 ?>

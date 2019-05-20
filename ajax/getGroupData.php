@@ -12,17 +12,17 @@ if($deathPunishment == null)
 
 $groups = array();
 $sql = "SELECT *, (score+$hpBonus*hp-IF(hp=0, $deathPunishment, 0)) AS final_score FROM groups";	
-$result = $conn->query($sql);
+$statement = $pdo->prepare("sql");
+$result = $pdo->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+if ($result->rowCount() > 0) {
+    while($row = $result->fetch()) {
         $groups[] = $row;
     }
 } 
 else {
     echo "0 results";
 }
-$conn->close();
 
 echo json_encode($groups);
 ?>

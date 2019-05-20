@@ -9,7 +9,7 @@ include("connect.php"); //establish database connection
 include("readConfig.php");
 //$groupId=1;
 //$targetId=2;
-//$action="action2";
+//$action="action1";
 
 $number_actions=$config["number_actions"];
 
@@ -20,17 +20,14 @@ for($i=1;$i<=$number_actions;$i++){
 		$correctAction=true;
 }
 if(!$correctAction){
-	$conn->close();
 	die("Error: Invalid action");
 }
 //check if groupId is valid
 if($groupId <= 0 || $groupId > $number_groups){
-	$conn->close();
 	die("Error: Invalid group number");
 }
 //check if targetId is valid
 if($targetId <= 0 || $targetId > $number_groups){
-	$conn->close();
 	die("Error: Invalid target group number");
 }
 
@@ -49,31 +46,28 @@ $defense=$config[$action]["defense"];
 
 
 //check if group is dead and if they are allowed to buy the item being dead
-if($config[$action]['deadAllowed']==false && !getIsAlive($groupId, $conn)){
-	$conn->close();
+if($config[$action]['deadAllowed']==false && !getIsAlive($groupId, $pdo)){
 	$errormsg=getDeathErrorMessage($action, $config);
 	die($errormsg);
 }
 
-if(!checkRequirement($groupId, $requirement, $number_items, $conn)){
-	$conn->close();
+if(!checkRequirement($groupId, $requirement, $number_items, $pdo)){
 	$errormsg=getRequirementErrorMessage($action, $requirement, $config);
 	die($errormsg);
 }
-if(!useItem($groupId, $uses, $number_items, $conn)){
-	$conn->close();
+if(!useItem($groupId, $uses, $number_items, $pdo)){
 	$errormsg=getUsesErrorMessage($action, $uses, $config);
 	die($errormsg);
 }
 
-$attackSuccess=evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $number_items, $conn);
+$attackSuccess=evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $number_items, $pdo);
 
 if($attackSuccess){
-	$itemDestroyed = destroyItem($targetId, $destroyItem, $number_items, $conn);
+	$itemDestroyed = destroyItem($targetId, $destroyItem, $number_items, $pdo);
 	$kill=false;
 	//it is necessary to destroy the item in order to get the score bonus. If there is no item to destroy specified, $itemDestroyed will always be true
 	if($itemDestroyed){
-		$mult = getMultiplicator($groupId, $multiplicator, $number_items, $conn);
+		$mult = getMultiplicator($groupId, $multiplicator, $number_items, $pdo);
 		//set some default values that won't cause a change in the database if nothing has been specified in the config file
 		if($damage==null)
 			$damage=0;
@@ -85,45 +79,62 @@ if($attackSuccess){
 			$scorePunishment=0;
 		if($score==null)
 			$score=0;
+//		$sql="BEGIN;
+//		UPDATE groups SET hp=GREATEST((@old_hp:=hp)-$damage*$mult, 0) WHERE groupId=$targetId;
+//		SELECT @killing:=IF(($damage*$mult>=@old_hp) AND (@old_hp>0), true, false) AS killing from groups LIMIT 1;
+//		UPDATE groups SET score=score-@killing*$killPunishment-$scorePunishment WHERE groupId=$targetId;
+//		UPDATE groups SET score=score+@killing*$killBonus+IF(@killing, @old_hp, $score*$mult*(@old_hp>0)) WHERE groupId=$groupId;
+//		COMMIT;";
 		$sql="BEGIN;
-		UPDATE groups SET hp=GREATEST((@old_hp:=hp)-$damage*$mult, 0) WHERE groupId=$targetId;
-		SELECT @killing:=IF(($damage*$mult>=@old_hp) AND (@old_hp>0), true, false) AS killing from groups LIMIT 1;
-		UPDATE groups SET score=score-@killing*$killPunishment-$scorePunishment WHERE groupId=$targetId;
-		UPDATE groups SET score=score+@killing*$killBonus+IF(@killing, @old_hp, $score*$mult*(@old_hp>0)) WHERE groupId=$groupId;
+		UPDATE groups SET hp=GREATEST((@old_hp:=hp)-:damage*:mult, 0) WHERE groupId=:targetId;
+		SELECT @killing:=IF((:damage*:mult>=@old_hp) AND (@old_hp>0), true, false) AS killing from groups LIMIT 1;
+		UPDATE groups SET score=score-@killing*:killPunishment-:scorePunishment WHERE groupId=:targetId;
+		UPDATE groups SET score=score+@killing*:killBonus+IF(@killing, @old_hp, :score*:mult*(@old_hp>0)) WHERE groupId=:groupId;
 		COMMIT;";
-		$query_success = $conn->multi_query($sql);
+		$statement = $pdo->prepare($sql);
+		$query_success = $statement->execute(array(':damage'=>$damage, ':mult'=>$mult, ':targetId'=>$targetId, ':killPunishment'=>$killPunishment, ':scorePunishment'=>$scorePunishment, ':killBonus'=>$killBonus, ':score'=>$score, ':groupId'=>$groupId));
+		//$query_success = $conn->multi_query($sql);
 		//get results for all query parts and display possible error messages. Also get if the target has been killed
-		do{
-			if($query_success){
-				if($result=$conn->store_result()){
-					$res_data=$result->fetch_assoc();
-					$kill = $res_data['killing']!==null?$res_data['killing']:$kill;
-					$result->free();
-				}
+		do {
+			if($statement->errorCode() != "00000"){
+				echo $statement->errorInfo()[2];
+				continue;
 			}
-			else{
-				echo $conn->error;
-			}
-			$more_results=$conn->more_results();
-			$qurey_success = $conn->next_result();
-		} while($more_results);
+			$rowset=$statement->fetch();
+			if($rowset)
+				$kill = $rowset['killing']!==null?$rowset['killing']:$kill;
+		}while ($statement->nextRowset());
+
+//		do{
+//			if($query_success){
+//				if($result=$conn->store_result()){
+//					$res_data=$result->fetch_assoc();
+//					$kill = $res_data['killing']!==null?$res_data['killing']:$kill;
+//					$result->free();
+//				}
+//			}
+//			else{
+//				echo $conn->error;
+//			}
+//			$more_results=$conn->more_results();
+//			$qurey_success = $conn->next_result();
+//		} while($more_results);
 	}
 
-	echo createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed, $kill, $config, $conn);
+	echo createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed, $kill, $config, $pdo);
 }
 //Attack not successfull
 //give the target credit of defending himself
 else{
 	if($defendScore != null){
-		$sql="UPDATE groups SET score=score+$defendScore WHERE groupId=$targetId;";
-		if ($conn->query($sql) === FALSE) {
-			echo $conn->error;
-		}
+		$sql="UPDATE groups SET score=score+? WHERE groupId=?;";
+		$statement = $pdo->prepare($sql);
+		if(!$statement->execute(array($defendScore, $targetId)))
+			echo $statement->errorInfo()[2];
 	}
-	echo createLog($groupId, $targetId, $action, $attackSuccess, false, false, $config, $conn);
+	echo createLog($groupId, $targetId, $action, $attackSuccess, false, false, $config, $pdo);
 }
 
-$conn->close();
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -147,42 +158,52 @@ function checkIsItem($item, $number_items){
 }
 
 //returns true if requirement matched, false otherwise
-function checkRequirement($groupId, $requirement, $number_items, $conn){
+function checkRequirement($groupId, $requirement, $number_items, $pdo){
 	if($requirement == null)
 		return true;
 	if(!checkIsItem($requirement, $number_items))
 		return false;
-	$sql="SELECT ".$requirement." FROM inventory WHERE groupId=".$groupId.";";
-	$result=$conn->query($sql);
-	if ($result == false) {
-		return false;
-	} else {
-		if ($result->num_rows === 1) {
-			$num=$result->fetch_assoc();
-			return $num[$requirement] > 0;
-		}
-		return false;
-	} 
+	$safeRequirement = str_replace('`', '', $requirement);
+	$sql="SELECT `$safeRequirement` FROM inventory WHERE groupId=?;";
+	$statement = $pdo->prepare($sql);
+	if($statement->execute(array($groupId)))
+		return $statement->fetch()[$requirement] > 0;
+	return false;
+//	$result=$conn->query($sql);
+//	if ($result == false) {
+//		return false;
+//	} else {
+//		if ($result->num_rows === 1) {
+//			$num=$result->fetch_assoc();
+//			return $num[$requirement] > 0;
+//		}
+//		return false;
+//	} 
 }
 
 //returns true if item could be used and false otherwise, eg. if none of the specified item was available
-function useItem($groupId, $uses, $number_items, $conn){
+function useItem($groupId, $uses, $number_items, $pdo){
 	if($uses == null)
 		return true;
 	if(!checkIsItem($uses, $number_items))
 		return false;
-	$sql="UPDATE inventory SET $uses=$uses-1 WHERE groupId=$groupId AND $uses>0;";
-	$result=$conn->query($sql);
-	if ($result == false) {
-		echo $conn->error;
-		return false;
-	} else {
-		return $conn->affected_rows === 1;
-	} 
+	$safeUses = str_replace('`', '', $uses);
+	$sql="UPDATE inventory SET `$safeUses`=`$safeUses`-1 WHERE groupId=? AND `$safeUses`>0;";
+	$statement = $pdo->prepare($sql);
+	if($statement->execute(array($groupId)))
+		return $statement->rowCount() === 1;
+	return false;
+//	$result=$conn->query($sql);
+//	if ($result == false) {
+//		echo $conn->error;
+//		return false;
+//	} else {
+//		return $conn->affected_rows === 1;
+//	} 
 }
 
 //returns true if the attack was successfull. Therefore compareItem and defense are evaluated. If attacker and target are the same group, the attack is always unsuccessfull
-function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $number_items, $conn){
+function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $number_items, $pdo){
 	$success = false;
 	if($groupId==$targetId)
 		return false;
@@ -196,16 +217,25 @@ function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $num
 		if(!checkIsItem($compareItem, $number_items))
 			return false;
 
-		$sql="SELECT IF((SELECT $compareItem FROM inventory where groupId=$groupId)>=(SELECT $compareItem FROM inventory where groupId=$targetId), true, false) AS 'winning' FROM `inventory` LIMIT 1;";
-		$result=$conn->query($sql);
-		if ($result == false) {
+		//$sql="SELECT IF((SELECT $compareItem FROM inventory where groupId=$groupId)>=(SELECT $compareItem FROM inventory where groupId=$targetId), true, false) AS 'winning' FROM `inventory` LIMIT 1;";
+		$safeCompareItem = str_replace('`', '', $compareItem);
+		$sql="SELECT IF((SELECT $safeCompareItem FROM inventory where groupId=:groupId)>=(SELECT $safeCompareItem FROM inventory where groupId=:targetId), true, false) AS 'winning' FROM `inventory` LIMIT 1;";
+		$statement = $pdo->prepare($sql);
+		if($statement->execute(array(':groupId'=>$groupId, ':targetId'=>$targetId))){
+			$success = $statement->fetch()['winning'];
+		}
+		else{
 			$success = false;
-		} else {
-			if ($result->num_rows === 1) {
-				$winning=$result->fetch_assoc();
-				$success = $winning['winning'];
-			}
-		} 
+		}
+//		$result=$conn->query($sql);
+//		if ($result == false) {
+//			$success = false;
+//		} else {
+//			if ($result->num_rows === 1) {
+//				$winning=$result->fetch_assoc();
+//				$success = $winning['winning'];
+//			}
+//		} 
 	}
 	//if the attack was already unsuccessfull it's not necessary to evaluate defense any more
 	if(!$success)
@@ -221,15 +251,18 @@ function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $num
 			}
 			$factor = $defense[$key];
 			//get the number of the specified defense item the target group has
-			$sql="SELECT $key FROM inventory WHERE groupId=$targetId;";
-			$result=$conn->query($sql);
-			if ($result == true) {
-				if ($result->num_rows === 1) {
-					$num=$result->fetch_assoc();
-					$defenseProbability += $factor * $num[$key];
-				}
-			} 
-			$result->free();
+			$sql="SELECT $key FROM inventory WHERE groupId=?;";
+			$statement = $pdo->prepare($sql);
+			if($statement->execute(array($targetId)))
+				$defenseProbability += $factor * $statement->fetch()[$key];
+//			$result=$conn->query($sql);
+//			if ($result == true) {
+//				if ($result->num_rows === 1) {
+//					$num=$result->fetch_assoc();
+//					$defenseProbability += $factor * $num[$key];
+//				}
+//			} 
+//			$result->free();
 		}
 		if($defenseProbability == 0)
 			return $success;
@@ -246,57 +279,72 @@ function evaluateAttackSuccess($groupId, $targetId, $compareItem, $defense, $num
 }
 
 //Destroys one destroyItem of the target group. If this isn't possible because the target doesn't have any of this item any more, it returns false and true if destroying it was successfull
-function destroyItem($targetId, $destroyItem, $number_items, $conn){
+function destroyItem($targetId, $destroyItem, $number_items, $pdo){
 	if($destroyItem == null)
 		return true;
 	if(!checkIsItem($destroyItem, $number_items))
 		return false;
 	
-	$sql="UPDATE inventory SET $destroyItem=$destroyItem-1 WHERE groupId=$targetId AND $destroyItem>0;";
-	$result=$conn->query($sql);
-	if ($result == false) {
-		return false;
-	} else {
-		return $conn->affected_rows === 1;
-	} 
+	$sql="UPDATE inventory SET $destroyItem=$destroyItem-1 WHERE groupId=? AND $destroyItem>0;";
+	$statement = $pdo->prepare($sql);
+	if($statement->execute(array($targetId)))
+		return $statement->rowCount() === 1;
+	return false;
+
+//	$result=$conn->query($sql);
+//	if ($result == false) {
+//		return false;
+//	} else {
+//		return $conn->affected_rows === 1;
+//	} 
 }
 
 //This function gets the amount of the item specified as $multiplicator that the group with $groupId has
-function getMultiplicator($groupId, $multiplicator, $number_items, $conn){
+function getMultiplicator($groupId, $multiplicator, $number_items, $pdo){
 	if($multiplicator === null)
 		return 1;
 	if(!checkIsItem($multiplicator, $number_items))
 		return 0;
-	$sql="SELECT $multiplicator FROM inventory WHERE groupId=$groupId;";
-	$result=$conn->query($sql);
-	if ($result == false) {
-		return 0;
-	} else {
-		if ($result->num_rows === 1) {
-			$num=$result->fetch_assoc();
-			return $num[$multiplicator];
-		}
-		return 0;
-	} 
+	$sql="SELECT $multiplicator FROM inventory WHERE groupId=?;";
+	$statement = $pdo->prepare($sql);
+	if($statement->execute(array($groupId))){
+		if($statement->rowCount() === 1)
+			return $statement->fetch()[$multiplicator];
+	}
+	return 0;
+//	$result=$conn->query($sql);
+//	if ($result == false) {
+//		return 0;
+//	} else {
+//		if ($result->num_rows === 1) {
+//			$num=$result->fetch_assoc();
+//			return $num[$multiplicator];
+//		}
+//		return 0;
+//	} 
 }
 
-function getIsAlive($groupId, $conn){
-	$sql="SELECT hp FROM groups WHERE groupId=".$groupId.";";
-	$result=$conn->query($sql);
-	if ($result == false) {
-		return false;
-	} else {
-		if ($result->num_rows === 1) {
-			$resArray=$result->fetch_assoc();
-			return $resArray['hp'] > 0;
-		}
-		return false;
-	} 
+function getIsAlive($groupId, $pdo){
+	$sql="SELECT hp FROM groups WHERE groupId=?;";
+	$statement = $pdo->prepare($sql);
+	if($statement->execute(array($groupId)))
+		return $statement->fetch()['hp'] > 0;
+	return false;
+//	$result=$conn->query($sql);
+//	if ($result == false) {
+//		return false;
+//	} else {
+//		if ($result->num_rows === 1) {
+//			$resArray=$result->fetch_assoc();
+//			return $resArray['hp'] > 0;
+//		}
+//		return false;
+//	} 
 
 }
 
 //This function appends a log message to the log table and returns true on success and false otherwise
-function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed, $kill, $config, $conn){
+function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed, $kill, $config, $pdo){
 	$msg="";
 	if($attackSuccess){
 		if($kill){
@@ -349,13 +397,16 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 	$msg=str_replace("<group>", $groupName, $msg);
 	$msg = str_replace("<target>", $targetName, $msg);
 	$msg = str_replace("<action>", $actionName, $msg);
-	$msg = $conn->real_escape_string($msg);
-	$sql="INSERT INTO log (groupId, message) VALUES ($groupId, '$msg');";
+	$sql="INSERT INTO log (groupId, message) VALUES (?, ?);";
 
-	$result = $conn->query($sql);
-	if($result == true)
+	$statement = $pdo->prepare($sql);
+	if($statement->execute(array($groupId, $msg)))
 		return true;
-	return $conn->error;
+	return $statement->errorInfo()[2];
+//	$result = $conn->query($sql);
+//	if($result == true)
+//		return true;
+//	return $conn->error;
 //	echo("groupId: $groupId <br>targetId: $targetId <br>action: $action <br>attackSuccess: $attackSuccess <br>itemDestroyed: $itemDestroyed <br>kill: $kill <br>");
 }
 

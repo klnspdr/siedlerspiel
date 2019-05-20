@@ -24,7 +24,7 @@ else
 	echo "Test 2 invalid item failed, output was $output <br>\n";
 
 //Test requirement not satisfied
-setInventory(array("item3"=>0, "item4"=>0), 1, $conn);
+setInventory(array("item3"=>0, "item4"=>0), 1, $pdo);
 $output = callBuyItem($ch, "item=item4&groupId=1");
 $tests_performed++;
 if($output != "1")
@@ -102,7 +102,7 @@ function callBuyItem($ch, $opts){
 	return curl_exec($ch);
 }
 
-function setInventory($items, $groupId, $conn){
+function setInventory($items, $groupId, $pdo){
 	$sql="UPDATE inventory SET   ";
 	$keys = array_keys($items);
 	foreach($keys as $key){
@@ -110,7 +110,7 @@ function setInventory($items, $groupId, $conn){
 	}
 	$sql=substr($sql, 0, strlen($sql)-2);
 	$sql.=" WHERE groupId=$groupId";
-	if ($conn->query($sql) == FALSE)
-		echo $conn->error;
+	if ($pdo->query($sql) === false)
+		echo $pdo->errorInfo()[2];
 }
 ?>

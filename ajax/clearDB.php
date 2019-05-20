@@ -2,21 +2,21 @@
 include("connect.php");
 
 $sql="DROP TABLE IF EXISTS log";
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 if ($result === FALSE) {
-	die("Could not delete table: " . $conn->error);
+	die("Could not delete table: " . $pdo->errorInfo()[2]);
 }
 
 $sql="DROP TABLE IF EXISTS inventory";
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 if ($result === FALSE) {
-	die("Could not delete table: " . $conn->error);
+	die("Could not delete table: " . $pdo->errorInfo()[2]);
 }
 
 $sql="DROP TABLE IF EXISTS groups";
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 if ($result === FALSE) {
-	die("Could not delete table: " . $conn->error);
+	die("Could not delete table: " . $pdo->errorInfo()[2]);
 }
 
 ?>

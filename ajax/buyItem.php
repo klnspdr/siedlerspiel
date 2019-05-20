@@ -14,12 +14,10 @@ for($i=1;$i<=$number_items;$i++){
 		$correctItem=true;
 }
 if(!$correctItem){
-	$conn->close();
 	die("Error: Invalid item");
 }
 //check if groupId is valid
 if($groupId <= 0 || $groupId > $number_groups){
-	$conn->close();
 	die("Error: Invalid group number");
 }
 
@@ -31,41 +29,38 @@ $requirement=$config[$item]["requirement"];
 $score=$config[$item]["score"];
 
 //check if group is dead and if they are allowed to buy the item being dead
-if($config[$item]['deadAllowed']==false && !getIsAlive($groupId, $conn)){
-	$conn->close();
+if($config[$item]['deadAllowed']==false && !getIsAlive($groupId, $pdo)){
 	$errormsg=getDeathErrorMessage($item, $config);
 	die($errormsg);
 }
 
 //check if the maximum amount of items allowed is reached already
-if(!checkMax($groupId, $item, $max, $conn)){
-	$conn->close();
+if(!checkMax($groupId, $item, $max, $pdo)){
 	$errormsg=getMaxErrorMessage($item, $max, $config);
 	die($errormsg);
 }
-if(!checkRequirement($groupId, $requirement, $number_items, $conn)){
-	$conn->close();
+if(!checkRequirement($groupId, $requirement, $number_items, $pdo)){
 	$errormsg=getRequirementErrorMessage($item, $requirement, $config);
 	die($errormsg);
 }
 
 
-$sql="UPDATE inventory, groups SET inventory.$item=inventory.$item+1";
-if($plusMaxHP != null)
-	$sql.=", groups.max_hp=groups.max_hp+$plusMaxHP";
-if($plusHP!=null)
-	$sql.=", groups.hp=LEAST(groups.hp+$plusHP, groups.max_hp)";
-if($score != null)
-	$sql.=", groups.score=groups.score+$score";
-$sql.=" WHERE inventory.groupId=$groupId AND groups.groupId=$groupId;";
-
-if ($conn->query($sql) === TRUE) {
-	echo createLog($groupId, $item, $config, $conn);
-} else {
-	echo $conn->error;
+if($plusMaxHP == null)
+	$plusMaxHP = 0;
+if($plusHP == null)
+	$plusHP = 0;
+if($score == null)
+	$score = 0;
+$sqlItem=str_replace('`', '', $item);
+$sql="UPDATE inventory, groups SET `$sqlItem`=`$sqlItem`+1, groups.max_hp=groups.max_hp+:plusMaxHP, groups.hp=LEAST(groups.hp+:plusHP, groups.max_hp), groups.score=groups.score+:score WHERE inventory.groupId=:groupId AND groups.groupId=:groupId;";
+$statement = $pdo->prepare($sql);
+if($statement->execute(array(':plusMaxHP'=>$plusMaxHP, 'plusHP'=>$plusHP, ':score'=>$score, ':groupId'=>$groupId))){
+	echo createLog($groupId, $item, $config, $pdo);
+}
+else {
+	echo $statement->errorInfo()[2];
 }
 
-$conn->close();
 
 //////////////////////////////////////////////////////////////////////////
 //																		//
@@ -74,62 +69,53 @@ $conn->close();
 //////////////////////////////////////////////////////////////////////////
 
 //returns true if requirement matched, false otherwise
-function checkRequirement($fgroupId, $frequirement, $number_items, $conn){
-	if($frequirement == null)
+function checkRequirement($groupId, $requirement, $number_items, $pdo){
+	if($requirement == null)
 		return true;
-	$fcorrectItem=false;
+	$correctItem=false;
 	for($i=0;$i<$number_items;$i++){
-		if($frequirement == "item".$i)
-			$fcorrectItem=true;
+		if($requirement == "item".$i)
+			$correctItem=true;
 	}
-	if(!$fcorrectItem)
+	if(!$correctItem)
 		return false;
-	$fsql="SELECT ".$frequirement." FROM inventory WHERE groupId=".$fgroupId.";";
-	$fresult=$conn->query($fsql);
-	if ($fresult === "false") {
-		return false;
-	} else {
-		if ($fresult->num_rows === 1) {
-			$num=$fresult->fetch_assoc();
-			return $num[$frequirement] > 0;
+	$requirement = str_replace('`', '', $requirement);
+	$statement = $pdo->prepare("SELECT `$requirement` FROM inventory WHERE groupId=?;");
+	if($statement->execute(array($groupId))){
+		if($statement->rowCount() === 1){
+			return $statement->fetch()[$requirement] > 0;
 		}
 		return false;
-	} 
+	}
+	else{
+		return false;
+	}
 }
 
 //returns true if max not reached yet, meaning that it is possible to buy the item
-function checkMax($groupId, $item, $max, $conn){
+function checkMax($groupId, $item, $max, $pdo){
 	if($max === null)
 		return true;
 	if($max <= 0)
 		return false;
-	$sql="SELECT ".$item." FROM inventory WHERE groupId=".$groupId.";";
-	$result=$conn->query($sql);
-	if ($result === "false") {
-		return false;
-	} else {
-		if ($result->num_rows === 1) {
-			$num=$result->fetch_assoc();
-			return $num[$item] < $max;
-		}
-		return false;
-	} 
-
+	$item = str_replace('`', '', $item);
+	$statement = $pdo->prepare("SELECT `$item` FROM inventory WHERE groupId=?;");
+	if($statement->execute(array($groupId))){
+		if($statement->rowCount() === 1)
+			return $statement->fetch()[$item] < $max;
+	}
+	return false;
 }
 
-function getIsAlive($groupId, $conn){
-	$sql="SELECT hp FROM groups WHERE groupId=".$groupId.";";
-	$result=$conn->query($sql);
-	if ($result == false) {
-		return false;
-	} else {
-		if ($result->num_rows === 1) {
-			$resArray=$result->fetch_assoc();
-			return $resArray['hp'] > 0;
+function getIsAlive($groupId, $pdo){
+	$sql="SELECT hp FROM groups WHERE groupId=?;";
+	$statement = $pdo->prepare($sql);
+	if($statement->execute(array($groupId))){
+		if($statement->rowCount() === 1){
+			return $statement->fetch()['hp'] > 0;
 		}
-		return false;
-	} 
-
+	}
+	return false;
 }
 
 function getRequirementErrorMessage($item, $requirement, $config){
@@ -177,7 +163,7 @@ function getDeathErrorMessage($item, $config){
 }
 
 //This function appends a message to the log in the DB. It returns true on success and false otherwise
-function createLog($groupId, $item, $config, $conn){
+function createLog($groupId, $item, $config, $pdo){
 	$logmsg=$config["log_messages"][$item]["buy"];
 	if($logmsg==null)
 		$logmsg=$config["log_messages"]["buy"];
@@ -191,12 +177,11 @@ function createLog($groupId, $item, $config, $conn){
 		$groupName="group $groupId";
 	$logmsg=str_replace("<item>", $itemName, $logmsg);
 	$logmsg = str_replace("<group>", $groupName, $logmsg);
-	$logmsg = $conn->real_escape_string($logmsg);
-	$sql="INSERT INTO log (groupId, message) VALUES ($groupId, '$logmsg');";
+	$sql="INSERT INTO log (groupId, message) VALUES (?,?);";
+	$statement = $pdo->prepare($sql);
 
-	$result = $conn->query($sql);
-	if($result === true)
+	if($statement->execute(array($groupId, $logmsg)))
 		return true;
-	return $conn->error;
+	return $statement->errorInfo()[2];
 }
 ?>

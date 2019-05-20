@@ -4,17 +4,16 @@ include("connect.php"); //establish database connection
 
 $groups = array();
 $sql = "SELECT * FROM inventory ORDER BY groupId";
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+if ($result->rowCount() > 0) {
+    while($row = $result->fetch()) {
         $groups[] = $row;
     }
 }
 else {
     echo "0 results";
 }
-$conn->close();
 
 echo json_encode($groups);
 ?>
