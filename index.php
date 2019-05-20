@@ -4,7 +4,7 @@ header("Content-Type: text/html; charset=utf-8");
 //include("ajax/connect.php"); //establish database connection
 include("ajax/readConfigFromIndex.php");
 //client roles: 0: index page / configuration ; 1 - x: groups
-if(isset($_GET['reset']) && $_GET['reset'] == 1){
+if(isset($_GET['reset'])){
     $_SESSION['role'] = 0;
 }
 include("ajax/setRole.php");
