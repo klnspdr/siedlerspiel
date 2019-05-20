@@ -350,10 +350,5 @@
 			"kill":"Gruppe <group> hat Gruppe <target> vom Erdboden getilgt",
 			"failure":"Gruppe <group> wurde beim Angriff auf Gruppe <target> erfolgreich abgewehrt"
 		}
-	},
-	"dbName": "siedlerspiel_2019",
-	"dbUser": "minis",
-	"dbPassword": "minis",
-	"dbIP": "localhost",
-	"dbPort": "3306"
+	}
 }
