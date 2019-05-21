@@ -5,12 +5,13 @@ body {
 
 .button {
     color: #000000;
+    font-size: 20px;
     border: 1px solid black;
     background-image: url("../img/backgrounds/button2.jpg");
     text-decoration: none;
     text-align: center;
-    vertical-align: middle;
-    display: inline-block;
+    display: inline-grid;
+    align-items: center;
     height: 40px;
     width: 100%;
 }
@@ -29,25 +30,52 @@ body {
     color: #69ff44;
     font-size: 40px;
 }
-#buyButtonTable{
+
+#buyButtonTable {
     table-layout: fixed;
-    width: 100%;
+    float: left;
+    width: 80%;
+    left: 0;
+}
+
+#actButtonTable {
+    table-layout: fixed;
+    float: right;
+
+    width: 15%;
+    right: 0;
 
 }
 
-td,th {
-   /* border: 1px s1lid black; */
+td, th {
+    /* border: 1px s1lid black; */
     height: 100%;
 
 }
- .tableName{
-     text-align: center;
-     font-size: 20px;
-     width: 100%;
- }
- .buttonArea{
-     height: 10px;
-     width: 60%;
-     border: 1px s1lid black;
- }
 
+.tableName {
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+}
+
+.buttonArea {
+    height: 10px;
+    width: 60%;
+    border: 1px s1lid black;
+}
+.fieldArea{
+    float: left;
+}
+
+.inventoryArea{
+    float: right;
+    height: 20%;
+    width: 39%;
+}
+
+.logArea{
+    float: right;
+    height: 20%;
+    width: 39%
+}

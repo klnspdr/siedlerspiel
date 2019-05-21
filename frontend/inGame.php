@@ -1,4 +1,11 @@
-<div id="gameCanvas"></div>
+<div class="fieldArea" id="gameCanvas"></div>
+<div class="inventoryArea">
+
+</div>
+<div class="logArea">
+
+    dasgfjksdghfjklasfdasjflksadjfklsahfkldsahfkjdsahgfjkdsa
+</div>
 <div class="buttonArea">
     <table id="buyButtonTable">
         <tr>
@@ -28,7 +35,10 @@
             <th><span class="tableName">Ausführen</span></th>
         </tr>
         <?php
-        for
+        for($row = 1; $row <= $number_actions; $row++){
+            $tableRowOut = "<tr><td><a class='button' id='actAction".$row."' href='#'>".$config['action'.$row]['name']."</a></td></tr>";
+            echo $tableRowOut;
+        }
         ?>
     </table>
 </div>
