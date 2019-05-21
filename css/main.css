@@ -1,211 +1,47 @@
-html, body {
-    height: 100%;
+body {
+    font-family: "DK Wild Bunch";
+    background-color: #e1c09d;
 }
 
-p {
-  margin: 0px;
-  display: list-item;
-  list-style-type: disc;
-  list-style-position: inside;
-}
-
-#countIcons {
-  text-align: justify;
-  -ms-text-justify: distribute-all-lines;
-  text-justify: distribute-all-lines;
-}
-
-#countIcons >.icon > img {
-  width: 30px;
-  height: 30px;
-  float: left;
-}
-
-.icon > span {
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-weight: bold;
-  color: darkred;
-  padding:2px;
-}
-
-#countIcons > .icon {
-  vertical-align: top;
-  display: inline-block;
-  zoom: 1;
-}
-
-.stretch {
-    width: 100%;
+.button {
+    color: #ffffff;
+    border: 1px solid black;
+    background-image: url("../img/backgrounds/button2.jpg");
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
     display: inline-block;
-    font-size: 0;
-    line-height: 0
+    height: 40px;
+    width: 100%;
 }
 
-.divider {
-  border-bottom: 1px dotted;
+.button:visited {
+    color: black;
 }
 
-.shipText {
-  background: darkgray;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-weight: bold;
-  color: darkgreen;
-  padding:2px;
-  white-space: nowrap;
-  z-index: 1;
+.button:hover {
+    font-style: oblique;
+    font-weight: bold;
+    box-shadow: #282c34;
+    shadow
 }
 
-#matchfield {
-  height: 100%;
-  width: 75%;
-  float: left;
-  background-image: url("../img/water.JPG");
-  position: relative;
-  overflow: hidden;
+.titleOwn {
+    color: #69ff44;
+    font-size: 40px;
+}
+#buttonTable{
+    table-layout: fixed;
+    width: 60%;
 }
 
-#overlay {
-  height: 95%;
-  width: 95%;
-  background: #0B173B;
-  border: 5px solid white;
-  border-radius: 15px;
-  padding: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-  z-index: 1;
-  overflow: auto;
-  color: white;
+td,th {
+   /* border: 1px solid black; */
+    height: 100%;
+
 }
-
-#overlay > .close {
-  float: right;
-  background: red;
-  width: 25px;
-  height: 25px;
-  color: #fff;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-#overlay > .inventory {
-	display: table;
-	width: calc(100% - 10px);
-	border: 1px solid lightgray;
-	padding: 5px;
-}
-
-#overlay > .inventory > .inv_row {
-	display: table-row;
-}
-
-#overlay > .inventory > .inv_row > .inv_item {
-	display: table-cell;
-	border: thin solid darkgray;
-	width: 50%;
-	padding: 5px;
-}
-
-.inventoryTitle {
-  color: #fff;
-  font-family: 'Helvetica', 'Arial', sans-serif;
-  font-weight: bold;
-  padding: 10px;
-}
-
-#sidebar {
-  height: 100%;
-  width: 25%;
-  float: right;
-  background: #0B173B;
-  padding: 10px;
-  color: white;
-}
-
-#log {
-  height: 25%;
-  border: 2px solid darkgray;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 5px;
-  overflow: hidden;
-}
-
-#menu {
-  height: 75%;
-  border: 2px solid darkgray;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 5px;
-  overflow: auto;
-}
-
-.buyButton {
-	width: 48%;
-  min-height: 50px;
-	/*height: 8.5%;*/
-	margin-bottom: 5px;
-	vertical-align: middle;
-	text-align: center;
-}
-
-#menu > .kaufenText {
-	text-align: center;
-	font-weight: bold;
-	width: 100%;
-	margin-bottom: 5px;
-}
-
-.right-to-left {
-    /*border-left: 15px darkgray solid;*/
-    border-left: 15px;
-    border-style: solid;
-    -webkit-border-image: 
-      -webkit-gradient(linear, 0 0, 100% 0, from(#0B173B), to(rgba(112, 128, 144, 255))) 1 100%;
-    -webkit-border-image: 
-      -webkit-linear-gradient(left, #0B173B, rgba(112, 128, 144, 255)) 1 100%;
-    -moz-border-image:
-      -moz-linear-gradient(left, #0B173B, rgba(112, 128, 144, 255)) 1 100%; 
-    -o-border-image:
-      -o-linear-gradient(left, #0B173B, rgba(112, 128, 144, 255)) 1 100%;
-    border-image:
-      linear-gradient(to left, #0B173B, rgba(112, 128, 144, 255)) 1 100%;
-}
-
-
-
-/**
- * Position icons into circle (SO)
- * http://stackoverflow.com/q/12813573/1397351 
- */
-.circle-container {
-  position: absolute;
-  top: 47%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 7em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
-  /*border: dashed 5px;*/
-  border-radius: 50%;
-  width: 10em;
-  height: 10em;
-}
-
-.circle-container a {
-  color: gnod;
-  display: block;
-  overflow: visible;
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 10em;
-  margin: -5em; /* 2em = 4em/2 */ /* half the width */
-}
-
-.circle-container img { 
-  display: block; 
-  width: 100%; 
-}
+ .tableName{
+     text-align: center;
+     font-size: 20px;
+     width: 100%;
+ }
