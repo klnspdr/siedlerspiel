@@ -1,5 +1,5 @@
 <!-- starting Page to configure Game and Clients -->
-<h1>Configuration Page</h1>
+<p class="titleOwn">Configuration Page</p>
 <form method="post" action="index.php">
     <select name="setRole">
         <?php
