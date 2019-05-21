@@ -7,13 +7,22 @@ include("ajax/readConfigFromIndex.php");
 if(isset($_GET['reset'])){
     $_SESSION['role'] = 0;
 }
-include("ajax/setRole.php");
+include("ajax/setRole.php");    //include script which sets role if new one is selected
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
   <head>
       <title>Siedler 2019</title>
+
+      <link rel="stylesheet" href="css/main.css">
+
+      <!-- include P5.js library -->
+      <script src="p5js/p5.min.js"></script>
+      <script src="p5js/p5.dom.min.js"></script>
+
+      <!-- include game logic -->
+      <script src="js/main.js"></script>
   </head>
   <body>
   <?php
