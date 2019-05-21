@@ -97,7 +97,7 @@
 		"accountableItem2": "item3",
 		"accountableItem3": "item4"
 	},
-	"numberItems": 18,
+	"number_items": 18,
 	"item1":
 	{
 		"name": "Wohnhaus",
