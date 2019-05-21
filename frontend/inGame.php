@@ -1,6 +1,6 @@
-<canvas id="gameField"></canvas>
-<div class="buyButtons">
-    <table id="buttonTable">
+<div id="gameCanvas"></div>
+<div class="buttonArea">
+    <table id="buyButtonTable">
         <tr>
             <th><span class="tableName">Kaufen</span></th>
         </tr>
@@ -21,6 +21,14 @@
             $tableRowOut .= "</tr>";
             echo $tableRowOut;
         }
+        ?>
+    </table>
+    <table id="actButtonTable">
+        <tr>
+            <th><span class="tableName">Ausführen</span></th>
+        </tr>
+        <?php
+        for
         ?>
     </table>
 </div>
