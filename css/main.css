@@ -4,7 +4,7 @@ body {
 }
 
 .button {
-    color: #ffffff;
+    color: #000000;
     border: 1px solid black;
     background-image: url("../img/backgrounds/button2.jpg");
     text-decoration: none;
@@ -23,20 +23,20 @@ body {
     font-style: oblique;
     font-weight: bold;
     box-shadow: #282c34;
-    shadow
 }
 
 .titleOwn {
     color: #69ff44;
     font-size: 40px;
 }
-#buttonTable{
+#buyButtonTable{
     table-layout: fixed;
-    width: 60%;
+    width: 100%;
+
 }
 
 td,th {
-   /* border: 1px solid black; */
+   /* border: 1px s1lid black; */
     height: 100%;
 
 }
@@ -45,3 +45,9 @@ td,th {
      font-size: 20px;
      width: 100%;
  }
+ .buttonArea{
+     height: 10px;
+     width: 60%;
+     border: 1px s1lid black;
+ }
+
