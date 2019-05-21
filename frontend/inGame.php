@@ -1,14 +1,26 @@
- <canvas id="gameField"></canvas>
- <table id="buttonTable">
-          <tr>
-              <th>Kaufen</th>
-          </tr>
-          <?php
-            for($row = 1; $row <= $number_items; $row++){
-                $tableRowOut = "<tr><td><a class='button' id='buyItem".$row."'href='#'>";
-                $actualItemName = $config['item'.$row]['name'];
-                $tableRowOut .= $actualItemName . "</a></td></tr>";
-                echo $tableRowOut;
+<canvas id="gameField"></canvas>
+<div class="buyButtons">
+    <table id="buttonTable">
+        <tr>
+            <th><span class="tableName">Kaufen</span></th>
+        </tr>
+        <?php
+        //get number of rows: 4 Buttons per row
+        $number_rows = ceil($number_items / 5);
+        for ($row = 0; $row < $number_rows; $row++) {
+            $tableRowOut = "<tr>";
+            for ($col = 1; $col <= 5; $col++) {
+                $buttonNum = $row * 5 + $col;
+                $buttonName = $config['item' . $buttonNum]['name'];
+                $tableRowOut .= "<td>";
+                    if ($buttonNum <= $number_items) {
+                        $tableRowOut .= "<a class='button' id='buyItem" . $buttonNum . "' href='#'>" . $buttonName . "</a>";
+                    }
+                $tableRowOut .= "</td>";
             }
-            ?>
- </table>
+            $tableRowOut .= "</tr>";
+            echo $tableRowOut;
+        }
+        ?>
+    </table>
+</div>
