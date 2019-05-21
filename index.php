@@ -17,12 +17,20 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
 
       <link rel="stylesheet" href="css/main.css">
 
+      <!-- JQuery -->
+      <script src="jquery/jquery.min.js"></script>
+
+      <script src="jquery/hammer.js"></script>
+
+      <link rel="stylesheet" href="jqueryUI/jquery-ui.min.css">
+      <script src="jqueryUI/jquery-ui.min.js"></script>
+
       <!-- include P5.js library -->
       <script src="p5js/p5.min.js"></script>
       <script src="p5js/p5.dom.min.js"></script>
 
       <!-- include game logic -->
-      <script src="js/main.js"></script>
+      <script src="js/gameField.js"></script>
   </head>
   <body>
   <?php

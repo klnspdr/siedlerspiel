@@ -32,7 +32,7 @@ include("connect.php"); //establish database connection
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="jquery/mdb.min.js"></script>
 
-    <script src="js/main.js"></script>
+    <script src="js/gameField.js"></script>
     <link rel="stylesheet" href="css/main.css">
   </head>
 
