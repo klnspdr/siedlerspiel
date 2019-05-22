@@ -14,11 +14,11 @@ for($i=1;$i<=$number_items;$i++){
 		$correctItem=true;
 }
 if(!$correctItem){
-	die("Error: Invalid item");
+	die("Error: Invalid item: ".$item);
 }
 //check if groupId is valid
 if($groupId <= 0 || $groupId > $number_groups){
-	die("Error: Invalid group number");
+	die("Error: Invalid group number: ".$groupId);
 }
 
 
