@@ -21,7 +21,7 @@
                 $buttonName = $config['item' . $buttonNum]['name'];
                 $tableRowOut .= "<td>";
                     if ($buttonNum <= $number_items) {
-                        $tableRowOut .= "<a class='button' id='buyItem" . $buttonNum . "' href='#'>" . $buttonName . "</a>";
+                        $tableRowOut .= "<a class='button buyItem' id='item" . $buttonNum . "' href='#'>" . $buttonName . "</a>";
                     }
                 $tableRowOut .= "</td>";
             }
@@ -32,7 +32,7 @@
     </table>
     <table id="actButtonTable">
         <tr>
-            <th><span class="tableName">Ausführen</span></th>
+            <th><span class="tableName">Aktionen</span></th>
         </tr>
         <?php
         for($row = 1; $row <= $number_actions; $row++){

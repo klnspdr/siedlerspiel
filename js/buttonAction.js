@@ -1,7 +1,10 @@
-function setup(){
-    let gameField = createCanvas(0.6 * $(window).width(),0.7 * $(window).height());
-    gameField.parent('gameCanvas');
-    background(125);
-}
-function draw(){
-}
+$(document).ready( function() {
+    let clickedButton = $( ".buyItem" ).on( "click", function() {
+       // let clientRole = $.post("ajax/getRole.php");
+        var itemId = clickedButton.id;
+        console.log(clickedButton);
+      //$.get("ajax/buyItem.php", {groupId: 1, item: itemId}, function(data){alert(data)});
+    });
+
+});
+

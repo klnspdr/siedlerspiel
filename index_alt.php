@@ -32,8 +32,8 @@ include("connect.php"); //establish database connection
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="jquery/mdb.min.js"></script>
 
-    <script src="js/gameField.js"></script>
-    <link rel="stylesheet" href="css/main.css">
+    <script src="js/main_alt.js"></script>
+    <link rel="stylesheet" href="css/main_alt.css">
   </head>
 
   <body>

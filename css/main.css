@@ -1,5 +1,5 @@
 body {
-    font-family: "DK Wild Bunch";
+    font-family: 'western_font';
     background-color: #e1c09d;
 }
 
@@ -55,14 +55,14 @@ td, th {
 
 .tableName {
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
     width: 100%;
 }
 
 .buttonArea {
     height: 10px;
     width: 60%;
-    border: 1px s1lid black;
+    border: 1px solid black;
 }
 .fieldArea{
     float: left;

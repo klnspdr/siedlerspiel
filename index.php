@@ -15,6 +15,9 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
   <head>
       <title>Siedler 2019</title>
 
+      <!-- include western_font -->
+      <link rel="stylesheet" href="western_font/stylesheet.css" type="text/css"/>
+
       <link rel="stylesheet" href="css/main.css">
 
       <!-- JQuery -->
@@ -31,6 +34,8 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
 
       <!-- include game logic -->
       <script src="js/gameField.js"></script>
+      <script src="js/buttonAction.js"></script>
+
   </head>
   <body>
   <?php
