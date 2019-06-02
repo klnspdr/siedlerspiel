@@ -4,4 +4,6 @@
     } else if(isset($_GET['setRole'])){
         $_SESSION['role'] = $_GET['setRole'];
     }
+
+
 ?>
