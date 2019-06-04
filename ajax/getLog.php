@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/html; charset=UTF-8');
+header('Content-Type: application/json;');
 include("connect.php"); //establish database connection   
 
 $logs = array();
@@ -10,10 +10,9 @@ if ($result->rowCount() > 0) {
     while($row = $result->fetch()) {
         $logs[] = $row;
     }
+   echo json_encode($logs);
 }
 else {
     echo "0 results";
 }
-
-echo json_encode($logs);
 ?>
