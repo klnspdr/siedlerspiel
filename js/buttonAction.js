@@ -1,5 +1,3 @@
-readConfig();
-
 function buyItemButton(itemNum,groupId){
     var result='error';
     //confirmPurchase();
@@ -8,6 +6,7 @@ function buyItemButton(itemNum,groupId){
            // alert(data);
         printError(data);
     });
+    updateInventory(groupId);
 }
 
 function runActionButton(actionNum, groupId) {
@@ -18,7 +17,8 @@ function runActionButton(actionNum, groupId) {
 
             alert(data);
 
-        })
+        });
+    updateInventory(groupId);
 }
 
 function confirmPurchase(itemNum){
@@ -37,7 +37,6 @@ function readConfig(){
     let config;
     $.getJSON("config/config.json", function(data){
         config = data;
-        console.log(config);
-    })
-
+    });
+    return config;
 }
