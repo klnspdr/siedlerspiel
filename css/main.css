@@ -62,7 +62,6 @@ td, th {
 .buttonArea {
     height: 10px;
     width: 60%;
-    border: 1px solid grey;
     float: left;
 }
 .fieldArea{
