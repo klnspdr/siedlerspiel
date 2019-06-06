@@ -79,3 +79,8 @@ td, th {
     height: 20%;
     width: 39%
 }
+
+.itemIcon{
+    width: 20px;
+    height: 20px;
+}

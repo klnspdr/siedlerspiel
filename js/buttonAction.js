@@ -6,7 +6,7 @@ function buyItemButton(itemNum,groupId){
            // alert(data);
         printError(data);
     });
-    updateInventory(groupId);
+    //updateInventory(groupId);
 }
 
 function runActionButton(actionNum, groupId) {
@@ -18,7 +18,7 @@ function runActionButton(actionNum, groupId) {
             alert(data);
 
         });
-    updateInventory(groupId);
+    //updateInventory(groupId);
 }
 
 function confirmPurchase(itemNum){
