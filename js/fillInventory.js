@@ -10,6 +10,25 @@ window.setInterval(function () {
 
 function updateInventory(groupId) {
     setTimeout(function () {
+        $.getJSON("ajax/getGroupData.php")
+            .done(function(data){
+                let groupData = data[groupId - 1];
+                let groupHp = Math.ceil(groupData['hp']);
+                let groupMaxHp = Math.ceil(groupData['max_hp']);
+
+                $("#hpBar").progressbar({
+                    max: groupMaxHp,
+                    value: groupHp
+                });
+               $("hpBar").css({'background-color': '#4c4e50'});
+               if(groupHp/groupMaxHp >= 0.5){
+                   $("#hpBar > div").css({'background-color':'#00ff00'});
+               } else if (groupHp/groupMaxHp > 0.15){
+                   $("#hpBar > div").css({'background-color':'#ffe300'});
+               } else {
+                   $("#hpBar > div").css({'background-color':'#ff0000'});
+               }
+            });
         $.getJSON("ajax/getGroupInventory.php")
             .done(function (data) {
                 let config = [];

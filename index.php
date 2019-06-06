@@ -15,10 +15,7 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
   <head>
       <title>Siedler 2019</title>
 
-      <!-- include western_font -->
-      <link rel="stylesheet" href="western_font/stylesheet.css" type="text/css"/>
 
-      <link rel="stylesheet" href="css/main.css">
 
       <!-- JQuery -->
       <script src="jquery/jquery.min.js"></script>
@@ -40,6 +37,11 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
       <script src="js/buttonAction.js"></script>
       <script src="js/fillLog.js"></script>
       <script src="js/fillInventory.js"></script>
+
+      <!-- include western_font -->
+      <link rel="stylesheet" href="western_font/stylesheet.css" type="text/css"/>
+
+      <link rel="stylesheet" href="css/main.css">
 
   </head>
   <body>
