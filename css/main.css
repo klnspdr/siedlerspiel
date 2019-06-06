@@ -84,3 +84,20 @@ td, th {
     width: 20px;
     height: 20px;
 }
+
+#hpBarText{
+    position: absolute;
+    color: black;
+    width: 50%;
+    left: 25%;
+}
+
+#hpBar{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+
+}

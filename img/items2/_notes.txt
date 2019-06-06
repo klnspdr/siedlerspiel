@@ -1,0 +1,18 @@
+Wohnhaus: house.png
+Palisade:
+Sheriff: sheriff.png
+Hilfssheriff: sheriff.ong in silber
+Cowboy: cowboy.png oder gun.png
+Munitionskiste: bullet.png
+Planwagen: cart.png
+Brunnen:
+Farm: ranch.png
+Saboteur: bandit.png
+Dynamit: dynamite.png
+Saloon: saloon.png oder beer.png
+Bordell:
+Kirche:
+Friedhof: coffin.png
+Bank:
+Bahnhof:
+Europ. Einwanderer:

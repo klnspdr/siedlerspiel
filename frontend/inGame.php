@@ -1,6 +1,8 @@
 <div class="fieldArea" id="gameCanvas"></div>
 <div class="inventoryArea">
-    <div id="hpBar"></div>
+    <div id="hpBar">
+        <span id="hpBarText"></span>
+    </div>
     <table id="invTable">
 
         <tr>

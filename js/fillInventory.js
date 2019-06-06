@@ -1,4 +1,24 @@
+//declare global Variables for groupId, config and itemFiles and get this information at begin of script
 let groupId = 0;
+let config = [];
+let itemFiles = [];
+$.ajax({
+    url: "config/config.json",
+    async: false,
+    dataType: 'json',
+    success: function (data) {
+        config = data;
+    }
+});
+
+$.ajax({
+    url: "img/items2/itemsFiles.json",
+    async: false,
+    dataType: 'json',
+    success: function (data) {
+        itemFiles = data;
+    }
+});
 $.get("ajax/getRole.php",{})
     .done(function (data) {
         groupId = data;
@@ -16,11 +36,12 @@ function updateInventory(groupId) {
                 let groupHp = Math.ceil(groupData['hp']);
                 let groupMaxHp = Math.ceil(groupData['max_hp']);
 
+                $("#hpBarText").text(groupHp +  " / " +  groupMaxHp + " " + config['hpName']);
                 $("#hpBar").progressbar({
                     max: groupMaxHp,
                     value: groupHp
                 });
-               $("hpBar").css({'background-color': '#4c4e50'});
+               $("#hpBar").css({'background-color': '#ffffff'});
                if(groupHp/groupMaxHp >= 0.5){
                    $("#hpBar > div").css({'background-color':'#00ff00'});
                } else if (groupHp/groupMaxHp > 0.15){
@@ -28,30 +49,10 @@ function updateInventory(groupId) {
                } else {
                    $("#hpBar > div").css({'background-color':'#ff0000'});
                }
+
             });
         $.getJSON("ajax/getGroupInventory.php")
             .done(function (data) {
-                let config = [];
-                let itemFiles = [];
-                $.ajax({
-                    url: "config/config.json",
-                    async: false,
-                    dataType: 'json',
-                    success: function (data) {
-                        config = data;
-                    }
-                });
-
-                $.ajax({
-                    url: "img/items2/itemsFiles.json",
-                    async: false,
-                    dataType: 'json',
-                    success: function (data) {
-                        itemFiles = data;
-                    }
-                });
-
-
                 let inventory = data[groupId - 1];
 
 
