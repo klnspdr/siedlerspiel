@@ -36,7 +36,7 @@ function updateInventory(groupId) {
                 let groupHp = Math.ceil(groupData['hp']);
                 let groupMaxHp = Math.ceil(groupData['max_hp']);
 
-                $("#hpBarText").text(groupHp +  " / " +  groupMaxHp + " " + config['hpName']);
+
                 $("#hpBar").progressbar({
                     max: groupMaxHp,
                     value: groupHp
@@ -49,7 +49,7 @@ function updateInventory(groupId) {
                } else {
                    $("#hpBar > div").css({'background-color':'#ff0000'});
                }
-
+                $("#hpBarText").text(groupHp +  " / " +  groupMaxHp + " " + config['hpName']);
             });
         $.getJSON("ajax/getGroupInventory.php")
             .done(function (data) {
