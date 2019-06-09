@@ -52,7 +52,7 @@ if($plusHP == null)
 if($score == null)
 	$score = 0;
 $sqlItem=str_replace('`', '', $item);
-$sql="UPDATE inventory, groups SET `$sqlItem`=`$sqlItem`+1, groups.max_hp=groups.max_hp+:plusMaxHP, groups.hp=groups.hp+:plusHP, groups.score=groups.score+:score WHERE inventory.groupId=:groupId AND groups.groupId=:groupId;";
+$sql="UPDATE inventory, groups SET `$sqlItem`=`$sqlItem`+1, groups.max_hp=groups.max_hp+:plusMaxHP, groups.hp= LEAST(groups.hp+:plusHP, groups.max_hp), groups.score=groups.score+:score WHERE inventory.groupId=:groupId AND groups.groupId=:groupId;";
 $statement = $pdo->prepare($sql);
 if($statement->execute(array(':plusMaxHP'=>$plusMaxHP, 'plusHP'=>$plusHP, ':score'=>$score, ':groupId'=>$groupId))){
 	echo createLog($groupId, $item, $config, $pdo);
