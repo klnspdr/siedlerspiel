@@ -37,11 +37,6 @@ function draw() {
 
 }
 
-function drawAlert() {
-    noStroke();
-    fill(255, 0, 0, 50);
-    rect(mapX(0), mapY(0), width, height);
-}
 
 
 function mapX(x) {
