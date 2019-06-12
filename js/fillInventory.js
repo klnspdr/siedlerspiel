@@ -1,3 +1,29 @@
+//declare global Variables for groupId, config and itemFiles and get this information at begin of script
+let groupId = 0;
+let config = [];
+let itemFiles = [];
+$.ajax({
+    url: "config/config.json",
+    async: false,
+    dataType: 'json',
+    success: function (data) {
+        config = data;
+    }
+});
+
+$.ajax({
+    url: "img/items2/itemsFiles.json",
+    async: false,
+    dataType: 'json',
+    success: function (data) {
+        itemFiles = data;
+    }
+});
+$.get("ajax/getRole.php",{})
+    .done(function (data) {
+        groupId = data;
+    });
+
 window.setInterval(function () {
     updateInventory(groupId);
 },1000);
@@ -6,8 +32,7 @@ function updateInventory(groupId) {
     setTimeout(function () {
         $.getJSON("ajax/getGroupData.php")
             .done(function(data){
-                wholeGroupData = data
-                let groupData = wholeGroupData[groupId - 1];
+                let groupData = data[groupId - 1];
                 let groupHp = Math.ceil(groupData['hp']);
                 let groupMaxHp = Math.ceil(groupData['max_hp']);
 
@@ -28,8 +53,7 @@ function updateInventory(groupId) {
             });
         $.getJSON("ajax/getGroupInventory.php")
             .done(function (data) {
-                wholeInv = data;
-                let inventory = wholeInv[groupId - 1];
+                let inventory = data[groupId - 1];
 
 
                 let tableContent = "<tbody id='invTableBody'>";
@@ -38,7 +62,7 @@ function updateInventory(groupId) {
                     tableContent += "<tr>";
                     for (var col = 1; col <= 6; col++) {
                         var itemNum = row * 6 + col;
-                        tableContent += "<td class='invItemField'><img class='itemIcon' src='" + config['icon_file_dir'] + config['item' + itemNum]['icon_file_name'] + "'>: " + inventory['item' + itemNum] + " </td>";
+                        tableContent += "<td><img class='itemIcon' src='img/items2/" + itemFiles['item' + itemNum] + "'>: " + inventory['item' + itemNum] + " </td>";
                     }
                     tableContent += "</tr>";
                 }
@@ -50,7 +74,7 @@ function updateInventory(groupId) {
 
                 $("#invTableBody").remove();
                 $("#invTable").after(tableContent);
-                console.log("updated inv of "+groupId);
+                console.log("updated inv");
             });
     }, 100);
 }

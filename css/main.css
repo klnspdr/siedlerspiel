@@ -81,10 +81,9 @@ td, th {
     width: 39%;
 }
 
-/* INVENTORY */
-
-#invTable{
-    text-align: center;
+.itemIcon{
+    width: 20px;
+    height: 20px;
 }
 
 #hpBarText{
@@ -92,7 +91,6 @@ td, th {
     color: black;
     width: 50%;
     left: 25%;
-    font-family: "American Typewriter";
 }
 
 #hpBar{
@@ -104,14 +102,6 @@ td, th {
     line-height: 50px;
 }
 
-.invItemField {
-    width: 100px;
-    font-size: 20px;
+#invTable{
     text-align: center;
-    align-items: center;
-}
-
-.itemIcon{
-    width: 30px;
-    height: 30px;
 }

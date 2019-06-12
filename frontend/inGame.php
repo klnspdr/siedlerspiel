@@ -1,10 +1,13 @@
 <div class="fieldArea" id="gameCanvas"></div>
 <div class="inventoryArea">
-    <div class="areaName">INVENTORY</div>
     <div id="hpBar">
         <span id="hpBarText"></span>
     </div>
     <table id="invTable">
+
+        <tr>
+            <th>INVENTORY</th>
+        </tr>
         <tbody id="invTableBody">
 
         </tbody>
