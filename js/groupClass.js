@@ -1,29 +1,40 @@
 class Group {
-    constructor(groupId) {
+    constructor(groupId,x,y) {
         this.groupId = groupId;
+        this.x = x;
+        this.y = y;
     }
 
-    draw(x, y) {
-        let mx = mapX(x);
-        let my = mapY(y);
+    draw() {
+
+        stroke(0);
         strokeWeight(2);
-        fill(200);
-        ellipse(mx, my, 20, 20);
+        fill(config['group_colors']['gr'+this.groupId]);
+        ellipse(this.x, this.y, 20, 20);
         textSize(20);
         fill(0);
-        text(this.groupId, mx, my);
-        this.updateShownInfo(mx, my);
+        noStroke();
+        textStyle(NORMAL);
+        text(this.groupId, this.x, this.y);
+        this.drawName();
     }
 
-    updateShownInfo(x, y) {
+    drawName(){
+        textStyle(BOLD);
+        textSize(15);
+        text(config['group_names']['gr'+this.groupId],this.x,this.y-30);
+    }
+
+    updateShownInfo() {
         //console.log(wholeGroupData);
         if (wholeGroupData != null && wholeInv != null) {
             let info = wholeGroupData[this.groupId - 1];
             let inv = wholeInv[this.groupId - 1];
             strokeWeight(0);
             textSize(10);
-            text("Punkte: " + info['score'], x, y + 50);
-            this.drawHpBar(x, y, info['hp'], info['max_hp']);
+            textStyle(NORMAL);
+            text("Punkte: " + info['score'], this.x, this.y + 50);
+            this.drawHpBar(this.x, this.y, info['hp'], info['max_hp']);
         }
     }
 
@@ -47,6 +58,7 @@ class Group {
         //rect(x-(50-filledLength)/2+)
         fill(0);
         textSize(10);
+        textStyle(NORMAL);
         text(hp + " / " + maxHp, x, y + 30)
     }
 
@@ -57,22 +69,24 @@ class Enemy extends Group {
         console.log(this.groupId);
     }
 
-    checkDead(x, y) {
+    draw(){
+
         if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
-            fill('#ff0000aa');
-            rect(mapX(x), mapY(y), 100, 100);
+            //fill('#ff0000aa');
+            image(tombStone,this.x,this.y,50,50);
+            super.drawName();
+        } else {
+            super.draw();
 
         }
-    }
+        super.updateShownInfo(this.x,this.y);
 
+    }
 }
 
 class Player extends Group {
-    /* draw(x, y) {
-         fill('#00ff00');
-         ellipse(mapX(x), mapY(y), 20, 20);
-         textSize(20);
-         fill(0);
-         text(this.groupId, mapX(x), mapY(y));
-     }*/
+   draw(){
+       super.draw();
+       super.updateShownInfo(this.x,this.y);
+   }
 }

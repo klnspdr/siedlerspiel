@@ -1,8 +1,13 @@
+let tombStone;
+function preload(){
+    tombStone = loadImage('img/tombStone.png');
+}
 
 function setup() {
     let gameField = createCanvas(0.59 * $(window).width(), 0.67 * $(window).height());
     gameField.parent('gameCanvas');
     background(125);
+    imageMode(CENTER);
     rectMode(CENTER);
     textAlign(CENTER,CENTER);
     ellipseMode(RADIUS);
@@ -21,20 +26,15 @@ function draw() {
     ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
 
     strokeWeight(2);
-    let positionIndex = 1;
     if(typeof player != "undefined") {
         player.draw(0, height * 0.35);
     }
     for(let enemy of enemies){
-        let angle = TWO_PI / config['number_groups'] * positionIndex + PI/2 - PI/config['number_groups']* 2 *player.groupId;
-        let x = cos(angle) * width * 0.4;
-        let y = sin(angle) * height * 0.35;
         if( enemy != "") {
-            enemy.draw(x, y);
-            enemy.checkDead(x,y);
+            enemy.draw();
+            //enemy.checkDead(x,y);
         }
 
-        positionIndex++;
     }
 
 }
