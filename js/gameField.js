@@ -1,7 +1,9 @@
 let tombStone;
+let bgMap;
 
 function preload() {
     tombStone = loadImage('img/tombStone.png');
+    bgMap = loadImage('img/backgrounds/map.svg');
 }
 
 function setup() {
@@ -21,6 +23,7 @@ function setup() {
 
 function draw() {
     background(255);
+    image(bgMap,mapX(0),mapY(-50),width,width);
     stroke(0);
     strokeWeight(1);
     noFill();
