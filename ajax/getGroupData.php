@@ -11,7 +11,7 @@ if($deathPunishment == null)
 	$deathPunishment = 0;
 
 $groups = array();
-$sql = "SELECT *, (score+$hpBonus*hp-IF(hp=0, $deathPunishment, 0)) AS final_score FROM groups";	
+$sql = "SELECT *, GREATEST(0, (score+$hpBonus*hp-IF(hp=0, $deathPunishment, 0))) AS final_score FROM groups";	
 $statement = $pdo->prepare("sql");
 $result = $pdo->query($sql);
 

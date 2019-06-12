@@ -88,7 +88,7 @@ if($attackSuccess){
 		$sql="BEGIN;
 		UPDATE groups SET hp=GREATEST((@old_hp:=hp)-:damage*:mult, 0) WHERE groupId=:targetId;
 		SELECT @killing:=IF((:damage*:mult>=@old_hp) AND (@old_hp>0), true, false) AS killing from groups LIMIT 1;
-		UPDATE groups SET score=score-@killing*:killPunishment-:scorePunishment WHERE groupId=:targetId;
+		UPDATE groups SET score=GREATEST(0, score-@killing*:killPunishment-:scorePunishment) WHERE groupId=:targetId;
 		UPDATE groups SET score=score+@killing*:killBonus+IF(@killing, @old_hp, :score*:mult*(@old_hp>0)) WHERE groupId=:groupId;
 		COMMIT;";
 		$statement = $pdo->prepare($sql);
