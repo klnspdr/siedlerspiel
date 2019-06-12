@@ -22,17 +22,32 @@ class Group {
             let inv = wholeInv[this.groupId - 1];
             strokeWeight(0);
             textSize(10);
-            text(info['score'], x, y + 50);
+            text("Punkte: " + info['score'], x, y + 50);
             this.drawHpBar(x, y, info['hp'], info['max_hp']);
         }
     }
 
     drawHpBar(x, y, hp, maxHp) {
-        rect(x, y + 25, 50, 10);
         strokeWeight(1);
+        stroke(0);
         fill(255);
-        let filledLength = 50 * hp/maxHp;
-        rect(x-filledLength/2,y+25,filledLength,10);
+        rect(x, y + 30, 50, 15);
+        //strokeWeight(1);
+        if (hp / maxHp >= 0.5) {
+            fill('#00ff00');
+        } else if (hp / maxHp > 0.15) {
+            fill('#ffe300');
+        } else {
+            fill('#ff0000');
+        }
+        noStroke();
+        let filledLength = 50 * (hp / maxHp);
+        rect(x - (50 - filledLength) / 2 + 0.5, y + 30.5, filledLength - 1, 14);
+        //noStroke();
+        //rect(x-(50-filledLength)/2+)
+        fill(0);
+        textSize(10);
+        text(hp + " / " + maxHp, x, y + 30)
     }
 
 }

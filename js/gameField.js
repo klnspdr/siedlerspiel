@@ -4,12 +4,13 @@ function setup() {
     gameField.parent('gameCanvas');
     background(125);
     rectMode(CENTER);
+    textAlign(CENTER,CENTER);
     ellipseMode(RADIUS);
     setTimeout(function () {
         console.log(groupId);
         createPlayers(groupId);
     },1000);
-    frameRate(1);
+    frameRate(5);
 }
 
 function draw() {
@@ -49,6 +50,6 @@ function mapX(x) {
 }
 
 function mapY(y) {
-    let mappedY = map(y, height / 2, -height / 2, 0, height);
+    let mappedY = map(y+20, height / 2, -height / 2, 0, height);
     return mappedY;
 }
