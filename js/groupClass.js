@@ -57,6 +57,14 @@ class Enemy extends Group {
         console.log(this.groupId);
     }
 
+    checkDead(x, y) {
+        if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
+            fill('#ff0000aa');
+            rect(mapX(x), mapY(y), 100, 100);
+
+        }
+    }
+
 }
 
 class Player extends Group {

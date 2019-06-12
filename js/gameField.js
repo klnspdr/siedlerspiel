@@ -31,7 +31,9 @@ function draw() {
         let y = sin(angle) * height * 0.35;
         if( enemy != "") {
             enemy.draw(x, y);
+            enemy.checkDead(x,y);
         }
+
         positionIndex++;
     }
 
