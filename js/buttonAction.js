@@ -1,6 +1,9 @@
-function buyItemButton(itemNum,groupId){
+function buyItemButton(itemNum, itemName, groupId){
+	console.log("buying item");
     var result='error';
-    //confirmPurchase();
+    if (!confirmPurchase(itemNum, itemName))
+		return;
+
     $.get("ajax/buyItem.php",{groupId: groupId, item: 'item'+itemNum})
         .done(function (data){
            // alert(data);
@@ -15,14 +18,16 @@ function runActionButton(actionNum, groupId) {
     $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+actionNum, targetId: 6})
         .done(function(data){
 
-            alert(data);
+			if(data != "1")
+				alert(data);
 
         });
     //updateInventory(groupId);
 }
 
-function confirmPurchase(itemNum){
-    confirm()
+function confirmPurchase(itemNum, itemName){
+	var msg = "Sicher? Ihr habt auf \"" + itemName + "\" geklickt.";
+    return confirm(msg)
 }
 
 function printError(result) {
