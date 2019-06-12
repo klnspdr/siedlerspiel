@@ -30,6 +30,7 @@ class Group {
         if (wholeGroupData != null && wholeInv != null) {
             let info = wholeGroupData[this.groupId - 1];
             let inv = wholeInv[this.groupId - 1];
+            fill(0);
             strokeWeight(0);
             textSize(10);
             textStyle(NORMAL);
@@ -70,18 +71,28 @@ class Enemy extends Group {
     }
 
     draw(){
+        if(wholeGroupData != null) {
+            if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
+                //fill('#ff0000aa');
+                image(tombStone, this.x, this.y, 50, 50);
+                super.drawName();
+            } else {
+                super.draw();
 
-        if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
-            //fill('#ff0000aa');
-            image(tombStone,this.x,this.y,50,50);
-            super.drawName();
-        } else {
-            super.draw();
-
+            }
+            super.updateShownInfo(this.x, this.y);
         }
-        super.updateShownInfo(this.x,this.y);
-
     }
+
+    selectMode(){
+        super.draw();
+        noFill();
+        stroke('#ff0000');
+        strokeWeight(5);
+        rect(mapX(0),mapY(-20),width,height);
+        super.updateShownInfo(this.x, this.y);
+    }
+
 }
 
 class Player extends Group {
