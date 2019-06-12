@@ -39,7 +39,7 @@ function updateInventory(groupId) {
                     tableContent += "<tr>";
                     for (var col = 1; col <= 6; col++) {
                         var itemNum = row * 6 + col;
-                        tableContent += "<td><img class='itemIcon' src='img/items2/" + itemFiles['item' + itemNum] + "'>: " + inventory['item' + itemNum] + " </td>";
+                        tableContent += "<td><img class='itemIcon' src=' " + config['icon_file_dir'] + config['item'+itemNum]['icon_file_name'] + "'>: " + inventory['item' + itemNum] + " </td>";
                     }
                     tableContent += "</tr>";
                 }

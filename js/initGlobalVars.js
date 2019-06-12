@@ -1,4 +1,4 @@
-//declare global Variables for groupId, config and itemFiles and get this information at begin of script
+//declare global Variables for groupId, config  itemFiles and get this information at begin of script
 
 let config = [];
 $.ajax({
@@ -18,16 +18,6 @@ $.get("ajax/getRole.php")
 
 let wholeGroupData = null;
 let wholeInv = null;
-
-let itemFiles = [];
-$.ajax({
-    url: "img/items2/itemsFiles.json",
-    async: false,
-    dataType: 'json',
-    success: function (data) {
-        itemFiles = data;
-    }
-});
 
 
 let player;
