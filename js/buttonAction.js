@@ -15,12 +15,18 @@ function buyItemButton(itemNum, itemName, groupId){
 function runActionButton(actionNum, groupId) {
     var result = 'error';
     console.log('action'+actionNum);
-    $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+actionNum, targetId: 6})
+    let targetId = null;
+    if(actionNum == 1){
+        targetId = Math.floor((Math.random()*config['number_groups'])+1);
+        //console.log(targetId);
+    } else {
+        targetId = 6;
+    }
+    $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+actionNum, targetId: targetId})
         .done(function(data){
-
-			if(data != "1")
-				alert(data);
-
+            if(data != 1) {
+                alert(data);
+            }
         });
     //updateInventory(groupId);
 }

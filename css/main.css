@@ -103,10 +103,5 @@ td, th {
 }
 
 #invTable{
-    text-align: left;
-}
-
-#invTable td{
-	padding-right: 20px;
-	padding-top: 3px;
+    text-align: center;
 }

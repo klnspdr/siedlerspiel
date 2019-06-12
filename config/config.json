@@ -57,6 +57,24 @@
 		"gr5": "Gruppe 5",
 		"gr6": "Gruppe 6"
 	},
+	"group_images":
+	{
+		"gr1": "",
+		"gr2": "",
+		"gr3": "",
+		"gr4": "",
+		"gr5": "",
+		"gr6": ""
+	},
+	"group_colors":
+	{
+		"gr1": "#ff0000",
+		"gr2": "#00ff00",
+		"gr3": "#0000ff",
+		"gr4": "#ff9900",
+		"gr5": "#990099",
+		"gr6": "#ffff00"
+	},
 	"init_values":
 	{
 		"hp":100,
@@ -98,24 +116,28 @@
 		"accountableItem3": "item4"
 	},
 	"number_items": 18,
+	"icon_file_dir": "img/items2/",
 	"item1":
 	{
 		"name": "Wohnhaus",
 		"score": 2,
 		"plusMaxHP": 10,
-		"plusHP": 10
+		"plusHP": 10,
+		"icon_file_name": "house.png"
 	},
 	"item2":
 	{
 		"name": "Palisade",
 		"score": 10,
 		"max": 6,
+		"icon_file_name": "fence.png",
 		"_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
 	},
 	"item3":
 	{
 		"name": "Sheriff",
 		"max": 1,
+		"icon_file_name": "sheriff.png",
 		"score": 13
 	},
 	"item4":
@@ -124,75 +146,89 @@
 		"max": 1,
 		"score": 6.5,
 		"requirement": "item3",
+		"icon_file_name": "sheriff_help.png",
 		"_comment": "Can only be purchased after item3 has been bought, too"
 	},
 	"item5":
 	{
 		"name": "Cowboy",
-		"score": 0
+		"score": 0,
+		"icon_file_name": "cowboy.png"
 	},
 	"item6":
 	{
 		"name": "Munitionskiste",
-		"score": 0
+		"score": 0,
+		"icon_file_name": "bullet.png"
 	},
 	"item7":
 	{
 		"name": "Planwagen",
-		"score": 13.5
+		"score": 13.5,
+		"icon_file_name": "cart.png"
 	},
 	"item8":
 	{
 		"name": "Brunnen",
 		"score": 6.5,
+		"icon_file_name": "well.png",
 		"_comment": "One per item7 and per five item1 necessary. Each missing = -15 cerdits"
 	},
 	"item9":
 	{
 		"name": "Farm",
-		"score": 7
+		"score": 7,
+		"icon_file_name": "ranch.png"
 	},
 	"item10":
 	{
 		"name": "Saboteur",
 		"score": 0,
+		"icon_file_name": "bandit.png",
 		"_comment": "The one with more item10 wins action1"
 	},
 	"item11":
 	{
 		"name": "Dynamit",
 		"score": 0,
+		"icon_file_name": "dynamite.png",
 		"_comment": "Necessary for action1"
 	},
 	"item12":
 	{
 		"name": "Saloon",
-		"score": 22
+		"score": 22,
+		"icon_file_name": "beer.png"
 	},
 	"item13":
 	{
 		"name": "Bordell",
-		"score": 15
+		"score": 15,
+		"icon_file_name": "dreamcatcher.png"
 	},
 	"item14":
 	{
 		"name": "Kirche",
-		"score": 19.5
+		"score": 19.5,
+		"icon_file_name": "bible.png"
 	},
 	"item15":
 	{
 		"name": "Friedhof",
-		"score": 12
+		"score": 12,
+		"icon_file_name": "coffin.png"
 	},
 	"item16":
 	{
 		"name": "Bank",
-		"score": 32
+		"score": 32,
+		"icon_file_name": "money-bag.png"
 	},
 	"item17":
 	{
 		"name": "Bahnhof",
-		"score": 34
+		"score": 34,
+		"icon_file_name": "rails.png"
 	},
 	"item18":
 	{
@@ -200,17 +236,20 @@
 		"score": 0,
 		"plusHP": 25,
 		"deadAllowed": true,
+		"icon_file_name": "bag.png",
 		"_comment": "repairKit, adds plusHP to hp"
 	},
 	"item19":
 	{
 		"name": "unused",
-		"score": 0
+		"score": 0,
+		"icon_file_name": ""
 	},
 	"item20":
 	{
 		"name": "unused",
-		"score": 0
+		"score": 0,
+		"icon_file_name": ""
 	},
 	"number_actions": 2,
 	"action1":

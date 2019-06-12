@@ -6,7 +6,7 @@
     <table id="invTable">
 
         <tr>
-            <th colspan = "6" >INVENTORY</th>
+            <th>INVENTORY</th>
         </tr>
         <tbody id="invTableBody">
 
