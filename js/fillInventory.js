@@ -1,29 +1,4 @@
-//declare global Variables for groupId, config and itemFiles and get this information at begin of script
-let groupId = 0;
-let config = [];
-let itemFiles = [];
-$.ajax({
-    url: "config/config.json",
-    async: false,
-    dataType: 'json',
-    success: function (data) {
-        config = data;
-    }
-});
-
-$.ajax({
-    url: "img/items2/itemsFiles.json",
-    async: false,
-    dataType: 'json',
-    success: function (data) {
-        itemFiles = data;
-    }
-});
-$.get("ajax/getRole.php",{})
-    .done(function (data) {
-        groupId = data;
-    });
-
+//Vars groupId, config and
 window.setInterval(function () {
     updateInventory(groupId);
 },1000);
@@ -32,6 +7,7 @@ function updateInventory(groupId) {
     setTimeout(function () {
         $.getJSON("ajax/getGroupData.php")
             .done(function(data){
+                wholeGroupData = data;
                 let groupData = data[groupId - 1];
                 let groupHp = Math.ceil(groupData['hp']);
                 let groupMaxHp = Math.ceil(groupData['max_hp']);
@@ -53,6 +29,7 @@ function updateInventory(groupId) {
             });
         $.getJSON("ajax/getGroupInventory.php")
             .done(function (data) {
+                wholeInv = data;
                 let inventory = data[groupId - 1];
 
 
