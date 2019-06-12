@@ -62,7 +62,7 @@ function updateInventory(groupId) {
                     tableContent += "<tr>";
                     for (var col = 1; col <= 6; col++) {
                         var itemNum = row * 6 + col;
-                        tableContent += "<td><img class='itemIcon' src='img/items2/" + itemFiles['item' + itemNum] + "'>: " + inventory['item' + itemNum] + " </td>";
+                        tableContent += "<td><img class='itemIcon' src='img/items2/" + itemFiles['item' + itemNum] + "'> " + inventory['item' + itemNum] + " </td>";
                     }
                     tableContent += "</tr>";
                 }
@@ -72,8 +72,9 @@ function updateInventory(groupId) {
                             } */
                 tableContent += "</tbody>";
 
-                $("#invTableBody").remove();
-                $("#invTable").after(tableContent);
+                $("#invTableBody").replaceWith(tableContent);
+                //$("#invTableBody").remove();
+                //$("#invTable").after(tableContent);
                 console.log("updated inv");
             });
     }, 100);
