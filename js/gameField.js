@@ -44,7 +44,7 @@ function draw() {
                 strokeWeight(5);
                 rect(enemy.x,enemy.y,60,60);
                 if(mouseIsPressed && mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30){
-                    $.get("ajax/runAction.php", {groupId: groupId, action: 'action2', targetId: enemy.groupId})
+                    $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+currentAction, targetId: enemy.groupId})
                         .done(function(data){
                             if(data != 1) {
                                 alert(data);
@@ -55,7 +55,7 @@ function draw() {
 
                         });
                     selectMode = false;
-                    console.log('angriff');
+                    console.log('Target selected');
                 }
             } else {
                 enemy.draw();

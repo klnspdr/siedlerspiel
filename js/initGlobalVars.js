@@ -1,5 +1,6 @@
 //declare global Variables for groupId, config  itemFiles and get this information at begin of script
 let selectMode = false;
+let currentAction = 0;
 
 let config = [];
 $.ajax({

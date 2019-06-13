@@ -35,6 +35,7 @@ function runAction(actionNum, groupId){
                 }
             });
     } else {
+		currentAction = actionNum;
         selectMode = true;
     }
 }
