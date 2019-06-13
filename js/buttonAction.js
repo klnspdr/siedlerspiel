@@ -17,17 +17,17 @@ function runActionButton(actionNum, groupId) {
     console.log('action'+actionNum);
     let targetId = null;
     if(actionNum == 1){
-        targetId = Math.floor((Math.random()*config['number_groups'])+1);
-        //console.log(targetId);
+        targetId = Math.floor((Math.random()*config['number_groups'])+1);//console.log(targetId);
+        $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+actionNum, targetId: targetId})
+            .done(function(data){
+                if(data != 1) {
+                    alert(data);
+                }
+            });
     } else {
-        targetId = 6;
+        selectMode = true;
     }
-    $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+actionNum, targetId: targetId})
-        .done(function(data){
-            if(data != 1) {
-                alert(data);
-            }
-        });
+
     //updateInventory(groupId);
 }
 
