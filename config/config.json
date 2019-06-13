@@ -23,7 +23,8 @@
 			"killPunishment": "will be substracted from the target group's score if they get killed",
 			"damage":"will be substracted from the target group's hp if the attack is successfull",
 			"defense":"this is a sub group containing items (e.g. item1) as key and numbers as values. With those numbers and items the target's probability to defend itself is calculated. This probability exists even after the comparison of compareItem was successfull for the attacking group. The number specifies a percentage for the defense probability. Each number will be multiplied with the number of the corresponding item the target group has and then the sum will be calculated for the total defense probability",
-			"deadAllowed":"Set to true if the action can be performed even if the group is dead, set to false or leave empty/out otherwise"
+			"deadAllowed":"Set to true if the action can be performed even if the group is dead, set to false or leave empty/out otherwise",
+			"randomOpponent":"Set true to choose a random target. Otherwise the user can pick the target."
 		},
 		"error_messages":
 		{
@@ -262,6 +263,7 @@
 		"scorePunishment": 10,
 		"uses": "item11",
 		"requirement": "item11",
+		"randomOpponent": true,
 		"_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem"
 	},
 	"action2":

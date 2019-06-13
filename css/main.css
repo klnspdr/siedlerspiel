@@ -110,3 +110,27 @@ td, th {
 	padding-right: 20px;
 	padding-top: 3px;
 }
+
+.confirmDialog .ui-dialog-titlebar-close {
+	display: none;
+}
+
+.confirmDialog .ui-dialog-titlebar {
+	display: none;
+}
+
+.ui-dialog {
+	padding: 0px !important;
+}
+
+.confirmDialog .ui-button {
+	border-radius: 5px;
+}
+
+.confirmDialog .ui-widget-content {
+	border: none;
+}
+
+.confirmDialog .ui-dialog-buttonpane {
+	background-color: #F2F2F2;
+}

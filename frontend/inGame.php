@@ -55,7 +55,7 @@
         </tr>
         <?php
         for($row = 1; $row <= $number_actions; $row++){
-            $tableRowOut = "<tr><td><a class='button' onclick='runActionButton($row, $clientRole)' id='actAction".$row."' href='#'>".$config['action'.$row]['name']."</a></td></tr>";
+            $tableRowOut = "<tr><td><a class='button' onclick='runActionButton($row, \"".$config['action'.$row]['name']."\", $clientRole)' id='actAction".$row."' href='#'>".$config['action'.$row]['name']."</a></td></tr>";
             echo $tableRowOut;
         }
         ?>

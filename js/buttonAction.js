@@ -1,22 +1,32 @@
 function buyItemButton(itemNum, itemName, groupId){
 	console.log("buying item");
     var result='error';
-    if (!confirmPurchase(itemNum, itemName))
-		return;
 
+	var dialogText = "Sicher? Ihr habt auf <b>"+itemName+"</b> geklickt";
+//	var onConfirm = "$.get(\"ajax/buyItem.php\",{groupId: "+groupId+", item: \"item"+itemNum+"\"}).done(function (data){ printError(data); });";
+	var onConfirm = "buyItem("+itemNum+", "+groupId+");";
+	confirmDialog(dialogText, onConfirm);
+}
+
+function buyItem(itemNum, groupId){
     $.get("ajax/buyItem.php",{groupId: groupId, item: 'item'+itemNum})
         .done(function (data){
            // alert(data);
         printError(data);
     });
-    //updateInventory(groupId);
 }
 
-function runActionButton(actionNum, groupId) {
+function runActionButton(actionNum, actionName, groupId) {
+	var dialogText = "Sicher? Ihr habt auf <b>"+actionName+"</b> geklickt";
+	var onConfirm = "runAction("+actionNum+", "+groupId+");";
+	confirmDialog(dialogText, onConfirm);
+}
+
+function runAction(actionNum, groupId){
     var result = 'error';
     console.log('action'+actionNum);
     let targetId = null;
-    if(actionNum == 1){
+	if(config['action'+actionNum]['randomOpponent'] == true){
         targetId = Math.floor((Math.random()*config['number_groups'])+1);//console.log(targetId);
         $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+actionNum, targetId: targetId})
             .done(function(data){
@@ -27,8 +37,6 @@ function runActionButton(actionNum, groupId) {
     } else {
         selectMode = true;
     }
-
-    //updateInventory(groupId);
 }
 
 function confirmPurchase(itemNum, itemName){
@@ -50,4 +58,28 @@ function readConfig(){
         config = data;
     });
     return config;
+}
+
+function confirmDialog(message, onConfirm){
+	if (!$( "#dialog-confirm" ).length) {
+		$('<div id=\"dialog-confirm\" class=\"confirmDialog\"></div>').appendTo('body')
+		.html('<div>' + message + '</div>')
+		.dialog({
+			modal: true, autoOpen: true,
+			width: 'auto', resizable: false, dialogClass: "confirmDialog",
+			buttons: {
+				Nein: function () {
+					$(this).dialog("close");
+				},
+				Ja: function () {
+					console.log("Ja clicked");
+					eval(onConfirm);
+					$(this).dialog("close");
+				}                
+			},
+			close: function (event, ui) {
+				$(this).remove();
+			}
+		});
+	}
 }
