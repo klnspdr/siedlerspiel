@@ -49,8 +49,9 @@ function updateInventory(groupId) {
                             } */
                 tableContent += "</tbody>";
 
-                $("#invTableBody").remove();
-                $("#invTable").after(tableContent);
+                $("#invTableBody").replaceWith(tableContent);
+//                $("#invTableBody").remove();
+//                $("#invTable").after(tableContent);
                 console.log("updated inv");
             });
     }, 100);
