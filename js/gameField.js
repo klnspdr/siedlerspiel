@@ -1,9 +1,7 @@
-let tombStone;
-let bgMap;
-
 function preload() {
     tombStone = loadImage('img/tombStone.png');
     bgMap = loadImage('img/backgrounds/map.svg');
+    skull = loadImage('img/skull.svg');
 }
 
 function setup() {
@@ -23,18 +21,14 @@ function setup() {
 
 function draw() {
     background(255);
-    image(bgMap,mapX(0),mapY(-50),width,width);
+    image(bgMap, mapX(0), mapY(-50), width, width);
     stroke(0);
     strokeWeight(1);
     noFill();
     ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
 
     strokeWeight(2);
-    if (typeof player != "undefined") {
 
-            player.draw(0, height * 0.35);
-
-    }
     for (let enemy of enemies) {
         if (enemy != "") {
             if (selectMode) {
@@ -42,13 +36,16 @@ function draw() {
                 noFill();
                 stroke('#ff0000');
                 strokeWeight(5);
-                rect(enemy.x,enemy.y,60,60);
-                if(mouseIsPressed && mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30){
-                    $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+currentAction, targetId: enemy.groupId})
-                        .done(function(data){
-                            if(data != 1) {
+                rect(enemy.x, enemy.y, 60, 60);
+                if (mouseIsPressed && mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
+                    $.get("ajax/runAction.php", {
+                        groupId: groupId,
+                        action: 'action' + currentAction,
+                        targetId: enemy.groupId
+                    })
+                        .done(function (data) {
+                            if (data != 1) {
                                 alert(data);
-
 
 
                             }
@@ -61,6 +58,12 @@ function draw() {
                 enemy.draw();
             }
         }
+
+    }
+
+    if (typeof player != "undefined") {
+
+        player.draw();
 
     }
 

@@ -97,7 +97,18 @@ class Enemy extends Group {
 
 class Player extends Group {
    draw(){
-       super.draw();
-       super.updateShownInfo(this.x,this.y);
+       if(wholeGroupData != null) {
+
+           super.draw();
+           super.updateShownInfo(this.x, this.y);
+           if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
+               tint(255,0,0, 200);
+               image(skull, mapX(0), mapY(-25), height, height)
+           } else{
+               noTint();
+           }
+       }
    }
+
+
 }

@@ -2,6 +2,11 @@
 let selectMode = false;
 let currentAction = 0;
 
+//Images:
+let tombStone;
+let bgMap;
+let skull;
+
 let config = [];
 $.ajax({
     url: "config/config.json",
