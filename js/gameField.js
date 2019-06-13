@@ -2,6 +2,10 @@ function preload() {
     tombStone = loadImage('img/tombStone.png');
     bgMap = loadImage('img/backgrounds/map.svg');
     skull = loadImage('img/skull.svg');
+    for (let itemNum = 1; itemNum <= config['number_items']; itemNum++) {
+        itemIcons.push(loadImage(config['icon_file_dir'] + config['item' + itemNum]['icon_file_name']));
+    }
+    console.log(itemIcons);
 }
 
 function setup() {
@@ -21,11 +25,13 @@ function setup() {
 
 function draw() {
     background(255);
-    image(bgMap, mapX(0), mapY(-50), width, width);
+    imageMode(CORNER);
+    image(bgMap, 0, 0, width, width);
+    imageMode(CENTER);
     stroke(0);
     strokeWeight(1);
     noFill();
-    ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
+    //ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
 
     strokeWeight(2);
 
@@ -57,9 +63,15 @@ function draw() {
             } else {
                 enemy.draw();
             }
+
+            if (enemy.groupId === invModeGroup) {
+                enemy.showInventory();
+            }
+
         }
 
     }
+
 
     if (typeof player != "undefined") {
 
@@ -69,6 +81,23 @@ function draw() {
 
 }
 
+function mouseClicked() {
+    console.log('mouseClicked');
+    if (invModeGroup === 0) {
+        for (let enemy of enemies) {
+            if (enemy != "") {
+                if (mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
+                    invModeGroup = enemy.groupId;
+                    console.log(invModeGroup + 'inv');
+                }
+            }
+        }
+    } else {
+        invModeGroup = 0;
+        console.log(invModeGroup + 'inv');
+    }
+}
+
 
 function mapX(x) {
     let mappedX = map(x, -width / 2, width / 2, 0, width);
@@ -76,6 +105,6 @@ function mapX(x) {
 }
 
 function mapY(y) {
-    let mappedY = map(y + 20, height / 2, -height / 2, 0, height);
+    let mappedY = map(y + 10, height / 2, -height / 2, 0, height);
     return mappedY;
 }
