@@ -11,5 +11,16 @@
         </tbody>
     </table>
 </div>
-<div class=""
+<div class="rankListArea">
+    <table id="rankListTable">
+        <thead>
+
+            <td class="tableName">RANGLISTE</td>
+
+        </thead>
+        <tbody id="rankListTableBody">
+
+        </tbody>
+    </table>
+</div>
 <?php
