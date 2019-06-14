@@ -106,7 +106,46 @@
 		{
 			"hp": 1,
 			"deathPunishment": 40,
-			"_comment":"for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score"
+			"ratios":
+			{
+				"item8": 
+				{
+					"required_by":
+					{
+						"item1":
+						{
+							"multiplicator": 5,
+							"consuming": true,
+							"punishment": 15,
+							"once_punishment": 0,
+							"bonus": 0
+						},
+						"item9":
+						{
+							"multiplicator": 1,
+							"consuming": true,
+							"punishment": 15,
+							"once_punishment": 0,
+							"bonus": 0
+						}
+					}
+				},
+				"item9":
+				{
+					"required_by":
+					{
+						"item1":
+						{
+							"multiplicator": 5,
+							"consuming": true,
+							"punishment": 15,
+							"once_punishment": 0,
+							"bonus": 0
+						}
+					}
+				}
+			},
+			"_comment":"for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score. ratios: the element opening the group is required. In the required_by array any number of elements can be listed, the all present an item that requires the first item. For each requiring item the following parameters can be given: multiplicator: n of the requiring items require only 1 required item. consuming: if more than one item require the other item consuming: true means that the amount of the required item used to fulfill this requirement will not be available to fulfill other requirements any more. punishment: if 5 item1 require one item2, for each begun 5 item1, that cannot be compensated with one item2, punishment will be substracted from the score. once_punishment: if the dependency is not fulfilled, once_punishment will be substracted from the score independent on how much the dependency is not fulfilled. bonus: will be added to the score if the dependency is fulfilled"
 		},
 	"defenseProbability":
 	{
@@ -181,7 +220,7 @@
 		"score": 6.5,
 		"icon_file_name": "well.png",
         "visible_for_others": true,
-		"_comment": "One per item7 and per five item1 necessary. Each missing = -15 credits"
+		"_comment": "One per item9 and per five item1 necessary. Each missing = -15 credits"
 	},
 	"item9":
 	{
