@@ -21,6 +21,7 @@ function setup() {
         createPlayers(groupId);
     }, 1000);
     frameRate(15);
+    console.log('setup complete');
 }
 
 function draw() {
@@ -31,12 +32,13 @@ function draw() {
     stroke(0);
     strokeWeight(1);
     noFill();
-    //ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
+    ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
 
     strokeWeight(2);
 
     for (let enemy of enemies) {
-        if (enemy != "") {
+        //console.log(enemy.groupId);
+       if (enemy != "") {
             if (selectMode) {
                 enemy.selectMode();
                 noFill();

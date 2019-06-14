@@ -19,7 +19,7 @@ $.ajax({
     }
 });
 
-let groupId = 2;
+let groupId = 100;
 $.get("ajax/getRole.php")
     .done(function (data) {
         groupId = parseInt(data);
@@ -33,28 +33,28 @@ let player;
 let enemies = [];
 
 function createPlayers(groupId) {
-    player = new Player(groupId, mapX(0), mapY(height * 0.35), 0, height * 0.35);
+    if (groupId !== 100) {
+        player = new Player(groupId, mapX(0), mapY(height * 0.35), 0, height * 0.35);
 
-    for (let i = 1; i <= config['number_groups']; i++) {
-        if (i !== groupId) {
-            let angle = TWO_PI / config['number_groups'] * i + PI / 2 - PI / config['number_groups'] * 2 * player.groupId;
+        for (let i = 1; i <= config['number_groups']; i++) {
+            if (i !== groupId) {
+                let angle = TWO_PI / config['number_groups'] * i + PI / 2 - PI / config['number_groups'] * 2 * player.groupId;
+                let x = cos(angle) * width * 0.4;
+                let y = sin(angle) * height * 0.35;
+                enemies.push(new Enemy(i, mapX(x), mapY(y), x, y));
+            } else {
+                enemies.push("");
+            }
+
+        }
+    } else {
+        for (let i = 1; i <= config['number_groups']; i++) {
+            let angle = TWO_PI / config['number_groups'] * i + PI / 2 - PI / config['number_groups'] * 2 ;
             let x = cos(angle) * width * 0.4;
             let y = sin(angle) * height * 0.35;
             enemies.push(new Enemy(i, mapX(x), mapY(y), x, y));
-        } else {
-            enemies.push("");
         }
-
+        console.log(enemies);
+        console.log(player);
     }
-
-    console.log(enemies);
-    console.log(player);
 }
-
-
-
-
-
-
-
-
