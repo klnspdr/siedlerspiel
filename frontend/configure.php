@@ -7,6 +7,7 @@
             echo "<option value='$i'>".$config["group_names"]["gr".$i]."</option>"; //add one select option for each configured group and get group name from config
         }
         ?>
+        <option value="100">OVERVIEW (Beamer)</option>
     </select><br>
     <p>
         <input type="checkbox" required id="checkRoleSub"><label for="checkRoleSub">Rolle auswählen</label><br>
