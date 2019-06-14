@@ -202,7 +202,7 @@
     },
 	"item6":
 	{
-		"name": "Munitionskiste",
+		"name": "Munition",
 		"score": 0,
 		"icon_file_name": "bullet.png",
         "visible_for_others": true
