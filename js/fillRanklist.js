@@ -1,9 +1,8 @@
 window.setInterval(function () {
-    //if (groupId == 100) {
+    if (groupId == 100) {
 
         $.getJSON("ajax/getGroupData.php")
             .done(function(data){
-                console.log(data);
 				data.sort((a,b) => (a['final_score'] > b['final_score']) ? 1 : ((b['final_score'] > a['final_score']) ? -1 : 0));
                 let sortedGroupData = data;
                 let tableContent = "<tbody id='rankListTableBody'>";
@@ -15,12 +14,11 @@ window.setInterval(function () {
                 tableContent += "</tbody>";
                 $('#rankListTableBody').replaceWith(tableContent);
 
-                console.log("updated ranks");
             })
             .fail(function () {
                 console.log("error");
             });
-   // }
+    }
 
 
 },1000);
