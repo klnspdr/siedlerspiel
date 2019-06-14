@@ -8,10 +8,16 @@ function updateLog(){
         .done(function(data){
             log = data;
 
-            if ( log.length <= 30){
+            let shownMessages = Math.floor(0.8 * $(window).height()/15)-1;
+
+            if(groupId != 100){
+                shownMessages -= 9;
+            }
+            console.log(shownMessages + " log");
+            if ( log.length <= shownMessages){
                 var indexStart = 0;
             } else {
-                indexStart = log.length - 30;
+                indexStart = log.length - shownMessages;
             }
             var tableContent = "<tbody id='logTableBody'>";
             for(var row = indexStart; row < log.length; row++){
