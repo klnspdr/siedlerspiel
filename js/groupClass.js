@@ -101,7 +101,7 @@ class Enemy extends Group {
         stroke(0);
         strokeWeight(1);
         if (wholeInv != null) {
-            let groupInv = wholeInv[groupId - 1];
+            let groupInv = wholeInv[this.groupId - 1];
             let numberRows = Math.ceil(config['number_items'] / 6);
             if (this.y <= height / 2 || (this.x >= mapX(0) - 1 && this.x <= mapX(0) + 1)) {
                 rect(this.x - this.unMapX / (0.01 * width), this.y - 80, 220, 90);
