@@ -77,6 +77,17 @@ if ($result === FALSE) {
 	die("Table creation failed: " . $pdo->errorInfo()[2]);
 }
 
+$sql="CREATE TABLE IF NOT EXISTS gameControl(
+	session INT AUTO_INCREMENT,
+	displayScore BOOLEAN DEFAULT TRUE,
+	PRIMARY KEY (session)
+	);";
+
+$result = $pdo->query($sql);
+if ($result === FALSE) {
+	die("Table creation failed: " . $pdo->errorInfo()[2]);
+}
+
 //Create entries in tables from config file
 $json_string = file_get_contents("../config/config.json");
 $config = json_decode($json_string, true);
@@ -98,7 +109,7 @@ if($result && $result->rowCount()<$number_groups){
 
 $result = $pdo->query("SELECT * FROM inventory");
 if($result && $result->rowCount()<$number_groups){
-	$number_items=$config['numberItems'];
+	$number_items=$config['number_items'];
 	$sql="INSERT INTO inventory (groupId";
 	$sql2=") VALUES (?,";
 	for($j=1;$j<=$number_items;$j++){
@@ -118,5 +129,15 @@ if($result && $result->rowCount()<$number_groups){
 		}
 	}
 }
+
+$result = $pdo->query("SELECT * FROM gameControl");
+if($result && $result->rowCount() == 0){
+	$sql="INSERT INTO gameControl (displayScore) VALUES (?);";
+	$statement = $pdo->prepare($sql);
+	if(!$statement->execute(array(true))){
+		die("Creating gameControl entry failed: " . $statement->errorInfo()[2]);
+	}
+}
+
 
 ?>

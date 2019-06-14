@@ -19,4 +19,10 @@ if ($result === FALSE) {
 	die("Could not delete table: " . $pdo->errorInfo()[2]);
 }
 
+$sql="DROP TABLE IF EXISTS gameControl";
+$result = $pdo->query($sql);
+if ($result === FALSE) {
+	die("Could not delete table: " . $pdo->errorInfo()[2]);
+}
+
 ?>
