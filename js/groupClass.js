@@ -36,6 +36,7 @@ class Group {
             strokeWeight(0);
             textSize(10);
             textStyle(NORMAL);
+			if(info['displayScore'] == true)
             text("Punkte: " + info['score'], this.x, this.y + 50);
             this.drawHpBar(this.x, this.y, info['hp'], info['max_hp']);
         }

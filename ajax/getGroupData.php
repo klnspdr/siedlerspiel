@@ -41,7 +41,7 @@ foreach($config['finalScores']['ratios'] AS $requiredItem => $requirements) {
 		}
 	}
 }
-$sql .= ")) AS final_score FROM groups LEFT JOIN inventory ON groups.groupId=inventory.groupId;";	
+$sql .= ")) AS final_score, (SELECT displayScore FROM gameControl LIMIT 1) AS displayScore FROM groups LEFT JOIN inventory ON groups.groupId=inventory.groupId;";	
 $statement = $pdo->prepare("sql");
 $result = $pdo->query($sql);
 
