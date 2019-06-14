@@ -54,9 +54,13 @@ td, th {
 }
 
 .tableName {
-    text-align: center;
-    font-size: 30px;
+    border: 1px solid black;
     width: 100%;
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    display: inline-grid;
+    align-items: center;
 }
 
 .buttonArea {
@@ -133,4 +137,13 @@ td, th {
 
 .confirmDialog .ui-dialog-buttonpane {
 	background-color: #F2F2F2;
+}
+
+.rankListArea {
+    height: 10px;
+    width: 60%;
+    float: left;
+}
+#rankListTable > th{
+    text-align: center;
 }

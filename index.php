@@ -39,6 +39,7 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
       <script src="js/buttonAction.js"></script>
       <script src="js/fillLog.js"></script>
       <script src="js/fillInventory.js"></script>
+      <script src="js/fillRanklist.js"></script>
 
 
       <!-- include western_font -->
