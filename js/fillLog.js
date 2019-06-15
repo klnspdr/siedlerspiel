@@ -13,7 +13,6 @@ function updateLog(){
             if(groupId != 100){
                 shownMessages -= 9;
             }
-            //console.log(shownMessages + " log");
             if ( log.length <= shownMessages){
                 var indexStart = 0;
             } else {

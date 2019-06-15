@@ -1,5 +1,4 @@
 function buyItemButton(itemNum, itemName, groupId){
-	console.log("buying item");
     var result='error';
 
 	var dialogText = "Sicher? Ihr habt auf <b>"+itemName+"</b> geklickt";
@@ -24,10 +23,9 @@ function runActionButton(actionNum, actionName, groupId) {
 
 function runAction(actionNum, groupId){
     var result = 'error';
-    console.log('action'+actionNum);
     let targetId = null;
 	if(config['action'+actionNum]['randomOpponent'] == true){
-        targetId = Math.floor((Math.random()*config['number_groups'])+1);//console.log(targetId);
+        targetId = Math.floor((Math.random()*config['number_groups'])+1);
         $.get("ajax/runAction.php", {groupId: groupId, action: 'action'+actionNum, targetId: targetId})
             .done(function(data){
                 if(data != 1) {
@@ -73,7 +71,6 @@ function confirmDialog(message, onConfirm){
 					$(this).dialog("close");
 				},
 				Ja: function () {
-					console.log("Ja clicked");
 					eval(onConfirm);
 					$(this).dialog("close");
 				}                

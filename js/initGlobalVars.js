@@ -54,7 +54,5 @@ function createPlayers(groupId) {
             let y = sin(angle) * height * 0.35;
             enemies.push(new Enemy(i, mapX(x), mapY(y), x, y));
         }
-        console.log(enemies);
-        console.log(player);
     }
 }

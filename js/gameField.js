@@ -5,7 +5,6 @@ function preload() {
     for (let itemNum = 1; itemNum <= config['number_items']; itemNum++) {
         itemIcons.push(loadImage(config['icon_file_dir'] + config['item' + itemNum]['icon_file_name']));
     }
-    console.log(itemIcons);
 }
 
 function setup() {
@@ -17,11 +16,9 @@ function setup() {
     textAlign(CENTER, CENTER);
     ellipseMode(RADIUS);
     setTimeout(function () {
-        console.log(groupId);
         createPlayers(groupId);
     }, 1000);
     frameRate(15);
-    console.log('setup complete');
 }
 
 function draw() {
@@ -37,7 +34,6 @@ function draw() {
     strokeWeight(2);
 
     for (let enemy of enemies) {
-        //console.log(enemy.groupId);
        if (enemy != "") {
             if (selectMode) {
                 enemy.selectMode();
@@ -60,7 +56,6 @@ function draw() {
 
                         });
                     selectMode = false;
-                    console.log('Target selected');
                 }
             } else {
                 enemy.draw();
@@ -84,19 +79,16 @@ function draw() {
 }
 
 function mouseClicked() {
-    console.log('mouseClicked');
     if (invModeGroup === 0) {
         for (let enemy of enemies) {
             if (enemy != "") {
                 if (mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
                     invModeGroup = enemy.groupId;
-                    console.log(invModeGroup + 'inv');
                 }
             }
         }
     } else {
         invModeGroup = 0;
-        console.log(invModeGroup + 'inv');
     }
 }
 

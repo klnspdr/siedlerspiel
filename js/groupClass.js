@@ -28,7 +28,6 @@ class Group {
     }
 
     updateShownInfo() {
-        //console.log(wholeGroupData);
         if (wholeGroupData != null && wholeInv != null) {
             let info = wholeGroupData[this.groupId - 1];
             let inv = wholeInv[this.groupId - 1];
@@ -70,7 +69,6 @@ class Group {
 
 class Enemy extends Group {
     log() {
-        console.log(this.groupId);
     }
 
     draw() {

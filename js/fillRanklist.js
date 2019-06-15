@@ -16,7 +16,6 @@ window.setInterval(function () {
 
             })
             .fail(function () {
-                console.log("error");
             });
     }
 
