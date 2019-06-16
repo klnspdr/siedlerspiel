@@ -5,6 +5,11 @@ function preload() {
     for (let itemNum = 1; itemNum <= config['number_items']; itemNum++) {
         itemIcons.push(loadImage(config['icon_file_dir'] + config['item' + itemNum]['icon_file_name']));
     }
+    if(typeof config != "undefined") {
+        for (let groupNum = 1; groupNum <= config['number_groups']; groupNum++) {
+            groupIcons.push(loadImage(config['group_icon_dir'] + config['group_images']['gr' + groupNum]))
+        }
+    }
 }
 
 function setup() {
@@ -68,7 +73,16 @@ function draw() {
         }
 
     }
-
+    if(selectMode){
+        fill(0);
+        noStroke();
+        textSize(30)
+        text('Wen wollt ihr angreifen?',mapX(0),mapY(0));
+        noFill();
+        stroke('#ff0000');
+        strokeWeight(5);
+        rect(mapX(0), mapY(-10), width, height);
+    }
 
     if (typeof player != "undefined") {
 
@@ -89,6 +103,23 @@ function mouseClicked() {
         }
     } else {
         invModeGroup = 0;
+    }
+}
+
+function touchStarted(){
+    console.log('touched');
+    if (invModeGroup === 0) {
+        for (let enemy of enemies) {
+            if (enemy != "") {
+                if (touches.x >= enemy.x - 30 && touches.x <= enemy.x + 30 && touches.y >= enemy.y - 30 && touches.y <= enemy.y + 30) {
+                    invModeGroup = enemy.groupId;
+                    console.log(invModeGroup + 'inv');
+                }
+            }
+        }
+    } else {
+        invModeGroup = 0;
+        console.log(invModeGroup + 'inv');
     }
 }
 

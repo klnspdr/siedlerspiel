@@ -58,23 +58,24 @@
 		"gr5": "Gruppe 5",
 		"gr6": "Gruppe 6"
 	},
+	"group_icon_dir": "img/teams/",
 	"group_images":
 	{
-		"gr1": "",
-		"gr2": "",
-		"gr3": "",
-		"gr4": "",
-		"gr5": "",
-		"gr6": ""
+		"gr1": "village_green.png",
+		"gr2": "village_blue.png",
+		"gr3": "village_yellow.png",
+		"gr4": "village_red.png",
+		"gr5": "village_orange.png",
+		"gr6": "village_purple.png"
 	},
 	"group_colors":
 	{
-		"gr1": "#ff0000",
-		"gr2": "#00ff00",
-		"gr3": "#0000ff",
-		"gr4": "#ff9900",
-		"gr5": "#990099",
-		"gr6": "#ffff00"
+		"gr1": "#00ff00",
+		"gr2": "#0000ff",
+		"gr3": "#ffff00",
+		"gr4": "#ff0000",
+		"gr5": "#ff7f00",
+		"gr6": "#7f00ff"
 	},
 	"init_values":
 	{

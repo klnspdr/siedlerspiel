@@ -8,7 +8,8 @@ class Group {
     }
 
     draw() {
-
+        image(groupIcons[this.groupId-1],this.x,this.y,90,61.5);
+        /*
         stroke(0);
         strokeWeight(2);
         fill(config['group_colors']['gr' + this.groupId]);
@@ -17,14 +18,16 @@ class Group {
         fill(0);
         noStroke();
         textStyle(NORMAL);
-        text(this.groupId, this.x, this.y);
+        text(this.groupId, this.x, this.y); */
         this.drawName();
     }
 
     drawName() {
+        noStroke();
+        fill(0);
         textStyle(BOLD);
         textSize(15);
-        text(config['group_names']['gr' + this.groupId], this.x, this.y - 30);
+        text(config['group_names']['gr' + this.groupId], this.x, this.y - 40);
     }
 
     updateShownInfo() {
@@ -87,10 +90,7 @@ class Enemy extends Group {
 
     selectMode() {
         super.draw();
-        noFill();
-        stroke('#ff0000');
-        strokeWeight(5);
-        rect(mapX(0), mapY(-20), width, height);
+
         super.updateShownInfo(this.x, this.y);
     }
 
@@ -176,6 +176,7 @@ class Player extends Group {
             }
         }
     }
+
 
 
 }

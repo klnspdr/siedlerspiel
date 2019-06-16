@@ -8,6 +8,7 @@ let tombStone;
 let bgMap;
 let skull;
 let itemIcons = [];
+let groupIcons = [];
 
 let config = [];
 $.ajax({
