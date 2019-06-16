@@ -9,16 +9,6 @@ class Group {
 
     draw() {
         image(groupIcons[this.groupId-1],this.x,this.y,90,61.5);
-        /*
-        stroke(0);
-        strokeWeight(2);
-        fill(config['group_colors']['gr' + this.groupId]);
-        ellipse(this.x, this.y, 20, 20);
-        textSize(20);
-        fill(0);
-        noStroke();
-        textStyle(NORMAL);
-        text(this.groupId, this.x, this.y); */
         this.drawName();
     }
 
@@ -33,13 +23,13 @@ class Group {
     updateShownInfo() {
         if (wholeGroupData != null && wholeInv != null) {
             let info = wholeGroupData[this.groupId - 1];
-            let inv = wholeInv[this.groupId - 1];
+            //console.log(wholeGroupData);
             fill(0);
             strokeWeight(0);
             textSize(10);
             textStyle(NORMAL);
 			if(info['displayScore'] == true)
-            text("Punkte: " + info['score'], this.x, this.y + 50);
+            text("Punkte: " + info['final_score'], this.x, this.y + 50);
             this.drawHpBar(this.x, this.y, info['hp'], info['max_hp']);
         }
     }
@@ -165,8 +155,18 @@ class Enemy extends Group {
 class Player extends Group {
     draw() {
         if (wholeGroupData != null) {
+            if(selectMode){
+                tint(0,0,0,200);
+                image(groupIcons[this.groupId-1],this.x,this.y,90,61.5);
+                noTint();
+                super.drawName();
 
-            super.draw();
+            } else {
+
+
+                super.draw();
+            }
+
             super.updateShownInfo(this.x, this.y);
             if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
                 tint(255, 0, 0, 200);
