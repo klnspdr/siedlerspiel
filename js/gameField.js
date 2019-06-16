@@ -5,7 +5,7 @@ function preload() {
     for (let itemNum = 1; itemNum <= config['number_items']; itemNum++) {
         itemIcons.push(loadImage(config['icon_file_dir'] + config['item' + itemNum]['icon_file_name']));
     }
-    if(typeof config != "undefined") {
+    if (typeof config != "undefined") {
         for (let groupNum = 1; groupNum <= config['number_groups']; groupNum++) {
             groupIcons.push(loadImage(config['group_icon_dir'] + config['group_images']['gr' + groupNum]))
         }
@@ -39,28 +39,39 @@ function draw() {
     strokeWeight(2);
 
     for (let enemy of enemies) {
-       if (enemy != "") {
+        if (enemy != "") {
             if (selectMode) {
-                enemy.selectMode();
-                noFill();
-                stroke('#ff0000');
-                strokeWeight(5);
-                rect(enemy.x, enemy.y, 60, 60);
-                if (mouseIsPressed && mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
-                    $.get("ajax/runAction.php", {
-                        groupId: groupId,
-                        action: 'action' + currentAction,
-                        targetId: enemy.groupId
-                    })
-                        .done(function (data) {
-                            if (data != 1) {
-                                alert(data);
+
+                if (wholeGroupData[enemy.groupId - 1]['hp'] != 0) {
+                    enemy.selectMode();
+                    noFill();
+                    stroke('#ff0000');
+                    strokeWeight(5);
+                    rect(enemy.x, enemy.y, 60, 60);
+
+                    if (mouseIsPressed && mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
+                        $.get("ajax/runAction.php", {
+                            groupId: groupId,
+                            action: 'action' + currentAction,
+                            targetId: enemy.groupId
+                        })
+                            .done(function (data) {
+                                if (data != 1) {
+                                    alert(data);
 
 
-                            }
+                                }
 
-                        });
-                    selectMode = false;
+                            });
+                        selectMode = false;
+                    }
+                } else {
+                    tint(80);
+                    image(tombStone, enemy.x, enemy.y, 50, 50);
+                    enemy.drawName();
+                    noTint();
+                    enemy.updateShownInfo();
+
                 }
             } else {
                 enemy.draw();
@@ -73,11 +84,11 @@ function draw() {
         }
 
     }
-    if(selectMode){
+    if (selectMode) {
         fill(0);
         noStroke();
         textSize(30)
-        text('Wen wollt ihr angreifen?',mapX(0),mapY(0));
+        text('Wen wollt ihr angreifen?', mapX(0), mapY(0));
         noFill();
         stroke('#ff0000');
         strokeWeight(5);
@@ -106,7 +117,7 @@ function mouseClicked() {
     }
 }
 
-function touchStarted(){
+function touchStarted() {
     console.log('touched');
     if (invModeGroup === 0) {
         for (let enemy of enemies) {

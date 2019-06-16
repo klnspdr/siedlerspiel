@@ -1,3 +1,4 @@
+"use strict";
 window.setInterval(function (){
     updateLog();
 },1000);

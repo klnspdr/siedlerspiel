@@ -23,7 +23,6 @@ class Group {
     updateShownInfo() {
         if (wholeGroupData != null && wholeInv != null) {
             let info = wholeGroupData[this.groupId - 1];
-            //console.log(wholeGroupData);
             fill(0);
             strokeWeight(0);
             textSize(10);
@@ -156,7 +155,7 @@ class Player extends Group {
     draw() {
         if (wholeGroupData != null) {
             if(selectMode){
-                tint(0,0,0,200);
+                tint(80);
                 image(groupIcons[this.groupId-1],this.x,this.y,90,61.5);
                 noTint();
                 super.drawName();
