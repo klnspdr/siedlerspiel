@@ -10,16 +10,7 @@ function updateInventory(groupId) {
         $.getJSON("ajax/getGroupData.php")
             .done(function(data){
                 wholeGroupData = data;
-                wholeGroupData.sort((a, b) => (a['groupId'] > b['groupId']) ? 1 : ((b['groupId'] > a['groupId']) ? -1 : 0));
 
-                console.log("data:");
-                console.log(data);
-                //wholeGroupData = [];
-
-                /*for(let i = 0; i<data.length;i++){
-                    wholeGroupData.push(data[i])
-                }*/
-                console.log(wholeGroupData);
                 if(groupId != 100) {
                     let groupData = data[groupId - 1];
                     let groupHp = Math.ceil(groupData['hp']);
