@@ -51,12 +51,12 @@
 	"number_groups": 6,
 	"group_names":
 	{
-		"gr1": "Gruppe 1",
-		"gr2": "Gruppe 2",
-		"gr3": "Gruppe 3",
-		"gr4": "Gruppe 4",
-		"gr5": "Gruppe 5",
-		"gr6": "Gruppe 6"
+		"gr1": "Die Grünen Banditen",
+		"gr2": "Azzul Bandoleros",
+		"gr3": "Die Ähren-Cow-Boys",
+		"gr4": "Redianer",
+		"gr5": "Die braunen Appatschen",
+		"gr6": "Lil'ianer"
 	},
 	"group_icon_dir": "img/teams/",
 	"group_images":
