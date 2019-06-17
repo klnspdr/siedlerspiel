@@ -34,7 +34,7 @@ function draw() {
     stroke(0);
     strokeWeight(1);
     noFill();
-    ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
+    //ellipse(mapX(0), mapY(0), width * 0.4, height * 0.35);
 
     strokeWeight(2);
 
@@ -44,10 +44,10 @@ function draw() {
 
                 if (wholeGroupData[enemy.groupId - 1]['hp'] != 0) {
                     enemy.selectMode();
-                    noFill();
+                   /* noFill();
                     stroke('#ff0000');
                     strokeWeight(5);
-                    rect(enemy.x, enemy.y, 60, 60);
+                    rect(enemy.x, enemy.y, 60, 60);*/
 
                     if (mouseIsPressed && mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
                         $.get("ajax/runAction.php", {
@@ -64,6 +64,10 @@ function draw() {
 
                             });
                         selectMode = false;
+                        setTimeout(function () {
+                            invModeGroup = 0;
+                        },50);
+
                     }
                 } else {
                     tint(80);
@@ -104,16 +108,18 @@ function draw() {
 }
 
 function mouseClicked() {
-    if (invModeGroup === 0) {
-        for (let enemy of enemies) {
-            if (enemy != "") {
-                if (mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
-                    invModeGroup = enemy.groupId;
+    if(!selectMode) {
+        if (invModeGroup === 0) {
+            for (let enemy of enemies) {
+                if (enemy != "") {
+                    if (mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
+                        invModeGroup = enemy.groupId;
+                    }
                 }
             }
+        } else {
+            invModeGroup = 0;
         }
-    } else {
-        invModeGroup = 0;
     }
 }
 
