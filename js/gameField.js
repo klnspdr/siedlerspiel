@@ -49,7 +49,7 @@ function draw() {
                     strokeWeight(5);
                     rect(enemy.x, enemy.y, 60, 60);*/
 
-                    if (mouseIsPressed && mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
+                    if (mouseIsPressed && mouseX >= enemy.x - 45 && mouseX <= enemy.x + 45 && mouseY >= enemy.y - 31 && mouseY <= enemy.y + 31) {
                         $.get("ajax/runAction.php", {
                             groupId: groupId,
                             action: 'action' + currentAction,
@@ -66,7 +66,7 @@ function draw() {
                         selectMode = false;
                         setTimeout(function () {
                             invModeGroup = 0;
-                        },50);
+                        },70);
 
                     }
                 } else {
@@ -112,7 +112,7 @@ function mouseClicked() {
         if (invModeGroup === 0) {
             for (let enemy of enemies) {
                 if (enemy != "") {
-                    if (mouseX >= enemy.x - 30 && mouseX <= enemy.x + 30 && mouseY >= enemy.y - 30 && mouseY <= enemy.y + 30) {
+                    if (mouseX >= enemy.x - 45 && mouseX <= enemy.x + 45 && mouseY >= enemy.y - 31 && mouseY <= enemy.y + 31) {
                         invModeGroup = enemy.groupId;
                     }
                 }
