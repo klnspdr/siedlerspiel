@@ -14,9 +14,9 @@
 <div class="rankListArea">
     <table id="rankListTable">
         <thead>
-
-            <td class="tableName">RANGLISTE</td>
-
+            <tr>
+                <th class="subTableName" colspan="3">RANGLISTE</th>
+            </tr>
         </thead>
         <tbody id="rankListTableBody">
 

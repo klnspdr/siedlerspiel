@@ -1,455 +1,419 @@
 {
-	"_comment": "score, bonus and punishment are applied to the score, damage to the hp and thereby only indirectly to the score",
-	"_syntax:":{
-		"items":{
-			"name":"the name displayed on the inventory list, buttons, log and error messages",
-			"score":"points added to the score of the group for buying this item",
-			"plusHP":"amount of HP the group recieves for buying this item. the maximum HP defined for this group will be respected.",
-			"plusMaxHP":"adds the specified amount to the maximum HP reachable by this group. Does not add the amount to the actual HP.",
-			"max":"Specifies the maximum number a group can possess of this item",
-			"requirement":"The parameter has to be of the form itemn where n is a number between 1 and number_items. It specifies an other item of which the group has to possess at least one before they can buy the item.",
-			"deadAllowed":"Set to true if the item can be bought even if the group is dead (e.g. repair kit), set to false or leave empty/out otherwise"
-		},
-		"actions":{
-			"destroyItem": "if the action is successfull one destroyItem (write item1 e.g.) will be substracted from the target group",
-			"compareItem": "the group with more compareItem is the winner",
-			"score":"added to the attacking group's score on success",
-			"defendScore": "added to the target group's score if the attack fails due to compareItem or defense",
-			"scorePunishment": "substracted from the target group's score if the attack succeeds",
-			"uses": "one of this item (e.g. item1) will be substracted from the attacking group's inventory. If none of this item is available, the attack isn't possible and an error message is returned",
-			"requirement": "the attacking group has to have at least one of this item. Otherwise the attack isn't possible and an error message returned",
-			"multiplicator": "This has to be an item (e.g. item1). score and damage will be multiplied with the amount of this item the attacking group has",
-			"killBonus": "will be added to the attacking group's score if they kill the target meaning it's hp is decreased to 0",
-			"killPunishment": "will be substracted from the target group's score if they get killed",
-			"damage":"will be substracted from the target group's hp if the attack is successfull",
-			"defense":"this is a sub group containing items (e.g. item1) as key and numbers as values. With those numbers and items the target's probability to defend itself is calculated. This probability exists even after the comparison of compareItem was successfull for the attacking group. The number specifies a percentage for the defense probability. Each number will be multiplied with the number of the corresponding item the target group has and then the sum will be calculated for the total defense probability",
-			"deadAllowed":"Set to true if the action can be performed even if the group is dead, set to false or leave empty/out otherwise",
-			"randomOpponent":"Set true to choose a random target. Otherwise the user can pick the target."
-		},
-		"error_messages":
-		{
-			"requirement":"<item> will be replaced by the item that should be bought. <requirement> will be replaced by the required item.",
-			"max":"<item> will be replaced by the item that should be bought. <max> will be replaced by the maximum number allowed.",
-			"death":"Used for items when the group cannot buy it because they are dead. <item> will be replaced by the item",
-			"action_death":"Used for actions when the group cannot perform it because they are dead. <action> will be replaced by the action",
-			"action_requirement":"Used for actions, same behavior as requirement for items",
-			"action_uses":"Used for actions. Used to inform the group that they  miss an item that will be used up for the action (e.g. cannon balls). <uses> will be replaced by the item, <action> will be replaced by the action.",
-			"usage":"It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
-		},
-		"log_messages":
-		{
-			"buy":"<item> will be replaced by the item bought. <group> will be replaced by the group name.",
-			"actions":"in all action related messages <group> will be replaced by the attacking group's name, <target> by the targeted group and <action> but the name of the action performed",
-			"success":"message issued if the action was successfull and no kill occured",
-			"kill":"message issued when the target group's hp has been decreased to 0, meaning it has been killed",
-			"hitSelf":"message issued when the group performing the action is the same as the target. In this case the action is never successfull",
-			"nothingToDestroy":"message issued if destroyItem is not null and the target group doesn't have any of destroyItem. This case is treated as if the action was not successfull",
-			"failure":"message issued if the action was not successfull eg. if the target could defend themselves due to comparison of compareItem or due to defense",
-			"usage":"It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
-		}
-	},
-	"number_groups": 6,
-	"group_names":
-	{
-		"gr1": "Die Grünen Banditen",
-		"gr2": "Die Azzul Bandoleros",
-		"gr3": "Die Ähren-Cow-Boys",
-		"gr4": "Die Redianer",
-		"gr5": "Die braunen Appatschen",
-		"gr6": "Die Lil'ianer"
-	},
-	"group_icon_dir": "img/teams/",
-	"group_images":
-	{
-		"gr1": "village_green.png",
-		"gr2": "village_blue.png",
-		"gr3": "village_yellow.png",
-		"gr4": "village_red.png",
-		"gr5": "village_orange.png",
-		"gr6": "village_purple.png"
-	},
-	"group_colors":
-	{
-		"gr1": "#00ff00",
-		"gr2": "#0000ff",
-		"gr3": "#ffff00",
-		"gr4": "#ff0000",
-		"gr5": "#ff7f00",
-		"gr6": "#7f00ff"
-	},
-	"init_values":
-	{
-		"hp":100,
-		"max_hp":100,
-		"item1":0,
-		"item2":0,
-		"item3":0,
-		"item4":0,
-		"item5":0,
-		"item6":0,
-		"item7":0,
-		"item8":0,
-		"item9":0,
-		"item10":0,
-		"item11":0,
-		"item12":0,
-		"item13":0,
-		"item14":0,
-		"item15":0,
-		"item16":0,
-		"item17":0,
-		"item18":0,
-		"item19":0,
-		"item20":0
-	},
-	"hpName": "Einwohner",
-	"finalScores":
-		{
-			"hp": 1,
-			"deathPunishment": 40,
-			"ratios":
-			{
-				"item8": 
-				{
-					"required_by":
-					{
-						"item1":
-						{
-							"multiplicator": 5,
-							"consuming": true,
-							"punishment": 15,
-							"once_punishment": 0,
-							"bonus": 0
-						},
-						"item9":
-						{
-							"multiplicator": 1,
-							"consuming": true,
-							"punishment": 15,
-							"once_punishment": 0,
-							"bonus": 0
-						}
-					}
-				},
-				"item9":
-				{
-					"required_by":
-					{
-						"item1":
-						{
-							"multiplicator": 5,
-							"consuming": true,
-							"punishment": 15,
-							"once_punishment": 0,
-							"bonus": 0
-						}
-					}
-				}
-			},
-			"_comment":"for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score. ratios: the element opening the group is required. In the required_by array any number of elements can be listed, the all present an item that requires the first item. For each requiring item the following parameters can be given: multiplicator: n of the requiring items require only 1 required item. consuming: if more than one item require the other item consuming: true means that the amount of the required item used to fulfill this requirement will not be available to fulfill other requirements any more. punishment: if 5 item1 require one item2, for each begun 5 item1, that cannot be compensated with one item2, punishment will be substracted from the score. once_punishment: if the dependency is not fulfilled, once_punishment will be substracted from the score independent on how much the dependency is not fulfilled. bonus: will be added to the score if the dependency is fulfilled"
-		},
-	"defenseProbability":
-	{
-		"factor": 0.1,
-		"numberAccountableItems": 3,
-		"accountableItem1": "item2",
-		"accountableItem2": "item3",
-		"accountableItem3": "item4"
-	},
-	"number_items": 18,
-	"icon_file_dir": "img/items2/",
-	"item1":
-	{
-		"name": "Wohnhaus",
-		"score": 2,
-		"plusMaxHP": 10,
-		"plusHP": 10,
-		"icon_file_name": "house.png",
-        "visible_for_others": true
-	},
-	"item2":
-	{
-		"name": "Palisade",
-		"score": 10,
-		"max": 6,
-		"icon_file_name": "fence.png",
-        "visible_for_others": true,
-		"_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
-	},
-	"item3":
-	{
-		"name": "Sheriff",
-		"max": 1,
-		"score": 13,
-        "icon_file_name": "sheriff.png",
-        "visible_for_others": true
-	},
-	"item4":
-	{
-		"name": "Hilfssheriff",
-		"max": 1,
-		"score": 6.5,
-		"requirement": "item3",
-		"icon_file_name": "sheriff_help.png",
-        "visible_for_others": true,
-		"_comment": "Can only be purchased after item3 has been bought, too"
-	},
-	"item5":
-	{
-		"name": "Cowboy",
-		"score": 0,
-		"icon_file_name": "cowboy.png",
-        "visible_for_others": true
+  "_comment": "score, bonus and punishment are applied to the score, damage to the hp and thereby only indirectly to the score",
+  "_syntax:": {
+    "items": {
+      "name": "the name displayed on the inventory list, buttons, log and error messages",
+      "score": "points added to the score of the group for buying this item",
+      "plusHP": "amount of HP the group recieves for buying this item. the maximum HP defined for this group will be respected.",
+      "plusMaxHP": "adds the specified amount to the maximum HP reachable by this group. Does not add the amount to the actual HP.",
+      "max": "Specifies the maximum number a group can possess of this item",
+      "requirement": "The parameter has to be of the form itemn where n is a number between 1 and number_items. It specifies an other item of which the group has to possess at least one before they can buy the item.",
+      "deadAllowed": "Set to true if the item can be bought even if the group is dead (e.g. repair kit), set to false or leave empty/out otherwise"
     },
-	"item6":
-	{
-		"name": "Munition",
-		"score": 0,
-		"icon_file_name": "bullet.png",
-        "visible_for_others": true
+    "actions": {
+      "destroyItem": "if the action is successfull one destroyItem (write item1 e.g.) will be substracted from the target group",
+      "compareItem": "the group with more compareItem is the winner",
+      "score": "added to the attacking group's score on success",
+      "defendScore": "added to the target group's score if the attack fails due to compareItem or defense",
+      "scorePunishment": "substracted from the target group's score if the attack succeeds",
+      "uses": "one of this item (e.g. item1) will be substracted from the attacking group's inventory. If none of this item is available, the attack isn't possible and an error message is returned",
+      "requirement": "the attacking group has to have at least one of this item. Otherwise the attack isn't possible and an error message returned",
+      "multiplicator": "This has to be an item (e.g. item1). score and damage will be multiplied with the amount of this item the attacking group has",
+      "killBonus": "will be added to the attacking group's score if they kill the target meaning it's hp is decreased to 0",
+      "killPunishment": "will be substracted from the target group's score if they get killed",
+      "damage": "will be substracted from the target group's hp if the attack is successfull",
+      "defense": "this is a sub group containing items (e.g. item1) as key and numbers as values. With those numbers and items the target's probability to defend itself is calculated. This probability exists even after the comparison of compareItem was successfull for the attacking group. The number specifies a percentage for the defense probability. Each number will be multiplied with the number of the corresponding item the target group has and then the sum will be calculated for the total defense probability",
+      "deadAllowed": "Set to true if the action can be performed even if the group is dead, set to false or leave empty/out otherwise",
+      "randomOpponent": "Set true to choose a random target. Otherwise the user can pick the target."
     },
-	"item7":
-	{
-		"name": "Planwagen",
-		"score": 13.5,
-		"icon_file_name": "cart.png",
-        "visible_for_others": true
+    "error_messages": {
+      "requirement": "<item> will be replaced by the item that should be bought. <requirement> will be replaced by the required item.",
+      "max": "<item> will be replaced by the item that should be bought. <max> will be replaced by the maximum number allowed.",
+      "death": "Used for items when the group cannot buy it because they are dead. <item> will be replaced by the item",
+      "action_death": "Used for actions when the group cannot perform it because they are dead. <action> will be replaced by the action",
+      "action_requirement": "Used for actions, same behavior as requirement for items",
+      "action_uses": "Used for actions. Used to inform the group that they  miss an item that will be used up for the action (e.g. cannon balls). <uses> will be replaced by the item, <action> will be replaced by the action.",
+      "usage": "It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
     },
-	"item8":
-	{
-		"name": "Brunnen",
-		"score": 6.5,
-		"icon_file_name": "well.png",
-        "visible_for_others": true,
-		"_comment": "One per item9 and per five item1 necessary. Each missing = -15 credits"
-	},
-	"item9":
-	{
-		"name": "Farm",
-		"score": 7,
-		"icon_file_name": "carrot.png",
-        "visible_for_others": true
+    "log_messages": {
+      "buy": "<item> will be replaced by the item bought. <group> will be replaced by the group name.",
+      "actions": "in all action related messages <group> will be replaced by the attacking group's name, <target> by the targeted group and <action> but the name of the action performed",
+      "success": "message issued if the action was successfull and no kill occured",
+      "kill": "message issued when the target group's hp has been decreased to 0, meaning it has been killed",
+      "hitSelf": "message issued when the group performing the action is the same as the target. In this case the action is never successfull",
+      "nothingToDestroy": "message issued if destroyItem is not null and the target group doesn't have any of destroyItem. This case is treated as if the action was not successfull",
+      "failure": "message issued if the action was not successfull eg. if the target could defend themselves due to comparison of compareItem or due to defense",
+      "usage": "It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
+    }
+  },
+  "number_groups": 6,
+  "group_names": {
+    "gr1": "Die Grünen Banditen",
+    "gr2": "Die Azzul Bandoleros",
+    "gr3": "Die Ähren-Cow-Boys",
+    "gr4": "Die Redianer",
+    "gr5": "Die braunen Appatschen",
+    "gr6": "Die Lil'ianer"
+  },
+  "group_icon_dir": "img/teams/",
+  "group_images": {
+    "gr1": "village_green.png",
+    "gr2": "village_blue.png",
+    "gr3": "village_yellow.png",
+    "gr4": "village_red.png",
+    "gr5": "village_orange.png",
+    "gr6": "village_purple.png"
+  },
+  "group_colors": {
+    "main": {
+      "gr1": "#00ff00",
+      "gr2": "#0000ff",
+      "gr3": "#ffff00",
+      "gr4": "#ff0000",
+      "gr5": "#ff7f00",
+      "gr6": "#7f00ff"
     },
-	"item10":
-	{
-		"name": "Saboteur",
-		"score": 0,
-		"icon_file_name": "bandit.png",
-		"_comment": "The one with more item10 wins action1",
-        "visible_for_others": false
+    "outline": {
+      "gr1": "#444444",
+      "gr2": "#fceecc",
+      "gr3": "#444444",
+      "gr4": "#fceecc",
+      "gr5": "#fceecc",
+      "gr6": "#fceecc"
+    }
+  },
+  "init_values": {
+    "hp": 100,
+    "max_hp": 100,
+    "item1": 0,
+    "item2": 0,
+    "item3": 0,
+    "item4": 0,
+    "item5": 0,
+    "item6": 0,
+    "item7": 0,
+    "item8": 0,
+    "item9": 0,
+    "item10": 0,
+    "item11": 0,
+    "item12": 0,
+    "item13": 0,
+    "item14": 0,
+    "item15": 0,
+    "item16": 0,
+    "item17": 0,
+    "item18": 0,
+    "item19": 0,
+    "item20": 0
+  },
+  "hpName": "Einwohner",
+  "finalScores": {
+    "hp": 1,
+    "deathPunishment": 40,
+    "ratios": {
+      "item8": {
+        "required_by": {
+          "item1": {
+            "multiplicator": 5,
+            "consuming": true,
+            "punishment": 15,
+            "once_punishment": 0,
+            "bonus": 0
+          },
+          "item9": {
+            "multiplicator": 1,
+            "consuming": true,
+            "punishment": 15,
+            "once_punishment": 0,
+            "bonus": 0
+          }
+        }
+      },
+      "item9": {
+        "required_by": {
+          "item1": {
+            "multiplicator": 5,
+            "consuming": true,
+            "punishment": 15,
+            "once_punishment": 0,
+            "bonus": 0
+          }
+        }
+      }
     },
-	"item11":
-	{
-		"name": "Dynamit",
-		"score": 0,
-		"icon_file_name": "dynamite.png",
-		"_comment": "Necessary for action1",
-        "visible_for_others": true
+    "_comment": "for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score. ratios: the element opening the group is required. In the required_by array any number of elements can be listed, the all present an item that requires the first item. For each requiring item the following parameters can be given: multiplicator: n of the requiring items require only 1 required item. consuming: if more than one item require the other item consuming: true means that the amount of the required item used to fulfill this requirement will not be available to fulfill other requirements any more. punishment: if 5 item1 require one item2, for each begun 5 item1, that cannot be compensated with one item2, punishment will be substracted from the score. once_punishment: if the dependency is not fulfilled, once_punishment will be substracted from the score independent on how much the dependency is not fulfilled. bonus: will be added to the score if the dependency is fulfilled"
+  },
+  "defenseProbability": {
+    "factor": 0.1,
+    "numberAccountableItems": 3,
+    "accountableItem1": "item2",
+    "accountableItem2": "item3",
+    "accountableItem3": "item4"
+  },
+  "number_items": 18,
+  "icon_file_dir": "img/items2/",
+  "item1": {
+    "name": "Wohnhaus",
+    "score": 2,
+    "plusMaxHP": 10,
+    "plusHP": 10,
+    "icon_file_name": "house.png",
+    "visible_for_others": true
+  },
+  "item2": {
+    "name": "Palisade",
+    "score": 10,
+    "max": 6,
+    "icon_file_name": "fence.png",
+    "visible_for_others": true,
+    "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
+  },
+  "item3": {
+    "name": "Sheriff",
+    "max": 1,
+    "score": 13,
+    "icon_file_name": "sheriff.png",
+    "visible_for_others": true
+  },
+  "item4": {
+    "name": "Hilfssheriff",
+    "max": 1,
+    "score": 6.5,
+    "requirement": "item3",
+    "icon_file_name": "sheriff_help.png",
+    "visible_for_others": true,
+    "_comment": "Can only be purchased after item3 has been bought, too"
+  },
+  "item5": {
+    "name": "Cowboy",
+    "score": 0,
+    "icon_file_name": "cowboy.png",
+    "visible_for_others": true
+  },
+  "item6": {
+    "name": "Munition",
+    "score": 0,
+    "icon_file_name": "bullet.png",
+    "visible_for_others": true
+  },
+  "item7": {
+    "name": "Planwagen",
+    "score": 13.5,
+    "icon_file_name": "cart.png",
+    "visible_for_others": true
+  },
+  "item8": {
+    "name": "Brunnen",
+    "score": 6.5,
+    "icon_file_name": "well.png",
+    "visible_for_others": true,
+    "_comment": "One per item9 and per five item1 necessary. Each missing = -15 credits"
+  },
+  "item9": {
+    "name": "Farm",
+    "score": 7,
+    "icon_file_name": "carrot.png",
+    "visible_for_others": true
+  },
+  "item10": {
+    "name": "Saboteur",
+    "score": 0,
+    "icon_file_name": "bandit.png",
+    "_comment": "The one with more item10 wins action1",
+    "visible_for_others": false
+  },
+  "item11": {
+    "name": "Dynamit",
+    "score": 0,
+    "icon_file_name": "dynamite.png",
+    "_comment": "Necessary for action1",
+    "visible_for_others": true
+  },
+  "item12": {
+    "name": "Saloon",
+    "score": 22,
+    "icon_file_name": "beer.png",
+    "visible_for_others": true
+  },
+  "item13": {
+    "name": "Bordell",
+    "score": 15,
+    "icon_file_name": "favourite.png",
+    "visible_for_others": true
+  },
+  "item14": {
+    "name": "Kirche",
+    "score": 19.5,
+    "icon_file_name": "bible.png",
+    "visible_for_others": true
+  },
+  "item15": {
+    "name": "Friedhof",
+    "score": 12,
+    "icon_file_name": "coffin.png",
+    "visible_for_others": true
+  },
+  "item16": {
+    "name": "Bank",
+    "score": 32,
+    "icon_file_name": "money-bag.png",
+    "visible_for_others": true
+  },
+  "item17": {
+    "name": "Bahnhof",
+    "score": 34,
+    "icon_file_name": "rails.png",
+    "visible_for_others": true
+  },
+  "item18": {
+    "name": "Europ. Einwanderer",
+    "score": 0,
+    "plusHP": 25,
+    "deadAllowed": true,
+    "icon_file_name": "bag.png",
+    "visible_for_others": true,
+    "_comment": "repairKit, adds plusHP to hp"
+  },
+  "item19": {
+    "name": "unused",
+    "score": 0,
+    "icon_file_name": "",
+    "visible_for_others": true
+  },
+  "item20": {
+    "name": "unused",
+    "score": 0,
+    "icon_file_name": "",
+    "visible_for_others": true
+  },
+  "number_actions": 2,
+  "action1": {
+    "name": "Sabotage",
+    "destroyItem": "item2",
+    "compareItem": "item10",
+    "score": 5,
+    "defendScore": 3,
+    "scorePunishment": 10,
+    "uses": "item11",
+    "requirement": "item11",
+    "randomOpponent": true,
+    "_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem"
+  },
+  "action2": {
+    "name": "Angriff",
+    "damage": 5,
+    "score": 5,
+    "multiplicator": "item5",
+    "killBonus": 10,
+    "killPunishment": 5,
+    "requirement": "item5",
+    "uses": "item6",
+    "defense": {
+      "item2": 10,
+      "item3": 10,
+      "item4": 10
     },
-	"item12":
-	{
-		"name": "Saloon",
-		"score": 22,
-		"icon_file_name": "beer.png",
-        "visible_for_others": true
+    "_comment": "damage is substracted from hp; damage and score will be multiplied by number of multiplicator; killBonus if oppponent reaches 0HP with this attack, killPunishment is substracted from opponents score"
+  },
+  "error_messages": {
+    "requirement": "Ihr müsst erst <requirement> kaufen bevor ihr <item> kaufen könnt.",
+    "max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
+    "death": "Tote kaufen keine <item>",
+    "item2": {
+      "max": "<max> Palisaden sind doch schon genug."
     },
-	"item13":
-	{
-		"name": "Bordell",
-		"score": 15,
-		"icon_file_name": "favourite.png",
-        "visible_for_others": true
+    "item3": {
+      "max": "In einer Stadt ist nur Platz für einen Sheriff!"
     },
-	"item14":
-	{
-		"name": "Kirche",
-		"score": 19.5,
-		"icon_file_name": "bible.png",
-        "visible_for_others": true
+    "item4": {
+      "max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
+      "requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
     },
-	"item15":
-	{
-		"name": "Friedhof",
-		"score": 12,
-		"icon_file_name": "coffin.png",
-        "visible_for_others": true
+    "action_requirement": "Aktion <action> benötigt <requirement>",
+    "action_uses": "Aktion <action> benötigt <uses>",
+    "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
+    "action1": {
+      "action_requirement": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
+      "action_uses": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da etwas sprengen?"
     },
-	"item16":
-	{
-		"name": "Bank",
-		"score": 32,
-		"icon_file_name": "money-bag.png",
-        "visible_for_others": true
+    "action2": {
+      "action_requirement": "Ihr braucht erst einen Cowboy, der für euch kämpfen kann",
+      "action_uses": "Ohne Munition sind eure Cowboys nutzlos",
+      "action_death": "Weder Tote noch Untote schießen. Belebt euch erst wieder"
+    }
+  },
+  "log_messages": {
+    "buy": "<group> haben <item> gekauft.",
+    "item1": {
+      "buy": "<group> haben ein neues Wohnhaus gebaut"
     },
-	"item17":
-	{
-		"name": "Bahnhof",
-		"score": 34,
-		"icon_file_name": "rails.png",
-        "visible_for_others": true
+    "item2": {
+      "buy": "<group> haben eine Palisade gebaut"
     },
-	"item18":
-	{
-		"name": "Europ. Einwanderer",
-		"score": 0,
-		"plusHP": 25,
-		"deadAllowed": true,
-		"icon_file_name": "bag.png",
-        "visible_for_others": true,
-		"_comment": "repairKit, adds plusHP to hp"
-	},
-	"item19":
-	{
-		"name": "unused",
-		"score": 0,
-		"icon_file_name": "",
-        "visible_for_others": true
+    "item3": {
+      "buy": "Für <group> arbeitet jetzt ein Sheriff"
     },
-	"item20":
-	{
-		"name": "unused",
-		"score": 0,
-		"icon_file_name": "",
-        "visible_for_others": true
+    "item4": {
+      "buy": "<group> haben einen Hilfssheriff eingestellt"
     },
-	"number_actions": 2,
-	"action1":
-	{
-		"name": "Sabotage",
-		"destroyItem": "item2",
-		"compareItem": "item10",
-		"score": 5,
-		"defendScore": 3,
-		"scorePunishment": 10,
-		"uses": "item11",
-		"requirement": "item11",
-		"randomOpponent": true,
-		"_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem"
-	},
-	"action2":
-	{
-		"name": "Angriff",
-		"damage": 5,
-		"score": 5,
-		"multiplicator": "item5",
-		"killBonus": 10,
-		"killPunishment": 5,
-		"requirement": "item5",
-		"uses": "item6",
-		"defense":
-		{
-			"item2":10,
-			"item3":10,
-			"item4":10
-		},
-		"_comment": "damage is substracted from hp; damage and score will be multiplied by number of multiplicator; killBonus if oppponent reaches 0HP with this attack, killPunishment is substracted from opponents score"
-	},
-	"error_messages":
-	{
-		"requirement": "Ihr müsst erst <requirement> kaufen bevor ihr <item> kaufen könnt.",
-		"max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
-		"death": "Tote kaufen keine <item>",
-		"item2":
-		{
-			"max": "<max> Palisaden sind doch schon genug."
-		},
-		"item3":
-		{
-			"max": "In einer Stadt ist nur Platz für einen Sheriff!"
-		},
-		"item4":
-		{
-			"max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
-			"requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
-		},
-		"action_requirement":"Aktion <action> benötigt <requirement>",
-		"action_uses":"Aktion <action> benötigt <uses>",
-		"action_death":"Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
-		"action1":
-		{
-			"action_requirement":"Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
-			"action_uses":"Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
-			"action_death":"Ihr seid tot. Wie wollt ihr da etwas sprengen?"
-		},
-		"action2":
-		{
-			"action_requirement":"Ihr braucht erst einen Cowboy, der für euch kämpfen kann",
-			"action_uses":"Ohne Munition sind eure Cowboys nutzlos",
-			"action_death":"Weder Tote noch Untote schießen. Belebt euch erst wieder"
-		}
-	},
-	"log_messages":
-	{
-		"buy": "<group> haben <item> gekauft.",
-		"item1":{
-			"buy":"<group> haben ein neues Wohnhaus gebaut"
-		},
-		"item2":{
-			"buy":"<group> haben eine Palisade gebaut"
-		},
-		"item3":{
-			"buy":"Für <group> arbeitet jetzt ein Sheriff"
-		},
-		"item4":{
-			"buy":"<group> haben einen Hilfssheriff eingestellt"
-		},
-		"item5":{
-			"buy":"<group> haben einen Cowboy angeheuert"
-		},
-		"item6":{
-			"buy":"<group> haben eine Kiste Munition gekauft"
-		},
-		"item7":{
-			"buy":"<group> haben einen Planwagen gekauft"
-		},
-		"item8":{
-			"buy":"<group> haben einen Brunnen gebaut"
-		},
-		"item9":{
-			"buy":"<group> haben eine Farm gebaut"
-		},
-		"item10":{
-			"buy":"<group> haben einen einen Saboteur ausgebildet"
-		},
-		"item11":{
-			"buy":"<group> haben Dynamit gekauft"
-		},
-		"item12":{
-			"buy":"<group> haben einen Saloon gebaut"
-		},
-		"item13":{
-			"buy":"<group> haben ein Bordell gebaut"
-		},
-		"item14":{
-			"buy":"<group> ist religiös geworden"
-		},
-		"item15":{
-			"buy":"<group> haben jetzt einen Ort um die Toten zu verscharren"
-		},
-		"item16":{
-			"buy":"<group> haben anscheinend zu viel Geld und eine Bank gebaut"
-		},
-		"item17":{
-			"buy":"<group> haben jetzt Anschluss an die restliche Welt"
-		},
-		"item18":{
-			"buy":"<group> haben gute Einwanderungspolitik betrieben"
-		},
-		"success":"<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
-		"kill":"<group> haben <target> getötet",
-		"hitSelf":"<group> haben versucht Aktion <action> auf sich selbst durchzuführen",
-		"nothingToDestroy":"<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
-		"failure":"<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
-		"action1":{
-			"success":"<group> haben eine Palisade der <target> zerstört",
-			"hitSelf":"<group> haben versucht sich selbst zu sabotieren",
-			"nothingToDestroy":"<group> wollte <target> sabotieren, die hatten aber gar keine Palisaden",
-			"failure":"<group> wollte <target> sabotieren, ist aber gnadenlos unterlegen"
-		},
-		"action2":{
-			"success":"<group> haben <target> angegriffen",
-			"kill":"<group> haben <target> vom Erdboden getilgt",
-			"failure":"<group> wurden beim Angriff auf <target> erfolgreich abgewehrt"
-		}
-	}
+    "item5": {
+      "buy": "<group> haben einen Cowboy angeheuert"
+    },
+    "item6": {
+      "buy": "<group> haben eine Kiste Munition gekauft"
+    },
+    "item7": {
+      "buy": "<group> haben einen Planwagen gekauft"
+    },
+    "item8": {
+      "buy": "<group> haben einen Brunnen gebaut"
+    },
+    "item9": {
+      "buy": "<group> haben eine Farm gebaut"
+    },
+    "item10": {
+      "buy": "<group> haben einen einen Saboteur ausgebildet"
+    },
+    "item11": {
+      "buy": "<group> haben Dynamit gekauft"
+    },
+    "item12": {
+      "buy": "<group> haben einen Saloon gebaut"
+    },
+    "item13": {
+      "buy": "<group> haben ein Bordell gebaut"
+    },
+    "item14": {
+      "buy": "<group> ist religiös geworden"
+    },
+    "item15": {
+      "buy": "<group> haben jetzt einen Ort um die Toten zu verscharren"
+    },
+    "item16": {
+      "buy": "<group> haben anscheinend zu viel Geld und eine Bank gebaut"
+    },
+    "item17": {
+      "buy": "<group> haben jetzt Anschluss an die restliche Welt"
+    },
+    "item18": {
+      "buy": "<group> haben gute Einwanderungspolitik betrieben"
+    },
+    "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
+    "kill": "<group> haben <target> getötet",
+    "hitSelf": "<group> haben versucht Aktion <action> auf sich selbst durchzuführen",
+    "nothingToDestroy": "<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
+    "failure": "<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
+    "action1": {
+      "success": "<group> haben eine Palisade der <target> zerstört",
+      "hitSelf": "<group> haben versucht sich selbst zu sabotieren",
+      "nothingToDestroy": "<group> wollte <target> sabotieren, die hatten aber gar keine Palisaden",
+      "failure": "<group> wollte <target> sabotieren, ist aber gnadenlos unterlegen"
+    },
+    "action2": {
+      "success": "<group> haben <target> angegriffen",
+      "kill": "<group> haben <target> vom Erdboden getilgt",
+      "failure": "<group> wurden beim Angriff auf <target> erfolgreich abgewehrt"
+    }
+  }
 }

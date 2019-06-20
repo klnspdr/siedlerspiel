@@ -7,7 +7,7 @@ window.setInterval(function () {
             let tableContent = "<tbody id='rankListTableBody'>";
             let rank = 1;
             for (let i = sortedGroupData.length - 1; i >= 0; i--) {
-                tableContent += "<tr><td id='rank'>" + rank + "</td><td id='groupName'>" + sortedGroupData[i]['name'] + "</td><td>Punkte: " + (sortedGroupData[i]['displayScore'] == true ? sortedGroupData[i]['final_score'] : "???") + "</td></tr>";
+                tableContent += "<tr><td id='rank'>" + rank + "</td><td id='groupName' style='color:" + config['group_colors']['main']['gr' + sortedGroupData[i]['groupId']] + ";  text-shadow: 1px  1px 0 " + config['group_colors']['outline']['gr' + sortedGroupData[i]['groupId']] + ", 1px -1px 0 " + config['group_colors']['outline']['gr' + sortedGroupData[i]['groupId']] + ", -1px  1px 0 " + config['group_colors']['outline']['gr' + sortedGroupData[i]['groupId']] + ", -1px -1px 0 " + config['group_colors']['outline']['gr' + sortedGroupData[i]['groupId']] + ";\n '>" + sortedGroupData[i]['name'] + "</td><td>Punkte: " + (sortedGroupData[i]['displayScore'] == true ? sortedGroupData[i]['final_score'] : "???") + "</td></tr>";
                 rank++;
             }
             tableContent += "</tbody>";

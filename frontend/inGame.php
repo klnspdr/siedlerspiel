@@ -6,7 +6,7 @@
     <table id="invTable">
 
         <tr>
-            <th colspan = "6">INVENTORY</th>
+            <th colspan="6" class="subTableName">INVENTORY</th>
         </tr>
         <tbody id="invTableBody">
 
@@ -17,7 +17,7 @@
     <table id="logTable">
 
         <tr>
-            <th>LOG</th>
+            <th class="subTableName">LOG</th>
         </tr>
         <tbody id="logTableBody">
 
@@ -27,7 +27,7 @@
 <div class="buttonArea">
     <table id="buyButtonTable">
         <tr>
-            <th><span class="tableName">Kaufen</span></th>
+            <th colspan="5"><span class="tableName">Kaufen</span></th>
         </tr>
         <?php
         $clientRole = $_SESSION['role'];
@@ -51,7 +51,7 @@
     </table>
     <table id="actButtonTable">
         <tr>
-            <th><span class="tableName">Aktionen</span></th>
+            <th colspan="1"><span class="tableName">Aktionen</span></th>
         </tr>
         <?php
         for($row = 1; $row <= $number_actions; $row++){

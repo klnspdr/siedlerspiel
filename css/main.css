@@ -5,7 +5,7 @@ body {
 
 .button {
     color: #000000;
-    font-size: 20px;
+    font-size: auto;
     border: 1px solid black;
     background-image: url("../img/backgrounds/button2.jpg");
     text-decoration: none;
@@ -54,13 +54,23 @@ td, th {
 }
 
 .tableName {
-    border: 1px solid black;
-    width: 100%;
+    /*border: 1px solid black;*/
+    text-decoration: underline black;
+    width: 100px;
     text-align: center;
     font-size: 20px;
-    width: 100%;
     display: inline-grid;
     align-items: center;
+
+}
+
+.subTableName{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+    padding: 0 auto 0 auto;
 }
 
 .buttonArea {
@@ -108,6 +118,7 @@ td, th {
 
 #invTable{
     text-align: left;
+    margin: 0 auto 0 auto;
 }
 
 #invTable td{
@@ -144,6 +155,19 @@ td, th {
     width: 60%;
     float: left;
 }
-#rankListTable > th{
+
+#rankListTable{
+    width: 100%;
+}
+
+#rankListTable th{
     text-align: center;
+}
+
+#rank{
+    font-weight: bold;
+    width: 10px;
+}
+
+#groupName{
 }
