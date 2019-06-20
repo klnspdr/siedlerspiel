@@ -52,11 +52,11 @@
 	"group_names":
 	{
 		"gr1": "Die Grünen Banditen",
-		"gr2": "Azzul Bandoleros",
+		"gr2": "Die Azzul Bandoleros",
 		"gr3": "Die Ähren-Cow-Boys",
-		"gr4": "Redianer",
+		"gr4": "Die Redianer",
 		"gr5": "Die braunen Appatschen",
-		"gr6": "Lil'ianer"
+		"gr6": "Die Lil'ianer"
 	},
 	"group_icon_dir": "img/teams/",
 	"group_images":
@@ -380,76 +380,76 @@
 	},
 	"log_messages":
 	{
-		"buy": "Gruppe <group> hat <item> gekauft.",
+		"buy": "<group> haben <item> gekauft.",
 		"item1":{
-			"buy":"Gruppe <group> hat ein neues Wohnhaus gebaut"
+			"buy":"<group> haben ein neues Wohnhaus gebaut"
 		},
 		"item2":{
-			"buy":"Gruppe <group> hat eine Palisade gebaut"
+			"buy":"<group> haben eine Palisade gebaut"
 		},
 		"item3":{
-			"buy":"Für Gruppe <group> arbeitet jetzt ein Sheriff"
+			"buy":"Für <group> arbeitet jetzt ein Sheriff"
 		},
 		"item4":{
-			"buy":"Gruppe <group> hat einen Hilfssheriff eingestellt"
+			"buy":"<group> haben einen Hilfssheriff eingestellt"
 		},
 		"item5":{
-			"buy":"Gruppe <group> hat einen Cowboy angeheuert"
+			"buy":"<group> haben einen Cowboy angeheuert"
 		},
 		"item6":{
-			"buy":"Gruppe <group> hat eine Kiste Munition gekauft"
+			"buy":"<group> haben eine Kiste Munition gekauft"
 		},
 		"item7":{
-			"buy":"Gruppe <group> hat einen Planwagen gekauft"
+			"buy":"<group> haben einen Planwagen gekauft"
 		},
 		"item8":{
-			"buy":"Gruppe <group> hat einen Brunnen gebaut"
+			"buy":"<group> haben einen Brunnen gebaut"
 		},
 		"item9":{
-			"buy":"Gruppe <group> hat eine Farm gebaut"
+			"buy":"<group> haben eine Farm gebaut"
 		},
 		"item10":{
-			"buy":"Gruppe <group> hat einen einen Saboteur ausgebildet"
+			"buy":"<group> haben einen einen Saboteur ausgebildet"
 		},
 		"item11":{
-			"buy":"Gruppe <group> hat Dynamit gekauft"
+			"buy":"<group> haben Dynamit gekauft"
 		},
 		"item12":{
-			"buy":"Gruppe <group> hat einen Saloon gebaut"
+			"buy":"<group> haben einen Saloon gebaut"
 		},
 		"item13":{
-			"buy":"Gruppe <group> hat ein Bordell gebaut"
+			"buy":"<group> haben ein Bordell gebaut"
 		},
 		"item14":{
-			"buy":"Gruppe <group> ist religiös geworden"
+			"buy":"<group> ist religiös geworden"
 		},
 		"item15":{
-			"buy":"Gruppe <group> hat jetzt einen Ort um die Toten zu verscharren"
+			"buy":"<group> haben jetzt einen Ort um die Toten zu verscharren"
 		},
 		"item16":{
-			"buy":"Gruppe <group> hat anscheinend zu viel Geld und eine Bank gebaut"
+			"buy":"<group> haben anscheinend zu viel Geld und eine Bank gebaut"
 		},
 		"item17":{
-			"buy":"Gruppe <group> hat jetzt Anschluss an die restliche Welt"
+			"buy":"<group> haben jetzt Anschluss an die restliche Welt"
 		},
 		"item18":{
-			"buy":"Gruppe <group> hat gute Einwanderungspolitik betrieben"
+			"buy":"<group> haben gute Einwanderungspolitik betrieben"
 		},
-		"success":"Gruppe <group> hat Aktion <action> erfolgreich auf Gruppe <target> durchgeführt",
-		"kill":"Gruppe <group> hat Gruppe <target> getötet",
-		"hitSelf":"Gruppe <group> hat versucht Aktion <action> auf sich selbst durchzuführen",
-		"nothingToDestroy":"Gruppe <group> wollte auf Gruppe <target> <action> durchführen, hat aber nichts zu zerstören gefunden",
-		"failure":"Gruppe <group> ist daran gescheitert Aktion <action> auf Gruppe <target> durchzuführen",
+		"success":"<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
+		"kill":"<group> haben <target> getötet",
+		"hitSelf":"<group> haben versucht Aktion <action> auf sich selbst durchzuführen",
+		"nothingToDestroy":"<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
+		"failure":"<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
 		"action1":{
-			"success":"Gruppe <group> hat eine Palisade der Gruppe <target> zerstört",
-			"hitSelf":"Gruppe <group> hat versucht sich selbst zu sabotieren",
-			"nothingToDestroy":"Gruppe <group> wollte Gruppe <target> sabotieren, die hatten aber gar keine Palisaden",
-			"failure":"Gruppe <group> wollte Gruppe <target> sabotieren, ist aber gnadenlos unterlegen"
+			"success":"<group> haben eine Palisade der <target> zerstört",
+			"hitSelf":"<group> haben versucht sich selbst zu sabotieren",
+			"nothingToDestroy":"<group> wollte <target> sabotieren, die hatten aber gar keine Palisaden",
+			"failure":"<group> wollte <target> sabotieren, ist aber gnadenlos unterlegen"
 		},
 		"action2":{
-			"success":"Gruppe <group> hat Gruppe <target> angegriffen",
-			"kill":"Gruppe <group> hat Gruppe <target> vom Erdboden getilgt",
-			"failure":"Gruppe <group> wurde beim Angriff auf Gruppe <target> erfolgreich abgewehrt"
+			"success":"<group> haben <target> angegriffen",
+			"kill":"<group> haben <target> vom Erdboden getilgt",
+			"failure":"<group> wurden beim Angriff auf <target> erfolgreich abgewehrt"
 		}
 	}
 }
