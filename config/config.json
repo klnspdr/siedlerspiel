@@ -169,14 +169,14 @@
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3": {
-    "name": "Sheriff",
+    "name": "Obelix",
     "max": 1,
     "score": 13,
     "icon_file_name": "sheriff.png",
     "visible_for_others": true
   },
   "item4": {
-    "name": "Hilfssheriff",
+    "name": "Idefix",
     "max": 1,
     "score": 6.5,
     "requirement": "item3",
@@ -185,19 +185,19 @@
     "_comment": "Can only be purchased after item3 has been bought, too"
   },
   "item5": {
-    "name": "Cowboy",
+    "name": "Gallier",
     "score": 0,
     "icon_file_name": "cowboy.png",
     "visible_for_others": true
   },
   "item6": {
-    "name": "Munition",
+    "name": "Zaubertrank",
     "score": 0,
     "icon_file_name": "bullet.png",
     "visible_for_others": true
   },
   "item7": {
-    "name": "Planwagen",
+    "name": "Hinkelstein",
     "score": 13.5,
     "icon_file_name": "cart.png",
     "visible_for_others": true
@@ -216,57 +216,57 @@
     "visible_for_others": true
   },
   "item10": {
-    "name": "Saboteur",
+    "name": "Spion",
     "score": 0,
     "icon_file_name": "bandit.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
-    "name": "Dynamit",
+    "name": "Verkleidung",
     "score": 0,
     "icon_file_name": "dynamite.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
   "item12": {
-    "name": "Saloon",
+    "name": "Kneipe",
     "score": 22,
     "icon_file_name": "beer.png",
     "visible_for_others": true
   },
   "item13": {
-    "name": "Bordell",
+    "name": "Fischladen",
     "score": 15,
     "icon_file_name": "favourite.png",
     "visible_for_others": true
   },
   "item14": {
-    "name": "Kirche",
+    "name": "Schmiede",
     "score": 19.5,
     "icon_file_name": "bible.png",
     "visible_for_others": true
   },
   "item15": {
-    "name": "Friedhof",
+    "name": "Baumhaus von Troubadix",
     "score": 12,
     "icon_file_name": "coffin.png",
     "visible_for_others": true
   },
   "item16": {
-    "name": "Bank",
+    "name": "Dorffest",
     "score": 32,
     "icon_file_name": "money-bag.png",
     "visible_for_others": true
   },
   "item17": {
-    "name": "Bahnhof",
+    "name": "Häuptlingshaus",
     "score": 34,
     "icon_file_name": "rails.png",
     "visible_for_others": true
   },
   "item18": {
-    "name": "Europ. Einwanderer",
+    "name": "Röm. Deserteuere",
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
@@ -291,9 +291,9 @@
     "name": "Sabotage",
     "destroyItem": "item2",
     "compareItem": "item10",
-    "score": 5,
-    "defendScore": 3,
-    "scorePunishment": 10,
+    "score": 2.5,
+    "defendScore": 1.5,
+    "scorePunishment": 5,
     "uses": "item11",
     "requirement": "item11",
     "randomOpponent": true,
@@ -302,9 +302,9 @@
   "action2": {
     "name": "Angriff",
     "damage": 5,
-    "score": 5,
+    "score": 2.5,
     "multiplicator": "item5",
-    "killBonus": 10,
+    "killBonus": 5,
     "killPunishment": 5,
     "requirement": "item5",
     "uses": "item6",
@@ -323,24 +323,24 @@
       "max": "<max> Palisaden sind doch schon genug."
     },
     "item3": {
-      "max": "In einer Stadt ist nur Platz für einen Sheriff!"
+      "max": "In einem Dorf ist nur Platz für einen Obelix!"
     },
     "item4": {
-      "max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
-      "requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
+      "max": "So groß, dass es mehr als Obelix und Idefix brauchen würde ist eurer Dorf auch wieder nicht.",
+      "requirement": "Ohne Obelix wüsste der Idefixx gar nicht was er machen soll."
     },
     "action_requirement": "Aktion <action> benötigt <requirement>",
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action1": {
-      "action_requirement": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
-      "action_uses": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da etwas sprengen?"
+      "action_requirement": "Wie wollt ihr euch einschleichen, wenn ihr nicht mal eine Verkleidung habt?",
+      "action_uses": "Wie wollt ihr euch einschleichen, wenn ihr nicht mal eine Verkleidung habt?",
+      "action_death": "Ihr seid tot. Wie wollt ihr eich da irgendwo einschleichen?"
     },
     "action2": {
-      "action_requirement": "Ihr braucht erst einen Cowboy, der für euch kämpfen kann",
-      "action_uses": "Ohne Munition sind eure Cowboys nutzlos",
-      "action_death": "Weder Tote noch Untote schießen. Belebt euch erst wieder"
+      "action_requirement": "Ihr braucht erst einen Gallier, der für euch kämpfen kann",
+      "action_uses": "Ohne Zaubertrank sind eure Gallier nutzlos",
+      "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
     }
   },
   "log_messages": {
@@ -352,19 +352,19 @@
       "buy": "<group> haben eine Palisade gebaut"
     },
     "item3": {
-      "buy": "Für <group> arbeitet jetzt ein Sheriff"
+      "buy": "Das Dorf von <group> wird jetzt von Obelix beschützt"
     },
     "item4": {
-      "buy": "<group> haben einen Hilfssheriff eingestellt"
+      "buy": "Im Dorf von <group> hilft jetzt Idefix aus"
     },
     "item5": {
-      "buy": "<group> haben einen Cowboy angeheuert"
+      "buy": "<group> haben einen Gallier angeheuert"
     },
     "item6": {
-      "buy": "<group> haben eine Kiste Munition gekauft"
+      "buy": "<group> haben einen Zaubertrank gebraut"
     },
     "item7": {
-      "buy": "<group> haben einen Planwagen gekauft"
+      "buy": "<group> haben einen Hinkelstein abgebaut"
     },
     "item8": {
       "buy": "<group> haben einen Brunnen gebaut"
@@ -373,31 +373,31 @@
       "buy": "<group> haben eine Farm gebaut"
     },
     "item10": {
-      "buy": "<group> haben einen einen Saboteur ausgebildet"
+      "buy": "<group> haben einen einen Spion ausgebildet"
     },
     "item11": {
-      "buy": "<group> haben Dynamit gekauft"
+      "buy": "<group> haben eine Verkleidung hergestellt"
     },
     "item12": {
-      "buy": "<group> haben einen Saloon gebaut"
+      "buy": "<group> haben eine Kneipe gebaut"
     },
     "item13": {
-      "buy": "<group> haben ein Bordell gebaut"
+      "buy": "Im Dorf von <group> hat Verleihnix einen Fischladen aufgemacht"
     },
     "item14": {
-      "buy": "<group> ist religiös geworden"
+      "buy": "Im Dorf von <group> hat Automatix angefangen zu schmieden"
     },
     "item15": {
-      "buy": "<group> haben jetzt einen Ort um die Toten zu verscharren"
+      "buy": "<group> haben jetzt ein Baumhaus für Troubadix"
     },
     "item16": {
-      "buy": "<group> haben anscheinend zu viel Geld und eine Bank gebaut"
+      "buy": "<group> haben anscheinend zu viele Wildschweine und ein Dorffest organisiert"
     },
     "item17": {
-      "buy": "<group> haben jetzt Anschluss an die restliche Welt"
+      "buy": "<group> haben jetzt ein Haus für ihren Häuptling"
     },
     "item18": {
-      "buy": "<group> haben gute Einwanderungspolitik betrieben"
+      "buy": "Röm. Deserteure sind in das Dorf von <group> gekommen"
     },
     "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
     "kill": "<group> haben <target> getötet",

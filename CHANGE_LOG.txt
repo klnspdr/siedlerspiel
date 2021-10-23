@@ -1,0 +1,22 @@
+CHANGE LOG V2021-10
+
+renaming Items:
+  Sheriff: Obelix
+  Hilfssherriff: Idefix
+  Cowboys: Gallier
+  Munition: Zaubertrank
+  Saboteur: Spion
+  Europ. Einwaderer: Röm. Deserteuere
+  Dynamit: Verkleidung
+  Planwagen: Hinkelstein
+  Saloon: Kneipe
+  Bordell: Fischladen
+  Kirche: Schmiede
+  Friedhof: Baumhaus von Troubadix
+  Bank: Dorffest
+  Bahnhof:
+
+score changes:
+  Adjust Points for Angriff and Sabotage (Half points for attacking party, full punishment points for attacked Party)
+
+edited messages
