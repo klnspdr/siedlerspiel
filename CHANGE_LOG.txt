@@ -14,9 +14,13 @@ renaming Items:
   Kirche: Schmiede
   Friedhof: Baumhaus von Troubadix
   Bank: Dorffest
-  Bahnhof:
+  Bahnhof: Häuptlingshaus
 
 score changes:
   Adjust Points for Angriff and Sabotage (Half points for attacking party, full punishment points for attacked Party)
 
 edited messages
+
+
+idea:
+Obelix geht 3 mal auf Wildschweinjagd, pro drei wildschweine kann 1 fest organisiert werden -> Römische derserteure kommen ins dorf?
