@@ -1,6 +1,8 @@
 {
   "_comment": "score, bonus and punishment are applied to the score, damage to the hp and thereby only indirectly to the score",
   "_syntax:": {
+    "groupPositioning": "either 'solid' or 'fluid'; 'solid' takes x and y coordinates for each group from 'group_positions' and will always position the groups at these coordinates relative to the background image size; 'fluid' takes the number of groups and positions them eqally apart on an oval around the center of the game field with the player's team always on top of the screen",
+    "inventoryDirections": "either 'up' or 'down'; only relevant if 'groupPositioning' set to 'solid'",
     "items": {
       "name": "the name displayed on the inventory list, buttons, log and error messages",
       "score": "points added to the score of the group for buying this item",
@@ -46,29 +48,64 @@
       "usage": "It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
     }
   },
-  "number_groups": 3,
+  "number_groups": 4,
   "group_names": {
-    "gr1": "Die Ährenlosen Sean Fanboys",
-    "gr2": "Team Helios",
-    "gr3": "Team Erdbeere"
+    "gr1": "Feuer",
+    "gr2": "Wasser",
+    "gr3": "Erde",
+    "gr4": "Luft"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
-    "gr1": "village_green.png",
-    "gr2": "village_yellow.png",
-    "gr3": "village_red.png"
+    "files": {
+      "gr1": "village_red.png",
+      "gr2": "village_blue.png",
+      "gr3": "village_green.png",
+      "gr4": "air-appa.png"
+    },
+    "size": {
+      "x": 65,
+      "y": 65
+    }
   },
   "group_colors": {
     "main": {
-      "gr1": "#00ff00",
-      "gr2": "#ffff00",
-      "gr3": "#ff0000"
+      "gr1": "#ff0000",
+      "gr2": "#0000ff",
+      "gr3": "#00ff00",
+      "gr4": "#f96a08"
     },
     "outline": {
       "gr1": "#fceecc",
       "gr2": "#444444",
-      "gr3": "#fceecc"
+      "gr3": "#fceecc",
+      "gr4": "#fceecc"
     }
+  },
+  "groupPositioning": "solid",
+  "group_positions": {
+    "gr1": {
+      "x": "360",
+      "y": "800"
+    },
+    "gr2": {
+      "x": "360",
+      "y": "290"
+    },
+    "gr3": {
+      "x": "1260",
+      "y": "290"
+    },
+    "gr4": {
+      "x": "1260",
+      "y": "800"
+    }
+  },
+  "inventoryDirections": {
+    "gr1": "up",
+    "gr2": "down",
+    "gr3": "down",
+    "gr4": "up"
   },
   "init_values": {
     "hp": 100,

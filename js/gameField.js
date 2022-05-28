@@ -7,12 +7,15 @@ function preload() {
     }
     if (typeof config != "undefined") {
         for (let groupNum = 1; groupNum <= config['number_groups']; groupNum++) {
-            groupIcons.push(loadImage(config['group_icon_dir'] + config['group_images']['gr' + groupNum]))
+            groupIcons.push(loadImage(config['group_icon_dir'] + config['group_images']['files']['gr' + groupNum]))
+            groupPositions.push(config['group_positions']['gr' + groupNum]);
         }
     }
+    groupIconSize = config['group_images']['size'];
 }
 
 function setup() {
+    //setup game field
     let gameField = createCanvas(0.59 * $(window).width(), 0.67 * $(window).height());
     gameField.parent('gameCanvas');
     background(125);
@@ -144,11 +147,13 @@ function touchStarted() {
 
 
 function mapX(x) {
+  //convert coordinates from a centered origin to the p5js coordinates of origin in the top left corner
     let mappedX = map(x, -width / 2, width / 2, 0, width);
     return mappedX;
 }
 
 function mapY(y) {
+  //convert coordinates from a centered origin to the p5js coordinates of origin in the top left corner
     let mappedY = map(y + 10, height / 2, -height / 2, 0, height);
     return mappedY;
 }

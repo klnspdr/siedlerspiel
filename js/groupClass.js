@@ -1,14 +1,15 @@
 class Group {
-    constructor(groupId, x, y, ux, uy) {
+    constructor(groupId, x, y, ux, uy, iconSize) {
         this.groupId = groupId;
         this.x = x;
         this.y = y;
         this.unMapX = ux;
         this.unMapY = uy;
+        this.iconSize = iconSize;
     }
 
     draw() {
-        image(groupIcons[this.groupId-1],this.x,this.y,90,61.5);
+        image(groupIcons[this.groupId-1],this.x,this.y,this.iconSize.x,this.iconSize.y);
         this.drawName();
     }
 
@@ -91,7 +92,8 @@ class Enemy extends Group {
         if (wholeInv != null) {
             let groupInv = wholeInv[this.groupId - 1];
             let numberRows = Math.ceil(config['number_items'] / 6);
-            if (this.y <= height / 2 || (this.x >= mapX(0) - 1 && this.x <= mapX(0) + 1)) {
+            if ((config.groupPositioning === "fluid" && (this.y <= height / 2 || (this.x >= mapX(0) - 1 && this.x <= mapX(0) + 1))) || (config.groupPositioning === "solid" && config.inventoryDirections["gr" + this.groupId] === "up")) {
+              console.log("up");
                 rect(this.x - this.unMapX / (0.01 * width), this.y - 80, 220, 90);
                 noStroke();
                 triangle(this.x, this.y - 10, this.x - 10, this.y - 37, this.x + 10, this.y - 37);
