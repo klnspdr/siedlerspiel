@@ -1,6 +1,6 @@
 function preload() {
     tombStone = loadImage('img/tombStone.png');
-    bgMap = loadImage('img/backgrounds/map.svg');
+    bgMap = loadImage('img/backgrounds/map.jpeg');
     skull = loadImage('img/skull.svg');
     for (let itemNum = 1; itemNum <= config['number_items']; itemNum++) {
         itemIcons.push(loadImage(config['icon_file_dir'] + config['item' + itemNum]['icon_file_name']));
@@ -16,6 +16,7 @@ function setup() {
     let gameField = createCanvas(0.59 * $(window).width(), 0.67 * $(window).height());
     gameField.parent('gameCanvas');
     background(125);
+    clear();
     imageMode(CENTER);
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
@@ -28,8 +29,9 @@ function setup() {
 
 function draw() {
     background(255);
+    //clear();
     imageMode(CORNER);
-    image(bgMap, 0, 0, width, width);
+    image(bgMap, 0, 0, width, height);
     imageMode(CENTER);
     stroke(0);
     strokeWeight(1);

@@ -2,5 +2,5 @@
 $servername = "localhost";
 $username = "minis";
 $password = "minis";
-$dbname = "siedlerspiel_2021";
+$dbname = "siedlerspiel_2022";
 ?>

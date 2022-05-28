@@ -42,6 +42,10 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
 
 
       <!-- include western_font -->
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="western_font/stylesheet.css" type="text/css"/>
 
       <link rel="stylesheet" href="css/main.css">

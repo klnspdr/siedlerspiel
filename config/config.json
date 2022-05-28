@@ -46,40 +46,28 @@
       "usage": "It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
     }
   },
-  "number_groups": 6,
+  "number_groups": 3,
   "group_names": {
-    "gr1": "Die Grünen Banditen",
-    "gr2": "Die Azzul Bandoleros",
-    "gr3": "Die Ähren-Cow-Boys",
-    "gr4": "Die Redianer",
-    "gr5": "Die braunen Appatschen",
-    "gr6": "Die Lil'ianer"
+    "gr1": "Die Ährenlosen Sean Fanboys",
+    "gr2": "Team Helios",
+    "gr3": "Team Erdbeere"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
     "gr1": "village_green.png",
-    "gr2": "village_blue.png",
-    "gr3": "village_yellow.png",
-    "gr4": "village_red.png",
-    "gr5": "village_orange.png",
-    "gr6": "village_purple.png"
+    "gr2": "village_yellow.png",
+    "gr3": "village_red.png"
   },
   "group_colors": {
     "main": {
       "gr1": "#00ff00",
-      "gr2": "#0000ff",
-      "gr3": "#ffff00",
-      "gr4": "#ff0000",
-      "gr5": "#ff7f00",
-      "gr6": "#7f00ff"
+      "gr2": "#ffff00",
+      "gr3": "#ff0000"
     },
     "outline": {
-      "gr1": "#444444",
-      "gr2": "#fceecc",
-      "gr3": "#444444",
-      "gr4": "#fceecc",
-      "gr5": "#fceecc",
-      "gr6": "#fceecc"
+      "gr1": "#fceecc",
+      "gr2": "#444444",
+      "gr3": "#fceecc"
     }
   },
   "init_values": {
@@ -169,14 +157,14 @@
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3": {
-    "name": "Obelix",
+    "name": "Sheriff",
     "max": 1,
     "score": 13,
     "icon_file_name": "sheriff.png",
     "visible_for_others": true
   },
   "item4": {
-    "name": "Idefix",
+    "name": "Hilfssheriff",
     "max": 1,
     "score": 6.5,
     "requirement": "item3",
@@ -185,19 +173,19 @@
     "_comment": "Can only be purchased after item3 has been bought, too"
   },
   "item5": {
-    "name": "Gallier",
+    "name": "Cowboy",
     "score": 0,
     "icon_file_name": "cowboy.png",
     "visible_for_others": true
   },
   "item6": {
-    "name": "Zaubertrank",
+    "name": "Munition",
     "score": 0,
     "icon_file_name": "bullet.png",
     "visible_for_others": true
   },
   "item7": {
-    "name": "Hinkelstein",
+    "name": "Planwagen",
     "score": 13.5,
     "icon_file_name": "cart.png",
     "visible_for_others": true
@@ -216,57 +204,57 @@
     "visible_for_others": true
   },
   "item10": {
-    "name": "Spion",
+    "name": "Saboteur",
     "score": 0,
     "icon_file_name": "bandit.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
-    "name": "Verkleidung",
+    "name": "Dynamit",
     "score": 0,
     "icon_file_name": "dynamite.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
   "item12": {
-    "name": "Kneipe",
+    "name": "Saloon",
     "score": 22,
     "icon_file_name": "beer.png",
     "visible_for_others": true
   },
   "item13": {
-    "name": "Fischladen",
+    "name": "Bordell",
     "score": 15,
     "icon_file_name": "favourite.png",
     "visible_for_others": true
   },
   "item14": {
-    "name": "Schmiede",
+    "name": "Kirche",
     "score": 19.5,
     "icon_file_name": "bible.png",
     "visible_for_others": true
   },
   "item15": {
-    "name": "Baumhaus von Troubadix",
+    "name": "Friedhof",
     "score": 12,
     "icon_file_name": "coffin.png",
     "visible_for_others": true
   },
   "item16": {
-    "name": "Dorffest",
+    "name": "Bank",
     "score": 32,
     "icon_file_name": "money-bag.png",
     "visible_for_others": true
   },
   "item17": {
-    "name": "Häuptlingshaus",
+    "name": "Bahnhof",
     "score": 34,
     "icon_file_name": "rails.png",
     "visible_for_others": true
   },
   "item18": {
-    "name": "Röm. Deserteuere",
+    "name": "Europ. Einwanderer",
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
@@ -323,24 +311,24 @@
       "max": "<max> Palisaden sind doch schon genug."
     },
     "item3": {
-      "max": "In einem Dorf ist nur Platz für einen Obelix!"
+      "max": "In einer Stadt ist nur Platz für einen Sheriff!"
     },
     "item4": {
-      "max": "So groß, dass es mehr als Obelix und Idefix brauchen würde ist eurer Dorf auch wieder nicht.",
-      "requirement": "Ohne Obelix wüsste der Idefixx gar nicht was er machen soll."
+      "max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
+      "requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
     },
     "action_requirement": "Aktion <action> benötigt <requirement>",
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action1": {
-      "action_requirement": "Wie wollt ihr euch einschleichen, wenn ihr nicht mal eine Verkleidung habt?",
-      "action_uses": "Wie wollt ihr euch einschleichen, wenn ihr nicht mal eine Verkleidung habt?",
-      "action_death": "Ihr seid tot. Wie wollt ihr eich da irgendwo einschleichen?"
+      "action_requirement": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
+      "action_uses": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da etwas sprengen?"
     },
     "action2": {
-      "action_requirement": "Ihr braucht erst einen Gallier, der für euch kämpfen kann",
-      "action_uses": "Ohne Zaubertrank sind eure Gallier nutzlos",
-      "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
+      "action_requirement": "Ihr braucht erst einen Cowboy, der für euch kämpfen kann",
+      "action_uses": "Ohne Munition sind eure Cowboys nutzlos",
+      "action_death": "Weder Tote noch Untote schießen. Belebt euch erst wieder"
     }
   },
   "log_messages": {
@@ -352,19 +340,19 @@
       "buy": "<group> haben eine Palisade gebaut"
     },
     "item3": {
-      "buy": "Das Dorf von <group> wird jetzt von Obelix beschützt"
+      "buy": "Für <group> arbeitet jetzt ein Sheriff"
     },
     "item4": {
-      "buy": "Im Dorf von <group> hilft jetzt Idefix aus"
+      "buy": "<group> haben einen Hilfssheriff eingestellt"
     },
     "item5": {
-      "buy": "<group> haben einen Gallier angeheuert"
+      "buy": "<group> haben einen Cowboy angeheuert"
     },
     "item6": {
-      "buy": "<group> haben einen Zaubertrank gebraut"
+      "buy": "<group> haben eine Kiste Munition gekauft"
     },
     "item7": {
-      "buy": "<group> haben einen Hinkelstein abgebaut"
+      "buy": "<group> haben einen Planwagen gekauft"
     },
     "item8": {
       "buy": "<group> haben einen Brunnen gebaut"
@@ -373,31 +361,31 @@
       "buy": "<group> haben eine Farm gebaut"
     },
     "item10": {
-      "buy": "<group> haben einen einen Spion ausgebildet"
+      "buy": "<group> haben einen einen Saboteur ausgebildet"
     },
     "item11": {
-      "buy": "<group> haben eine Verkleidung hergestellt"
+      "buy": "<group> haben Dynamit gekauft"
     },
     "item12": {
-      "buy": "<group> haben eine Kneipe gebaut"
+      "buy": "<group> haben einen Saloon gebaut"
     },
     "item13": {
-      "buy": "Im Dorf von <group> hat Verleihnix einen Fischladen aufgemacht"
+      "buy": "<group> haben ein Bordell gebaut"
     },
     "item14": {
-      "buy": "Im Dorf von <group> hat Automatix angefangen zu schmieden"
+      "buy": "<group> ist religiös geworden"
     },
     "item15": {
-      "buy": "<group> haben jetzt ein Baumhaus für Troubadix"
+      "buy": "<group> haben jetzt einen Ort um die Toten zu verscharren"
     },
     "item16": {
-      "buy": "<group> haben anscheinend zu viele Wildschweine und ein Dorffest organisiert"
+      "buy": "<group> haben anscheinend zu viel Geld und eine Bank gebaut"
     },
     "item17": {
-      "buy": "<group> haben jetzt ein Haus für ihren Häuptling"
+      "buy": "<group> haben jetzt Anschluss an die restliche Welt"
     },
     "item18": {
-      "buy": "Röm. Deserteure sind in das Dorf von <group> gekommen"
+      "buy": "<group> haben gute Einwanderungspolitik betrieben"
     },
     "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
     "kill": "<group> haben <target> getötet",

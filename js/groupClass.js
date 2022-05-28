@@ -13,8 +13,9 @@ class Group {
     }
 
     drawName() {
+        textFont("Herculanum");
         noStroke();
-        fill(0);
+        fill(255);
         textStyle(BOLD);
         textSize(15);
         text(config['group_names']['gr' + this.groupId], this.x, this.y - 40);
@@ -23,7 +24,7 @@ class Group {
     updateShownInfo() {
         if (wholeGroupData != null && wholeInv != null) {
             let info = wholeGroupData[this.groupId - 1];
-            fill(0);
+            fill(255);
             strokeWeight(0);
             textSize(10);
             textStyle(NORMAL);
