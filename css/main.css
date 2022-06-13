@@ -16,7 +16,7 @@ body {
     text-align: center;
     display: inline-grid;
     align-items: center;
-    height: 40px;
+    height: 50px;
     width: 100%;
 }
 
@@ -123,6 +123,7 @@ td, th {
 #invTable{
     text-align: left;
     margin: 0 auto 0 auto;
+    background-color: #ffffff;
 }
 
 #invTable td{

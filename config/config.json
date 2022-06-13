@@ -85,11 +85,11 @@
   "groupPositioning": "solid",
   "group_positions": {
     "gr1": {
-      "x": "360",
+      "x": "365",
       "y": "800"
     },
     "gr2": {
-      "x": "360",
+      "x": "365",
       "y": "290"
     },
     "gr3": {
@@ -131,7 +131,7 @@
     "item19": 0,
     "item20": 0
   },
-  "hpName": "Einwohner",
+  "hpName": "Mannschaftsmitglieder",
   "finalScores": {
     "hp": 1,
     "deathPunishment": 40,
@@ -175,18 +175,18 @@
     "accountableItem2": "item3",
     "accountableItem3": "item4"
   },
-  "number_items": 18,
-  "icon_file_dir": "img/items2/",
+  "number_items": 17,
+  "icon_file_dir": "img/items/",
   "item1": {
-    "name": "Wohnhaus",
+    "name": "Quartier",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
-    "icon_file_name": "house.png",
+    "icon_file_name": "sleep.png",
     "visible_for_others": true
   },
   "item2": {
-    "name": "Palisade",
+    "name": "Wandverstärkung",
     "score": 10,
     "max": 6,
     "icon_file_name": "fence.png",
@@ -194,110 +194,110 @@
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3": {
-    "name": "Sheriff",
+    "name": "General",
     "max": 1,
     "score": 13,
-    "icon_file_name": "sheriff.png",
+    "icon_file_name": "Dragon-of-the-West.png",
     "visible_for_others": true
   },
   "item4": {
-    "name": "Hilfssheriff",
+    "name": "Offizier",
     "max": 1,
     "score": 6.5,
     "requirement": "item3",
-    "icon_file_name": "sheriff_help.png",
+    "icon_file_name": "Zhao.png",
     "visible_for_others": true,
     "_comment": "Can only be purchased after item3 has been bought, too"
   },
   "item5": {
-    "name": "Cowboy",
+    "name": "Bändiger",
     "score": 0,
-    "icon_file_name": "cowboy.png",
+    "icon_file_name": "Benders.png",
     "visible_for_others": true
   },
   "item6": {
-    "name": "Munition",
+    "name": "Bändigungsmaterialien",
     "score": 0,
-    "icon_file_name": "bullet.png",
+    "icon_file_name": "materials.png",
     "visible_for_others": true
   },
   "item7": {
-    "name": "Planwagen",
+    "name": "Kohlkopfverkäufer",
     "score": 13.5,
-    "icon_file_name": "cart.png",
+    "icon_file_name": "cabbage-man.png",
     "visible_for_others": true
   },
   "item8": {
-    "name": "Brunnen",
+    "name": "Avatar",
     "score": 6.5,
-    "icon_file_name": "well.png",
+    "icon_file_name": "Matured-Aang.png",
     "visible_for_others": true,
-    "_comment": "One per item9 and per five item1 necessary. Each missing = -15 credits"
+    "_comment": "hides Inventory from others"
   },
   "item9": {
-    "name": "Farm",
+    "name": "Azula verkleidet als Kyoshi-Kriegerin",
     "score": 7,
-    "icon_file_name": "carrot.png",
+    "icon_file_name": "Azula-kyoshi.png",
     "visible_for_others": true
   },
   "item10": {
-    "name": "Saboteur",
+    "name": "Sprüh-Sprüh-Knall-Bumm-Mann",
     "score": 0,
-    "icon_file_name": "bandit.png",
+    "icon_file_name": "combustion-man.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
-    "name": "Dynamit",
+    "name": "Goldsack",
     "score": 0,
-    "icon_file_name": "dynamite.png",
+    "icon_file_name": "money-bag.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
   "item12": {
-    "name": "Saloon",
+    "name": "Gefängnis",
     "score": 22,
-    "icon_file_name": "beer.png",
+    "icon_file_name": "Boiling_Rock.png",
     "visible_for_others": true
   },
   "item13": {
-    "name": "Bordell",
+    "name": "Irohs Teeladen",
     "score": 15,
-    "icon_file_name": "favourite.png",
+    "icon_file_name": "Uncle-Iroh.png",
     "visible_for_others": true
   },
   "item14": {
-    "name": "Kirche",
+    "name": "Schildkrötengehege",
     "score": 19.5,
-    "icon_file_name": "bible.png",
+    "icon_file_name": "turtle-duck.png",
     "visible_for_others": true
   },
   "item15": {
-    "name": "Friedhof",
+    "name": "Tempel",
     "score": 12,
-    "icon_file_name": "coffin.png",
+    "icon_file_name": "Southern_Air_Temple.png",
     "visible_for_others": true
   },
   "item16": {
-    "name": "Bank",
+    "name": "Wan Shi Tongs Bibliothek",
     "score": 32,
-    "icon_file_name": "money-bag.png",
+    "icon_file_name": "library-square.png",
     "visible_for_others": true
   },
   "item17": {
-    "name": "Bahnhof",
-    "score": 34,
-    "icon_file_name": "rails.png",
-    "visible_for_others": true
-  },
-  "item18": {
-    "name": "Europ. Einwanderer",
+    "name": "Zwangsrekrutierung",
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
     "icon_file_name": "bag.png",
     "visible_for_others": true,
     "_comment": "repairKit, adds plusHP to hp"
+  },
+  "item18": {
+    "name": "unused",
+    "score": 0,
+    "icon_file_name": "",
+    "visible_for_others": true
   },
   "item19": {
     "name": "unused",
