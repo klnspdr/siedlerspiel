@@ -6,6 +6,8 @@ class Group {
         this.unMapX = ux;
         this.unMapY = uy;
         this.iconSize = iconSize;
+        this.statsShown = true;
+        this.statsRevealed = false;
     }
 
     draw() {
@@ -24,6 +26,8 @@ class Group {
 
     updateShownInfo() {
         if (wholeGroupData != null && wholeInv != null) {
+
+
             let info = wholeGroupData[this.groupId - 1];
             fill(255);
             strokeWeight(0);
@@ -31,6 +35,7 @@ class Group {
             textStyle(NORMAL);
 			if(info['displayScore'] == true)
             text("Punkte: " + info['final_score'], this.x, this.y + 50);
+
             this.drawHpBar(this.x, this.y, info['hp'], info['max_hp']);
         }
     }
@@ -40,6 +45,9 @@ class Group {
         stroke(0);
         fill(255);
         rect(x, y + 30, 50, 15);
+        if(!this.statsShown){
+            hp = 0;
+        }
         //strokeWeight(1);
         if (hp / maxHp >= 0.5) {
             fill('#00ff00');
@@ -53,6 +61,9 @@ class Group {
         rect(x - (50 - filledLength) / 2 + 0.5, y + 30.5, filledLength - 1, 14);
         //noStroke();
         //rect(x-(50-filledLength)/2+)
+        if(!this.statsShown){
+            hp = "?";
+        }
         fill(0);
         textSize(10);
         textStyle(NORMAL);
@@ -66,7 +77,13 @@ class Enemy extends Group {
     }
 
     draw() {
-        if (wholeGroupData != null) {
+        if (wholeGroupData != null && wholeInv != null) {
+
+            if(wholeInv[this.groupId - 1][8] == 1 && !this.statsRevealed ){
+                this.statsShown = false;
+            } else {
+                this.statsShown = true;
+            }
             if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
                 //fill('#ff0000aa');
                 image(tombStone, this.x, this.y, 50, 50);
@@ -115,7 +132,7 @@ class Enemy extends Group {
                             noStroke();
                             fill(0);
                             textStyle(NORMAL);
-                            text(": " + groupInv['item' + itemNum], x + 15, y);
+                            text(": " + ((this.statsShown) ? groupInv['item' + itemNum] : "?"), x + 15, y);
 
                             itemNum++;
                         }
@@ -142,7 +159,7 @@ class Enemy extends Group {
                             noStroke();
                             fill(0);
                             textStyle(NORMAL);
-                            text(": " + groupInv['item' + itemNum], x + 15, y);
+                            text(": " + ((this.statsShown) ? groupInv['item' + itemNum] : "?"), x + 15, y);
                             itemNum++;
                         }
                     }
@@ -159,7 +176,7 @@ class Player extends Group {
         if (wholeGroupData != null) {
             if(selectMode){
                 tint(80);
-                image(groupIcons[this.groupId-1],this.x,this.y,90,61.5);
+                image(groupIcons[this.groupId-1],this.x,this.y,this.iconSize.x,this.iconSize.y);
                 noTint();
                 super.drawName();
 

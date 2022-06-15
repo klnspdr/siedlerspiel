@@ -27,6 +27,7 @@ let groupId = 100;
 $.get("ajax/getRole.php")
     .done(function (data) {
         groupId = parseInt(data);
+        document.title = "Siedler 2019 - " + (groupId !== 100 ? config.group_names[`gr${groupId}`] : "Überblick");
     });
 
 let wholeGroupData = null;

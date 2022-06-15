@@ -311,7 +311,7 @@
     "icon_file_name": "",
     "visible_for_others": true
   },
-  "number_actions": 2,
+  "number_actions": 3,
   "action1": {
     "name": "Sabotage",
     "destroyItem": "item2",
@@ -339,6 +339,15 @@
       "item4": 10
     },
     "_comment": "damage is substracted from hp; damage and score will be multiplied by number of multiplicator; killBonus if oppponent reaches 0HP with this attack, killPunishment is substracted from opponents score"
+  },
+  "action3": {
+    "name": "Gegner auspionieren",
+    "requirement": "item9",
+    "uses": "item9",
+    "defense": {
+      "item12": 10
+    },
+    "_comment": ""
   },
   "error_messages": {
     "requirement": "Ihr müsst erst <requirement> kaufen bevor ihr <item> kaufen könnt.",

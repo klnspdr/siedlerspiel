@@ -46,7 +46,7 @@ function draw() {
     for (let enemy of enemies) {
         if (enemy != "") {
             if (selectMode) {
-
+                //select Enemy group for action by clicking on them
                 if (wholeGroupData[enemy.groupId - 1]['hp'] != 0) {
                     enemy.selectMode();
                    /* noFill();
@@ -61,10 +61,14 @@ function draw() {
                             targetId: enemy.groupId
                         })
                             .done(function (data) {
+
                                 if (data != 1) {
                                     alert(data);
-
-
+                                } else if (data == 1 && currentAction === 3){
+                                    enemy.statsRevealed = true;
+                                    setTimeout((enemy) => {
+                                        enemy.statsRevealed = false;
+                                    }, 60000, enemy)
                                 }
 
                             });
@@ -129,19 +133,19 @@ function mouseClicked() {
 }
 
 function touchStarted() {
-    console.log('touched');
+
     if (invModeGroup === 0) {
         for (let enemy of enemies) {
             if (enemy != "") {
                 if (touches.x >= enemy.x - 30 && touches.x <= enemy.x + 30 && touches.y >= enemy.y - 30 && touches.y <= enemy.y + 30) {
                     invModeGroup = enemy.groupId;
-                    console.log(invModeGroup + 'inv');
+                    //console.log(invModeGroup + 'inv');
                 }
             }
         }
     } else {
         invModeGroup = 0;
-        console.log(invModeGroup + 'inv');
+        //console.log(invModeGroup + 'inv');
     }
 }
 
