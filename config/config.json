@@ -144,24 +144,6 @@
             "punishment": 15,
             "once_punishment": 0,
             "bonus": 0
-          },
-          "item9": {
-            "multiplicator": 1,
-            "consuming": true,
-            "punishment": 15,
-            "once_punishment": 0,
-            "bonus": 0
-          }
-        }
-      },
-      "item9": {
-        "required_by": {
-          "item1": {
-            "multiplicator": 5,
-            "consuming": true,
-            "punishment": 15,
-            "once_punishment": 0,
-            "bonus": 0
           }
         }
       }
@@ -203,7 +185,7 @@
   "item4": {
     "name": "Offizier",
     "max": 1,
-    "score": 6.5,
+    "score": 7,
     "requirement": "item3",
     "icon_file_name": "Zhao.png",
     "visible_for_others": true,
@@ -223,20 +205,21 @@
   },
   "item7": {
     "name": "Kohlkopfverkäufer",
-    "score": 13.5,
+    "score": 14,
     "icon_file_name": "cabbage-man.png",
     "visible_for_others": true
   },
   "item8": {
     "name": "Avatar",
-    "score": 6.5,
-    "icon_file_name": "Matured-Aang.png",
+    "score": 13,
+    "max": 1,
+    "icon_file_name": "Aang.png",
     "visible_for_others": true,
     "_comment": "hides Inventory from others"
   },
   "item9": {
     "name": "Azula verkleidet als Kyoshi-Kriegerin",
-    "score": 7,
+    "score": 0,
     "icon_file_name": "Azula-kyoshi.png",
     "visible_for_others": true
   },
@@ -256,31 +239,32 @@
   },
   "item12": {
     "name": "Gefängnis",
-    "score": 22,
+    "score": 18,
+    "max": 3,
     "icon_file_name": "Boiling_Rock.png",
     "visible_for_others": true
   },
   "item13": {
     "name": "Irohs Teeladen",
-    "score": 15,
+    "score": 22,
     "icon_file_name": "Uncle-Iroh.png",
     "visible_for_others": true
   },
   "item14": {
     "name": "Schildkrötengehege",
-    "score": 19.5,
+    "score": 15,
     "icon_file_name": "turtle-duck.png",
     "visible_for_others": true
   },
   "item15": {
     "name": "Tempel",
-    "score": 12,
+    "score": 20,
     "icon_file_name": "Southern_Air_Temple.png",
     "visible_for_others": true
   },
   "item16": {
     "name": "Wan Shi Tongs Bibliothek",
-    "score": 32,
+    "score": 34,
     "icon_file_name": "library-square.png",
     "visible_for_others": true
   },
@@ -313,7 +297,7 @@
   },
   "number_actions": 3,
   "action1": {
-    "name": "Sabotage",
+    "name": "Attentat ausführen",
     "destroyItem": "item2",
     "compareItem": "item10",
     "score": 2.5,
@@ -354,84 +338,87 @@
     "max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
     "death": "Tote kaufen keine <item>",
     "item2": {
-      "max": "<max> Palisaden sind doch schon genug."
+      "max": "<max> Wandverstärkungen sind doch schon genug."
     },
     "item3": {
-      "max": "In einer Stadt ist nur Platz für einen Sheriff!"
+      "max": "In einer Armee ist nur Platz für einen General!"
     },
     "item4": {
-      "max": "So groß, dass sie mehr als Sheriff und Hilfssheriff brauchen würde ist eure Stadt auch wieder nicht.",
-      "requirement": "Ohne einen Sheriff wüsste der Hilfssheriff gar nicht was er machen soll."
+      "max": "So groß, dass sie mehr als einen General und einen Offizier brauchen würde ist eure Armee auch wieder nicht.",
+      "requirement": "Ohne einen General wüsste der Offizier gar nicht, was er machen soll."
+    },
+    "item8": {
+      "max": "Es gibt nur einen Avatar!"
+    },
+    "item12": {
+      "max": "Mehr Platz für Gefangene braucht ihr nicht!"
     },
     "action_requirement": "Aktion <action> benötigt <requirement>",
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action1": {
-      "action_requirement": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
-      "action_uses": "Wie wollt ihr etwas sprengen, wenn ihr nicht mal Dynamit habt?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da etwas sprengen?"
+      "action_requirement": "Wie wollt ihr den Sprüh-Sprüh-Knall-Bumm-Mann denn bezahlen, wenn ihr kein Gold habt?",
+      "action_uses": "Wie wollt ihr den Sprüh-Sprüh-Knall-Bumm-Mann denn bezahlen, wenn ihr kein Gold habt?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da den Sprüh-Sprüh-Knall-Bumm Mann anheuern?"
     },
     "action2": {
-      "action_requirement": "Ihr braucht erst einen Cowboy, der für euch kämpfen kann",
-      "action_uses": "Ohne Munition sind eure Cowboys nutzlos",
-      "action_death": "Weder Tote noch Untote schießen. Belebt euch erst wieder"
+      "action_requirement": "Ihr braucht erst einen Bändiger, der für euch kämpfen kann",
+      "action_uses": "Ohne Bändigungsmaterialien sind eure Bändiger nutzlos",
+      "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
     }
   },
   "log_messages": {
     "buy": "<group> haben <item> gekauft.",
     "item1": {
-      "buy": "<group> haben ein neues Wohnhaus gebaut"
+      "buy": "<group> haben ein neues Quartier gebaut"
     },
     "item2": {
-      "buy": "<group> haben eine Palisade gebaut"
+      "buy": "<group> haben eine Wandverstärkung gebaut"
     },
     "item3": {
-      "buy": "Für <group> arbeitet jetzt ein Sheriff"
+      "buy": "Für <group> arbeitet jetzt ein General"
     },
     "item4": {
-      "buy": "<group> haben einen Hilfssheriff eingestellt"
+      "buy": "<group> haben einen Offizier eingestellt"
     },
     "item5": {
-      "buy": "<group> haben einen Cowboy angeheuert"
+      "buy": "<group> haben einen Bändiger ausgebildet"
     },
     "item6": {
-      "buy": "<group> haben eine Kiste Munition gekauft"
+      "buy": "<group> haben Bändigungsmaterialien gekauft"
     },
     "item7": {
-      "buy": "<group> haben einen Planwagen gekauft"
+      "buy": "<group> haben einen Kohlkopfverkäufer eingestellt"
     },
     "item8": {
-      "buy": "<group> haben einen Brunnen gebaut"
+      "buy": "<group> haben den Avatar angeheuert, um sie zu tarnen"
     },
     "item9": {
-      "buy": "<group> haben eine Farm gebaut"
+      "buy": "<group> haben Azula verkleidet als Kyoshi-Kriegerin angeheuert"
     },
     "item10": {
-      "buy": "<group> haben einen einen Saboteur ausgebildet"
+      "buy": "<group> haben den Sprüh-Sprüh-Knall-Bumm-Mann angeheuert"
     },
     "item11": {
-      "buy": "<group> haben Dynamit gekauft"
+      "buy": "<group> haben einen Goldsack gekauft"
     },
     "item12": {
-      "buy": "<group> haben einen Saloon gebaut"
+      "buy": "<group> haben ein Gefängnis gebaut gebaut"
     },
     "item13": {
-      "buy": "<group> haben ein Bordell gebaut"
+      "buy": "<group> haben Irohs Teeladen gebaut"
     },
     "item14": {
-      "buy": "<group> ist religiös geworden"
+      "buy": "<group> haben ein Schildkrötengehege gebaut"
     },
     "item15": {
-      "buy": "<group> haben jetzt einen Ort um die Toten zu verscharren"
+      "buy": "<group> haben jetzt einen Ort um die Ahnen zu verehren"
     },
     "item16": {
-      "buy": "<group> haben anscheinend zu viel Geld und eine Bank gebaut"
+      "buy": "<group> wollen neues Wissen erlernen"
     },
     "item17": {
-      "buy": "<group> haben jetzt Anschluss an die restliche Welt"
-    },
-    "item18": {
-      "buy": "<group> haben gute Einwanderungspolitik betrieben"
+      "buy": "<group> haben zwangsrekrutiert"
     },
     "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
     "kill": "<group> haben <target> getötet",
@@ -439,15 +426,19 @@
     "nothingToDestroy": "<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
     "failure": "<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
     "action1": {
-      "success": "<group> haben eine Palisade der <target> zerstört",
-      "hitSelf": "<group> haben versucht sich selbst zu sabotieren",
-      "nothingToDestroy": "<group> wollte <target> sabotieren, die hatten aber gar keine Palisaden",
+      "success": "<group> haben eine Wandverstärkung der <target> zerstört",
+      "hitSelf": "<group> hat ein Attentat auf sich selbst ausgeführt",
+      "nothingToDestroy": "<group> wollte <target> sabotieren, die hatten aber gar keine Wandverstärkungen",
       "failure": "<group> wollte <target> sabotieren, ist aber gnadenlos unterlegen"
     },
     "action2": {
       "success": "<group> haben <target> angegriffen",
       "kill": "<group> haben <target> vom Erdboden getilgt",
       "failure": "<group> wurden beim Angriff auf <target> erfolgreich abgewehrt"
+    },
+    "action3": {
+      "success": "<group> haben <target> mithilfe von Azula auspioniert",
+      "failure": "<target> haben erfolgreich Azula, die von <group> beauftragt wurde, ins Gefängnis gesteckt."
     }
   }
 }
