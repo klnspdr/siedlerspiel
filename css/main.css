@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 body {
-    font-family: Herculanum;
+    font-family: Herculanum, Arial;
     background-color: #fceecd;
     background-image: url("../img/backgrounds/wooden_plank.jpg");
     background-repeat: repeat;
@@ -8,7 +8,7 @@ body {
 
 .button {
     color: #ffffff;
-    font-size: auto;
+    /*font-size: unset;*/
     border: 1px solid black;
     background-image: url("../img/backgrounds/stone.jpg");
     background-size: cover;

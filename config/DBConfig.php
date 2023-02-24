@@ -1,5 +1,5 @@
 <?php
-$servername = "10.35.46.32:3306";
+$servername = "localhost";
 $username = "minis";
 $password = "minis";
 $dbname = "siedlerspiel_2022";
