@@ -23,6 +23,7 @@ $.ajax({
     }
 });
 
+
 let groupId = 100;
 $.get("ajax/getRole.php")
     .done(function (data) {
@@ -86,23 +87,19 @@ function createPlayers(groupId) {
 
 function mapSolidX (x){
   //map x coordinate for solid mode from background image's range to canvas size
-  let mappedX = map(x, 0, bgMap.width, 0, width);
-  return mappedX;
+    return map(x, 0, bgMap.width, 0, width);
 }
 
 function mapSolidY (y){
   //map y coordinate for solid mode from background image's range to canvas size
-  let mappedY = map(y, 0, bgMap.height, 0, height);
-  return mappedY;
+    return map(y, 0, bgMap.height, 0, height);
 }
 
 function reverseMapX(x) {
   //convert coordinates from p5js coordinates of origin in the top left corner to a coordinate system with centered origin
-    let mappedX = map(x, 0, width, -width / 2, width / 2);
-    return mappedX;
+    return map(x, 0, width, -width / 2, width / 2);
 }
 function reverseMapY(y) {
   //convert coordinates from p5js coordinates of origin in the top left corner to a coordinate system with centered origin
-    let mappedY = map(y, 0, height, height / 2, -height / 2) - 10;
-    return mappedY;
+    return map(y, 0, height, height / 2, -height / 2) - 10;
 }

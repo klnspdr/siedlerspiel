@@ -60,7 +60,7 @@
     "files": {
       "gr1": "village_red.png",
       "gr2": "village_blue.png",
-      "gr3": "village_green.png",
+      "gr3": "earth-nation.png",
       "gr4": "air-appa.png"
     },
     "size": {
@@ -136,17 +136,7 @@
     "hp": 1,
     "deathPunishment": 40,
     "ratios": {
-      "item8": {
-        "required_by": {
-          "item1": {
-            "multiplicator": 5,
-            "consuming": true,
-            "punishment": 15,
-            "once_punishment": 0,
-            "bonus": 0
-          }
-        }
-      }
+
     },
     "_comment": "for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score. ratios: the element opening the group is required. In the required_by array any number of elements can be listed, the all present an item that requires the first item. For each requiring item the following parameters can be given: multiplicator: n of the requiring items require only 1 required item. consuming: if more than one item require the other item consuming: true means that the amount of the required item used to fulfill this requirement will not be available to fulfill other requirements any more. punishment: if 5 item1 require one item2, for each begun 5 item1, that cannot be compensated with one item2, punishment will be substracted from the score. once_punishment: if the dependency is not fulfilled, once_punishment will be substracted from the score independent on how much the dependency is not fulfilled. bonus: will be added to the score if the dependency is fulfilled"
   },
@@ -370,55 +360,55 @@
   "log_messages": {
     "buy": "<group> haben <item> gekauft.",
     "item1": {
-      "buy": "<group> haben ein neues Quartier gebaut"
+      "buy": "<group> hat ein neues Quartier gebaut"
     },
     "item2": {
-      "buy": "<group> haben eine Wandverstärkung gebaut"
+      "buy": "<group> hat eine Wandverstärkung gebaut"
     },
     "item3": {
       "buy": "Für <group> arbeitet jetzt ein General"
     },
     "item4": {
-      "buy": "<group> haben einen Offizier eingestellt"
+      "buy": "<group> habt einen Offizier eingestellt"
     },
     "item5": {
-      "buy": "<group> haben einen Bändiger ausgebildet"
+      "buy": "<group> hat einen Bändiger ausgebildet"
     },
     "item6": {
-      "buy": "<group> haben Bändigungsmaterialien gekauft"
+      "buy": "<group> hat Bändigungsmaterialien gekauft"
     },
     "item7": {
-      "buy": "<group> haben einen Kohlkopfverkäufer eingestellt"
+      "buy": "<group> hat einen Kohlkopfverkäufer eingestellt"
     },
     "item8": {
-      "buy": "<group> haben den Avatar angeheuert, um sie zu tarnen"
+      "buy": "<group> hat den Avatar angeheuert, um sie zu tarnen"
     },
     "item9": {
-      "buy": "<group> haben Azula verkleidet als Kyoshi-Kriegerin angeheuert"
+      "buy": "<group> hat Azula verkleidet als Kyoshi-Kriegerin angeheuert"
     },
     "item10": {
-      "buy": "<group> haben den Sprüh-Sprüh-Knall-Bumm-Mann angeheuert"
+      "buy": "<group> hat den Sprüh-Sprüh-Knall-Bumm-Mann angeheuert"
     },
     "item11": {
-      "buy": "<group> haben einen Goldsack gekauft"
+      "buy": "<group> hat einen Goldsack gekauft"
     },
     "item12": {
-      "buy": "<group> haben ein Gefängnis gebaut gebaut"
+      "buy": "<group> hat ein Gefängnis gebaut"
     },
     "item13": {
-      "buy": "<group> haben Irohs Teeladen gebaut"
+      "buy": "<group> hat Irohs Teeladen gebaut"
     },
     "item14": {
-      "buy": "<group> haben ein Schildkrötengehege gebaut"
+      "buy": "<group> hat ein Schildkrötengehege gebaut"
     },
     "item15": {
-      "buy": "<group> haben jetzt einen Ort um die Ahnen zu verehren"
+      "buy": "<group> hat jetzt einen Ort um die Ahnen zu verehren"
     },
     "item16": {
-      "buy": "<group> wollen neues Wissen erlernen"
+      "buy": "<group> will neues Wissen erlernen"
     },
     "item17": {
-      "buy": "<group> haben zwangsrekrutiert"
+      "buy": "<group> hat zwangsrekrutiert"
     },
     "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
     "kill": "<group> haben <target> getötet",
@@ -426,19 +416,19 @@
     "nothingToDestroy": "<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
     "failure": "<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
     "action1": {
-      "success": "<group> haben eine Wandverstärkung der <target> zerstört",
+      "success": "<group> hat eine Wandverstärkung der <target> zerstört",
       "hitSelf": "<group> hat ein Attentat auf sich selbst ausgeführt",
       "nothingToDestroy": "<group> wollte <target> sabotieren, die hatten aber gar keine Wandverstärkungen",
       "failure": "<group> wollte <target> sabotieren, ist aber gnadenlos unterlegen"
     },
     "action2": {
-      "success": "<group> haben <target> angegriffen",
-      "kill": "<group> haben <target> vom Erdboden getilgt",
-      "failure": "<group> wurden beim Angriff auf <target> erfolgreich abgewehrt"
+      "success": "<group> hat <target> angegriffen",
+      "kill": "<group> hat <target> vom Erdboden getilgt",
+      "failure": "<group> wurde beim Angriff auf <target> erfolgreich abgewehrt"
     },
     "action3": {
-      "success": "<group> haben <target> mithilfe von Azula auspioniert",
-      "failure": "<target> haben erfolgreich Azula, die von <group> beauftragt wurde, ins Gefängnis gesteckt."
+      "success": "<group> hat <target> mithilfe von Azula auspioniert",
+      "failure": "<target> habt erfolgreich Azula, die von <group> beauftragt wurde, ins Gefängnis gesteckt."
     }
   }
 }
