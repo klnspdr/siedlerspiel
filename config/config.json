@@ -131,12 +131,33 @@
     "item19": 0,
     "item20": 0
   },
-  "hpName": "Mannschaftsmitglieder",
+  "hpName": "Untertanen",
   "finalScores": {
-    "hp": 1,
+    "hp": 18,
     "deathPunishment": 40,
     "ratios": {
-
+      "item18": {
+        "required_by": {
+          "item1": {
+            "multiplicator": 5,
+            "consuming": true,
+            "punishment": 15,
+            "once_punishment": 0,
+            "bonus": 0
+          }
+        }
+      },
+      "item19": {
+        "required_by": {
+          "item1": {
+            "multiplicator": 5,
+            "consuming": true,
+            "punishment": 15,
+            "once_punishment": 0,
+            "bonus": 0
+          }
+        }
+      }
     },
     "_comment": "for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score. ratios: the element opening the group is required. In the required_by array any number of elements can be listed, the all present an item that requires the first item. For each requiring item the following parameters can be given: multiplicator: n of the requiring items require only 1 required item. consuming: if more than one item require the other item consuming: true means that the amount of the required item used to fulfill this requirement will not be available to fulfill other requirements any more. punishment: if 5 item1 require one item2, for each begun 5 item1, that cannot be compensated with one item2, punishment will be substracted from the score. once_punishment: if the dependency is not fulfilled, once_punishment will be substracted from the score independent on how much the dependency is not fulfilled. bonus: will be added to the score if the dependency is fulfilled"
   },
@@ -147,10 +168,10 @@
     "accountableItem2": "item3",
     "accountableItem3": "item4"
   },
-  "number_items": 17,
+  "number_items": 20,
   "icon_file_dir": "img/items/",
   "item1": {
-    "name": "Quartier",
+    "name": "Unterkunft",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
@@ -158,49 +179,50 @@
     "visible_for_others": true
   },
   "item2": {
-    "name": "Wandverstärkung",
+    "name": "Burgwall",
     "score": 10,
-    "max": 6,
+    "max": 5,
     "icon_file_name": "fence.png",
     "visible_for_others": true,
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3": {
-    "name": "General",
+    "name": "Burggraben",
+    "max": 1,
+    "score": 6,
+    "icon_file_name": "Dragon-of-the-West.png",
+    "visible_for_others": true
+  },
+  "item4": {
+    "name": "Hauptmann",
     "max": 1,
     "score": 13,
     "icon_file_name": "Dragon-of-the-West.png",
     "visible_for_others": true
   },
-  "item4": {
-    "name": "Offizier",
+  "item5": {
+    "name": "Fähnricht",
     "max": 1,
     "score": 7,
-    "requirement": "item3",
+    "requirement": "item4",
     "icon_file_name": "Zhao.png",
     "visible_for_others": true,
     "_comment": "Can only be purchased after item3 has been bought, too"
   },
-  "item5": {
-    "name": "Bändiger",
+  "item6": {
+    "name": "Fußsoldaten",
     "score": 0,
     "icon_file_name": "Benders.png",
     "visible_for_others": true
   },
-  "item6": {
-    "name": "Bändigungsmaterialien",
+  "item7": {
+    "name": "Waffen",
     "score": 0,
     "icon_file_name": "materials.png",
     "visible_for_others": true
   },
-  "item7": {
-    "name": "Kohlkopfverkäufer",
-    "score": 14,
-    "icon_file_name": "cabbage-man.png",
-    "visible_for_others": true
-  },
   "item8": {
-    "name": "Avatar",
+    "name": "Merlin",
     "score": 13,
     "max": 1,
     "icon_file_name": "Aang.png",
@@ -208,58 +230,59 @@
     "_comment": "hides Inventory from others"
   },
   "item9": {
-    "name": "Azula verkleidet als Kyoshi-Kriegerin",
+    "name": "Morgana",
     "score": 0,
     "icon_file_name": "Azula-kyoshi.png",
-    "visible_for_others": true
+    "visible_for_others": true,
+    "_comment": "tries to reveal Inventory of specific group, countered by item12"
   },
   "item10": {
-    "name": "Sprüh-Sprüh-Knall-Bumm-Mann",
+    "name": "Drache",
     "score": 0,
     "icon_file_name": "combustion-man.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
-    "name": "Goldsack",
+    "name": "Goldschatz",
     "score": 0,
     "icon_file_name": "money-bag.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
   "item12": {
-    "name": "Gefängnis",
+    "name": "Kerker",
     "score": 18,
     "max": 3,
     "icon_file_name": "Boiling_Rock.png",
     "visible_for_others": true
   },
   "item13": {
-    "name": "Irohs Teeladen",
+    "name": "Schenke",
     "score": 22,
     "icon_file_name": "Uncle-Iroh.png",
     "visible_for_others": true
   },
   "item14": {
-    "name": "Schildkrötengehege",
+    "name": "Bordell",
     "score": 15,
     "icon_file_name": "turtle-duck.png",
     "visible_for_others": true
   },
   "item15": {
-    "name": "Tempel",
+    "name": "Kapelle",
     "score": 20,
     "icon_file_name": "Southern_Air_Temple.png",
     "visible_for_others": true
   },
   "item16": {
-    "name": "Wan Shi Tongs Bibliothek",
+    "name": "Schatzkammer",
     "score": 34,
     "icon_file_name": "library-square.png",
     "visible_for_others": true
   },
   "item17": {
-    "name": "Zwangsrekrutierung",
+    "name": "Heiltrank",
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
@@ -268,45 +291,46 @@
     "_comment": "repairKit, adds plusHP to hp"
   },
   "item18": {
-    "name": "unused",
+    "name": "Brunnen",
     "score": 0,
-    "icon_file_name": "",
+    "icon_file_name": "bag.png",
     "visible_for_others": true
   },
   "item19": {
-    "name": "unused",
+    "name": "Kornspeicher",
     "score": 0,
-    "icon_file_name": "",
+    "icon_file_name": "bag.png",
     "visible_for_others": true
   },
   "item20": {
-    "name": "unused",
-    "score": 0,
-    "icon_file_name": "",
+    "name": "Ablassbrief",
+    "score": 14,
+    "icon_file_name": "cabbage-man.png",
     "visible_for_others": true
   },
   "number_actions": 3,
   "action1": {
-    "name": "Attentat ausführen",
+    "name": "Drachenangriff",
     "destroyItem": "item2",
     "compareItem": "item10",
+    "damage": 2,
     "score": 2.5,
     "defendScore": 1.5,
     "scorePunishment": 5,
     "uses": "item11",
     "requirement": "item11",
     "randomOpponent": true,
-    "_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem"
+    "_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem, if successful, damage is dealt"
   },
   "action2": {
     "name": "Angriff",
     "damage": 5,
     "score": 2.5,
-    "multiplicator": "item5",
+    "multiplicator": "item6",
     "killBonus": 5,
     "killPunishment": 5,
-    "requirement": "item5",
-    "uses": "item6",
+    "requirement": "item6",
+    "uses": "item7",
     "defense": {
       "item2": 10,
       "item3": 10,
