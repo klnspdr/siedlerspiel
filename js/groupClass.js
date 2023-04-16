@@ -111,7 +111,7 @@ class Enemy extends Group {
             let numberRows = Math.ceil(config['number_items'] / 6);
             if ((config.groupPositioning === "fluid" && (this.y <= height / 2 || (this.x >= mapX(0) - 1 && this.x <= mapX(0) + 1))) || (config.groupPositioning === "solid" && config.inventoryDirections["gr" + this.groupId] === "up")) {
               console.log("up");
-                rect(this.x - this.unMapX / (0.01 * width), this.y - 80, 220, 90);
+                rect(this.x - this.unMapX / (0.01 * width), this.y - 96, 180, 120);
                 noStroke();
                 triangle(this.x, this.y - 10, this.x - 10, this.y - 37, this.x + 10, this.y - 37);
                 stroke(0);
@@ -121,9 +121,9 @@ class Enemy extends Group {
 
                 let itemNum = 1;
                 for (let row = 0; row < numberRows; row++) {
-                    for (let col = 1; col <= 6; col++) {
-                        let x = this.x - this.unMapX / (0.01 * width) - 90 + 35 * (col - 1);
-                        let y = this.y - 108 + 27 * (row);
+                    for (let col = 1; col <= 5; col++) {
+                        let x = this.x - this.unMapX / (0.01 * width) - 74 + 35 * (col - 1);
+                        let y = this.y - 136 + 27 * (row);
                         if (itemNum <= config['number_items']) {
                             if (config['item' + itemNum]['visible_for_others'] == false) {
                                 itemNum++;
@@ -139,7 +139,7 @@ class Enemy extends Group {
                     }
                 }
             } else {
-                rect(this.x - this.unMapX / (0.01 * width), this.y + 104, 220, 90);
+                rect(this.x - this.unMapX / (0.01 * width), this.y + 120, 180, 120);
                 noStroke();
                 triangle(this.x, this.y + 10, this.x - 10, this.y + 62, this.x + 10, this.y + 62);
                 stroke(0);
@@ -148,9 +148,9 @@ class Enemy extends Group {
 
                 let itemNum = 1;
                 for (let row = 0; row < numberRows; row++) {
-                    for (let col = 1; col <= 6; col++) {
-                        let x = this.x - this.unMapX / (0.01 * width) - 90 + 35 * (col - 1);
-                        let y = this.y + 78 + 27 * (row);
+                    for (let col = 1; col <= 5; col++) {
+                        let x = this.x - this.unMapX / (0.01 * width) - 74 + 35 * (col - 1);
+                        let y = this.y + 80 + 27 * (row);
                         if (itemNum <= config['number_items']) {
                             if (config['item' + itemNum]['visible_for_others'] == false) {
                                 itemNum++;
