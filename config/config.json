@@ -50,10 +50,10 @@
   },
   "number_groups": 4,
   "group_names": {
-    "gr1": "Feuer",
-    "gr2": "Wasser",
-    "gr3": "Erde",
-    "gr4": "Luft"
+    "gr1": "Löwe",
+    "gr2": "Adler",
+    "gr3": "Drachen",
+    "gr4": "Einhorn"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
