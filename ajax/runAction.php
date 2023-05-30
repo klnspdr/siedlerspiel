@@ -31,22 +31,22 @@ if($targetId <= 0 || $targetId > $number_groups){
 	die("Error: Invalid target group number");
 }
 
-$damage=$config[$action]["damage"];
-$score=$config[$action]["score"];
-$defendScore=$config[$action]["defendScore"];
-$scorePunishment=$config[$action]["scorePunishment"];
-$multiplicator=$config[$action]["multiplicator"];
-$killBonus=$config[$action]["killBonus"];
-$killPunishment=$config[$action]["killPunishment"];
-$requirement=$config[$action]["requirement"];
-$uses=$config[$action]["uses"];
-$destroyItem=$config[$action]["destroyItem"];
-$compareItem=$config[$action]["compareItem"];
-$defense=$config[$action]["defense"];
-
+$damage = $config[$action]["damage"] ?? null;
+$score = $config[$action]["score"] ?? null;
+$defendScore = $config[$action]["defendScore"] ?? null;
+$scorePunishment = $config[$action]["scorePunishment"] ?? null;
+$multiplicator = $config[$action]["multiplicator"] ?? null;
+$killBonus = $config[$action]["killBonus"] ?? null;
+$killPunishment = $config[$action]["killPunishment"] ?? null;
+$requirement = $config[$action]["requirement"] ?? null;
+$uses = $config[$action]["uses"] ?? null;
+$destroyItem = $config[$action]["destroyItem"] ?? null;
+$compareItem = $config[$action]["compareItem"] ?? null;
+$defense = $config[$action]["defense"] ?? null;
+$deadAllowed = $config[$action]['deadAllowed'] ?? false;
 
 //check if group is dead and if they are allowed to buy the item being dead
-if($config[$action]['deadAllowed']==false && !getIsAlive($groupId, $pdo)){
+if($deadAllowed == false && !getIsAlive($groupId, $pdo)){
 	$errormsg=getDeathErrorMessage($action, $config);
 	die($errormsg);
 }

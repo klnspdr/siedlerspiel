@@ -22,14 +22,15 @@ if($groupId <= 0 || $groupId > $number_groups){
 }
 
 
-$plusMaxHP=$config[$item]["plusMaxHP"];
-$plusHP=$config[$item]["plusHP"];
-$max=$config[$item]["max"];
-$requirement=$config[$item]["requirement"];
-$score=$config[$item]["score"];
+$plusMaxHP = $config[$item]["plusMaxHP"] ?? null;
+$plusHP = $config[$item]["plusHP"] ?? null;
+$max = $config[$item]["max"] ?? null;
+$requirement = $config[$item]["requirement"] ?? null;
+$score = $config[$item]["score"] ?? null;
+$deadAllowed = $config[$item]['deadAllowed'] ?? false;
 
 //check if group is dead and if they are allowed to buy the item being dead
-if($config[$item]['deadAllowed']==false && !getIsAlive($groupId, $pdo)){
+if($deadAllowed == false && !getIsAlive($groupId, $pdo)){
 	$errormsg=getDeathErrorMessage($item, $config);
 	die($errormsg);
 }
