@@ -16,9 +16,3 @@ Steps:
 ## Future Development
 
 **Feature idea:** Admin overview uneffected by hiding inventory and points with  calculated defence probability
-
-Punkte:
- - Blau 448 => 100
- - Rot 435 => 97
- - Grün 365 => 81 +15 = 96
- - Gelb 329 => 73
