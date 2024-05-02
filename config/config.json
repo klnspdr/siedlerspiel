@@ -58,10 +58,10 @@
   },
   "number_groups": 4,
   "group_names": {
-    "gr1": "Löwenherz",
-    "gr2": "Adler",
-    "gr3": "Drachenkämpfer",
-    "gr4": "Horni"
+    "gr1": "Gryffindor",
+    "gr2": "Ravenclaw",
+    "gr3": "Slytherin",
+    "gr4": "Hufflepuff"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
@@ -146,7 +146,7 @@
     "item19": 0,
     "item20": 0
   },
-  "hpName": "Untertanen",
+  "hpName": "Schüler",
   "finalScores": {
     "hp": 1,
     "deathPunishment": 20,
@@ -187,7 +187,7 @@
   "icon_file_dir": "img/items23/",
   "item_hiding_inventory": 8,
   "item1": {
-    "name": "Unterkunft",
+    "name": "Schlafraum",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
@@ -195,9 +195,9 @@
     "visible_for_others": true
   },
   "item2": {
-    "name": "Burgwall",
+    "name": "Schutzzauber",
     "score": 10,
-    "max": 5,
+    "max": 6,
     "icon_file_name": "burgmauer.png",
     "visible_for_others": true,
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
@@ -210,35 +210,35 @@
     "visible_for_others": true
   },
   "item4": {
-    "name": "Hauptmann",
+    "name": "Drache",
     "max": 1,
     "score": 13,
     "icon_file_name": "hauptmann.png",
     "visible_for_others": true
   },
   "item5": {
-    "name": "Fähnrich",
+    "name": "Basilisk",
     "max": 1,
     "score": 7,
     "requirement": "item4",
     "icon_file_name": "faehnrich.png",
     "visible_for_others": true,
-    "_comment": "Can only be purchased after item3 has been bought, too"
+    "_comment": "Can only be purchased after item4 has been bought, too"
   },
   "item6": {
-    "name": "Fußsoldaten",
+    "name": "Statue",
     "score": 0,
     "icon_file_name": "fußsoldat.png",
     "visible_for_others": true
   },
   "item7": {
-    "name": "Waffen",
+    "name": "Piertotum Locomotor",
     "score": 0,
     "icon_file_name": "waffen.png",
     "visible_for_others": true
   },
   "item8": {
-    "name": "Merlin",
+    "name": "Fidelius",
     "score": 13,
     "max": 1,
     "icon_file_name": "merlin.png",
@@ -246,53 +246,53 @@
     "_comment": "hides Inventory from others"
   },
   "item9": {
-    "name": "Morgana",
+    "name": "Legilimentik",
     "score": 0,
     "icon_file_name": "morgana.png",
     "visible_for_others": true,
     "_comment": "tries to reveal Inventory of specific group, countered by item12"
   },
   "item10": {
-    "name": "Drache",
+    "name": "Mitglieder des Ordens des Phönix",
     "score": 0,
     "icon_file_name": "drache.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
-    "name": "Goldschatz",
+    "name": "Zauberstäbe",
     "score": 0,
     "icon_file_name": "goldschatz.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
   "item12": {
-    "name": "Kerker",
+    "name": "Okklumentik",
     "score": 18,
     "max": 3,
     "icon_file_name": "kerker.png",
     "visible_for_others": true
   },
   "item13": {
-    "name": "Schenke",
+    "name": "Bibliothek",
     "score": 22,
     "icon_file_name": "schenke.png",
     "visible_for_others": true
   },
   "item14": {
-    "name": "Bordell",
+    "name": "Gewächshaus",
     "score": 15,
     "icon_file_name": "bordell.png",
     "visible_for_others": true
   },
   "item15": {
-    "name": "Kapelle",
+    "name": "Gemeinschaftsraum",
     "score": 20,
     "icon_file_name": "kapelle.png",
     "visible_for_others": true
   },
   "item16": {
-    "name": "Schatzkammer",
+    "name": "Quidditch Stadium",
     "score": 34,
     "icon_file_name": "schatzkammer.png",
     "visible_for_others": true
@@ -307,26 +307,26 @@
     "_comment": "repairKit, adds plusHP to hp"
   },
   "item18": {
-    "name": "Brunnen",
+    "name": "Krankenflügel",
     "score": 0,
     "icon_file_name": "brunnen.png",
     "visible_for_others": true
   },
   "item19": {
-    "name": "Kornspeicher",
+    "name": "Große Halle",
     "score": 0,
     "icon_file_name": "kornspeicher.png",
     "visible_for_others": true
   },
   "item20": {
-    "name": "Ablassbrief",
+    "name": "Geheimgang",
     "score": 14,
     "icon_file_name": "ablassbrief.png",
     "visible_for_others": true
   },
   "number_actions": 3,
   "action1": {
-    "name": "Drachenangriff",
+    "name": "Zaubererangriff",
     "destroyItem": "item2",
     "compareItem": "item10",
     "damage": 2,
@@ -348,9 +348,10 @@
     "requirement": "item6",
     "uses": "item7",
     "defense": {
-      "item2": 10,
-      "item3": 10,
-      "item4": 10
+      "item2": 5,
+      "item3": 0,
+      "item4": 10,
+      "item5": 10
     },
     "_comment": "damage is substracted from hp; damage and score will be multiplied by number of multiplicator; killBonus if oppponent reaches 0HP with this attack, killPunishment is substracted from opponents score"
   },
@@ -368,36 +369,36 @@
     "max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
     "death": "Tote kaufen keine <item>",
     "item2": {
-      "max": "<max> Burgwälle sind doch schon genug."
+      "max": "<max> Schutzzauber sind doch schon genug."
     },
     "item3": {
       "max": "Mehr als <max> Burggraben sind doch nicht sinnvoll."
     },
     "item4": {
-      "max": "In einer Armee ist nur Platz für einen Hauptmann!"
+      "max": "In einer Armee ist nur Platz für einen Drachen!"
     },
     "item5": {
-      "max": "So groß, dass sie mehr als einen Hauptmann und einen Fähnrich brauchen würde ist eure Armee auch wieder nicht.",
-      "requirement": "Ohne einen Hauptmann wüsste der Fähnrich gar nicht, was er machen soll."
+      "max": "So groß, dass sie mehr als einen Drachen und einen Basilisken brauchen würde ist eure Armee auch wieder nicht.",
+      "requirement": "Ohne einen Drachen wüsste der Basilisk gar nicht, was er machen soll."
     },
     "item8": {
-      "max": "Es gibt nur einen Merlin!"
+      "max": "Es gibt nur einen Fidelius!"
     },
     "item12": {
-      "max": "Mehr Platz für Gefangene braucht ihr nicht!"
+      "max": "Mehr Wissen kann man nicht mehr verschleiern!"
     },
     "action_requirement": "Aktion <action> benötigt <requirement>",
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action_defend": "Aktion <action> wurde von <target> verteidigt",
     "action1": {
-      "action_requirement": "Wie wollt ihr den Drachen denn bezahlen, wenn ihr kein Gold habt?",
-      "action_uses": "Wie wollt ihr den Drachen denn bezahlen, wenn ihr kein Gold habt?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da einen Drachen anheuern?"
+      "action_requirement": "Wie soll denn der Zauberer ohne Zauberstab zaubern?",
+      "action_uses": "Wie soll denn der Zauberer ohne Zauberstab zaubern?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da einen Zauberer anheuern?"
     },
     "action2": {
-      "action_requirement": "Ihr braucht erst einen Fußsoldaten, der für euch kämpfen kann",
-      "action_uses": "Ohne Waffen sind eure Soldaten nutzlos",
+      "action_requirement": "Ihr braucht erst eine Statue, der für euch kämpfen kann",
+      "action_uses": "Ohne Piertotum Locomotor erwacht die Statue nicht zum leben",
       "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
     },
     "action3": {
@@ -407,64 +408,64 @@
   "log_messages": {
     "buy": "<group> haben <item> gekauft.",
     "item1": {
-      "buy": "<group> hat eine neue Unterkunft gebaut"
+      "buy": "<group> hat einen neuen Schlafraum gebaut"
     },
     "item2": {
-      "buy": "<group> hat einen Burgwall gebaut"
+      "buy": "<group> hat einen Schutzzauber gebaut"
     },
     "item3": {
       "buy": "<group> hat einen Burggraben gebaut"
     },
     "item4": {
-      "buy": "Für <group> arbeitet jetzt ein Hauptmann"
+      "buy": "Für <group> arbeitet jetzt ein Drachen"
     },
     "item5": {
-      "buy": "<group> hat einen Fähnrich eingestellt"
+      "buy": "<group> hat einen Basilisken gebändigt"
     },
     "item6": {
-      "buy": "<group> hat einen Fußsoldaten ausgebildet"
+      "buy": "<group> hat eine Statue gekauft"
     },
     "item7": {
-      "buy": "<group> hat Waffen gekauft"
+      "buy": "<group> hat einen Piertotum Locomotor gekauft"
     },
     "item8": {
-      "buy": "<group> hat Merlin angeheuert, um sie zu tarnen"
+      "buy": "<group> sprach einen Fideliuszauber aus, um sie zu tarnen"
     },
     "item9": {
-      "buy": "<group> hat Morgana angeheuert"
+      "buy": "<group> sprach einen Legilimentikzauber aus"
     },
     "item10": {
-      "buy": "<group> hat einen Drachen angeheuert"
+      "buy": "<group> hat einen Zauberer angeheuert"
     },
     "item11": {
-      "buy": "<group> hat einen Goldschatz gekauft"
+      "buy": "<group> hat Zauberstäbe gekauft"
     },
     "item12": {
-      "buy": "<group> hat einen Kerker gebaut"
+      "buy": "<group> sprach einen Okklumentikzauber aus"
     },
     "item13": {
-      "buy": "<group> hat eine Schenke gebaut"
+      "buy": "<group> hat eine Bibliothek gebaut"
     },
     "item14": {
-      "buy": "<group> hat ein Bordell gebaut"
+      "buy": "<group> hat ein Gewächshaus gebaut"
     },
     "item15": {
-      "buy": "<group> hat jetzt eine Kapelle"
+      "buy": "<group> hat jetzt einen Gemeinschaftraum"
     },
     "item16": {
-      "buy": "<group> kann jetzt Schätze lagern"
+      "buy": "<group> kann jetzt coole Quidditch Turniere spielen"
     },
     "item17": {
       "buy": "<group> hat einen Heiltrank gebraut"
     },
     "item18": {
-      "buy": "<group> hat einen Brunnen gebaut"
+      "buy": "<group> hat einen Krankenflügel gebaut"
     },
     "item19": {
-      "buy": "<group> hat einen Kornspeicher gebaut"
+      "buy": "<group> hat eine große Halle gebaut"
     },
     "item20": {
-      "buy": "<group> wurden Sündenstrafen nachgelassen"
+      "buy": "<group> kann sich nun im Notfall verstecken"
     },
     "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
     "kill": "<group> haben <target> getötet",
@@ -472,9 +473,9 @@
     "nothingToDestroy": "<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
     "failure": "<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
     "action1": {
-      "success": "<group> hat einen Burgwall der <target> zerstört",
-      "hitSelf": "<group> hat ein Drachenangriff auf sich selbst ausgeführt",
-      "nothingToDestroy": "<group> wollte <target> angreifen lassen, die hatten aber gar keine Burgwälle",
+      "success": "<group> hat einen Schutzzauber der <target> zerstört",
+      "hitSelf": "<group> hat ein Zaubererangriff auf sich selbst ausgeführt",
+      "nothingToDestroy": "<group> wollte <target> angreifen lassen, die hatten aber gar keine Schutzzauber",
       "failure": "<group> wollte <target> angreifen lassen, ist aber gnadenlos unterlegen"
     },
     "action2": {
@@ -483,8 +484,8 @@
       "failure": "<group> wurde beim Angriff auf <target> erfolgreich abgewehrt"
     },
     "action3": {
-      "success": "<group> hat <target> mithilfe von Morgana auspioniert",
-      "failure": "<target> hat erfolgreich Morgana, die von <group> beauftragt wurde, ins Gefängnis gesteckt."
+      "success": "<group> hat <target> mithilfe von Legilimentik auspioniert",
+      "failure": "<target> 's Gedächtnis wurde von <group> verschleiert"
     }
   }
 }
