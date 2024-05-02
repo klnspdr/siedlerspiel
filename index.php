@@ -13,7 +13,7 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
 <!DOCTYPE html>
 <html lang="de">
   <head>
-      <title>Siedler 2019</title>
+      <title>Siedler</title>
 
 
 
@@ -40,20 +40,12 @@ include("ajax/setRole.php");    //include script which sets role if new one is s
       <script src="js/fillInventory.js"></script>
       <script src="js/fillRanklist.js"></script>
 
-
-      <!-- include western_font -->
-
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="western_font/stylesheet.css" type="text/css"/>
-
       <link rel="stylesheet" href="css/main.css">
 
   </head>
   <body>
   <?php
-    $clientRole = $_SESSION['role'];       //get role for client
+    $clientRole = $_SESSION['role'] ?? null;       //get role for client
     if($clientRole == 0 || $clientRole == NULL){
         include("frontend/configure.php");
     } else if ($clientRole >= 1 && $clientRole <= $number_groups) {

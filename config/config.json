@@ -1,6 +1,14 @@
 {
   "_comment": "score, bonus and punishment are applied to the score, damage to the hp and thereby only indirectly to the score",
   "_syntax:": {
+    "groupImages": {
+      "files": "contains file names for each group's icon",
+      "size": {
+        "conserve": "true or false; indicates whether to conserve each individual icon file's aspect ratio or make them all the same aspect ratio",
+        "x": "size in x direction (width)",
+        "y": "size in y direction (height)"
+      }
+    },
     "groupPositioning": "either 'solid' or 'fluid'; 'solid' takes x and y coordinates for each group from 'group_positions' and will always position the groups at these coordinates relative to the background image size; 'fluid' takes the number of groups and positions them eqally apart on an oval around the center of the game field with the player's team always on top of the screen",
     "inventoryDirections": "either 'up' or 'down'; only relevant if 'groupPositioning' set to 'solid'",
     "items": {
@@ -50,30 +58,37 @@
   },
   "number_groups": 4,
   "group_names": {
-    "gr1": "Löwe",
+    "gr1": "Löwenherz",
     "gr2": "Adler",
-    "gr3": "Drachen",
-    "gr4": "Einhorn"
+    "gr3": "Drachenkämpfer",
+    "gr4": "Horni"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
     "files": {
-      "gr1": "village_red.png",
-      "gr2": "village_blue.png",
-      "gr3": "earth-nation.png",
-      "gr4": "air-appa.png"
+      "gr1": "team_red.png",
+      "gr2": "team_blue.png",
+      "gr3": "team_green.png",
+      "gr4": "team_yellow.png"
     },
     "size": {
+      "conserve": true,
       "x": 65,
       "y": 65
     }
   },
   "group_colors": {
+    "nameText": {
+      "gr1": "#D60A0C00",
+      "gr2": "#141C8800",
+      "gr3": "#16962200",
+      "gr4": "#F6D41500"
+    },
     "main": {
       "gr1": "#ff0000",
       "gr2": "#0000ff",
       "gr3": "#00ff00",
-      "gr4": "#f96a08"
+      "gr4": "#F3CC14"
     },
     "outline": {
       "gr1": "#fceecc",
@@ -85,27 +100,27 @@
   "groupPositioning": "solid",
   "group_positions": {
     "gr1": {
-      "x": "365",
-      "y": "800"
+      "x": "573",
+      "y": "361"
     },
     "gr2": {
-      "x": "365",
-      "y": "290"
+      "x": "916",
+      "y": "659"
     },
     "gr3": {
-      "x": "1260",
-      "y": "290"
+      "x": "1465",
+      "y": "499"
     },
     "gr4": {
-      "x": "1260",
-      "y": "800"
+      "x": "1735",
+      "y": "536"
     }
   },
   "inventoryDirections": {
-    "gr1": "up",
+    "gr1": "down",
     "gr2": "down",
     "gr3": "down",
-    "gr4": "up"
+    "gr4": "down"
   },
   "init_values": {
     "hp": 100,
@@ -133,8 +148,8 @@
   },
   "hpName": "Untertanen",
   "finalScores": {
-    "hp": 18,
-    "deathPunishment": 40,
+    "hp": 1,
+    "deathPunishment": 20,
     "ratios": {
       "item18": {
         "required_by": {
@@ -169,20 +184,21 @@
     "accountableItem3": "item4"
   },
   "number_items": 20,
-  "icon_file_dir": "img/items/",
+  "icon_file_dir": "img/items23/",
+  "item_hiding_inventory": 8,
   "item1": {
     "name": "Unterkunft",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
-    "icon_file_name": "sleep.png",
+    "icon_file_name": "unterkunft.png",
     "visible_for_others": true
   },
   "item2": {
     "name": "Burgwall",
     "score": 10,
     "max": 5,
-    "icon_file_name": "fence.png",
+    "icon_file_name": "burgmauer.png",
     "visible_for_others": true,
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
@@ -190,63 +206,63 @@
     "name": "Burggraben",
     "max": 1,
     "score": 6,
-    "icon_file_name": "Dragon-of-the-West.png",
+    "icon_file_name": "burggraben.png",
     "visible_for_others": true
   },
   "item4": {
     "name": "Hauptmann",
     "max": 1,
     "score": 13,
-    "icon_file_name": "Dragon-of-the-West.png",
+    "icon_file_name": "hauptmann.png",
     "visible_for_others": true
   },
   "item5": {
-    "name": "Fähnricht",
+    "name": "Fähnrich",
     "max": 1,
     "score": 7,
     "requirement": "item4",
-    "icon_file_name": "Zhao.png",
+    "icon_file_name": "faehnrich.png",
     "visible_for_others": true,
     "_comment": "Can only be purchased after item3 has been bought, too"
   },
   "item6": {
     "name": "Fußsoldaten",
     "score": 0,
-    "icon_file_name": "Benders.png",
+    "icon_file_name": "fußsoldat.png",
     "visible_for_others": true
   },
   "item7": {
     "name": "Waffen",
     "score": 0,
-    "icon_file_name": "materials.png",
+    "icon_file_name": "waffen.png",
     "visible_for_others": true
   },
   "item8": {
     "name": "Merlin",
     "score": 13,
     "max": 1,
-    "icon_file_name": "Aang.png",
+    "icon_file_name": "merlin.png",
     "visible_for_others": true,
     "_comment": "hides Inventory from others"
   },
   "item9": {
     "name": "Morgana",
     "score": 0,
-    "icon_file_name": "Azula-kyoshi.png",
+    "icon_file_name": "morgana.png",
     "visible_for_others": true,
     "_comment": "tries to reveal Inventory of specific group, countered by item12"
   },
   "item10": {
     "name": "Drache",
     "score": 0,
-    "icon_file_name": "combustion-man.png",
+    "icon_file_name": "drache.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
     "name": "Goldschatz",
     "score": 0,
-    "icon_file_name": "money-bag.png",
+    "icon_file_name": "goldschatz.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
@@ -254,31 +270,31 @@
     "name": "Kerker",
     "score": 18,
     "max": 3,
-    "icon_file_name": "Boiling_Rock.png",
+    "icon_file_name": "kerker.png",
     "visible_for_others": true
   },
   "item13": {
     "name": "Schenke",
     "score": 22,
-    "icon_file_name": "Uncle-Iroh.png",
+    "icon_file_name": "schenke.png",
     "visible_for_others": true
   },
   "item14": {
     "name": "Bordell",
     "score": 15,
-    "icon_file_name": "turtle-duck.png",
+    "icon_file_name": "bordell.png",
     "visible_for_others": true
   },
   "item15": {
     "name": "Kapelle",
     "score": 20,
-    "icon_file_name": "Southern_Air_Temple.png",
+    "icon_file_name": "kapelle.png",
     "visible_for_others": true
   },
   "item16": {
     "name": "Schatzkammer",
     "score": 34,
-    "icon_file_name": "library-square.png",
+    "icon_file_name": "schatzkammer.png",
     "visible_for_others": true
   },
   "item17": {
@@ -286,26 +302,26 @@
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
-    "icon_file_name": "bag.png",
+    "icon_file_name": "heiltrank.png",
     "visible_for_others": true,
     "_comment": "repairKit, adds plusHP to hp"
   },
   "item18": {
     "name": "Brunnen",
     "score": 0,
-    "icon_file_name": "bag.png",
+    "icon_file_name": "brunnen.png",
     "visible_for_others": true
   },
   "item19": {
     "name": "Kornspeicher",
     "score": 0,
-    "icon_file_name": "bag.png",
+    "icon_file_name": "kornspeicher.png",
     "visible_for_others": true
   },
   "item20": {
     "name": "Ablassbrief",
     "score": 14,
-    "icon_file_name": "cabbage-man.png",
+    "icon_file_name": "ablassbrief.png",
     "visible_for_others": true
   },
   "number_actions": 3,
@@ -352,17 +368,20 @@
     "max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
     "death": "Tote kaufen keine <item>",
     "item2": {
-      "max": "<max> Wandverstärkungen sind doch schon genug."
+      "max": "<max> Burgwälle sind doch schon genug."
     },
     "item3": {
-      "max": "In einer Armee ist nur Platz für einen General!"
+      "max": "Mehr als <max> Burggraben sind doch nicht sinnvoll."
     },
     "item4": {
-      "max": "So groß, dass sie mehr als einen General und einen Offizier brauchen würde ist eure Armee auch wieder nicht.",
-      "requirement": "Ohne einen General wüsste der Offizier gar nicht, was er machen soll."
+      "max": "In einer Armee ist nur Platz für einen Hauptmann!"
+    },
+    "item5": {
+      "max": "So groß, dass sie mehr als einen Hauptmann und einen Fähnrich brauchen würde ist eure Armee auch wieder nicht.",
+      "requirement": "Ohne einen Hauptmann wüsste der Fähnrich gar nicht, was er machen soll."
     },
     "item8": {
-      "max": "Es gibt nur einen Avatar!"
+      "max": "Es gibt nur einen Merlin!"
     },
     "item12": {
       "max": "Mehr Platz für Gefangene braucht ihr nicht!"
@@ -371,68 +390,77 @@
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action1": {
-      "action_requirement": "Wie wollt ihr den Sprüh-Sprüh-Knall-Bumm-Mann denn bezahlen, wenn ihr kein Gold habt?",
-      "action_uses": "Wie wollt ihr den Sprüh-Sprüh-Knall-Bumm-Mann denn bezahlen, wenn ihr kein Gold habt?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da den Sprüh-Sprüh-Knall-Bumm Mann anheuern?"
+      "action_requirement": "Wie wollt ihr den Drachen denn bezahlen, wenn ihr kein Gold habt?",
+      "action_uses": "Wie wollt ihr den Drachen denn bezahlen, wenn ihr kein Gold habt?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da einen Drachen anheuern?"
     },
     "action2": {
-      "action_requirement": "Ihr braucht erst einen Bändiger, der für euch kämpfen kann",
-      "action_uses": "Ohne Bändigungsmaterialien sind eure Bändiger nutzlos",
+      "action_requirement": "Ihr braucht erst einen Fußsoldaten, der für euch kämpfen kann",
+      "action_uses": "Ohne Waffen sind eure Soldaten nutzlos",
       "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
     }
   },
   "log_messages": {
     "buy": "<group> haben <item> gekauft.",
     "item1": {
-      "buy": "<group> hat ein neues Quartier gebaut"
+      "buy": "<group> hat eine neue Unterkunft gebaut"
     },
     "item2": {
-      "buy": "<group> hat eine Wandverstärkung gebaut"
+      "buy": "<group> hat einen Burgwall gebaut"
     },
     "item3": {
-      "buy": "Für <group> arbeitet jetzt ein General"
+      "buy": "<group> hat einen Burggraben gebaut"
     },
     "item4": {
-      "buy": "<group> habt einen Offizier eingestellt"
+      "buy": "Für <group> arbeitet jetzt ein Hauptmann"
     },
     "item5": {
-      "buy": "<group> hat einen Bändiger ausgebildet"
+      "buy": "<group> hat einen Fähnrich eingestellt"
     },
     "item6": {
-      "buy": "<group> hat Bändigungsmaterialien gekauft"
+      "buy": "<group> hat einen Fußsoldaten ausgebildet"
     },
     "item7": {
-      "buy": "<group> hat einen Kohlkopfverkäufer eingestellt"
+      "buy": "<group> hat Waffen gekauft"
     },
     "item8": {
-      "buy": "<group> hat den Avatar angeheuert, um sie zu tarnen"
+      "buy": "<group> hat Merlin angeheuert, um sie zu tarnen"
     },
     "item9": {
-      "buy": "<group> hat Azula verkleidet als Kyoshi-Kriegerin angeheuert"
+      "buy": "<group> hat Morgana angeheuert"
     },
     "item10": {
-      "buy": "<group> hat den Sprüh-Sprüh-Knall-Bumm-Mann angeheuert"
+      "buy": "<group> hat einen Drachen angeheuert"
     },
     "item11": {
-      "buy": "<group> hat einen Goldsack gekauft"
+      "buy": "<group> hat einen Goldschatz gekauft"
     },
     "item12": {
-      "buy": "<group> hat ein Gefängnis gebaut"
+      "buy": "<group> hat einen Kerker gebaut"
     },
     "item13": {
-      "buy": "<group> hat Irohs Teeladen gebaut"
+      "buy": "<group> hat eine Schenke gebaut"
     },
     "item14": {
-      "buy": "<group> hat ein Schildkrötengehege gebaut"
+      "buy": "<group> hat ein Bordell gebaut"
     },
     "item15": {
-      "buy": "<group> hat jetzt einen Ort um die Ahnen zu verehren"
+      "buy": "<group> hat jetzt eine Kapelle"
     },
     "item16": {
-      "buy": "<group> will neues Wissen erlernen"
+      "buy": "<group> kann jetzt Schätze lagern"
     },
     "item17": {
-      "buy": "<group> hat zwangsrekrutiert"
+      "buy": "<group> hat einen Heiltrank gebraut"
+    },
+    "item18": {
+      "buy": "<group> hat einen Brunnen gebaut"
+    },
+    "item19": {
+      "buy": "<group> hat einen Kornspeicher gebaut"
+    },
+    "item20": {
+      "buy": "<group> wurden Sündenstrafen nachgelassen"
     },
     "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
     "kill": "<group> haben <target> getötet",
@@ -440,10 +468,10 @@
     "nothingToDestroy": "<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
     "failure": "<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
     "action1": {
-      "success": "<group> hat eine Wandverstärkung der <target> zerstört",
-      "hitSelf": "<group> hat ein Attentat auf sich selbst ausgeführt",
-      "nothingToDestroy": "<group> wollte <target> sabotieren, die hatten aber gar keine Wandverstärkungen",
-      "failure": "<group> wollte <target> sabotieren, ist aber gnadenlos unterlegen"
+      "success": "<group> hat einen Burgwall der <target> zerstört",
+      "hitSelf": "<group> hat ein Drachenangriff auf sich selbst ausgeführt",
+      "nothingToDestroy": "<group> wollte <target> angreifen lassen, die hatten aber gar keine Burgwälle",
+      "failure": "<group> wollte <target> angreifen lassen, ist aber gnadenlos unterlegen"
     },
     "action2": {
       "success": "<group> hat <target> angegriffen",
@@ -451,8 +479,8 @@
       "failure": "<group> wurde beim Angriff auf <target> erfolgreich abgewehrt"
     },
     "action3": {
-      "success": "<group> hat <target> mithilfe von Azula auspioniert",
-      "failure": "<target> habt erfolgreich Azula, die von <group> beauftragt wurde, ins Gefängnis gesteckt."
+      "success": "<group> hat <target> mithilfe von Morgana auspioniert",
+      "failure": "<target> hat erfolgreich Morgana, die von <group> beauftragt wurde, ins Gefängnis gesteckt."
     }
   }
 }

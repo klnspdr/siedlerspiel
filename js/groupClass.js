@@ -8,6 +8,14 @@ class Group {
         this.iconSize = iconSize;
         this.statsShown = true;
         this.statsRevealed = false;
+        this.nameTextColor = config.group_colors.nameText['gr' + this.groupId]
+        if(this.iconSize.conserve){
+            console.log(`group: ${this.groupId}`);
+            console.log(`fileWidth: ${groupIcons[this.groupId-1].width}`);
+            this.iconSize.x = groupIcons[this.groupId-1].width/bgMap.width * width;
+            console.log(`calculated width: ${this.iconSize.x}`)
+            this.iconSize.y = groupIcons[this.groupId-1].height/bgMap.height * height;
+        }
     }
 
     draw() {
@@ -16,12 +24,12 @@ class Group {
     }
 
     drawName() {
-        textFont("Herculanum");
+        textFont("Lohengrin");
         noStroke();
-        fill(255);
+        fill(this.nameTextColor);
         textStyle(BOLD);
         textSize(15);
-        text(config['group_names']['gr' + this.groupId], this.x, this.y - 40);
+        text(config['group_names']['gr' + this.groupId], this.x, this.y - this.iconSize.y/2 - 10);
     }
 
     updateShownInfo() {
@@ -31,20 +39,20 @@ class Group {
             let info = wholeGroupData[this.groupId - 1];
             fill(255);
             strokeWeight(0);
-            textSize(10);
+            textSize(15);
             textStyle(NORMAL);
 			if(info['displayScore'] == true)
-            text("Punkte: " + info['final_score'], this.x, this.y + 50);
+            text("Punkte: " + info['final_score'], this.x, this.y + this.iconSize.y / 2 + 30);
 
-            this.drawHpBar(this.x, this.y, info['hp'], info['max_hp']);
+            this.drawHpBar(info['hp'], info['max_hp']);
         }
     }
 
-    drawHpBar(x, y, hp, maxHp) {
+    drawHpBar(hp, maxHp) {
         strokeWeight(1);
         stroke(0);
         fill(255);
-        rect(x, y + 30, 50, 15);
+        rect(this.x, this.y + this.iconSize.y / 2 + 10, 50, 15);
         if(!this.statsShown){
             hp = 0;
         }
@@ -58,16 +66,16 @@ class Group {
         }
         noStroke();
         let filledLength = 50 * (hp / maxHp);
-        rect(x - (50 - filledLength) / 2 + 0.5, y + 30.5, filledLength - 1, 14);
+        rect(this.x - (50 - filledLength) / 2 + 0.5, this.y + this.iconSize.y / 2 + 10.5, filledLength - 1, 14);
         //noStroke();
         //rect(x-(50-filledLength)/2+)
         if(!this.statsShown){
             hp = "?";
         }
         fill(0);
-        textSize(10);
+        textSize(12);
         textStyle(NORMAL);
-        text(hp + " / " + maxHp, x, y + 30)
+        text(hp + " / " + maxHp, this.x, this.y + this.iconSize.y / 2 + 10)
     }
 
 }
@@ -79,7 +87,7 @@ class Enemy extends Group {
     draw() {
         if (wholeGroupData != null && wholeInv != null) {
 
-            if(wholeInv[this.groupId - 1][8] == 1 && !this.statsRevealed ){
+            if(wholeInv[this.groupId - 1][config.item_hiding_inventory] >= 1 && !this.statsRevealed ){
                 this.statsShown = false;
             } else {
                 this.statsShown = true;

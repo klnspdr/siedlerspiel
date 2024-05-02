@@ -1,33 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
-body {
-    font-family: Herculanum, Arial;
-    background-color: #fceecd;
-    background-image: url("../img/backgrounds/wooden_plank.jpg");
-    background-repeat: repeat;
+@font-face {
+    font-family: "Lohengrin";
+    src: url("./fonts/lohengrin.ttf") format('truetype');
 }
-
+body {
+    font-family: Lohengrin, Arial, sans-serif;
+    background-color: #fceecd;
+    background-image: url("../img/backgrounds/background_texture.png");
+    background-repeat: space;
+    color: #141414;
+}
+img{
+    vertical-align: middle;
+}
 .button {
-    color: #ffffff;
+    color: #141414;
     /*font-size: unset;*/
-    border: 1px solid black;
-    background-image: url("../img/backgrounds/stone.jpg");
-    background-size: cover;
+    border: none;
+    background-color: #fff0;
+    background-image: url("../img/backgrounds/buttton3.png");
+    background-size: 100% 100%;
     text-decoration: none;
     text-align: center;
-    display: inline-grid;
+    display: inline-block;
     align-items: center;
     height: 50px;
     width: 100%;
 }
 
 .button:visited {
-    color: #000000;
+    color: #141414;
 }
 
 .button:hover {
     font-style: oblique;
     font-weight: bold;
     box-shadow: #282c34;
+    filter: drop-shadow(3px -3px 3px #000);
 }
 
 .titleOwn {
@@ -109,6 +117,8 @@ td, th {
     color: black;
     width: 50%;
     left: 25%;
+    font-family: Lohengrin, Arial, sans-serif;
+    font-size: 25px;
 }
 
 #hpBar{
@@ -123,7 +133,7 @@ td, th {
 #invTable{
     text-align: left;
     margin: 0 auto 0 auto;
-    background-color: #ffffff;
+    border: 1px solid black;
 }
 
 #invTable td{
@@ -162,6 +172,7 @@ td, th {
 }
 
 #rankListTable{
+    font-size: 30px;
     width: 100%;
 }
 

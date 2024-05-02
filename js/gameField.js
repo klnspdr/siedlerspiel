@@ -1,6 +1,6 @@
 function preload() {
     tombStone = loadImage('img/tombStone.png');
-    bgMap = loadImage('img/backgrounds/map.jpeg');
+    bgMap = loadImage('img/backgrounds/map2.jpg');
     skull = loadImage('img/skull.svg');
     for (let itemNum = 1; itemNum <= config['number_items']; itemNum++) {
         itemIcons.push(loadImage(config['icon_file_dir'] + config['item' + itemNum]['icon_file_name']));
@@ -16,7 +16,12 @@ function preload() {
 
 function setup() {
     //setup game field
-    let gameField = createCanvas(0.59 * $(window).width(), 0.67 * $(window).height());
+    let gameField;
+    if(groupId === 100){
+        gameField = createCanvas(0.73 * $(window).width(), 0.73 * $(window).height());
+    } else {
+        gameField = createCanvas(0.59 * $(window).width(), 0.59 * $(window).height());
+    }
     gameField.parent('gameCanvas');
     background(125);
     clear();

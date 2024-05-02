@@ -28,7 +28,7 @@ let groupId = 100;
 $.get("ajax/getRole.php")
     .done(function (data) {
         groupId = parseInt(data);
-        document.title = "Siedler 2019 - " + (groupId !== 100 ? config.group_names[`gr${groupId}`] : "Überblick");
+        document.title = "Siedler - " + (groupId !== 100 ? config.group_names[`gr${groupId}`] : "Überblick");
     });
 
 let wholeGroupData = null;
@@ -42,15 +42,15 @@ function createPlayers(groupId) {
     //groupId 100 is reserved for the overview screen
     if (groupId !== 100) {
         if(config.groupPositioning === "solid"){
-          player = new Player(groupId, mapSolidX(groupPositions[groupId-1].x), mapSolidY(groupPositions[groupId-1].y), reverseMapX(mapSolidX(groupPositions[groupId-1].x)), reverseMapY( mapSolidY(groupPositions[groupId-1].y)), groupIconSize);
-          for (let i = 1; i <= config['number_groups']; i++) {
-              if (i !== groupId) {
+            player = new Player(groupId, mapSolidX(groupPositions[groupId - 1].x), mapSolidY(groupPositions[groupId - 1].y), reverseMapX(mapSolidX(groupPositions[groupId - 1].x)), reverseMapY(mapSolidY(groupPositions[groupId - 1].y)), {...groupIconSize});
+            for (let i = 1; i <= config['number_groups']; i++) {
+                if (i !== groupId) {
 
-                  enemies.push(new Enemy(i, mapSolidX(groupPositions[i-1].x), mapSolidY(groupPositions[i-1].y), reverseMapX(mapSolidX(groupPositions[i-1].x)), reverseMapY( mapSolidY(groupPositions[i-1].y)), groupIconSize));
-              } else {
-                  enemies.push("");
-              }
-          }
+                    enemies.push(new Enemy(i, mapSolidX(groupPositions[i - 1].x), mapSolidY(groupPositions[i - 1].y), reverseMapX(mapSolidX(groupPositions[i - 1].x)), reverseMapY(mapSolidY(groupPositions[i - 1].y)), {...groupIconSize}));
+                } else {
+                    enemies.push("");
+                }
+            }
         } else {
         player = new Player(groupId, mapX(0), mapY(height * 0.35), 0, height * 0.35, groupIconSize);
 

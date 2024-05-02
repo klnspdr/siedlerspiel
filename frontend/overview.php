@@ -1,6 +1,6 @@
-<div class="fieldArea" id="gameCanvas"></div>
+<div class="fieldArea" id="gameCanvas" style="width: 75%; height: 75%"></div>
 
-<div class="logArea">
+<div class="logArea" style="width: 25%">
     <table id="logTable">
 
         <tr>

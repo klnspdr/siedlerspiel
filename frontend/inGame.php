@@ -6,7 +6,7 @@
     <table id="invTable">
 
         <tr>
-            <th colspan="6" class="subTableName">INVENTORY</th>
+            <th colspan="6" class="subTableName">Inventar</th>
         </tr>
         <tbody id="invTableBody">
 
@@ -40,7 +40,7 @@
                 $buttonName = $config['item' . $buttonNum]['name'];
                 $tableRowOut .= "<td>";
                     if ($buttonNum <= $number_items) {
-                        $tableRowOut .= "<a class='button buyItem' onclick='buyItemButton($buttonNum, \"$buttonName\", $clientRole)' id='item" . $buttonNum . "' href='#'>" . $buttonName . "</a>";
+                        $tableRowOut .= "<button class='button buyItem' onclick='buyItemButton($buttonNum, \"$buttonName\", $clientRole)' id='item" . $buttonNum . "' href='#'><span><img alt='' style='height: 20px;' src='".$config['icon_file_dir'].$config['item'.$buttonNum]['icon_file_name']."'>" . $buttonName . "</span></button>";
                     }
                 $tableRowOut .= "</td>";
             }
@@ -55,7 +55,7 @@
         </tr>
         <?php
         for($row = 1; $row <= $number_actions; $row++){
-            $tableRowOut = "<tr><td><a class='button' onclick='runActionButton($row, \"".$config['action'.$row]['name']."\", $clientRole)' id='actAction".$row."' href='#'>".$config['action'.$row]['name']."</a></td></tr>";
+            $tableRowOut = "<tr><td><button class='button' onclick='runActionButton($row, \"".$config['action'.$row]['name']."\", $clientRole)' id='actAction".$row."' href='#'>".$config['action'.$row]['name']."</button></td></tr>";
             echo $tableRowOut;
         }
         ?>
