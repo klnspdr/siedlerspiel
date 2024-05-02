@@ -389,6 +389,7 @@
     "action_requirement": "Aktion <action> benötigt <requirement>",
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
+    "action_defend": "Aktion <action> wurde von <target> verteidigt",
     "action1": {
       "action_requirement": "Wie wollt ihr den Drachen denn bezahlen, wenn ihr kein Gold habt?",
       "action_uses": "Wie wollt ihr den Drachen denn bezahlen, wenn ihr kein Gold habt?",
@@ -398,6 +399,9 @@
       "action_requirement": "Ihr braucht erst einen Fußsoldaten, der für euch kämpfen kann",
       "action_uses": "Ohne Waffen sind eure Soldaten nutzlos",
       "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
+    },
+    "action3": {
+      "action_defend": "<target> hat erfolgreich Okklumentik angewendet"
     }
   },
   "log_messages": {

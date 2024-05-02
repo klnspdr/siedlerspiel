@@ -68,6 +68,9 @@ function draw() {
                             .done(function (data) {
 
                                 if (data != 1) {
+                                    if(data.slice(-1) === "1"){
+                                        data = data.slice(0, -1);
+                                    }
                                     alert(data);
                                 } else if (data == 1 && currentAction === 3){
                                     enemy.statsRevealed = true;
