@@ -23,7 +23,7 @@
   
     * Geheimgänge (Bonus am Ende)
     * Raum der Wünsche
-a    * Krankenfügel (item18, 1 pro 5 Schlafräume)
+    * Krankenfügel (item18, 1 pro 5 Schlafräume)
     * Große Halle (item19, 1 pro 5 Schlafräume)
     * Bibliothek
     * Gewächshäuser
@@ -44,7 +44,21 @@ a    * Krankenfügel (item18, 1 pro 5 Schlafräume)
     * Kamin
     * Besen fürs Quidditch Team
 
-# Änderungen zu letztem Jahr
+## Änderungen zu letztem Jahr
 * Angreifen attraktiver machen
   * zu HP: Weniger verteidigungschance, max 50%, Schutzzauber 5%, max 6 Stück
-  * 
+
+
+## TODOS:
+- [ ] Items in config übertragen
+- [ ] icons raussuchen und einbinden
+- [ ] Preise/Punkte überprüfen
+- [ ] Verteidigungschancen anpassen
+- [ ] Schrift einbinden/CSS anpassen
+- [ ] Spielfeldhintergrund anpassen
+- [ ] Knöpfe anpassen
+- [ ] Seitenhintergrund anpassen
+- [ ] Preisliste Icons einfügen
+- [ ] Preisliste Ausdrucken
+- [x] Pfila Doc fertig machen
+- [x] Materialliste im Pfila Doc
