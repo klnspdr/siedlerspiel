@@ -23,8 +23,8 @@
   
     * Geheimgänge (Bonus am Ende)
     * Raum der Wünsche
-    * Krankenfügel
-    * Große Halle
+a    * Krankenfügel (item18, 1 pro 5 Schlafräume)
+    * Große Halle (item19, 1 pro 5 Schlafräume)
     * Bibliothek
     * Gewächshäuser
     * Lehrerzimmer
@@ -43,3 +43,8 @@
     * Einzelzimmer
     * Kamin
     * Besen fürs Quidditch Team
+
+# Änderungen zu letztem Jahr
+* Angreifen attraktiver machen
+  * zu HP: Weniger verteidigungschance, max 50%, Schutzzauber 5%, max 6 Stück
+  * 
