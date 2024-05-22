@@ -53,7 +53,7 @@
 - [X] config (komplett) fertig
 - [X] hp name in config übertragen
 - [X] Items in config übertragen
-- [ ] Burggraben config rausmachen (config.json -> 374, 416) (reicht 352)
+- [X] Burggraben config rausmachen (config.json -> 374, 416) (reicht 352)
 - [ ] icons raussuchen und einbinden
 - [ ] Preise/Punkte überprüfen
 - [ ] Verteidigungschancen anpassen

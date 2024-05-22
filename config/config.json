@@ -183,7 +183,7 @@
     "accountableItem2": "item3",
     "accountableItem3": "item4"
   },
-  "number_items": 20,
+  "number_items": 19,
   "icon_file_dir": "img/items23/",
   "item_hiding_inventory": 8,
   "item1": {
@@ -202,11 +202,10 @@
     "visible_for_others": true,
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
-  "item3": {
-    "name": "Burggraben",
-    "max": 1,
-    "score": 6,
-    "icon_file_name": "burggraben.png",
+  "item3":{
+    "name": "Geheimgang",
+    "score": 14,
+    "icon_file_name": "ablassbrief.png",
     "visible_for_others": true
   },
   "item4": {
@@ -349,7 +348,6 @@
     "uses": "item7",
     "defense": {
       "item2": 5,
-      "item3": 0,
       "item4": 10,
       "item5": 10
     },
