@@ -184,35 +184,35 @@
     "accountableItem3": "item4"
   },
   "number_items": 19,
-  "icon_file_dir": "img/items23/",
+  "icon_file_dir": "img/items24/",
   "item_hiding_inventory": 8,
   "item1": {
     "name": "Schlafraum",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
-    "icon_file_name": "unterkunft.png",
+    "icon_file_name": "bed.png",
     "visible_for_others": true
   },
   "item2": {
     "name": "Schutzzauber",
     "score": 10,
     "max": 6,
-    "icon_file_name": "burgmauer.png",
+    "icon_file_name": "schild.png",
     "visible_for_others": true,
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3":{
     "name": "Geheimgang",
     "score": 14,
-    "icon_file_name": "ablassbrief.png",
+    "icon_file_name": "kerker.png",
     "visible_for_others": true
   },
   "item4": {
     "name": "Drache",
     "max": 1,
     "score": 13,
-    "icon_file_name": "hauptmann.png",
+    "icon_file_name": "drachenangriff.png",
     "visible_for_others": true
   },
   "item5": {
@@ -220,7 +220,7 @@
     "max": 1,
     "score": 7,
     "requirement": "item4",
-    "icon_file_name": "faehnrich.png",
+    "icon_file_name": "basilisk.png",
     "visible_for_others": true,
     "_comment": "Can only be purchased after item4 has been bought, too"
   },
@@ -233,35 +233,35 @@
   "item7": {
     "name": "Piertotum Locomotor",
     "score": 0,
-    "icon_file_name": "waffen.png",
+    "icon_file_name": "hauptmann.png",
     "visible_for_others": true
   },
   "item8": {
     "name": "Fidelius",
     "score": 13,
     "max": 1,
-    "icon_file_name": "merlin.png",
+    "icon_file_name": "fidelius.png",
     "visible_for_others": true,
     "_comment": "hides Inventory from others"
   },
   "item9": {
     "name": "Legilimentik",
     "score": 0,
-    "icon_file_name": "morgana.png",
+    "icon_file_name": "seeing_eye.png",
     "visible_for_others": true,
     "_comment": "tries to reveal Inventory of specific group, countered by item12"
   },
   "item10": {
     "name": "Mitglieder des Ordens des Phönix",
     "score": 0,
-    "icon_file_name": "drache.png",
+    "icon_file_name": "phoenix.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
     "name": "Zauberstäbe",
     "score": 0,
-    "icon_file_name": "goldschatz.png",
+    "icon_file_name": "elder_wand.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
@@ -269,31 +269,31 @@
     "name": "Okklumentik",
     "score": 18,
     "max": 3,
-    "icon_file_name": "kerker.png",
+    "icon_file_name": "okklumentik.png",
     "visible_for_others": true
   },
   "item13": {
     "name": "Bibliothek",
     "score": 22,
-    "icon_file_name": "schenke.png",
+    "icon_file_name": "book.png",
     "visible_for_others": true
   },
   "item14": {
     "name": "Gewächshaus",
     "score": 15,
-    "icon_file_name": "bordell.png",
+    "icon_file_name": "alraune.png",
     "visible_for_others": true
   },
   "item15": {
     "name": "Gemeinschaftsraum",
     "score": 20,
-    "icon_file_name": "kapelle.png",
+    "icon_file_name": "kamin.png",
     "visible_for_others": true
   },
   "item16": {
     "name": "Quidditch Stadium",
     "score": 34,
-    "icon_file_name": "schatzkammer.png",
+    "icon_file_name": "snitch.png",
     "visible_for_others": true
   },
   "item17": {
@@ -308,13 +308,13 @@
   "item18": {
     "name": "Krankenflügel",
     "score": 0,
-    "icon_file_name": "brunnen.png",
+    "icon_file_name": "erste-hilfe.png",
     "visible_for_others": true
   },
   "item19": {
     "name": "Große Halle",
     "score": 0,
-    "icon_file_name": "kornspeicher.png",
+    "icon_file_name": "great-hall.png",
     "visible_for_others": true
   },
   "item20": {
