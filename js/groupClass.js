@@ -24,7 +24,7 @@ class Group {
     }
 
     drawName() {
-        textFont("Lohengrin");
+        textFont("Harry P");
         noStroke();
         fill(this.nameTextColor);
         textStyle(BOLD);
@@ -37,7 +37,7 @@ class Group {
 
 
             let info = wholeGroupData[this.groupId - 1];
-            fill(255);
+            fill(0);
             strokeWeight(0);
             textSize(15);
             textStyle(NORMAL);

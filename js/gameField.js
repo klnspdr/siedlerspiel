@@ -1,6 +1,6 @@
 function preload() {
     tombStone = loadImage('img/tombStone.png');
-    bgMap = loadImage('img/backgrounds/map2.jpg');
+    bgMap = loadImage('img/backgrounds/map24.png');
     skull = loadImage('img/skull.svg');
     for (let itemNum = 1; itemNum <= config['number_items']; itemNum++) {
         itemIcons.push(loadImage(config['icon_file_dir'] + config['item' + itemNum]['icon_file_name']));
