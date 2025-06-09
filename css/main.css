@@ -1,9 +1,9 @@
 @font-face {
-    font-family: "Lohengrin";
-    src: url("./fonts/lohengrin.ttf") format('truetype');
+    font-family: "Harry P";
+    src: url("./fonts/harryp.ttf") format('truetype');
 }
 body {
-    font-family: Lohengrin, Arial, sans-serif;
+    font-family: Harry P, Arial, sans-serif;
     background-color: #fceecd;
     background-image: url("../img/backgrounds/background_texture.png");
     background-repeat: space;

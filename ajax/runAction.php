@@ -377,13 +377,30 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 			if($msg == null)
 				$msg="Group <group> tried to perform action <action> but hit themselves";
 		}
-		else{
-			$msg=$config['log_messages'][$action]['failure'];
-			if($msg == null)
-				$msg=$config['log_messages']['failure'];
-			if($msg == null)
-				$msg="Group <group> failed performing action <action> on group <target>";
+		else {
+			$msg = $config['log_messages'][$action]['failure'];
+			if ($msg == null)
+				$msg = $config['log_messages']['failure'];
+			if ($msg == null)
+				$msg = "Group <group> failed performing action <action> on group <target>";
 		}
+
+		//defend response
+		$defendResponse = "";
+		$defendResponse = $config['error_messages'][$action]['action_defend'];
+		if($defendResponse === null)
+			$defendResponse = $config['error_messages']['action_defend'];
+		if($defendResponse === null)
+			$defendResponse = "Action <action> was defended by <target>";
+		$actionName=$config[$action]["name"];
+		if($actionName==null)
+			$actionName=$action;
+		$targetName=$config["group_names"]["gr$targetId"];
+		$defendResponse = str_replace("<action>", $actionName, $defendResponse);
+		$defendResponse = str_replace("<target>", $targetName, $defendResponse);
+
+		echo $defendResponse;
+
 	}
 	$groupName=$config["group_names"]["gr$groupId"];
 	if($groupName==null)
