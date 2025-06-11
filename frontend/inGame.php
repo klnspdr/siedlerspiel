@@ -40,7 +40,7 @@
                 $buttonName = $config['item' . $buttonNum]['name'];
                 $tableRowOut .= "<td>";
                     if ($buttonNum <= $number_items) {
-                        $tableRowOut .= "<button class='button buyItem' onclick='buyItemButton($buttonNum, \"$buttonName\", $clientRole)' id='item" . $buttonNum . "' href='#'><span><img alt='' style='height: 20px;' src='".$config['icon_file_dir'].$config['item'.$buttonNum]['icon_file_name']."'>" . $buttonName . "</span></button>";
+                        $tableRowOut .= "<button class='button buyItem' onclick='buyItemButton($buttonNum, \"$buttonName\", $clientRole)' id='item" . $buttonNum . "' href='#'><span><img class='button_icon' alt='' src='".$config['icon_file_dir'].$config['item'.$buttonNum]['icon_file_name']."'>  " . $buttonName . "</span></button>";
                     }
                 $tableRowOut .= "</td>";
             }

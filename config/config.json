@@ -58,23 +58,23 @@
   },
   "number_groups": 4,
   "group_names": {
-    "gr1": "Gryffindor",
-    "gr2": "Ravenclaw",
-    "gr3": "Slytherin",
-    "gr4": "Hufflepuff"
+    "gr1": "Team Asterix",
+    "gr2": "Team Obelix",
+    "gr3": "Team Idefix",
+    "gr4": "Team Troubadix"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
     "files": {
-      "gr1": "team_red.png",
-      "gr2": "team_blue.png",
-      "gr3": "team_green.png",
-      "gr4": "team_yellow.png"
+      "gr1": "gryffindor.png",
+      "gr2": "slytherin.png",
+      "gr3": "ravenclaw.png",
+      "gr4": "hufflepuff.png"
     },
     "size": {
       "conserve": true,
-      "x": 65,
-      "y": 65
+      "x": 32,
+      "y": 24
     }
   },
   "group_colors": {
@@ -100,27 +100,27 @@
   "groupPositioning": "solid",
   "group_positions": {
     "gr1": {
-      "x": "573",
-      "y": "361"
+      "x": "550",
+      "y": "218"
     },
     "gr2": {
-      "x": "916",
-      "y": "659"
+      "x": "1313",
+      "y": "218"
     },
     "gr3": {
-      "x": "1465",
-      "y": "499"
+      "x": "550",
+      "y": "729"
     },
     "gr4": {
-      "x": "1735",
-      "y": "536"
+      "x": "1313",
+      "y": "729"
     }
   },
   "inventoryDirections": {
     "gr1": "down",
     "gr2": "down",
-    "gr3": "down",
-    "gr4": "down"
+    "gr3": "up",
+    "gr4": "up"
   },
   "init_values": {
     "hp": 100,
@@ -146,15 +146,15 @@
     "item19": 0,
     "item20": 0
   },
-  "hpName": "Schüler",
+  "hpName": "Gallier",
   "finalScores": {
     "hp": 1,
     "deathPunishment": 20,
     "ratios": {
-      "item18": {
+      "item13": {
         "required_by": {
           "item1": {
-            "multiplicator": 5,
+            "multiplicator": 10,
             "consuming": true,
             "punishment": 15,
             "once_punishment": 0,
@@ -176,7 +176,7 @@
     },
     "_comment": "for the final score the hp multiplied with the given factor of each group will be added to the score. If the group is dead at the end of the game, deathPunishment will be substracted from their score. ratios: the element opening the group is required. In the required_by array any number of elements can be listed, the all present an item that requires the first item. For each requiring item the following parameters can be given: multiplicator: n of the requiring items require only 1 required item. consuming: if more than one item require the other item consuming: true means that the amount of the required item used to fulfill this requirement will not be available to fulfill other requirements any more. punishment: if 5 item1 require one item2, for each begun 5 item1, that cannot be compensated with one item2, punishment will be substracted from the score. once_punishment: if the dependency is not fulfilled, once_punishment will be substracted from the score independent on how much the dependency is not fulfilled. bonus: will be added to the score if the dependency is fulfilled"
   },
-  "TODO1": "FIX probability calculation for defense, vlt auch nicht, siehe zeile 350",
+  "1": "FIX probability calculation for defense, vlt auch nicht, siehe zeile 350",
   "defenseProbability": {
     "factor": 0.1,
     "numberAccountableItems": 3,
@@ -185,137 +185,137 @@
     "accountableItem3": "item4"
   },
   "number_items": 19,
-  "icon_file_dir": "img/items24/",
+  "icon_file_dir": "img/items25/",
   "item_hiding_inventory": 8,
   "item1": {
-    "name": "Schlafraum",
+    "name": "Wohnhaus",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
-    "icon_file_name": "bed.png",
+    "icon_file_name": "residential.png",
     "visible_for_others": true
   },
   "item2": {
-    "name": "Schutzzauber",
+    "name": "Schutzwall",
     "score": 10,
     "max": 6,
-    "icon_file_name": "schild.png",
+    "icon_file_name": "wall.png",
     "visible_for_others": true,
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3":{
-    "name": "Geheimgang",
+    "name": "Hinkelsteinbruch",
     "score": 14,
-    "icon_file_name": "kerker.png",
+    "icon_file_name": "hinkelstein.png",
     "visible_for_others": true
   },
   "item4": {
-    "name": "Drache",
+    "name": "Häuptling",
     "max": 1,
     "score": 13,
-    "icon_file_name": "drachenangriff.png",
+    "icon_file_name": "majestix.png",
     "visible_for_others": true
   },
   "item5": {
-    "name": "Basilisk",
+    "name": "Druide",
     "max": 1,
     "score": 7,
     "requirement": "item4",
-    "icon_file_name": "basilisk.png",
+    "icon_file_name": "icon_character_getafix.png",
     "visible_for_others": true,
     "_comment": "Can only be purchased after item4 has been bought, too"
   },
   "item6": {
-    "name": "Statue",
+    "name": "Kämpfer",
     "score": 0,
-    "icon_file_name": "fußsoldat.png",
+    "icon_file_name": "icon_character_player.png",
     "visible_for_others": true
   },
   "item7": {
-    "name": "Piertotum Locomotor",
+    "name": "Zaubertrank",
     "score": 0,
-    "icon_file_name": "hauptmann.png",
+    "icon_file_name": "icon_potion_big_healing.png",
     "visible_for_others": true
   },
   "item8": {
-    "name": "Fidelius",
+    "name": "Amnesix",
     "score": 13,
     "max": 1,
-    "icon_file_name": "fidelius.png",
+    "icon_file_name": "amnesix.png",
     "visible_for_others": true,
     "_comment": "hides Inventory from others"
   },
   "item9": {
-    "name": "Legilimentik",
+    "name": "Nullnullsix",
     "score": 0,
-    "icon_file_name": "seeing_eye.png",
+    "icon_file_name": "nullnullsix.png",
     "visible_for_others": true,
     "_comment": "tries to reveal Inventory of specific group, countered by item12"
   },
   "item10": {
-    "name": "Mitglieder des Ordens des Phönix",
+    "name": "Korrupte Römer",
     "score": 0,
-    "icon_file_name": "phoenix.png",
+    "icon_file_name": "centurio.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
-    "name": "Zauberstäbe",
+    "name": "Goldkiste",
     "score": 0,
-    "icon_file_name": "elder_wand.png",
+    "icon_file_name": "gold_cauldron.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
   "item12": {
-    "name": "Okklumentik",
+    "name": "Fliegenfalle",
     "score": 18,
     "max": 3,
-    "icon_file_name": "okklumentik.png",
+    "icon_file_name": "fliegenfalle.png",
     "visible_for_others": true
   },
   "item13": {
-    "name": "Bibliothek",
+    "name": "Boxring",
     "score": 22,
-    "icon_file_name": "book.png",
+    "icon_file_name": "boxring.png",
     "visible_for_others": true
   },
   "item14": {
-    "name": "Gewächshaus",
+    "name": "Barde",
     "score": 15,
-    "icon_file_name": "alraune.png",
+    "icon_file_name": "lyra.png",
     "visible_for_others": true
   },
   "item15": {
-    "name": "Gemeinschaftsraum",
+    "name": "Fischhändler",
     "score": 20,
-    "icon_file_name": "kamin.png",
+    "icon_file_name": "fish_smelly.png",
     "visible_for_others": true
   },
   "item16": {
-    "name": "Quidditch Stadium",
+    "name": "Metzgerei",
     "score": 34,
-    "icon_file_name": "snitch.png",
+    "icon_file_name": "bistecca.png",
     "visible_for_others": true
   },
   "item17": {
-    "name": "Heiltrank",
+    "name": "Wildschweinjagd",
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
-    "icon_file_name": "heiltrank.png",
+    "icon_file_name": "boar.png",
     "visible_for_others": true,
     "_comment": "repairKit, adds plusHP to hp"
   },
   "item18": {
-    "name": "Krankenflügel",
-    "score": 0,
-    "icon_file_name": "erste-hilfe.png",
+    "name": "Schmied",
+    "score": 8,
+    "icon_file_name": "anvil.png",
     "visible_for_others": true
   },
   "item19": {
-    "name": "Große Halle",
-    "score": 0,
-    "icon_file_name": "great-hall.png",
+    "name": "Taverne",
+    "score": 5,
+    "icon_file_name": "cervisia.png",
     "visible_for_others": true
   },
   "item20": {
@@ -326,7 +326,7 @@
   },
   "number_actions": 3,
   "action1": {
-    "name": "Zaubererangriff",
+    "name": "Römerangriff",
     "destroyItem": "item2",
     "compareItem": "item10",
     "damage": 2,
@@ -339,7 +339,7 @@
     "_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem, if successful, damage is dealt"
   },
   "action2": {
-    "name": "Angriff",
+    "name": "Überfall",
     "damage": 5,
     "score": 2.5,
     "multiplicator": "item6",
@@ -368,103 +368,103 @@
     "max": "Ihr könnt nicht mehr als <max> <item> kaufen.",
     "death": "Tote kaufen keine <item>",
     "item2": {
-      "max": "<max> Schutzzauber sind doch schon genug."
+      "max": "<max> <item> sind doch schon genug."
     },
     "item3": {
       "max": "Mehr als <max> Burggraben sind doch nicht sinnvoll."
     },
     "item4": {
-      "max": "In einer Armee ist nur Platz für einen Drachen!"
+      "max": "In einer Armee ist nur Platz für einen <item>!"
     },
     "item5": {
-      "max": "So groß, dass sie mehr als einen Drachen und einen Basilisken brauchen würde ist eure Armee auch wieder nicht.",
-      "requirement": "Ohne einen Drachen wüsste der Basilisk gar nicht, was er machen soll."
+      "max": "So groß, dass sie mehr als einen Häuptling und einen Druide brauchen würde ist eure Armee auch wieder nicht.",
+      "requirement": "Ohne einen Häuptling wüsste der Druide gar nicht, was er machen soll."
     },
     "item8": {
-      "max": "Es gibt nur einen Fidelius!"
+      "max": "Amnesix ist einzigartig!"
     },
     "item12": {
-      "max": "Mehr Wissen kann man nicht mehr verschleiern!"
+      "max": "Mehr Fliegen könnt ihr nicht fangen!"
     },
     "action_requirement": "Aktion <action> benötigt <requirement>",
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action_defend": "Aktion <action> wurde von <target> verteidigt",
     "action1": {
-      "action_requirement": "Wie soll denn der Zauberer ohne Zauberstab zaubern?",
-      "action_uses": "Wie soll denn der Zauberer ohne Zauberstab zaubern?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da einen Zauberer anheuern?"
+      "action_requirement": "Wie wollt ihr denn die korrupten Römer bezahlen?",
+      "action_uses": "Wie wollt ihr denn die korrupten Römer bezahlen?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da Römer anheuern?"
     },
     "action2": {
-      "action_requirement": "Ihr braucht erst eine Statue, der für euch kämpfen kann",
-      "action_uses": "Ohne Piertotum Locomotor erwacht die Statue nicht zum leben",
+      "action_requirement": "Ihr müsst erst Kämpfer ausbilden",
+      "action_uses": "Ohne Zaubertrank kämpft sich's schlecht",
       "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
     },
     "action3": {
-      "action_defend": "<target> hat erfolgreich Okklumentik angewendet"
+      "action_defend": "<target> hat erfolgreich Fliegen gefangen"
     }
   },
   "log_messages": {
     "buy": "<group> haben <item> gekauft.",
     "item1": {
-      "buy": "<group> hat einen neuen Schlafraum gebaut"
+      "buy": "<group> hat einen neues Wohnhaus gebaut"
     },
     "item2": {
-      "buy": "<group> hat einen Schutzzauber gebaut"
+      "buy": "<group> hat einen Schutzwall gebaut"
     },
     "item3": {
-      "buy": "<group> hat einen Burggraben gebaut"
+      "buy": "<group> kann mehr Hinkelsteine produzieren"
     },
     "item4": {
-      "buy": "Für <group> arbeitet jetzt ein Drachen"
+      "buy": "<group> hat einen Häuptling gewählt"
     },
     "item5": {
-      "buy": "<group> hat einen Basilisken gebändigt"
+      "buy": "<group> hat einen Druiden eingestellt"
     },
     "item6": {
-      "buy": "<group> hat eine Statue gekauft"
+      "buy": "<group> hat einen Kämpfer ausgebildet"
     },
     "item7": {
-      "buy": "<group> hat einen Piertotum Locomotor gekauft"
+      "buy": "Der Druide von <group> hat einen Zaubertrank gebraut"
     },
     "item8": {
-      "buy": "<group> sprach einen Fideliuszauber aus, um sie zu tarnen"
+      "buy": "<group> hat Amnesix in seiner Waldpraxis aufgesucht"
     },
     "item9": {
-      "buy": "<group> sprach einen Legilimentikzauber aus"
+      "buy": "<group> hat Nullnullsix und seine Fliege beauftragt"
     },
     "item10": {
-      "buy": "<group> hat einen Zauberer angeheuert"
+      "buy": "<group> hat einen Römer in der Tasche"
     },
     "item11": {
-      "buy": "<group> hat Zauberstäbe gekauft"
+      "buy": "<group> hat in Gold angelegt"
     },
     "item12": {
-      "buy": "<group> sprach einen Okklumentikzauber aus"
+      "buy": "<group> hat keine Fliegen mehr im Haus"
     },
     "item13": {
-      "buy": "<group> hat eine Bibliothek gebaut"
+      "buy": "<group> hat einen Boxring gebaut"
     },
     "item14": {
-      "buy": "<group> hat ein Gewächshaus gebaut"
+      "buy": "<group> leidet unter schlechtem Gesang"
     },
     "item15": {
-      "buy": "<group> hat jetzt einen Gemeinschaftraum"
+      "buy": "Den Fisch von <group> riecht man kilometerweit"
     },
     "item16": {
-      "buy": "<group> kann jetzt coole Quidditch Turniere spielen"
+      "buy": "<group> kann jetzt frische Steaks essen"
     },
     "item17": {
-      "buy": "<group> hat einen Heiltrank gebraut"
+      "buy": "<group> ist auf Wildschweinjagd gegangen und hat neue Freunde gefunden"
     },
     "item18": {
-      "buy": "<group> hat einen Krankenflügel gebaut"
+      "buy": "<group> können jetzt den Barden ruhigstellen"
     },
     "item19": {
-      "buy": "<group> hat eine große Halle gebaut"
+      "buy": "<group> können zusammen Feste feiern"
     },
     "item20": {
-      "buy": "<group> kann sich nun im Notfall verstecken"
+      "buy": "<group> hat einen Burggraben gebaut"
     },
     "success": "<group> haben Aktion <action> erfolgreich auf <target> durchgeführt",
     "kill": "<group> haben <target> getötet",
@@ -472,19 +472,19 @@
     "nothingToDestroy": "<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
     "failure": "<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
     "action1": {
-      "success": "<group> hat einen Schutzzauber der <target> zerstört",
-      "hitSelf": "<group> hat ein Zaubererangriff auf sich selbst ausgeführt",
-      "nothingToDestroy": "<group> wollte <target> angreifen lassen, die hatten aber gar keine Schutzzauber",
+      "success": "<group> hat einen Schutzwall von <target> zerstört",
+      "hitSelf": "<group> hat ein Römerangriff auf sich selbst ausführen lassen",
+      "nothingToDestroy": "<group> wollte <target> angreifen lassen, die hatten aber gar keine Schutzwall",
       "failure": "<group> wollte <target> angreifen lassen, ist aber gnadenlos unterlegen"
     },
     "action2": {
-      "success": "<group> hat <target> angegriffen",
+      "success": "<group> hat <target> überfallen",
       "kill": "<group> hat <target> vom Erdboden getilgt",
       "failure": "<group> wurde beim Angriff auf <target> erfolgreich abgewehrt"
     },
     "action3": {
-      "success": "<group> hat <target> mithilfe von Legilimentik auspioniert",
-      "failure": "<target> 's Gedächtnis wurde von <group> verschleiert"
+      "success": "<group> hat <target> mithilfe von Nullnullsix und seiner Fliege auspioniert",
+      "failure": "<target> hat erfolgreich die Fliege von <group> gefangen"
     }
   }
 }

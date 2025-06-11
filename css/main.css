@@ -1,12 +1,13 @@
 @font-face {
-    font-family: "Harry P";
-    src: url("./fonts/harryp.ttf") format('truetype');
+    font-family: "Asterix";
+    src: url("./fonts/asterix.ttf") format('truetype');
 }
 body {
-    font-family: Harry P, Arial, sans-serif;
+    font-family: Asterix, "Comic Sans MS", sans-serif;
     background-color: #fceecd;
-    background-image: url("../img/backgrounds/background_texture.png");
-    background-repeat: space;
+    background-image: url("../img/backgrounds/stone_bricks.png");
+    background-size: 64px;
+    background-repeat: repeat;
     color: #141414;
 }
 img{
@@ -14,10 +15,11 @@ img{
 }
 .button {
     color: #141414;
+    font-family: Asterix;
     /*font-size: unset;*/
     border: none;
     background-color: #fff0;
-    background-image: url("../img/backgrounds/buttton3.png");
+    background-image: url("../img/backgrounds/button25.png");
     background-size: 100% 100%;
     text-decoration: none;
     text-align: center;
@@ -25,6 +27,7 @@ img{
     align-items: center;
     height: 50px;
     width: 100%;
+    white-space: nowrap;
 }
 
 .button:visited {
@@ -36,6 +39,11 @@ img{
     font-weight: bold;
     box-shadow: #282c34;
     filter: drop-shadow(3px -3px 3px #000);
+}
+
+.button_icon{
+    max-height: 30px;
+    max-width: 30px;
 }
 
 .titleOwn {
@@ -117,7 +125,6 @@ td, th {
     color: black;
     width: 50%;
     left: 25%;
-    font-family: Lohengrin, Arial, sans-serif;
     font-size: 25px;
 }
 
@@ -134,6 +141,9 @@ td, th {
     text-align: left;
     margin: 0 auto 0 auto;
     border: 1px solid black;
+    background-image: url("../img/backgrounds/inventory.png");
+    background-size: 100% auto;
+    white-space: nowrap;
 }
 
 #invTable td{
