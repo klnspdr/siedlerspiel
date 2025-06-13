@@ -27,6 +27,9 @@
     <p>
         <a href="ajax/toggleDisplayScore.php">Toggle Display Score</a>
     </p>
+    <p>
+        <a href="/phpMyAdmin5">phpMyAdmin (for MAMP users)</a>
+    </p>
 </div>
 <div class="infoFrame" id="netInfo">
     Server WiFi IP:

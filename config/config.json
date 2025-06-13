@@ -393,7 +393,8 @@
     "action1": {
       "action_requirement": "Wie wollt ihr denn die korrupten Römer bezahlen?",
       "action_uses": "Wie wollt ihr denn die korrupten Römer bezahlen?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da Römer anheuern?"
+      "action_death": "Ihr seid tot. Wie wollt ihr da Römer anheuern?",
+      "action_defend": "Eure Römer wurden von <target> vernichtend verkloppt"
     },
     "action2": {
       "action_requirement": "Ihr müsst erst Kämpfer ausbilden",
