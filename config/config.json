@@ -403,7 +403,7 @@
     },
     "action3": {
       "action_requirement": "Wie wollt ihr ohne Spione ausspionieren?",
-      "action_defend": "<target> hat erfolgreich Fliegen gefangen"
+      "action_defend": "<target> hat erfolgreich eure Fliegen gefangen"
     }
   },
   "log_messages": {

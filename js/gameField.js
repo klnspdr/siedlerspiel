@@ -93,8 +93,8 @@ function draw() {
                     }
                 } else {
                     tint(80);
-                    image(tombStone, enemy.x, enemy.y, 50, 50);
-                    enemy.drawName();
+                    //image(tombStone, enemy.x, enemy.y, 50, 50);
+                    enemy.draw();
                     noTint();
                     enemy.updateShownInfo();
 

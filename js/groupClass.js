@@ -19,6 +19,9 @@ class Group {
     }
 
     draw() {
+        if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
+            groupIcons[this.groupId - 1].filter(GRAY)
+        }
         image(groupIcons[this.groupId-1],this.x,this.y,this.iconSize.x,this.iconSize.y);
         this.drawName();
     }
@@ -94,8 +97,8 @@ class Enemy extends Group {
             }
             if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
                 //fill('#ff0000aa');
-                image(tombStone, this.x, this.y, 50, 50);
-                super.drawName();
+                //image(tombStone, this.x, this.y, 50, 50);
+                super.draw();
             } else {
                 super.draw();
 
