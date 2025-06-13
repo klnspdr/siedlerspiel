@@ -90,13 +90,19 @@
 
 <div id="Items" class="tabcontent">
     <h3>Items</h3>
-    <p>ItemNr: <input type="text" maxlength="3" name="itemNr" id="itemNrInput" onkeyup="onItemChange()"><button onclick="decrease('itemNrInput')">-</button><button onclick="increase('itemNrInput', 'number_items')">+</button> </p>
+    <p>ItemNr: <input type="text" maxlength="3" name="itemNr" id="itemNrInput" onkeyup="onItemChange()">
+        <button onclick="decrease('itemNrInput')">-</button>
+        <button onclick="increase('itemNrInput', 'number_items')">+</button>
+    </p>
     <div id="itemOutput"></div>
 </div>
 
 <div id="Actions" class="tabcontent">
     <h3>Actions</h3>
-    <p>ActionNr: <input type="text" maxlength="3" name="itemNr" id="actionNrInput" onkeyup="onActionChange()"><button onclick="decrease('actionNrInput')">-</button><button onclick="increase('actionNrInput', 'number_actions')">+</button> </p>
+    <p>ActionNr: <input type="text" maxlength="3" name="itemNr" id="actionNrInput" onkeyup="onActionChange()">
+        <button onclick="decrease('actionNrInput')">-</button>
+        <button onclick="increase('actionNrInput', 'number_actions')">+</button>
+    </p>
     <div id="actionOutput"></div>
 </div>
 <div id="Groups" class="tabcontent">
@@ -143,7 +149,7 @@
         for (let i = 1; i <= config.number_groups; i++) {
             const key = `gr${i}`
             console.log(key)
-                    output += `
+            output += `
                         <div class="table_component" role="region" tabindex="0">
                         <table>
                         <thead>
@@ -192,8 +198,8 @@
 </tbody>
 </table>
                         </div><br><br>`
-                    console.log("groups generated")
-                }
+            console.log("groups generated")
+        }
         document.getElementById("groupsOutput").innerHTML = output
         console.log("groups output done")
 
@@ -230,7 +236,17 @@
                                 <td>Icon</td>
                                 <td><img src="../${config.icon_file_dir}/${itemConfig.icon_file_name}" height="100px"/></td>
                             </tr>
-                        </tbody>
+                            `
+            for (let key of Object.keys(itemConfig)) {
+                if (!['name', 'icon_file_name'].includes(key)){
+                    output += `<tr>
+                    <td> ${key}</td>
+                    <td>${getActionFieldValue(itemConfig, key)}</td>
+                </tr>
+            `
+                }
+            }
+            output += `</tbody>
                    </table>
                    </div>
                     <h4>Error Messages:</h4>
@@ -248,7 +264,7 @@
                     console.log(key)
                     output += `<tr>
                                 <td>${key}</td>
-                                <td>${config.error_messages[itemNr][key]}</td>
+                                <td>${escapeHTML(config.error_messages[itemNr][key])}</td>
                             </tr>`
                 }
             }
@@ -267,7 +283,7 @@
                 for (let key of Object.keys(config.log_messages[itemNr])) {
                     output += `<tr>
                                 <td>${key}</td>
-                                <td>${config.log_messages[itemNr][key]}</td>
+                                <td>${escapeHTML(config.log_messages[itemNr][key])}</td>
                             </tr>`
                 }
             }
@@ -324,7 +340,7 @@
                     console.log(key)
                     output += `<tr>
                                 <td>${key}</td>
-                                <td>${config.error_messages[actionNr][key]}</td>
+                                <td>${escapeHTML(config.error_messages[actionNr][key])}</td>
                             </tr>`
                 }
             }
@@ -343,7 +359,7 @@
                 for (let key of Object.keys(config.log_messages[actionNr])) {
                     output += `<tr>
                                 <td>${key}</td>
-                                <td>${config.log_messages[actionNr][key]}</td>
+                                <td>${escapeHTML(config.log_messages[actionNr][key])}</td>
                             </tr>`
                 }
             }
@@ -356,15 +372,25 @@
     }
 
     function getActionFieldValue(actionConfig, key) {
+        if (config[actionConfig[key]] === undefined) {
+            console.log('>>>>>config[actionConfig[key]] is undefined')
+
+            console.log('actionConfig[key]')
+            console.log(actionConfig[key])
+            console.log('[key] ')
+            console.log(key)
+            console.log('actionConfig ')
+            console.log(actionConfig)
+        }
         switch (typeof actionConfig[key]) {
             case "string":
-                return (actionConfig[key].includes("item")) ? config[actionConfig[key]].name + " (" + actionConfig[key] + ")" : actionConfig[key]
+                return (actionConfig[key].includes("item") && key.length <= 6) ? config[actionConfig[key]].name + " (" + actionConfig[key] + ")" : actionConfig[key]
             case "object":
                 console.log(key)
                 let returnVal = "<ul>"
                 for (let key2 of Object.keys(actionConfig[key])) {
                     console.log(key)
-                    returnVal += `<li>${(key2.includes("item")) ? config[key2].name + " (" + key2 + ")" : key2}: ${actionConfig[key][key2]}</li>`
+                    returnVal += `<li>${(key2.includes("item") && key2.length <= 6) ? config[key2].name + " (" + key2 + ")" : key2}: ${actionConfig[key][key2]}</li>`
                 }
                 returnVal += "</ul>"
                 return returnVal
@@ -373,15 +399,15 @@
         }
     }
 
-    function increase(target, maxKey){
-        if(document.getElementById(target).value == ""){
+    function increase(target, maxKey) {
+        if (document.getElementById(target).value == "") {
             document.getElementById(target).value = 1
         }
-        document.getElementById(target).value =  parseInt(document.getElementById(target).value) + 1
-        if(document.getElementById(target).value > config[maxKey]){
+        document.getElementById(target).value = parseInt(document.getElementById(target).value) + 1
+        if (document.getElementById(target).value > config[maxKey]) {
             document.getElementById(target).value = config[maxKey]
         }
-        switch (target){
+        switch (target) {
             case "itemNrInput":
                 onItemChange()
                 break;
@@ -393,12 +419,12 @@
         }
     }
 
-    function decrease(target){
-        document.getElementById(target).value =  parseInt(document.getElementById(target).value) - 1
-        if(document.getElementById(target).value <= 1){
+    function decrease(target) {
+        document.getElementById(target).value = parseInt(document.getElementById(target).value) - 1
+        if (document.getElementById(target).value <= 1) {
             document.getElementById(target).value = 1
         }
-        switch (target){
+        switch (target) {
             case "itemNrInput":
                 onItemChange()
                 break;
@@ -408,6 +434,10 @@
             default:
                 break
         }
+    }
+
+    function escapeHTML(html) {
+        return html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
     loadConfig()
