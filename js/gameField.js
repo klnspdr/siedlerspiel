@@ -38,7 +38,7 @@ function setup() {
 
 function draw() {
     //background(255);
-    //clear();
+    clear();
     //erase()
     //rect(0,0,width,height)
     //noErase()
@@ -130,6 +130,7 @@ function draw() {
 }
 
 function mouseClicked() {
+
     if(!selectMode) {
         if (invModeGroup === 0) {
             for (let enemy of enemies) {

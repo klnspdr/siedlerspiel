@@ -66,7 +66,7 @@ class Group {
         }
         noStroke();
         let filledLength = 50 * (hp / maxHp);
-        rect(this.x - (50 - filledLength) / 2 + 0.5, this.y + this.iconSize.y / 2 + 10.5, filledLength - 1, 14);
+        rect(this.x - (50 - filledLength) / 2, this.y + this.iconSize.y / 2 + 10, filledLength - 1, 14);
         //noStroke();
         //rect(x-(50-filledLength)/2+)
         if(!this.statsShown){
