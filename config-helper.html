@@ -133,7 +133,7 @@
     }
 
     function loadConfig() {
-        fetch('./config.json')
+        fetch('./config/config.json')
             .then((response) => response.json())
             .then((json) => config = json)
     }
@@ -307,7 +307,47 @@
             }
             output += `</tbody>
                    </table>
-                   </div>`
+                   </div>
+                   <h4>Error Messages:</h4>
+                    <div class="table_component" role="region" tabindex="0">
+                    <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Message</th>
+                        </tr>
+                        </thead>`
+
+            if (config.error_messages[actionNr]) {
+                console.log(Object.keys(config.error_messages[actionNr]))
+                for (let key of Object.keys(config.error_messages[actionNr])) {
+                    console.log(key)
+                    output += `<tr>
+                                <td>${key}</td>
+                                <td>${config.error_messages[actionNr][key]}</td>
+                            </tr>`
+                }
+            }
+            output += `</tbody></table></div>
+                   <h4>Log Messages:</h4>
+                   <div class="table_component" role="region" tabindex="0">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>`
+            if (config.log_messages[actionNr]) {
+                for (let key of Object.keys(config.log_messages[actionNr])) {
+                    output += `<tr>
+                                <td>${key}</td>
+                                <td>${config.log_messages[actionNr][key]}</td>
+                            </tr>`
+                }
+            }
+            output += `</tbody></table></div>`
 
         } else {
             output = "<b>No Action Found</b>"

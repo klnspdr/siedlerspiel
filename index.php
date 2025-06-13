@@ -7,7 +7,8 @@ include("ajax/readConfigFromIndex.php");
 if(isset($_GET['reset'])){
     $_SESSION['role'] = 0;
 }
-include("ajax/setRole.php");    //include script which sets role if new one is selected
+include("ajax/setRole.php");
+//include("ajax/gameControl.php")//include script which sets role if new one is selected
 ?>
 
 <!DOCTYPE html>

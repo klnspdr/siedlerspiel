@@ -61,25 +61,25 @@
     "gr1": "Team Asterix",
     "gr2": "Team Obelix",
     "gr3": "Team Idefix",
-    "gr4": "Team Troubadix"
+    "gr4": "Team Miraculix"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
     "files": {
-      "gr1": "gryffindor.png",
-      "gr2": "slytherin.png",
-      "gr3": "ravenclaw.png",
-      "gr4": "hufflepuff.png"
+      "gr1": "asterix.png",
+      "gr2": "obelix.png",
+      "gr3": "idefix.png",
+      "gr4": "miraculix.png"
     },
     "size": {
       "conserve": true,
-      "x": 32,
-      "y": 24
+      "x": 170,
+      "y": 170
     }
   },
   "group_colors": {
     "nameText": {
-      "gr1": "#D60A0C00",
+      "gr1": "#00ff0000",
       "gr2": "#141C8800",
       "gr3": "#16962200",
       "gr4": "#F6D41500"
@@ -91,36 +91,36 @@
       "gr4": "#F3CC14"
     },
     "outline": {
-      "gr1": "#fceecc",
-      "gr2": "#444444",
-      "gr3": "#fceecc",
-      "gr4": "#fceecc"
+      "gr1": "#fceecc00",
+      "gr2": "#44444400",
+      "gr3": "#fceecc00",
+      "gr4": "#fceecc00"
     }
   },
   "groupPositioning": "solid",
   "group_positions": {
     "gr1": {
-      "x": "550",
-      "y": "218"
+      "x": "616",
+      "y": "778"
     },
     "gr2": {
-      "x": "1313",
-      "y": "218"
+      "x": "581",
+      "y": "322"
     },
     "gr3": {
-      "x": "550",
-      "y": "729"
+      "x": "150",
+      "y": "322"
     },
     "gr4": {
-      "x": "1313",
-      "y": "729"
+      "x": "1010",
+      "y": "332"
     }
   },
   "inventoryDirections": {
-    "gr1": "down",
+    "gr1": "up",
     "gr2": "down",
-    "gr3": "up",
-    "gr4": "up"
+    "gr3": "down",
+    "gr4": "down"
   },
   "init_values": {
     "hp": 100,
@@ -401,6 +401,7 @@
       "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
     },
     "action3": {
+      "action_requirement": "Wie wollt ihr ohne Spione ausspionieren?",
       "action_defend": "<target> hat erfolgreich Fliegen gefangen"
     }
   },

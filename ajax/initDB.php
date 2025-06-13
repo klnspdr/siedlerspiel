@@ -22,13 +22,13 @@ if ($pdo->query("USE $dbname") === false){
 }
 
 $sql="CREATE TABLE IF NOT EXISTS groups(
-	groupId INT AUTO_INCREMENT,
-	hp INT,
-	max_hp INT,
-	name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-	score INT DEFAULT 0,
-	PRIMARY KEY (groupId)
-	);";
+groupId INT AUTO_INCREMENT,
+hp INT,
+max_hp INT,
+name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+score INT DEFAULT 0,
+PRIMARY KEY (groupId)
+);";
 
 $result = $pdo->query($sql);
 if ($result === FALSE) {
@@ -36,52 +36,52 @@ if ($result === FALSE) {
 }
 
 $sql="CREATE TABLE IF NOT EXISTS inventory(
-	groupId INT,
-	item1 INT default 0,
-	item2 INT default 0,
-	item3 INT default 0,
-	item4 INT default 0,
-	item5 INT default 0,
-	item6 INT default 0,
-	item7 INT default 0,
-	item8 INT default 0,
-	item9 INT default 0,
-	item10 INT default 0,
-	item11 INT default 0,
-	item12 INT default 0,
-	item13 INT default 0,
-	item14 INT default 0,
-	item15 INT default 0,
-	item16 INT default 0,
-	item17 INT default 0,
-	item18 INT default 0,
-	item19 INT default 0,
-	item20 INT default 0,
-	PRIMARY KEY (groupId),
-	CONSTRAINT FK_inventory_groupId FOREIGN KEY (groupId) references groups(groupId)
-	)";
+groupId INT,
+item1 INT default 0,
+item2 INT default 0,
+item3 INT default 0,
+item4 INT default 0,
+item5 INT default 0,
+item6 INT default 0,
+item7 INT default 0,
+item8 INT default 0,
+item9 INT default 0,
+item10 INT default 0,
+item11 INT default 0,
+item12 INT default 0,
+item13 INT default 0,
+item14 INT default 0,
+item15 INT default 0,
+item16 INT default 0,
+item17 INT default 0,
+item18 INT default 0,
+item19 INT default 0,
+item20 INT default 0,
+PRIMARY KEY (groupId),
+CONSTRAINT FK_inventory_groupId FOREIGN KEY (groupId) references groups(groupId)
+)";
 $result = $pdo->query($sql);
 if ($result === FALSE) {
 	die("Table creation failed: " . $pdo->errorInfo()[2]);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS log(
-	logId INT AUTO_INCREMENT,
-	groupId INT,
-	message TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-	PRIMARY KEY (logId),
-	CONSTRAINT FK_log_groupId FOREIGN KEY (groupId) references groups(groupId)
-	)";
+logId INT AUTO_INCREMENT,
+groupId INT,
+message TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+PRIMARY KEY (logId),
+CONSTRAINT FK_log_groupId FOREIGN KEY (groupId) references groups(groupId)
+)";
 $result = $pdo->query($sql);
 if ($result === FALSE) {
 	die("Table creation failed: " . $pdo->errorInfo()[2]);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS gameControl(
-	session INT AUTO_INCREMENT,
-	displayScore BOOLEAN DEFAULT TRUE,
-	PRIMARY KEY (session)
-	);";
+session INT AUTO_INCREMENT,
+displayScore BOOLEAN DEFAULT TRUE,
+PRIMARY KEY (session)
+);";
 
 $result = $pdo->query($sql);
 if ($result === FALSE) {
@@ -138,6 +138,8 @@ if($result && $result->rowCount() == 0){
 		die("Creating gameControl entry failed: " . $statement->errorInfo()[2]);
 	}
 }
+
+echo "<h1>Database initialized</h1><a href='/'>Go to main Page</a>";
 
 
 ?>

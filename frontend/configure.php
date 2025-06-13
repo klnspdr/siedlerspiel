@@ -10,10 +10,43 @@
         <option value="100">OVERVIEW (Beamer)</option>
     </select><br>
     <p>
-        <input type="checkbox" required id="checkRoleSub"><label for="checkRoleSub">Rolle auswählen</label><br>
-        <input type="submit">
+        <input type="checkbox" required id="checkRoleSub"><label for="checkRoleSub">Rolle bestätigen</label><br>
+        <input type="submit" value="Auswahl abschicken">
     </p>
 </form>
+<div class="infoFrame" id="gameControl">
+    <h4>Game Control</h4>
+    <p>
+        <a href="config-helper.html">Config Helper</a>
+    </p>
+    <p>
+        <a href="ajax/clearDB.php">Clear Database</a>
+        <br>
+        <a href="ajax/initDB.php">Initialize Database</a>
+    </p>
+    <p>
+        <a href="ajax/toggleDisplayScore.php">Toggle Display Score</a>
+    </p>
+</div>
+<div class="infoFrame" id="netInfo">
+    Server WiFi IP:
+    <ul>
 <?php
+$interfaces = net_get_interfaces();
+if(isset($interfaces['en0']['unicast'])) {
+    foreach ($interfaces['en0']['unicast'] as $ip) {
+        if (isset($ip['address'])) {
+            echo "<li>";
+            echo $ip['address'];
+            echo "</li>";
+        }
+    }
+}
+else{
+    echo "Feature only usable on MacBooks and maybe Linux";
+}
+
 
 ?>
+    </ul>
+</div>

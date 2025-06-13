@@ -9,7 +9,7 @@ function updateLog(){
         .done(function(data){
             log = data;
 
-            let shownMessages = Math.floor(0.8 * $(window).height()/15)-2;
+            let shownMessages = Math.floor(0.8 * $(window).height()/15)-2 - 8;
 
             if(groupId != 100){
                 shownMessages -= 9;

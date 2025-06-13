@@ -1,3 +1,4 @@
+<div id="backArrow"><a href="/?reset"><img src="img/arrow_back.svg"></a></div>
 <div class="fieldArea" id="gameCanvas"></div>
 <div class="inventoryArea">
     <div id="hpBar">

@@ -25,4 +25,7 @@ if ($result === FALSE) {
 	die("Could not delete table: " . $pdo->errorInfo()[2]);
 }
 
+echo "<h1>Database cleared</h1><p><a href='/'>Go to main Page</a></p><p><a href='/ajax/initDB.php'>Initialize Database</a></p>";
+
+
 ?>

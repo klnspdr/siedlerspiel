@@ -24,7 +24,7 @@ class Group {
     }
 
     drawName() {
-        textFont("Harry P");
+        textFont("Asterix");
         noStroke();
         fill(this.nameTextColor);
         textStyle(BOLD);
