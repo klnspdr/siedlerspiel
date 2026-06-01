@@ -348,51 +348,51 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 	$msg="";
 	if($attackSuccess){
 		if($kill){
-			$msg=$config['log_messages'][$action]['kill'];
+			$msg=$config['log_messages'][$action]['kill'] ?? null;
 			if($msg == null)
-				$msg=$config['log_messages']['kill'];
+				$msg=$config['log_messages']['kill'] ?? null;
 			if($msg == null)
 				$msg="Group <group> killed group <target>";
 		}
 		else if(!$itemDestroyed){
-			$msg=$config['log_messages'][$action]['nothingToDestroy'];
+			$msg=$config['log_messages'][$action]['nothingToDestroy'] ?? null;
 			if($msg == null)
-				$msg=$config['log_messages']['nothingToDestroy'];
+				$msg=$config['log_messages']['nothingToDestroy'] ?? null;
 			if($msg == null)
 				$msg="Group <group> tried to perform action <action> on group <target> but found nothing to destroy";
 		}
 		else{
-			$msg=$config['log_messages'][$action]['success'];
+			$msg=$config['log_messages'][$action]['success'] ?? null;
 			if($msg == null)
-				$msg=$config['log_messages']['success'];
+				$msg=$config['log_messages']['success'] ?? null;
 			if($msg == null)
 				$msg="Group <group> performed action <action> successfully on group <target>";
 		}
 	}
 	else{
 		if($targetId==$groupId){
-			$msg=$config['log_messages'][$action]['hitSelf'];
+			$msg=$config['log_messages'][$action]['hitSelf'] ?? null;
 			if($msg == null)
-				$msg=$config['log_messages']['hitSelf'];
+				$msg=$config['log_messages']['hitSelf'] ?? null;
 			if($msg == null)
 				$msg="Group <group> tried to perform action <action> but hit themselves";
 		}
 		else {
-			$msg = $config['log_messages'][$action]['failure'];
+			$msg = $config['log_messages'][$action]['failure'] ?? null;
 			if ($msg == null)
-				$msg = $config['log_messages']['failure'];
+				$msg = $config['log_messages']['failure'] ?? null;
 			if ($msg == null)
 				$msg = "Group <group> failed performing action <action> on group <target>";
 		}
 
 		//defend response
 		$defendResponse = "";
-		$defendResponse = $config['error_messages'][$action]['action_defend'];
+		$defendResponse = $config['error_messages'][$action]['action_defend'] ?? null;
 		if($defendResponse === null)
-			$defendResponse = $config['error_messages']['action_defend'];
+			$defendResponse = $config['error_messages']['action_defend'] ?? null;
 		if($defendResponse === null)
 			$defendResponse = "Action <action> was defended by <target>";
-		$actionName=$config[$action]["name"];
+		$actionName=$config[$action]["name"] ?? null;
 		if($actionName==null)
 			$actionName=$action;
 		$targetName=$config["group_names"]["gr$targetId"];
@@ -402,13 +402,13 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 		echo $defendResponse;
 
 	}
-	$groupName=$config["group_names"]["gr$groupId"];
+	$groupName=$config["group_names"]["gr$groupId"] ?? null;
 	if($groupName==null)
 		$groupName="group $groupId";
-	$targetName=$config["group_names"]["gr$targetId"];
+	$targetName=$config["group_names"]["gr$targetId"] ?? null;
 	if($groupName==null)
 		$groupName="group $targetId";
-	$actionName=$config[$action]["name"];
+	$actionName=$config[$action]["name"] ?? null;
 	if($actionName==null)
 		$actionName=$action;
 	$msg=str_replace("<group>", $groupName, $msg);
@@ -418,7 +418,12 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 
 	$statement = $pdo->prepare($sql);
 	if($statement->execute(array($groupId, $msg)))
-		return true;
+		if($attackSuccess){
+			return true;
+		} else {
+			return "";
+		}
+
 	return $statement->errorInfo()[2];
 //	$result = $conn->query($sql);
 //	if($result == true)
@@ -428,15 +433,15 @@ function createLog($groupId, $targetId, $action, $attackSuccess, $itemDestroyed,
 }
 
 function getRequirementErrorMessage($action, $requirement, $config){
-	$msg = $config['error_messages'][$action]['action_requirement'];
+	$msg = $config['error_messages'][$action]['action_requirement'] ?? null;
 	if($msg === null)
-		$msg = $config['error_messages']['action_requirement'];
+		$msg = $config['error_messages']['action_requirement'] ?? null;
 	if($msg === null)
 		$msg = "Action <action> requires <requirement>";
-	$actionName=$config[$action]["name"];
+	$actionName=$config[$action]["name"] ?? null;
 	if($actionName==null)
 		$actionName=$action;
-	$requirementName=$config[$requirement]['name'];
+	$requirementName=$config[$requirement]['name'] ?? null;
 	if($requirementName === null)
 		$requirementName = "item$requirement";
 	$msg = str_replace("<action>", $actionName, $msg);
@@ -444,15 +449,15 @@ function getRequirementErrorMessage($action, $requirement, $config){
 	return $msg;
 }
 function getUsesErrorMessage($action, $uses, $config){
-	$msg = $config['error_messages'][$action]['action_uses'];
+	$msg = $config['error_messages'][$action]['action_uses'] ?? null;
 	if($msg === null)
-		$msg = $config['error_messages']['action_uses'];
+		$msg = $config['error_messages']['action_uses'] ?? null;
 	if($msg === null)
 		$msg = "Action <action> requires <uses>";
-	$actionName=$config[$action]["name"];
+	$actionName=$config[$action]["name"] ?? null;
 	if($actionName==null)
 		$actionName=$action;
-	$usesName=$config[$uses]['name'];
+	$usesName=$config[$uses]['name'] ?? null;
 	if($usesName === null)
 		$usesName = "item$uses";
 	$msg = str_replace("<action>", $actionName, $msg);
@@ -461,12 +466,12 @@ function getUsesErrorMessage($action, $uses, $config){
 }
 
 function getDeathErrorMessage($action, $config){
-	$errormsg=$config["error_messages"][$action]["action_death"];
+	$errormsg=$config["error_messages"][$action]["action_death"] ?? null;
 	if($errormsg == null)
-		$errormsg=$config["error_messages"]["action_death"];
+		$errormsg=$config["error_messages"]["action_death"] ?? null;
 	if($errormsg == null)
 		$errormsg = "You have to be alive to perform action <action>";
-	$itemName=$config[$action]["name"];
+	$actionName=$config[$action]["name"] ?? null;
 	if($actionName==null)
 		$actionName=$action;
 

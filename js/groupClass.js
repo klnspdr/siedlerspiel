@@ -19,12 +19,15 @@ class Group {
     }
 
     draw() {
+        if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
+            groupIcons[this.groupId - 1].filter(GRAY)
+        }
         image(groupIcons[this.groupId-1],this.x,this.y,this.iconSize.x,this.iconSize.y);
         this.drawName();
     }
 
     drawName() {
-        textFont("Harry P");
+        textFont("Asterix");
         noStroke();
         fill(this.nameTextColor);
         textStyle(BOLD);
@@ -66,7 +69,7 @@ class Group {
         }
         noStroke();
         let filledLength = 50 * (hp / maxHp);
-        rect(this.x - (50 - filledLength) / 2 + 0.5, this.y + this.iconSize.y / 2 + 10.5, filledLength - 1, 14);
+        rect(this.x - (50 - filledLength) / 2, this.y + this.iconSize.y / 2 + 10, filledLength - 1, 14);
         //noStroke();
         //rect(x-(50-filledLength)/2+)
         if(!this.statsShown){
@@ -94,8 +97,8 @@ class Enemy extends Group {
             }
             if (parseInt(wholeGroupData[this.groupId - 1]['hp']) === 0) {
                 //fill('#ff0000aa');
-                image(tombStone, this.x, this.y, 50, 50);
-                super.drawName();
+                //image(tombStone, this.x, this.y, 50, 50);
+                super.draw();
             } else {
                 super.draw();
 
