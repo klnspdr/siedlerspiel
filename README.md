@@ -3,29 +3,19 @@
 
 ## Info for Development & Deployment
 
-*PHP-Version:* >=8.0
-
-*MySQL-Version:* 5.7
+*NodeJS-Version:* >=22.5
 
 Steps:
 1. Adjust `/config/config.json` to fit your needs (options and explantions are explained on top)
-2. Create an empty MySQL database and a user which has data & structure rights and additionally `REFERENCES` for the created DB
-3. Put the connection info of the DB into `/config/DBConfig.php`
-4. call `http://server-address/ajax/clearDB.php` and `http://server-address/ajax/initDB.php` to initialize/reset database
-5. go to `http://server-address` to get into the login page
+2. Run `npm install` while in this directory
+3. run `sudo npm start` (on Mac and Linux) to open a webserver on port 80, use a shell in Admin mode on Windows and leave out `sudo`
+4. go to [http://localhost](http://localhost) and click `Clear Database` and then `Initialize Database`
+5. let others connect using the IP shown at the bottom or the device's hostname
+6. select a role
 
-## Deployment on MacOS
+### Editing DB manually
 
-Prerequesits:
-
-- MAMP (PHP Server with MySQL and phpMyAdmin frontend)
-
-Steps:
-1. Start MAMP, check PHP (Main Window) and MySQL (Preferences => Server) Versions and check directory (main window)
-2. Start MAMP Server => Top Right
-3. Go to [phpMyAdmin](http://localhost/phpMyAdmin5/), create database and user (in database => Rights) if necessary
-4. Go to [localhost](http://localhost) and click `initialize Database`
-5. Have Fun
+This software is using sqlite for it's DB. An app like [https://sqlitebrowser.org/](https://sqlitebrowser.org/) lets you edit the sqlite file directly. You might have to restart the server afterwards
 
 ## Future Development
 

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Siedler</title>
+
+    <!-- JQuery -->
+    <script src="jquery/jquery.min.js"></script>
+
+    <script src="jquery/hammer.js"></script>
+
+    <link rel="stylesheet" href="jqueryUI/jquery-ui.min.css" />
+    <script src="jqueryUI/jquery-ui.min.js"></script>
+
+    <!-- include P5.js library -->
+    <script src="p5js/p5.min.js"></script>
+
+    <!-- include custom JS classes -->
+    <script src="js/groupClass.js"></script>
+    <!-- include game logic -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/ingame.css" />
+    <link rel="stylesheet" href="css/configure.css" />
+
+  </head>
+  <body>
+    <section id="configurePage" hidden>
+      <p class="titleOwn">Configuration Page</p>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Role Selection</div>
+          <form id="roleForm" method="post" action="/ajax/setRole">
+            <select name="setRole" id="roleSelect"></select
+            ><br />
+            <p>
+              <input type="checkbox" required id="checkRoleSub" /><label
+                for="checkRoleSub"
+                >Rolle auswählen</label
+              ><br />
+              <input type="submit" value="Start" />
+            </p>
+          </form>
+        </div>
+      </div>
+
+        <div class="card infoFrame" id="gameControl">
+          <div class="card-title">Game Control</div>
+          <p>
+            <a href="config-helper.html">Config Helper</a>
+          </p>
+          <p>
+            <button onclick="clearDB()">Clear Database</button>
+            <br />
+            <button onclick="initDB()">Initialize Database</button>
+          </p>
+          <p>
+            <button onclick="toggleDisplayScore()">Toggle Display Score</button>
+          </p>
+          <p>
+            <a href="https://sqlitebrowser.org/">SQLite Browser (App for viewing game database)</a>
+          </p>
+        </div>
+      <div class="card infoFrame" id="serverInfoArea">
+        <div class="card-title">Server Information:</div>
+        <p>
+          <strong>Hostname:</strong> <span id="serverHostname">{hostname}</span>
+        </p>
+        <p>
+          <strong>Platform:</strong> <span id="serverPlatform">{platform}</span>
+        </p>
+        <p>
+          <strong>Architecture:</strong> <span id="serverArch"  >{arch}</span>
+        </p>
+        <p>
+          <strong>IP Addresses:</strong>
+          <ul id="serverIpList">
+            <li>192.168.1.100</li>
+          </ul>
+        </p>
+      </div>
+    </section>
+
+    <section id="playPage" hidden>
+      <div id="backArrow">
+        <a href="/?reset"><img src="img/arrow_back.svg" /></a>
+      </div>
+      <div class="fieldArea" id="gameCanvas"></div>
+
+      <div class="inventoryArea" id="inventoryArea">
+        <div id="hpBar">
+          <span id="hpBarText"></span>
+        </div>
+        <table id="invTable">
+          <tr>
+            <th colspan="6" class="invTableName">Inventar</th>
+          </tr>
+          <tbody id="invTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="logArea" id="logArea">
+        <table id="logTable">
+          <tr>
+            <th class="logTableName">LOG</th>
+          </tr>
+          <tbody id="logTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="buttonArea" id="buttonArea">
+        <table id="buyButtonTable">
+          <tr>
+            <th colspan="5"><span class="buttonTableName">Kaufen</span></th>
+          </tr>
+          <tbody id="buyButtonTableBody"></tbody>
+        </table>
+        <table id="actButtonTable">
+          <tr>
+            <th colspan="1"><span class="buttonTableName">Aktionen</span></th>
+          </tr>
+          <tbody id="actButtonTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="rankListArea" id="rankListArea" hidden>
+        <table id="rankListTable">
+          <thead>
+            <tr>
+              <th class="rankTableName" colspan="3">RANGLISTE</th>
+            </tr>
+          </thead>
+          <tbody id="rankListTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+    <script src="js/initGlobalVars.js"></script>
+    <script src="js/pageBootstrap.js"></script>
+
+    <script src="js/gameField.js"></script>
+    <script src="js/buttonAction.js"></script>
+    <script src="js/fillLog.js"></script>
+    <script src="js/fillInventory.js"></script>
+    <script src="js/fillRanklist.js"></script>
+
+  </body>
+</html>

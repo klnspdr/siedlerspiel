@@ -184,7 +184,7 @@
   },
   "number_items": 19,
   "icon_file_dir": "img/items26/",
-  "item_hiding_inventory": 8,
+  "item_hiding_inventory": "item8",
   "item1": {
     "name": "Aktenschrank",
     "score": 2,
