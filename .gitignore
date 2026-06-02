@@ -11,3 +11,6 @@ connect.php
 /img/items2/SVGs/
 /img/items2/_notes.txt
 .DS_Store
+*.afdesign
+*.afpub
+*.afphoto
