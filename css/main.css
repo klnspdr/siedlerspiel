@@ -1,13 +1,13 @@
 @font-face {
-    font-family: "Asterix";
-    src: url("./fonts/asterix.ttf") format('truetype');
+    font-family: "Brown Cookies";
+    src: url("./fonts/Brown\ Cookies.otf") format('truetype');
 }
 body {
-    font-family: Asterix, "Comic Sans MS", sans-serif;
-    color: white;
+    font-family: "Brown Cookies", "Comic Sans MS", sans-serif;
+    color: black;
     background-color: #fceecd;
-    background-image: url("../img/backgrounds/stone_bricks.png");
-    background-size: 64px;
+    background-image: url("../img/backgrounds/cork.jpg");
+    background-size: 200px;
     background-repeat: repeat;
     /*color: #141414;*/
 }
@@ -16,17 +16,20 @@ img{
 }
 .button {
     color: #141414;
-    font-family: Asterix;
+    font-family: "Brown Cookies";
     /*font-size: unset;*/
     border: none;
     background-color: #fff0;
-    background-image: url("../img/backgrounds/button25.png");
+    background-image: url("../img/backgrounds/button26.png");
+    padding-top: 15px;
+    padding-bottom: 10px;
     background-size: 100% 100%;
+    background-repeat: no-repeat;
     text-decoration: none;
     text-align: center;
     display: inline-block;
     align-items: center;
-    height: 50px;
+    /* height: 50px; */
     width: 100%;
     white-space: nowrap;
 }
@@ -42,9 +45,11 @@ img{
     filter: drop-shadow(3px -3px 3px #000);
 }
 
+
 .button_icon{
     max-height: 30px;
     max-width: 30px;
+    padding-left: 5px;
 }
 
 .titleOwn {
@@ -82,7 +87,13 @@ td, th {
     font-size: 20px;
     display: inline-grid;
     align-items: center;
-
+    background-image: url("../img/backgrounds/button26.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-top: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .subTableName{
@@ -103,22 +114,16 @@ td, th {
     float: left;
 }
 
-.inventoryArea{
-    float: right;
-    height: 20%;
-    width: 39%;
-    text-align: center;
-}
-
 .logArea{
-    background-image: url("../img/backgrounds/inventory.png");
-    background-size: 100% auto;
+    background-image: url("../img/backgrounds/log_26.png");
+    background-size: cover;
     background-repeat: repeat-y;
     float: right;
     min-height: 60vh;
-    width: 37%;
+    width: 30%;
     padding: 20px;
     color: black;
+    padding-top: 50px;
 }
 
 .logArea.overview{
@@ -126,26 +131,42 @@ td, th {
     height: 94vh;
 }
 
+#logTable{
+    width: 100%;
+}
+
 .itemIcon{
     width: 20px;
     height: 20px;
 }
 
+.inventoryArea{
+    float: right;
+    height: 20%;
+    width: 30%;
+    text-align: center;
+    background-image: url("../img/backgrounds/inventory_26.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
 #hpBarText{
     position: absolute;
     color: black;
-    width: 50%;
-    left: 25%;
+    width: 100%;
+    text-align: center;
     font-size: 25px;
 }
 
 #hpBar{
-    text-align: center;
-    width: 80%;
+    width: 60%;
     margin: auto;
     position: relative;
     height: 50px;
     line-height: 50px;
+
 }
 
 #invTable{
@@ -153,11 +174,11 @@ td, th {
     text-align: left;
     margin: 0 auto 0 auto;
     /*border: 1px solid black;*/
-    background-image: url("../img/backgrounds/inventory.png");
+    /* background-image: url("../img/backgrounds/inventory_26.png");
     background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     white-space: nowrap;
-    padding: 10px;
+    padding: 0px;
 }
 
 #invTable td{

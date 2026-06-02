@@ -56,20 +56,18 @@
       "usage": "It is possible to define custom messages for a certain item. This can be done creating a new sub field such as item1 containing the custom messages. If a custom message is not available the default message (which is the one written outside of the custom item blocks) will be used."
     }
   },
-  "number_groups": 4,
+  "number_groups": 3,
   "group_names": {
     "gr1": "Team Asterix",
     "gr2": "Team Obelix",
-    "gr3": "Team Idefix",
-    "gr4": "Team Miraculix"
+    "gr3": "Team Idefix"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
     "files": {
       "gr1": "asterix.png",
       "gr2": "obelix.png",
-      "gr3": "idefix.png",
-      "gr4": "miraculix.png"
+      "gr3": "idefix.png"
     },
     "size": {
       "conserve": true,
@@ -146,15 +144,15 @@
     "item19": 0,
     "item20": 0
   },
-  "hpName": "Gallier",
+  "hpName": "Hinweise",
   "finalScores": {
     "hp": 1,
     "deathPunishment": 20,
     "ratios": {
-      "item13": {
+      "item18": {
         "required_by": {
           "item1": {
-            "multiplicator": 10,
+            "multiplicator": 5,
             "consuming": true,
             "punishment": 15,
             "once_punishment": 0,
@@ -188,7 +186,7 @@
   "icon_file_dir": "img/items25/",
   "item_hiding_inventory": 8,
   "item1": {
-    "name": "Wohnhaus",
+    "name": "Aktenschrank",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
@@ -196,7 +194,7 @@
     "visible_for_others": true
   },
   "item2": {
-    "name": "Schutzwall",
+    "name": "Alarmanlage",
     "score": 10,
     "max": 6,
     "icon_file_name": "wall.png",
@@ -204,20 +202,20 @@
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3":{
-    "name": "Hinkelsteinbruch",
+    "name": "Visitenkarte",
     "score": 14,
     "icon_file_name": "hinkelstein.png",
     "visible_for_others": true
   },
   "item4": {
-    "name": "Häuptling",
+    "name": "Tante Mathilda",
     "max": 1,
     "score": 13,
     "icon_file_name": "majestix.png",
     "visible_for_others": true
   },
   "item5": {
-    "name": "Druide",
+    "name": "Kommissar Reynolds",
     "max": 1,
     "score": 7,
     "requirement": "item4",
@@ -226,19 +224,19 @@
     "_comment": "Can only be purchased after item4 has been bought, too"
   },
   "item6": {
-    "name": "Kämpfer",
+    "name": "Saboteuer",
     "score": 0,
     "icon_file_name": "icon_character_player.png",
     "visible_for_others": true
   },
   "item7": {
-    "name": "Zaubertrank",
+    "name": "Flucht E-Scooter",
     "score": 0,
     "icon_file_name": "icon_potion_big_healing.png",
     "visible_for_others": true
   },
   "item8": {
-    "name": "Amnesix",
+    "name": "Geheimtresor",
     "score": 13,
     "max": 1,
     "icon_file_name": "amnesix.png",
@@ -246,59 +244,59 @@
     "_comment": "hides Inventory from others"
   },
   "item9": {
-    "name": "Nullnullsix",
+    "name": "Wanze",
     "score": 0,
     "icon_file_name": "nullnullsix.png",
     "visible_for_others": true,
     "_comment": "tries to reveal Inventory of specific group, countered by item12"
   },
   "item10": {
-    "name": "Korrupte Römer",
+    "name": "Skateboard-Raudis",
     "score": 0,
     "icon_file_name": "centurio.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
-    "name": "Goldkiste",
+    "name": "Bestechungsgeld",
     "score": 0,
     "icon_file_name": "gold_cauldron.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
   "item12": {
-    "name": "Fliegenfalle",
+    "name": "Wanzensuchgerät",
     "score": 18,
     "max": 3,
     "icon_file_name": "fliegenfalle.png",
     "visible_for_others": true
   },
   "item13": {
-    "name": "Boxring",
+    "name": "Fotolabor",
     "score": 22,
     "icon_file_name": "boxring.png",
     "visible_for_others": true
   },
   "item14": {
-    "name": "Barde",
+    "name": "Fingerabdruck-Set",
     "score": 15,
     "icon_file_name": "lyra.png",
     "visible_for_others": true
   },
   "item15": {
-    "name": "Fischhändler",
+    "name": "Dietrich-Set",
     "score": 20,
     "icon_file_name": "fish_smelly.png",
     "visible_for_others": true
   },
   "item16": {
-    "name": "Metzgerei",
+    "name": "Mikroskop",
     "score": 34,
     "icon_file_name": "bistecca.png",
     "visible_for_others": true
   },
   "item17": {
-    "name": "Wildschweinjagd",
+    "name": "Archiv-Recherche",
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
@@ -307,26 +305,26 @@
     "_comment": "repairKit, adds plusHP to hp"
   },
   "item18": {
-    "name": "Schmied",
+    "name": "Werkstatt",
     "score": 8,
     "icon_file_name": "anvil.png",
     "visible_for_others": true
   },
   "item19": {
-    "name": "Taverne",
+    "name": "Telefonzentrale",
     "score": 5,
     "icon_file_name": "cervisia.png",
     "visible_for_others": true
   },
   "item20": {
-    "name": "Geheimgang",
+    "name": "not-used",
     "score": 14,
     "icon_file_name": "ablassbrief.png",
     "visible_for_others": true
   },
   "number_actions": 3,
   "action1": {
-    "name": "Römerangriff",
+    "name": "Raudis aufhetzen",
     "destroyItem": "item2",
     "compareItem": "item10",
     "damage": 2,
@@ -339,7 +337,7 @@
     "_comment": "if the attacker wins, one destroyItem of the opponent will be destroyed, score only if successful and the opponent still had at least one destroyItem, defendscore for opponent if defended successfully, scorePunishment for opponent if he loses, winner is the one with more compareItem, if successful, damage is dealt"
   },
   "action2": {
-    "name": "Überfall",
+    "name": "Sabotieren",
     "damage": 5,
     "score": 2.5,
     "multiplicator": "item6",
@@ -391,79 +389,79 @@
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action_defend": "Aktion <action> wurde von <target> verteidigt",
     "action1": {
-      "action_requirement": "Wie wollt ihr denn die korrupten Römer bezahlen?",
-      "action_uses": "Wie wollt ihr denn die korrupten Römer bezahlen?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da Römer anheuern?",
-      "action_defend": "Eure Römer wurden von <target> vernichtend verkloppt"
+      "action_requirement": "Wie wollt ihr denn die Saboteuere entkommen lassen?",
+      "action_uses": "Wie wollt ihr denn die Saboteuere entkommen lassen?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da Saboteuere anheuern?",
+      "action_defend": "Eure Saboteuere wurden von <target> vernichtend verkloppt"
     },
     "action2": {
-      "action_requirement": "Ihr müsst erst Kämpfer ausbilden",
-      "action_uses": "Ohne Zaubertrank kämpft sich's schlecht",
-      "action_death": "Weder Tote noch Untote kämpfen. Belebt euch erst wieder"
+      "action_requirement": "Ihr müsst erst Skateboard-Raudis anheuern",
+      "action_uses": "Ohne Bestechungsgeld rührt sich kein Raudi",
+      "action_death": "Weder Tote noch Untote können bestechen. Belebt euch erst wieder"
     },
     "action3": {
-      "action_requirement": "Wie wollt ihr ohne Spione ausspionieren?",
-      "action_defend": "<target> hat erfolgreich eure Fliegen gefangen"
+      "action_requirement": "Wie wollt ihr ohne Wanzen ausspionieren?",
+      "action_defend": "<target> hat erfolgreich eure Wanzen gefunden und zerstört"
     }
   },
   "log_messages": {
     "buy": "<group> haben <item> gekauft.",
     "item1": {
-      "buy": "<group> hat einen neues Wohnhaus gebaut"
+      "buy": "<group> hat einen neuen Aktenschrank angeschafft"
     },
     "item2": {
-      "buy": "<group> hat einen Schutzwall gebaut"
+      "buy": "<group> hat eine Alarmanlage eingebaut"
     },
     "item3": {
-      "buy": "<group> kann mehr Hinkelsteine produzieren"
+      "buy": "<group> übernimmt jeden Fall"
     },
     "item4": {
-      "buy": "<group> hat einen Häuptling gewählt"
+      "buy": "<group> hat Tante Mathildas Kirschkuchen bekommen"
     },
     "item5": {
-      "buy": "<group> hat einen Druiden eingestellt"
+      "buy": "<group> hat steht unter Schutz von Kommissar Reynolds"
     },
     "item6": {
-      "buy": "<group> hat einen Kämpfer ausgebildet"
+      "buy": "<group> hat einen Saboteur angeheuert"
     },
     "item7": {
-      "buy": "Der Druide von <group> hat einen Zaubertrank gebraut"
+      "buy": "<group> hat einen E-Scooter für die schnelle Flucht gekauft"
     },
     "item8": {
-      "buy": "<group> hat Amnesix in seiner Waldpraxis aufgesucht"
+      "buy": "<group> kann nun Akten in einem Tresor einlagern"
     },
     "item9": {
-      "buy": "<group> hat Nullnullsix und seine Fliege beauftragt"
+      "buy": "<group> hat eine Wanze gekauft"
     },
     "item10": {
-      "buy": "<group> hat einen Römer in der Tasche"
+      "buy": "<group> hat einen Haufen Skateboard-Raudis angeheuert"
     },
     "item11": {
-      "buy": "<group> hat in Gold angelegt"
+      "buy": "<group> hat in Geld angelegt"
     },
     "item12": {
-      "buy": "<group> hat keine Fliegen mehr im Haus"
+      "buy": "<group> kann Ungeziefer aufspüren"
     },
     "item13": {
-      "buy": "<group> hat einen Boxring gebaut"
+      "buy": "<group> hat einen Fotolabor gebaut"
     },
     "item14": {
-      "buy": "<group> leidet unter schlechtem Gesang"
+      "buy": "<group> kann jetzt Fingerabdrücke nehmen"
     },
     "item15": {
-      "buy": "Den Fisch von <group> riecht man kilometerweit"
+      "buy": "<group> kann jetzt Schlösser knacken (natürlich nur legal)"
     },
     "item16": {
-      "buy": "<group> kann jetzt frische Steaks essen"
+      "buy": "<group> kann jetzt auch kleinste Hinweise unter die Lupe nehmen"
     },
     "item17": {
-      "buy": "<group> ist auf Wildschweinjagd gegangen und hat neue Freunde gefunden"
+      "buy": "<group> hat im Archiv wichtige Informationen gefunden und damit ihre Ermittlungsarbeit verbessert"
     },
     "item18": {
-      "buy": "<group> können jetzt den Barden ruhigstellen"
+      "buy": "<group> hat eine Werkstatt gebaut, um ihre Ausrüstung zu verbessern"
     },
     "item19": {
-      "buy": "<group> können zusammen Feste feiern"
+      "buy": "<group> hat eine Telefonzentrale eingerichtet"
     },
     "item20": {
       "buy": "<group> hat einen Burggraben gebaut"
@@ -474,19 +472,19 @@
     "nothingToDestroy": "<group> wollte auf <target> <action> durchführen, haben aber nichts zu zerstören gefunden",
     "failure": "<group> ist daran gescheitert Aktion <action> auf <target> durchzuführen",
     "action1": {
-      "success": "<group> hat einen Schutzwall von <target> zerstört",
-      "hitSelf": "<group> hat ein Römerangriff auf sich selbst ausführen lassen",
-      "nothingToDestroy": "<group> wollte <target> angreifen lassen, die hatten aber gar keine Schutzwall",
-      "failure": "<group> wollte <target> angreifen lassen, ist aber gnadenlos unterlegen"
+      "success": "<group> hat Skateboard-Raudis auf <target> gehetzt",
+      "hitSelf": "<group> hat eine Sabotage auf sich selbst ausführen lassen",
+      "nothingToDestroy": "<group> wollte <target> sabotieren lassen, die hatten aber gar keine Alarmanlage",
+      "failure": "<group> wollte <target> sabotieren lassen, ist aber gnadenlos unterlegen"
     },
     "action2": {
-      "success": "<group> hat <target> überfallen",
-      "kill": "<group> hat <target> vom Erdboden getilgt",
-      "failure": "<group> wurde beim Angriff auf <target> erfolgreich abgewehrt"
+      "success": "<group> hat einen Alarmanlage von <target> zerstört",
+      "kill": "<group> hat die Ermittlungsarbeit von <target> runiniert",
+      "failure": "<group> wurde bei der Sabotage von <target> erfolgreich abgewehrt"
     },
     "action3": {
-      "success": "<group> hat <target> mithilfe von Nullnullsix und seiner Fliege auspioniert",
-      "failure": "<target> hat erfolgreich die Fliege von <group> gefangen"
+      "success": "<group> hat <target> mithilfe von Wanzen auspioniert",
+      "failure": "<target> hat die Wanzen von <group> aufgespürt und zerstört"
     }
   }
 }

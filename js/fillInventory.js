@@ -40,11 +40,12 @@ function updateInventory(groupId) {
 
 
                     let tableContent = "<tbody id='invTableBody'>";
-                    var numberRows = Math.ceil(config['number_items'] / 6);
+                    const numberCols = 7;
+                    var numberRows = Math.ceil(config['number_items'] / numberCols);
                     for (var row = 0; row < numberRows; row++) {
                         tableContent += "<tr>";
-                        for (var col = 1; col <= 6; col++) {
-                            var itemNum = row * 6 + col;
+                        for (var col = 1; col <= numberCols; col++) {
+                            var itemNum = row * numberCols + col;
                             if(itemNum <= config['number_items']) {
                                 tableContent += "<td><img class='itemIcon' src=' " + config['icon_file_dir'] + config['item' + itemNum]['icon_file_name'] + "' title='" + config['item' + itemNum]['name'] + "'>: " + inventory['item' + itemNum] + " </td>";
                             }
