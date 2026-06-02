@@ -1,5 +1,5 @@
 <div id="backArrow"><a href="/?reset"><img src="img/arrow_back.svg"></a></div>
-<div class="fieldArea" id="gameCanvas" style="width: 75%; height: 75%"></div>
+<div class="fieldArea" id="gameCanvas" style="width: 67%; height: 75%"></div>
 
 <div class="logArea overview">
     <table id="logTable">

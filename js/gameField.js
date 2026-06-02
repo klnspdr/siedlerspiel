@@ -18,7 +18,7 @@ function setup() {
     //setup game field
     let gameField;
     if(groupId === 100){
-        gameField = createCanvas(0.73 * $(window).width(), 0.75 * $(window).height());
+        gameField = createCanvas(0.68 * $(window).width(), 0.75 * $(window).height());
     } else {
         gameField = createCanvas(0.59 * $(window).width(), 0.66 * $(window).height());
     }

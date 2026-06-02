@@ -58,16 +58,16 @@
   },
   "number_groups": 3,
   "group_names": {
-    "gr1": "Team Asterix",
-    "gr2": "Team Obelix",
-    "gr3": "Team Idefix"
+    "gr1": "Justus",
+    "gr2": "Peter",
+    "gr3": "Bob"
   },
   "group_icon_dir": "img/teams/",
   "group_images": {
     "files": {
-      "gr1": "asterix.png",
-      "gr2": "obelix.png",
-      "gr3": "idefix.png"
+      "gr1": "justus.png",
+      "gr2": "peter.png",
+      "gr3": "bob.png"
     },
     "size": {
       "conserve": true,
@@ -77,37 +77,37 @@
   },
   "group_colors": {
     "nameText": {
-      "gr1": "#00ff0000",
-      "gr2": "#141C8800",
-      "gr3": "#16962200",
-      "gr4": "#F6D41500"
+      "gr1": "#ffffff",
+      "gr2": "#ffffff",
+      "gr3": "#ffffff",
+      "gr4": "#F6D415"
     },
     "main": {
-      "gr1": "#ff0000",
-      "gr2": "#0000ff",
-      "gr3": "#00ff00",
+      "gr1": "#ffffff",
+      "gr2": "#049CE4",
+      "gr3": "#E10713",
       "gr4": "#F3CC14"
     },
     "outline": {
-      "gr1": "#fceecc00",
-      "gr2": "#44444400",
-      "gr3": "#fceecc00",
-      "gr4": "#fceecc00"
+      "gr1": "#000000",
+      "gr2": "#000000",
+      "gr3": "#000000",
+      "gr4": "#ffffff"
     }
   },
   "groupPositioning": "solid",
   "group_positions": {
     "gr1": {
-      "x": "616",
-      "y": "778"
+      "x": "1853",
+      "y": "210"
     },
     "gr2": {
-      "x": "581",
-      "y": "322"
+      "x": "1125",
+      "y": "1121"
     },
     "gr3": {
-      "x": "150",
-      "y": "322"
+      "x": "439",
+      "y": "854"
     },
     "gr4": {
       "x": "1010",
@@ -115,8 +115,8 @@
     }
   },
   "inventoryDirections": {
-    "gr1": "up",
-    "gr2": "down",
+    "gr1": "down",
+    "gr2": "up",
     "gr3": "down",
     "gr4": "down"
   },

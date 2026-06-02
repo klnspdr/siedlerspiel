@@ -127,7 +127,7 @@ td, th {
 }
 
 .logArea.overview{
-    width: 22%;
+    width: 28%;
     height: 94vh;
 }
 
@@ -211,9 +211,15 @@ td, th {
 }
 
 .rankListArea {
-    height: 10px;
+    /* height: 10px; */
     width: 60%;
     float: left;
+    background-image: url("../img/backgrounds/ranklist_26.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-left: 20px;
 }
 
 #rankListTable{

@@ -9,6 +9,7 @@ class Group {
         this.statsShown = true;
         this.statsRevealed = false;
         this.nameTextColor = config.group_colors.nameText['gr' + this.groupId]
+        this.outlineColor = config.group_colors.outline['gr' + this.groupId];
         if(this.iconSize.conserve){
             console.log(`group: ${this.groupId}`);
             console.log(`fileWidth: ${groupIcons[this.groupId-1].width}`);
@@ -27,8 +28,10 @@ class Group {
     }
 
     drawName() {
-        textFont("Asterix");
+        textFont("Brown Cookies");
         noStroke();
+        stroke(this.outlineColor);
+        strokeWeight(6);
         fill(this.nameTextColor);
         textStyle(BOLD);
         textSize(15);
@@ -44,6 +47,9 @@ class Group {
             strokeWeight(0);
             textSize(15);
             textStyle(NORMAL);
+            stroke(this.outlineColor);
+            strokeWeight(6);
+            fill(this.nameTextColor);
 			if(info['displayScore'] == true)
             text("Punkte: " + info['final_score'], this.x, this.y + this.iconSize.y / 2 + 30);
 
@@ -55,7 +61,7 @@ class Group {
         strokeWeight(1);
         stroke(0);
         fill(255);
-        rect(this.x, this.y + this.iconSize.y / 2 + 10, 50, 15);
+        rect(this.x, this.y + this.iconSize.y / 2 + 10, 60, 15);
         if(!this.statsShown){
             hp = 0;
         }
@@ -68,10 +74,10 @@ class Group {
             fill('#ff0000');
         }
         noStroke();
-        let filledLength = 50 * (hp / maxHp);
-        rect(this.x - (50 - filledLength) / 2, this.y + this.iconSize.y / 2 + 10, filledLength - 1, 14);
+        let filledLength = 60 * (hp / maxHp);
+        rect(this.x - (60 - filledLength) / 2, this.y + this.iconSize.y / 2 + 10, filledLength - 1, 14);
         //noStroke();
-        //rect(x-(50-filledLength)/2+)
+        //rect(x-(60-filledLength)/2+)
         if(!this.statsShown){
             hp = "?";
         }
