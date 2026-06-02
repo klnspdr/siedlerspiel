@@ -177,7 +177,7 @@ function setServerInfo() {
         ipList.innerHTML = data.ip
           .map(
             (ip) =>
-              `<li>${ip.interface} (${ip.family}): ${ip.address} ${ip.internal ? "(internal)" : ""}</li>`,
+              `<li>${ip.interface} (${ip.family}): <a href="http://${ip.address}:${data.port}" target="_blank">${ip.address}:${data.port}</a> ${ip.internal ? "(internal)" : ""}</li>`,
           )
           .join("");
       }
@@ -186,6 +186,7 @@ function setServerInfo() {
       const hostnameField = document.getElementById("serverHostname");
       const platformField = document.getElementById("serverPlatform");
       const archField = document.getElementById("serverArch");
+      const serverPortField = document.getElementById("serverPort");
 
       if (hostnameField) {
         hostnameField.textContent = data.hostname;
@@ -195,6 +196,9 @@ function setServerInfo() {
       }
       if (archField) {
         archField.textContent = data.arch;
+      }
+      if (serverPortField) {
+        serverPortField.textContent = data.port;
       }
     })
     .fail(function () {

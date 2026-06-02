@@ -47,7 +47,8 @@ app.use('/ajax/runAction',         require('./routes/runAction'));
 app.use('/ajax/initDB',            require('./routes/initDB'));
 app.use('/ajax/clearDB',           require('./routes/clearDB'));
 app.use('/ajax/toggleDisplayScore',require('./routes/toggleDisplayScore'));
-app.use('/ajax/getServerInfo',       require('./routes/getServerInfo'));
+app.use('/ajax/getServerInfo',     require('./routes/getServerInfo'));
+app.use('/db-api',                 require('./routes/dbApi'));
 app.use('/config/config.json', (req, res) => {
   res.type('json').sendFile(path.join(__dirname, 'config', 'config.json'));
 });

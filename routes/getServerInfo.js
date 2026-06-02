@@ -28,6 +28,7 @@ router.get("/", (req, res) => {
     hostname: os.hostname(),
     platform: os.platform(),
     arch: os.arch(),
+    port: process.env.PORT || 3000,
   });
 });
 

@@ -57,7 +57,7 @@
             <button onclick="toggleDisplayScore()">Toggle Display Score</button>
           </p>
           <p>
-            <a href="https://sqlitebrowser.org/">SQLite Browser (App for viewing game database)</a>
+            <a href="/db-editor.html">Edit DB</a>
           </p>
         </div>
       <div class="card infoFrame" id="serverInfoArea">
@@ -72,9 +72,12 @@
           <strong>Architecture:</strong> <span id="serverArch"  >{arch}</span>
         </p>
         <p>
+          <strong>Port:</strong> <span id="serverPort">{port}</span>
+        </p>
+        <p>
           <strong>IP Addresses:</strong>
           <ul id="serverIpList">
-            <li>192.168.1.100</li>
+            <li><a href="http://127.0.0.1:3000" target="_blank">127.0.0.1:3000</a></li>
           </ul>
         </p>
       </div>
