@@ -183,35 +183,35 @@
     "accountableItem3": "item4"
   },
   "number_items": 19,
-  "icon_file_dir": "img/items25/",
+  "icon_file_dir": "img/items26/",
   "item_hiding_inventory": 8,
   "item1": {
     "name": "Aktenschrank",
     "score": 2,
     "plusMaxHP": 10,
     "plusHP": 10,
-    "icon_file_name": "residential.png",
+    "icon_file_name": "file-cabinet.png",
     "visible_for_others": true
   },
   "item2": {
     "name": "Alarmanlage",
     "score": 10,
     "max": 6,
-    "icon_file_name": "wall.png",
+    "icon_file_name": "alarmanlage.png",
     "visible_for_others": true,
     "_comment": "Only the ones existing at the end of the game will be counted (can be destroyed by action1)"
   },
   "item3":{
     "name": "Visitenkarte",
     "score": 14,
-    "icon_file_name": "hinkelstein.png",
+    "icon_file_name": "visitenkarte.png",
     "visible_for_others": true
   },
   "item4": {
     "name": "Tante Mathilda",
     "max": 1,
     "score": 13,
-    "icon_file_name": "majestix.png",
+    "icon_file_name": "tante-mathilda.png",
     "visible_for_others": true
   },
   "item5": {
@@ -219,48 +219,48 @@
     "max": 1,
     "score": 7,
     "requirement": "item4",
-    "icon_file_name": "icon_character_getafix.png",
+    "icon_file_name": "reynolds.png",
     "visible_for_others": true,
     "_comment": "Can only be purchased after item4 has been bought, too"
   },
   "item6": {
     "name": "Saboteuer",
     "score": 0,
-    "icon_file_name": "icon_character_player.png",
+    "icon_file_name": "saboteur.png",
     "visible_for_others": true
   },
   "item7": {
     "name": "Flucht E-Scooter",
     "score": 0,
-    "icon_file_name": "icon_potion_big_healing.png",
+    "icon_file_name": "kick-scooter.png",
     "visible_for_others": true
   },
   "item8": {
     "name": "Geheimtresor",
     "score": 13,
     "max": 1,
-    "icon_file_name": "amnesix.png",
+    "icon_file_name": "tresor.png",
     "visible_for_others": true,
     "_comment": "hides Inventory from others"
   },
   "item9": {
     "name": "Wanze",
     "score": 0,
-    "icon_file_name": "nullnullsix.png",
+    "icon_file_name": "wanze.png",
     "visible_for_others": true,
     "_comment": "tries to reveal Inventory of specific group, countered by item12"
   },
   "item10": {
     "name": "Skateboard-Raudis",
     "score": 0,
-    "icon_file_name": "centurio.png",
+    "icon_file_name": "skateboard.png",
     "_comment": "The one with more item10 wins action1",
     "visible_for_others": false
   },
   "item11": {
     "name": "Bestechungsgeld",
     "score": 0,
-    "icon_file_name": "gold_cauldron.png",
+    "icon_file_name": "money.png",
     "_comment": "Necessary for action1",
     "visible_for_others": true
   },
@@ -268,31 +268,31 @@
     "name": "Wanzensuchgerät",
     "score": 18,
     "max": 3,
-    "icon_file_name": "fliegenfalle.png",
+    "icon_file_name": "wanzensucher.png",
     "visible_for_others": true
   },
   "item13": {
     "name": "Fotolabor",
     "score": 22,
-    "icon_file_name": "boxring.png",
+    "icon_file_name": "photo-lab.png",
     "visible_for_others": true
   },
   "item14": {
     "name": "Fingerabdruck-Set",
     "score": 15,
-    "icon_file_name": "lyra.png",
+    "icon_file_name": "fingerprint.png",
     "visible_for_others": true
   },
   "item15": {
     "name": "Dietrich-Set",
     "score": 20,
-    "icon_file_name": "fish_smelly.png",
+    "icon_file_name": "key.png",
     "visible_for_others": true
   },
   "item16": {
     "name": "Mikroskop",
     "score": 34,
-    "icon_file_name": "bistecca.png",
+    "icon_file_name": "microscope.png",
     "visible_for_others": true
   },
   "item17": {
@@ -300,20 +300,20 @@
     "score": 0,
     "plusHP": 25,
     "deadAllowed": true,
-    "icon_file_name": "boar.png",
+    "icon_file_name": "recherche.png",
     "visible_for_others": true,
     "_comment": "repairKit, adds plusHP to hp"
   },
   "item18": {
     "name": "Werkstatt",
     "score": 8,
-    "icon_file_name": "anvil.png",
+    "icon_file_name": "werkstatt.png",
     "visible_for_others": true
   },
   "item19": {
     "name": "Telefonzentrale",
     "score": 5,
-    "icon_file_name": "cervisia.png",
+    "icon_file_name": "telephone.png",
     "visible_for_others": true
   },
   "item20": {
