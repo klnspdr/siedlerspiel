@@ -369,35 +369,36 @@
       "max": "<max> <item> sind doch schon genug."
     },
     "item3": {
-      "max": "Mehr als <max> Burggraben sind doch nicht sinnvoll."
+      "max": "Mehr als <max> Alarmanlagen sind doch nicht sinnvoll."
     },
     "item4": {
-      "max": "In einer Armee ist nur Platz für einen <item>!"
+      "max": "In einer Detektei ist nur Platz für eine <item>!"
     },
     "item5": {
-      "max": "So groß, dass sie mehr als einen Häuptling und einen Druide brauchen würde ist eure Armee auch wieder nicht.",
-      "requirement": "Ohne einen Häuptling wüsste der Druide gar nicht, was er machen soll."
+      "max": "So groß, dass sie mehr als Tante Mathilda und eine Kommissar Reynolds brauchen würde ist eure Detektei auch wieder nicht.",
+      "requirement": "Ohne einen Tante Mathildas Kirschkuchen hätte Kommissar Reynolds gar keine Energie euch zu beschützen."
     },
     "item8": {
-      "max": "Amnesix ist einzigartig!"
+      "max": "Ein Tresor ist doch genug!"
     },
     "item12": {
-      "max": "Mehr Fliegen könnt ihr nicht fangen!"
+      "max": "Mehr Wanzensuchgeräte sind doch nicht nötig, oder?"
     },
     "action_requirement": "Aktion <action> benötigt <requirement>",
     "action_uses": "Aktion <action> benötigt <uses>",
     "action_death": "Ihr seid tot. Ihr könnt diese Aktion nicht ausführen",
     "action_defend": "Aktion <action> wurde von <target> verteidigt",
     "action1": {
-      "action_requirement": "Wie wollt ihr denn die Saboteuere entkommen lassen?",
-      "action_uses": "Wie wollt ihr denn die Saboteuere entkommen lassen?",
-      "action_death": "Ihr seid tot. Wie wollt ihr da Saboteuere anheuern?",
-      "action_defend": "Eure Saboteuere wurden von <target> vernichtend verkloppt"
-    },
-    "action2": {
       "action_requirement": "Ihr müsst erst Skateboard-Raudis anheuern",
       "action_uses": "Ohne Bestechungsgeld rührt sich kein Raudi",
-      "action_death": "Weder Tote noch Untote können bestechen. Belebt euch erst wieder"
+      "action_death": "Weder Tote noch Untote können bestechen. Belebt euch erst wieder",
+      "action_defend": "Eure Raudis wurden von <target> abgewehrt. Vielleicht solltet ihr mehr anheuern oder erst mal die Alarmanlage von <target> zerstören"
+    },
+    "action2": {
+      "action_requirement": "Ihr braucht erstmal einen Saboteuer, um jemanden zu sabotieren",
+      "action_uses": "Wie wollt ihr denn die Saboteuere entkommen lassen?",
+      "action_death": "Ihr seid tot. Wie wollt ihr da Saboteuere anheuern?",
+      "action_defend": "Eure Saboteuere wurden von <target> entdeckt und in die Flucht getrieben"
     },
     "action3": {
       "action_requirement": "Wie wollt ihr ohne Wanzen ausspionieren?",
@@ -478,9 +479,9 @@
       "failure": "<group> wollte <target> sabotieren lassen, ist aber gnadenlos unterlegen"
     },
     "action2": {
-      "success": "<group> hat einen Alarmanlage von <target> zerstört",
+      "success": "<group> hat einen Hinweise von <target> zerstört",
       "kill": "<group> hat die Ermittlungsarbeit von <target> runiniert",
-      "failure": "<group> wurde bei der Sabotage von <target> erfolgreich abgewehrt"
+      "failure": "<group> wurde bei der Sabotage von <target> entdeckt"
     },
     "action3": {
       "success": "<group> hat <target> mithilfe von Wanzen auspioniert",
